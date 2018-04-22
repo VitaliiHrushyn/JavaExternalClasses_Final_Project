@@ -38,5 +38,9 @@
         
         <jsp:include page="WEB-INF/page/footer.jsp"></jsp:include>
         
+       <a href = "${pageContext.request.contextPath}/app/exception">Exception</a>
+       <a href = "${pageContext.request.contextPath}/app/message">Message</a>
+       <a href = "${pageContext.request.contextPath}/app/logout">Logout</a>
+        
     </body>
 </html>
