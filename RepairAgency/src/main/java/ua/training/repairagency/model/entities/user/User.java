@@ -1,4 +1,4 @@
-package ua.training.repairagency.model.entities.users;
+package ua.training.repairagency.model.entities.user;
 
 import ua.training.repairagency.model.entities.Entity;
 

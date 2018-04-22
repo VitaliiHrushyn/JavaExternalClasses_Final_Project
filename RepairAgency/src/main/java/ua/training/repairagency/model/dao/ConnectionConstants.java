@@ -2,9 +2,9 @@ package ua.training.repairagency.model.dao;
 
 public interface ConnectionConstants {
 	
-	String CONNECTION_URL = "mysql.connection.url";
-	String CONNECTION_USERNAME = "mysql.connection.username";
-	String CONNECTION_PASSWORD = "mysql.connection.password";
+	String DATA_BASE_URL = "mysql.connection.url";
+	String DATA_BASE_USERNAME = "mysql.connection.username";
+	String DATA_BASE_PASSWORD = "mysql.connection.password";
 	String DATA_BASE_DRIVER_NAME = "mysql.driver";
 
 }

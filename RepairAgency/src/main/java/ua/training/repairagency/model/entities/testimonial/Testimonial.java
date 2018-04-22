@@ -1,4 +1,4 @@
-package ua.training.repairagency.model.entities.testimonials;
+package ua.training.repairagency.model.entities.testimonial;
 
 import ua.training.repairagency.model.entities.Entity;
 
