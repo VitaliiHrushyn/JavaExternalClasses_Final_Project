@@ -14,7 +14,7 @@ public class LogoutCommand implements Command {
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 		
 		HttpSession session = request.getSession();
-		session.invalidate();
+		session.setAttribute("user", null);
 		
 		request.setAttribute("message", "Loged OUT");
 

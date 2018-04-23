@@ -27,7 +27,7 @@ public class LoginCommand implements Command {
 			path = INDEX_PAGE;
 		} else {
 			message = "login command empty";
-			session.invalidate();
+			session.setAttribute("user", null);
 			path = LOGIN_PAGE;
 		}
 			
