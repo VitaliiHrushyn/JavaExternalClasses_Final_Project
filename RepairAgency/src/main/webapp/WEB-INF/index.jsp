@@ -7,15 +7,19 @@
 <!DOCTYPE html>
 <html lang="${language}">
     <head>
-        <title>header</title>
+        <title>Index page</title>
     </head>
     <body>
+    
+    	<jsp:include page="page/header.jsp"></jsp:include>
         
-        <form>
-            <select id="language" name="language" onchange="submit()">
-                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-                <option value="uk" ${language == 'uk' ? 'selected' : ''}>Українська</option>
-            </select>
-        </form>
+    	<jsp:include page="page/menu.jsp"></jsp:include>
+    	
+    	<jsp:include page="page/content.jsp"></jsp:include>
+        
+        <h2><fmt:message key="text.greatings" /></h2>
+        
+        <jsp:include page="page/footer.jsp"></jsp:include>
+        
     </body>
 </html>

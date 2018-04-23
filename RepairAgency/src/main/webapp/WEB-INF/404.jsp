@@ -13,8 +13,7 @@
            Oops! A 404 error happened because the resource could not be found.<br/>
         </h2>
     <br>
-        <a href="${pageContext.request.contextPath}/index.jsp">Index</a>
-
+        <a href="${pageContext.request.contextPath}/app/index">Index</a>
 
     </body>
 </html>

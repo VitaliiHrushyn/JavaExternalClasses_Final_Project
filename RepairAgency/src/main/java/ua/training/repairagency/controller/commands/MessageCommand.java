@@ -4,6 +4,8 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import static ua.training.repairagency.controller.commands.CommandConstants.*;
+
 public class MessageCommand implements Command {
 
 	@Override
@@ -12,7 +14,7 @@ public class MessageCommand implements Command {
 		
 		request.setAttribute("message", "message from command");
 
-		return "/index.jsp";
+		return INDEX_PAGE;
 	}
 
 }

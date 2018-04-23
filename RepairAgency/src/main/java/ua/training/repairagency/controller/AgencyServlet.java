@@ -30,6 +30,9 @@ public class AgencyServlet extends HttpServlet {
 		commands.put("exception", new ExceptionCommand());
 		commands.put("message", new MessageCommand());
 		commands.put("logout", new LogoutCommand());
+		commands.put("login", new LoginCommand());
+		commands.put("404", new Error404Command());
+		commands.put("index", new IndexCommand());
 	}
 
 	/**
@@ -59,7 +62,7 @@ public class AgencyServlet extends HttpServlet {
 		String[] URIArr = request.getRequestURI().split("/");
 		String commandName = URIArr[URIArr.length - 1];
 		String path = commands.getOrDefault
-				(commandName, (r)->commands.get("logout").execute(request)).execute(request);
+				(commandName, (r)->commands.get("404").execute(request)).execute(request);
 		
 		if (path.contains("redirect:")) {
 			response.sendRedirect(request.getContextPath() + path.replace("redirect:", ""));

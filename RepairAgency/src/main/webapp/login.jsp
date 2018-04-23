@@ -7,19 +7,19 @@
 <!DOCTYPE html>
 <html lang="${language}">
     <head>
-        <title>JSP/JSTL i18n demo</title>
+        <title>Login page</title>
     </head>
     <body>
     
     	<jsp:include page="WEB-INF/page/header.jsp"></jsp:include>
-    
-        <form>
-            <select id="language" name="language" onchange="submit()">
-                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-                <option value="uk" ${language == 'uk' ? 'selected' : ''}>Українська</option>
-            </select>
-        </form>
-        <form method="post">
+        
+    	<jsp:include page="WEB-INF/page/menu.jsp"></jsp:include>
+    	
+    	<jsp:include page="WEB-INF/page/content.jsp"></jsp:include>
+    	
+    	<h2><fmt:message key="text.login" /></h2>
+    	
+        <form method="post" action="${pageContext.request.contextPath}/app/login">
             <label for="username"><fmt:message key="login.label.username" />:</label>
             <input type="text" id="username" name="username">
             <br>
@@ -30,17 +30,9 @@
             <input type="submit" name="submit" value="${buttonValue}">
         </form>
         
-    	<jsp:include page="WEB-INF/page/menu.jsp"></jsp:include>
-    	
-    	<jsp:include page="WEB-INF/page/content.jsp"></jsp:include>
-        
-        <h2><fmt:message key="text.greatings" /></h2>
+        <br>
         
         <jsp:include page="WEB-INF/page/footer.jsp"></jsp:include>
-        
-       <a href = "${pageContext.request.contextPath}/app/exception">Exception</a>
-       <a href = "${pageContext.request.contextPath}/app/message">Message</a>
-       <a href = "${pageContext.request.contextPath}/app/logout">Logout</a>
         
     </body>
 </html>

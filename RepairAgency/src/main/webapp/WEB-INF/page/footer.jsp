@@ -8,7 +8,15 @@
 </head>
 <body>
 	<div>
-		footer
+		footer:
+		<br>
+		<a href = "${pageContext.request.contextPath}/app/exception">Exception</a>
+		<br>
+       	<a href = "${pageContext.request.contextPath}/app/message">Message</a>
+       	<br>
+      	<a href = "${pageContext.request.contextPath}/app/logout">Logout</a>
+      	<br>
+      	<a href = "${pageContext.request.contextPath}/login.jsp">Login page</a>
 	</div>
 	
 </body>
