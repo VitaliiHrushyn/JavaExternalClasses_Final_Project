@@ -27,7 +27,7 @@ public class AgencyServlet extends HttpServlet {
 	 */
 	public void init() {
 		commands = new HashMap<>();
-	//	commands.put("exception", new ExceptionCommand());
+		commands.put("exception", new ExceptionCommand());
 		commands.put("message", new MessageCommand());
 		commands.put("logout", new LogoutCommand());
 	}
