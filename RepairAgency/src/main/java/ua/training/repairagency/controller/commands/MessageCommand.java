@@ -1,10 +1,10 @@
 package ua.training.repairagency.controller.commands;
 
+import static ua.training.repairagency.controller.PathConstants.*;
+
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
-
-import static ua.training.repairagency.controller.commands.CommandConstants.*;
 
 public class MessageCommand implements Command {
 
