@@ -16,13 +16,9 @@
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/exception">Exception</a>
 		<br>
-       	<a href = "${pageContext.request.contextPath}/app/message">Message</a>
+       	<a href = "${pageContext.request.contextPath}/app/admin/message">Message</a>
        	<br>
-      	<a href = "${pageContext.request.contextPath}/app/logout">Logout</a>
       	<br>
-      	<a href = "${pageContext.request.contextPath}/login.jsp">Login page</a>
-      	<br>
-      	<a href = "${pageContext.request.contextPath}/registration.jsp">Registration page</a>
 	</div>
 	
 </body>

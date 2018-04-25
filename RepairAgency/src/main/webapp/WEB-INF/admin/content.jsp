@@ -8,12 +8,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>customer menu</title>
+<title>content</title>
 </head>
 <body>
 	<div>
-		menu
+		content:
+		<br>
+		<h2><fmt:message key="text.greatings" /> role: ${requestScope.user.role}</h2>
+		<br>
+		<c:set var="message" value="${requestScope.message}"/>
+		message: ${message}
 	</div>
-	
 </body>
 </html>

@@ -8,22 +8,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>content</title>
 </head>
 <body>
 	<div>
-		footer:
+		content:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/exception">Exception</a>
+		<h2><fmt:message key="text.greatings" /> role: ${requestScope.user.role}</h2>
 		<br>
-       	<a href = "${pageContext.request.contextPath}/app/message">Message</a>
-       	<br>
-      	<a href = "${pageContext.request.contextPath}/app/logout">Logout</a>
-      	<br>
-      	<a href = "${pageContext.request.contextPath}/login.jsp">Login page</a>
-      	<br>
-      	<a href = "${pageContext.request.contextPath}/registration.jsp">Registration page</a>
+		<c:set var="message" value="${requestScope.message}"/>
+		message: ${message}
 	</div>
-	
 </body>
 </html>

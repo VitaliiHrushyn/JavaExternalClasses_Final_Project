@@ -7,15 +7,17 @@
 <!DOCTYPE html>
 <html lang="${language}">
     <head>
-        <title>header</title>
+        <title>${requestScope.user.role} page</title>
     </head>
     <body>
+    
+    	<jsp:include page="header.jsp"></jsp:include>
         
-        <form>
-            <select id="language" name="language" onchange="submit()">
-                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-                <option value="uk" ${language == 'uk' ? 'selected' : ''}>Українська</option>
-            </select>
-        </form>
+    	<jsp:include page="menu.jsp"></jsp:include>
+    	
+    	<jsp:include page="content.jsp"></jsp:include>
+        
+        <jsp:include page="footer.jsp"></jsp:include>
+        
     </body>
 </html>

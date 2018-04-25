@@ -1,6 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
@@ -9,15 +8,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>customer menu</title>
 </head>
 <body>
 	<div>
-		content:
+		menu
 		<br>
-		<!--  <p>message1 :<%= request.getAttribute("message") %></p> -->
-		<c:set var="message" value="${requestScope.message}"/>
-		message: ${message}    	
+		<a href = "${pageContext.request.contextPath}/app/logout">Logout</a>
+		<br>
+		<br>
 	</div>
+	
 </body>
 </html>

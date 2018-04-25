@@ -26,7 +26,7 @@ public class LoginCommand implements Command {
 		if ((username != null && password != null) && (!username.isEmpty() && !password.isEmpty())) {		
 			message = "command - name: "+username+", pass: "+password;
 			session.setAttribute("user", "stub");
-			path = INDEX_PAGE;
+			path = ADMIN_PAGE;
 		} else {
 			message = "login command empty";
 			session.setAttribute("user", null);

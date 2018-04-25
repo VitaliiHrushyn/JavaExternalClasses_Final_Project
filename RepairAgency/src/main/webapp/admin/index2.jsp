@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="${language}">
     <head>
-        <title>Index page</title>
+        <title>${requestScope.user.role} page</title>
     </head>
     <body>
     
@@ -16,8 +16,6 @@
     	<jsp:include page="menu.jsp"></jsp:include>
     	
     	<jsp:include page="content.jsp"></jsp:include>
-        
-        <h2><fmt:message key="text.greatings" /></h2>
         
         <jsp:include page="footer.jsp"></jsp:include>
         

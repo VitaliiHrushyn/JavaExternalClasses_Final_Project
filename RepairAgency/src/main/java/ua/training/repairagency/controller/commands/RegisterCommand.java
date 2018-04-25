@@ -47,7 +47,7 @@ public class RegisterCommand implements Command {
 			session.setAttribute("user", newUser);
 			
 			
-			path = INDEX_PAGE;
+			path = ADMIN_PAGE;
 		} else {
 			message = "register command is invalid";
 			session.setAttribute("user", null);

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.training.repairagency.controller.commands.*;
+import ua.training.repairagency.controller.commands.admin.*;
 
 /**
  * Servlet implementation class AgencyServlet
@@ -34,6 +35,8 @@ public class AgencyServlet extends HttpServlet {
 		commands.put("register", new RegisterCommand());
 		commands.put("404", new Error404Command());
 		commands.put("index", new IndexCommand());
+		commands.put("adminindex", new AdminIndexCommand());
+		commands.put("admin/message", new AdminMessageCommand());
 	}
 
 	/**
