@@ -4,6 +4,6 @@ public interface Entity {
 	
 	int getId();
 	
-	void setId();
+	void setId(int id);
 
 }

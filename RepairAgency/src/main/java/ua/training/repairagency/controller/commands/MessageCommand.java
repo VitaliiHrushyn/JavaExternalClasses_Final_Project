@@ -1,6 +1,6 @@
 package ua.training.repairagency.controller.commands;
 
-import static ua.training.repairagency.controller.PathConstants.*;
+import static ua.training.repairagency.controller.constants.PathConstants.*;
 
 import java.sql.SQLException;
 

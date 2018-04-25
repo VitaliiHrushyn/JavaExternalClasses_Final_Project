@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns="/*")
-public class AuthFilter implements Filter {
+//@WebFilter(urlPatterns="/*")
+public class AdminAccessFilter implements Filter {
 
 	@Override
 	public void destroy() {}
@@ -29,7 +29,6 @@ public class AuthFilter implements Filter {
         String loginPageURI = request.getContextPath() + LOGIN_PAGE;
         String loginCommandURI = request.getContextPath() + LOGIN_COMMAND;
         String registrationCommandURI = request.getContextPath() + REGISTRATION_COMMAND;
-        String alreadyloggedinURI = request.getContextPath() + ALREDY_LOGIN_PAGE;
         
 //System.out.println("filter session user: "+session.getAttribute("user"));
 
@@ -38,10 +37,6 @@ public class AuthFilter implements Filter {
         boolean loginCommand = request.getRequestURI().equals(loginCommandURI);
         boolean registrationCommand = request.getRequestURI().equals(registrationCommandURI);
 
-        if (loggedIn && loginRequest) {
-        	response.sendRedirect(alreadyloggedinURI);
-        }
-        
         if (loggedIn || loginRequest || loginCommand || registrationCommand) {
 System.out.println("filter PASS");
         	chain.doFilter(request, response);

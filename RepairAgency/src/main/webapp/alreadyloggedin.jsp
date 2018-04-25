@@ -7,17 +7,17 @@
 <!DOCTYPE html>
 <html lang="${language}">
     <head>
-        <title>${requestScope.user.role} page</title>
+        <title>Login page</title>
     </head>
     <body>
     
-    	<jsp:include page="header.jsp"></jsp:include>
+    	<jsp:include page="WEB-INF/header.jsp"></jsp:include>
         
-    	<jsp:include page="indexmenu.jsp"></jsp:include>
+    	<jsp:include page="WEB-INF/indexmenu.jsp"></jsp:include>
     	
-    	<jsp:include page="content.jsp"></jsp:include>
+    	<h3>You have already logged in</h3>
         
-        <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
         
     </body>
 </html>

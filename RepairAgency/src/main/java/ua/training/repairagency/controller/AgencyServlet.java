@@ -31,6 +31,7 @@ public class AgencyServlet extends HttpServlet {
 		commands.put("message", new MessageCommand());
 		commands.put("logout", new LogoutCommand());
 		commands.put("login", new LoginCommand());
+		commands.put("register", new RegisterCommand());
 		commands.put("404", new Error404Command());
 		commands.put("index", new IndexCommand());
 	}

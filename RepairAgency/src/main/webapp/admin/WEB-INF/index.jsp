@@ -7,17 +7,19 @@
 <!DOCTYPE html>
 <html lang="${language}">
     <head>
-        <title>${requestScope.user.role} page</title>
+        <title>Index page</title>
     </head>
     <body>
     
-    	<jsp:include page="header.jsp"></jsp:include>
+    	<jsp:include page="role/header.jsp"></jsp:include>
         
-    	<jsp:include page="indexmenu.jsp"></jsp:include>
+    	<jsp:include page="role/menu.jsp"></jsp:include>
     	
-    	<jsp:include page="content.jsp"></jsp:include>
+    	<jsp:include page="role/content.jsp"></jsp:include>
         
-        <jsp:include page="footer.jsp"></jsp:include>
+        <h2><fmt:message key="text.greatings" /></h2>
+        
+        <jsp:include page="role/footer.jsp"></jsp:include>
         
     </body>
 </html>

@@ -1,6 +1,6 @@
 package ua.training.repairagency.controller.commands;
 
-import static ua.training.repairagency.controller.PathConstants.*;
+import static ua.training.repairagency.controller.constants.PathConstants.*;
 
 import java.sql.SQLException;
 
@@ -21,7 +21,9 @@ public class LoginCommand implements Command {
 		String message;
 		String path;
 		
-		if (!username.isEmpty() && !password.isEmpty()) {		
+		//TODO : use Optional to avoid checking for a null
+		
+		if ((username != null && password != null) && (!username.isEmpty() && !password.isEmpty())) {		
 			message = "command - name: "+username+", pass: "+password;
 			session.setAttribute("user", "stub");
 			path = INDEX_PAGE;

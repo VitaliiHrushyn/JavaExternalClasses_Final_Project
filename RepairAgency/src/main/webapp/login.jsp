@@ -11,28 +11,13 @@
     </head>
     <body>
     
-    	<jsp:include page="WEB-INF/page/header.jsp"></jsp:include>
+    	<jsp:include page="WEB-INF/header.jsp"></jsp:include>
         
-    	<jsp:include page="WEB-INF/page/menu.jsp"></jsp:include>
+    	<jsp:include page="WEB-INF/loginmenu.jsp"></jsp:include>
     	
-    	<jsp:include page="WEB-INF/page/content.jsp"></jsp:include>
-    	
-    	<h2><fmt:message key="text.login" /></h2>
-    	
-        <form method="post" action="${pageContext.request.contextPath}/app/login">
-            <label for="username"><fmt:message key="login.label.username" />:</label>
-            <input type="text" id="username" name="username">
-            <br>
-            <label for="password"><fmt:message key="login.label.password" />:</label>
-            <input type="password" id="password" name="password">
-            <br>
-            <fmt:message key="login.button.submit" var="buttonValue" />
-            <input type="submit" name="submit" value="${buttonValue}">
-        </form>
+    	<jsp:include page="WEB-INF/content.jsp"></jsp:include>
         
-        <br>
-        
-        <jsp:include page="WEB-INF/page/footer.jsp"></jsp:include>
+        <jsp:include page="WEB-INF/footer.jsp"></jsp:include>
         
     </body>
 </html>
