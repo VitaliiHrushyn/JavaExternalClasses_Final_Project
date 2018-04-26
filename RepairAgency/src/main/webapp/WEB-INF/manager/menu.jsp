@@ -12,11 +12,15 @@
 </head>
 <body>
 	<div>
-		menu
+		MENU:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/logout">Logout</a>
-		<br>
-		<br>
+		<a href = "${pageContext.request.contextPath}/app/logout">Logout</a> | 
+		<a href = "${pageContext.request.contextPath}/app/manager/message">Message</a> | 
+       	<a href = "${pageContext.request.contextPath}/app/manager/workmen">Workmen</a> | 
+       	<a href = "${pageContext.request.contextPath}/app/manager/applications">Applications</a> | 
+       	<a href = "${pageContext.request.contextPath}/app/manager/page">Home</a>
+       	<br>
+       	<br>
 	</div>
 	
 </body>

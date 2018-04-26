@@ -11,7 +11,7 @@ import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserImpl;
 import ua.training.repairagency.model.entities.user.UserRole;
 
-public class RegisterCommand implements Command {
+public class RegistrationCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request)
@@ -45,14 +45,14 @@ public class RegisterCommand implements Command {
 			session.setAttribute("user", newUser);
 			
 			
-			path = REDIRECT_MANAGER_COMMAND;
+			path = REDIRECT_MANAGER_PAGE;
 		} else {
 			message = "register command is invalid";
 			session.setAttribute("user", null);
 			path = LOGIN_PAGE;
 		}
 			
-		request.setAttribute("message", message);
+		request.setAttribute("regmessage", message);
 		
 
 		return path;

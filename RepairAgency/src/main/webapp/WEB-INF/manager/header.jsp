@@ -10,12 +10,15 @@
         <title>customer header</title>
     </head>
     <body>
-        
+        <br>
         <form>
             <select id="language" name="language" onchange="submit()">
                 <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
                 <option value="uk" ${language == 'uk' ? 'selected' : ''}>Українська</option>
             </select>
         </form>
+        <br>
+		<h2><fmt:message key="text.greatings" />, ${sessionScope.user.role}</h2>
+		<br>
     </body>
 </html>

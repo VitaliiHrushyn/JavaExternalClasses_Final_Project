@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.commands.manager;
+package ua.training.repairagency.controller.commands.customer;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.model.services.manager.GetAllWorkmenService;
 
-public class ManagerGetAllWorkmenCommand implements Command {
+public class CustomerGetAllWorkmenCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request)

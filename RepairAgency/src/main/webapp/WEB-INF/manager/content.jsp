@@ -13,13 +13,11 @@
 <body>
 	<div>
 		content:
-		<br>
-		<h2><fmt:message key="text.greatings" /> role: ${sessionScope.user.role}</h2>
-		<br>
+		<br>		
 		<c:set var="message" value="${requestScope.message}"/>
-		message: ${message}
+		<fmt:message key="text.message" />: ${message}
 		<br>
-		<p>workers: ${requestScope.workers}</p>
+		<p>result: ${requestScope.command_result}</p>
 	</div>
 </body>
 </html>

@@ -16,8 +16,7 @@
 		content:
 		<br>
 		<!--  <p>message1 :<%= request.getAttribute("message") %></p> -->
-		<c:set var="message" value="${requestScope.message}"/>
-		message: ${message}    	
+		 	
 	</div>
 </body>
 </html>

@@ -15,8 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ua.training.repairagency.model.entities.user.User;
+import ua.training.repairagency.model.entities.user.UserRole;
+
 @WebFilter(urlPatterns="/*")
-public class AuthFilter implements Filter {
+public class ManagerFilter implements Filter {
 
 	@Override
 	public void destroy() {}
@@ -29,16 +32,29 @@ public class AuthFilter implements Filter {
         HttpSession session = request.getSession(false);
         
         String loginCommandURI = request.getContextPath() + LOGIN_COMMAND;
-        String registrationCommandURI = request.getContextPath() + REGISTRATION_COMMAND;        
+        String logoutCommandURI = request.getContextPath() + LOGOUT_COMMAND;
+        String registrationCommandURI = request.getContextPath() + REGISTRATION_COMMAND;
+        String managerPageCommandURI = request.getContextPath() + MANAGER_PAGE_COMMAND;        
 
-        boolean isLoggedIn = session != null && session.getAttribute("user") != null;
+        UserRole role = UserRole.UNKNOWN;
+        if (session.getAttribute("user") != null) {
+        	role = ((User) session.getAttribute("user")).getRole();
+        }
+
+        boolean isManager = role.equals(UserRole.MANAGER);
         boolean isLoginCommand = request.getRequestURI().equals(loginCommandURI);
         boolean isRegistrationCommand = request.getRequestURI().equals(registrationCommandURI);
+        boolean isURIcontainsProperlyPath = request.getRequestURI().contains("manager");
+        boolean isLogoutCommand = request.getRequestURI().equals(logoutCommandURI);
 
-        if (isLoggedIn || isLoginCommand || isRegistrationCommand) {
-        	chain.doFilter(request, response);
-        } else {
-            response.sendRedirect(loginCommandURI);
+        if (isManager && (	isLoginCommand || 
+        					isRegistrationCommand ||
+        					(!isURIcontainsProperlyPath && !isLogoutCommand)
+        				 )
+        	) {
+        	response.sendRedirect(managerPageCommandURI);
+        } else {            
+            chain.doFilter(request, response);
         }
     }		
 

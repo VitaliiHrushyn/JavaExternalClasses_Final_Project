@@ -22,32 +22,27 @@ public class LoginCommand implements Command {
 		
 		HttpSession session = request.getSession();
 		
-		String message;
+		String message = null;
 		String path;
 		
 		//TODO : use Optional to avoid checking for a null
 		
 		if ((username != null && password != null) && (!username.isEmpty() && !password.isEmpty())) {		
-			message = "command - name: "+username+", pass: "+password;
 			
-			//
+			//TODO properly
 			User user = new UserImpl();
 			user.setRole(UserRole.MANAGER);
-			
-			System.out.println("user " + user.getRole());
+			// 
 			
 			session.setAttribute("user", user);
-			path = REDIRECT_MANAGER_COMMAND;
+			path = REDIRECT_MANAGER_PAGE;
 		} else {
-			message = "login command empty";
+			message = "login or/and password are wrong";
 			session.setAttribute("user", null);
-			path = LOGIN_PAGE;
-		}
-			
-		request.setAttribute("message", message);
+			path = LOGIN_PAGE;		
+		}	
+		request.setAttribute("loginmessage", message);
 		
-System.out.println("login command user: "+request.getSession().getAttribute("user"));
-
 		return path;
 	}
 

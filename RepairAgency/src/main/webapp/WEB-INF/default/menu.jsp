@@ -15,8 +15,10 @@
 		menu:
 		<br>
 		<b><fmt:message key="text.login" /></b>
+		<c:set var="loginmessage" value="${requestScope.loginmessage}"/>
+		<p>! <font color="red">${loginmessage}</font></p>
         <form method="post" action="${pageContext.request.contextPath}/app/login">
-            <label for="username"><fmt:message key="login.label.username" />:</label>
+            <label for="username"><fmt:message key="login.label.login" />:</label>
             <input type="text" id="username" name="username">
             
             <label for="password"><fmt:message key="login.label.password" />:</label>
@@ -28,10 +30,11 @@
         
         
         
-        <b><fmt:message key="text.register" /></b>
-    	
-        <form method="post" action="${pageContext.request.contextPath}/app/register">
-            <label for="username"><fmt:message key="login.label.username" />:</label>
+        <b><fmt:message key="text.registration" /></b>
+		<c:set var="regmessage" value="${requestScope.regmessage}"/>
+		<p> !<font color="red">${regmessage}</font></p>
+        <form method="post" action="${pageContext.request.contextPath}/app/registration">
+            <label for="username"><fmt:message key="login.label.login" />:</label>
             <input type="text" id="regusername" name="regusername">
            
             <label for="password"><fmt:message key="login.label.password" />:</label>
