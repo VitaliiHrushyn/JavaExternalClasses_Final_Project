@@ -48,10 +48,10 @@ public abstract class AbstractRoleFilter implements Filter {
         boolean isURIcontainsProperlyPath = validateURI();
         boolean isLogoutCommand = request.getRequestURI().equals(logoutCommandURI);
 
-        if (isValidRole && (	isLoginCommand || 
-        					isRegistrationCommand ||
-        					(!isURIcontainsProperlyPath && !isLogoutCommand)
-        				 )
+        if (isValidRole && ( isLoginCommand || 
+        					 isRegistrationCommand ||
+        					 (!isURIcontainsProperlyPath && !isLogoutCommand)
+        				   )
         	) {
         	response.sendRedirect(rolePageCommandURI);
         } else {            
