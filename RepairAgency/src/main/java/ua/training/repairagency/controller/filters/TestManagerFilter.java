@@ -10,6 +10,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,10 +18,8 @@ import javax.servlet.http.HttpSession;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserRole;
 
-public abstract class AbstractRoleFilter implements Filter {
-	
-	protected UserRole role;
-	protected HttpServletRequest request;
+//@WebFilter(urlPatterns="/*")
+public class TestManagerFilter implements Filter {
 
 	@Override
 	public void destroy() {}
@@ -28,42 +27,36 @@ public abstract class AbstractRoleFilter implements Filter {
 	@Override
 	 public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) 
 			 											throws ServletException, IOException {    
-        request = (HttpServletRequest) req;
+        HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
         
         String loginCommandURI = request.getContextPath() + LOGIN_COMMAND;
         String logoutCommandURI = request.getContextPath() + LOGOUT_COMMAND;
         String registrationCommandURI = request.getContextPath() + REGISTRATION_COMMAND;
-        String rolePageCommandURI = getCommandPageURI();        
+        String managerPageCommandURI = request.getContextPath() + MANAGER_PAGE_COMMAND;        
 
-        role = UserRole.UNKNOWN;
+        UserRole role = UserRole.UNKNOWN;
         if (session.getAttribute("user") != null) {
         	role = ((User) session.getAttribute("user")).getRole();
         }
 
-        boolean isValidRole = validateRole();
+        boolean isManager = role.equals(UserRole.MANAGER);
         boolean isLoginCommand = request.getRequestURI().equals(loginCommandURI);
         boolean isRegistrationCommand = request.getRequestURI().equals(registrationCommandURI);
-        boolean isURIcontainsProperlyPath = validateURI();
+        boolean isURIcontainsProperlyPath = request.getRequestURI().contains("manager");
         boolean isLogoutCommand = request.getRequestURI().equals(logoutCommandURI);
 
-        if (isValidRole && (	isLoginCommand || 
+        if (isManager && (	isLoginCommand || 
         					isRegistrationCommand ||
         					(!isURIcontainsProperlyPath && !isLogoutCommand)
         				 )
         	) {
-        	response.sendRedirect(rolePageCommandURI);
+        	response.sendRedirect(managerPageCommandURI);
         } else {            
             chain.doFilter(request, response);
         }
     }		
-
-	abstract String getCommandPageURI();
-
-	abstract boolean validateURI();
-
-	abstract boolean validateRole();
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {}	
