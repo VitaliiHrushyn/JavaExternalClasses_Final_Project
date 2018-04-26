@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.training.repairagency.controller.commands.*;
-import ua.training.repairagency.controller.commands.admin.*;
+import ua.training.repairagency.controller.commands.manager.*;
 
 /**
  * Servlet implementation class AgencyServlet
@@ -29,14 +29,14 @@ public class AgencyServlet extends HttpServlet {
 	public void init() {
 		commands = new HashMap<>();
 		commands.put("exception", new ExceptionCommand());
-		commands.put("message", new MessageCommand());
 		commands.put("logout", new LogoutCommand());
 		commands.put("login", new LoginCommand());
 		commands.put("register", new RegisterCommand());
 		commands.put("404", new Error404Command());
-		commands.put("index", new IndexCommand());
-		commands.put("adminindex", new AdminIndexCommand());
-		commands.put("admin/message", new AdminMessageCommand());
+		commands.put("manager/page", new ManagerPageCommand());
+		commands.put("manager/message", new ManagerMessageCommand());
+		commands.put("manager/workers", new ManagerGetAllWorkmenCommand());
+
 	}
 
 	/**
@@ -63,8 +63,14 @@ public class AgencyServlet extends HttpServlet {
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException, ClassNotFoundException, 
 				InstantiationException, IllegalAccessException, SQLException {
-		String[] URIArr = request.getRequestURI().split("/");
-		String commandName = URIArr[URIArr.length - 1];
+//		System.out.println("requesr URI " +  request.getRequestURI());
+//		System.out.println("requesr path " + request.getContextPath());
+		String requestURI = request.getRequestURI();
+		String contextPath = request.getContextPath() + "/app/";
+		
+	//	String[] URIArr = request.getRequestURI().split("/");
+		String commandName = requestURI.replaceAll(contextPath, "");
+System.out.println("command name " + commandName);
 		String path = commands.getOrDefault
 				(commandName, (r)->commands.get("404").execute(request)).execute(request);
 		

@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.commands;
+package ua.training.repairagency.controller.commands.manager;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
 
@@ -6,15 +6,17 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class IndexCommand implements Command {
+import ua.training.repairagency.controller.commands.Command;
+
+public class ManagerMessageCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request)
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 		
-		request.setAttribute("message", "index message");
+		request.setAttribute("message", "message from manager message command");
 
-		return INDEX_PAGE;
+		return MANAGER_PAGE;
 	}
 
 }

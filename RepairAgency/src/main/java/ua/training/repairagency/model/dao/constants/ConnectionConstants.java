@@ -1,4 +1,4 @@
-package ua.training.repairagency.model.dao;
+package ua.training.repairagency.model.dao.constants;
 
 public interface ConnectionConstants {
 	

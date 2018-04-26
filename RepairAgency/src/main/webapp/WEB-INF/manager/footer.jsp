@@ -16,7 +16,9 @@
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/exception">Exception</a>
 		<br>
-       	<a href = "${pageContext.request.contextPath}/app/admin/message">Message</a>
+       	<a href = "${pageContext.request.contextPath}/app/manager/message">Message</a>
+       	<br>
+       	<a href = "${pageContext.request.contextPath}/app/manager/workers">Message</a>
        	<br>
       	<br>
 	</div>

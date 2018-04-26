@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import ua.training.repairagency.model.entities.user.User;
+import ua.training.repairagency.model.entities.user.UserImpl;
+import ua.training.repairagency.model.entities.user.UserRole;
+
 public class LoginCommand implements Command {
 
 	@Override
@@ -25,8 +29,15 @@ public class LoginCommand implements Command {
 		
 		if ((username != null && password != null) && (!username.isEmpty() && !password.isEmpty())) {		
 			message = "command - name: "+username+", pass: "+password;
-			session.setAttribute("user", "stub");
-			path = ADMIN_PAGE;
+			
+			//
+			User user = new UserImpl();
+			user.setRole(UserRole.MANAGER);
+			
+			System.out.println("user " + user.getRole());
+			
+			session.setAttribute("user", user);
+			path = REDIRECT_MANAGER_COMMAND;
 		} else {
 			message = "login command empty";
 			session.setAttribute("user", null);

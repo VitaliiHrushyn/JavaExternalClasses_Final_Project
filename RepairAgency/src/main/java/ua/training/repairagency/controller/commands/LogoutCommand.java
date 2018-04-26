@@ -18,7 +18,7 @@ public class LogoutCommand implements Command {
 		
 		request.setAttribute("message", "Loged OUT");
 
-		return LOGIN_PAGE;
+		return REDIRECT_LOGIN_COMMAND;
 	}
 
 }

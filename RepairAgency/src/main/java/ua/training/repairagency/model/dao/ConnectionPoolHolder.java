@@ -2,11 +2,11 @@ package ua.training.repairagency.model.dao;
 
 import org.apache.commons.dbcp.BasicDataSource;
 
+import static ua.training.repairagency.model.dao.constants.ConnectionConstants.*;
+
 import java.util.ResourceBundle;
 
 import javax.sql.DataSource;
-
-import static ua.training.repairagency.model.dao.ConnectionConstants.*;
 
 public class ConnectionPoolHolder {
     

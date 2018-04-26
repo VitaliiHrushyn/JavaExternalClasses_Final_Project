@@ -21,11 +21,10 @@ public class RegisterCommand implements Command {
 		String password = request.getParameter("regpassword");
 		String confirmpassword = request.getParameter("confirmpassword");
 		
-	//	System.out.println("reg comm "+username+password+confirmpassword);
 		
 		HttpSession session = request.getSession();
 		
-		String message;
+		String message = null;
 		String path;
 		
 		//TODO : use Optional to avoid checking for a null
@@ -33,13 +32,12 @@ public class RegisterCommand implements Command {
 		if ((username != null && password != null && confirmpassword != null) && 
 				(!username.isEmpty() && !password.isEmpty()) && !confirmpassword.isEmpty() &&
 				password.equals(confirmpassword)) {		
-			message = "REGISTER command - name: "+username+", pass: "+password;
 			
 			//TODO remake this user creation stub
 			User newUser = new UserImpl();
-			newUser.setRole(UserRole.ADMIN);
-			newUser.setLogin("admin");
-			newUser.setPassword("admin");
+			newUser.setRole(UserRole.MANAGER);
+			newUser.setLogin("manager");
+			newUser.setPassword("manager");
 			
 			//
 			
@@ -47,7 +45,7 @@ public class RegisterCommand implements Command {
 			session.setAttribute("user", newUser);
 			
 			
-			path = ADMIN_PAGE;
+			path = REDIRECT_MANAGER_COMMAND;
 		} else {
 			message = "register command is invalid";
 			session.setAttribute("user", null);
@@ -56,7 +54,6 @@ public class RegisterCommand implements Command {
 			
 		request.setAttribute("message", message);
 		
-System.out.println("register command user: "+ ((User) request.getSession().getAttribute("user")).getRole().toString());
 
 		return path;
 	}
