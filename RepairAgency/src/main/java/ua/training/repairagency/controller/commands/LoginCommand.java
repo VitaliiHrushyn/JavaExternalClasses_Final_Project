@@ -30,12 +30,19 @@ public class LoginCommand implements Command {
 		if ((username != null && password != null) && (!username.isEmpty() && !password.isEmpty())) {		
 			
 			//TODO properly
+		
 			User user = new UserImpl();
-			user.setRole(UserRole.MANAGER);
+			if (username.equals("manager")) {
+				user.setRole(UserRole.MANAGER);
+				path = REDIRECT_MANAGER_PAGE;
+			} else {
+				user.setRole(UserRole.CUSTOMER);
+				path = REDIRECT_CUSTOMER_PAGE;
+			}
 			// 
 			
 			session.setAttribute("user", user);
-			path = REDIRECT_MANAGER_PAGE;
+			
 		} else {
 			message = "login or/and password are wrong";
 			session.setAttribute("user", null);

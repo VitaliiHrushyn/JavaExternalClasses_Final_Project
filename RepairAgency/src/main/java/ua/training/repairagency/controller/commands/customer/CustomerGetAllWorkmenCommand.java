@@ -17,7 +17,7 @@ public class CustomerGetAllWorkmenCommand implements Command {
 		
 		request.setAttribute("command_result", new GetAllWorkmenService().execute());
 
-		return MANAGER_PAGE;
+		return CUSTOMER_PAGE;
 	}
 
 }

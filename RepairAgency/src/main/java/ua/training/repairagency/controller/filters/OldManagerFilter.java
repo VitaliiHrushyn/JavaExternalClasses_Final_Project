@@ -18,8 +18,9 @@ import javax.servlet.http.HttpSession;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserRole;
 
+@Deprecated
 //@WebFilter(urlPatterns="/*")
-public class TestManagerFilter implements Filter {
+public class OldManagerFilter implements Filter {
 
 	@Override
 	public void destroy() {}

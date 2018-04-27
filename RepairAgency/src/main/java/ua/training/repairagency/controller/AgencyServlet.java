@@ -41,7 +41,10 @@ public class AgencyServlet extends HttpServlet {
 		commands.put("manager/workmen", new ManagerGetAllWorkmenCommand());
 		commands.put("manager/applications", new ManagerGetAllAppsCommand());
 		
+		commands.put("customer/page", new CustomerPageCommand());
 		commands.put("customer/message", new CustomerMessageCommand());
+		commands.put("customer/workmen", new CustomerGetAllWorkmenCommand());
+		commands.put("customer/applications", new CustomerGetAllAppsCommand());
 	}
 
 	/**

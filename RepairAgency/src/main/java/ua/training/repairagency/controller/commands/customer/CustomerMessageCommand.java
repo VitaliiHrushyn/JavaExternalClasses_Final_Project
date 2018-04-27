@@ -16,7 +16,7 @@ public class CustomerMessageCommand implements Command {
 		
 		request.setAttribute("message", "message from CUSTOMER message command");
 
-		return MANAGER_PAGE;
+		return CUSTOMER_PAGE;
 	}
 
 }

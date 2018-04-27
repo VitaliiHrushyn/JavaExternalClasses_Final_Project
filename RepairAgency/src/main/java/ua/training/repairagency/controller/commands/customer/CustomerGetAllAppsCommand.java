@@ -17,7 +17,7 @@ public class CustomerGetAllAppsCommand implements Command {
 				
 		request.setAttribute("command_result", new GetAllAppsService().execute());
 
-		return MANAGER_PAGE;
+		return CUSTOMER_PAGE;
 	}
 
 }

@@ -14,9 +14,9 @@ public class CustomerPageCommand implements Command {
 	public String execute(HttpServletRequest request)
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 		
-		request.setAttribute("message", "manager index message");
+		request.setAttribute("message", "CUSTOMER index message");
 
-		return MANAGER_PAGE;
+		return CUSTOMER_PAGE;
 	}
 
 }

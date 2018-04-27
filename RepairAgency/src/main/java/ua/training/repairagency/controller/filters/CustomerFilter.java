@@ -22,7 +22,7 @@ public class CustomerFilter extends AbstractRoleFilter implements Filter {
 
 	@Override
 	protected String getCommandPageURI() {
-		return null; // request.getContextPath() + CUSTOMER_PAGE_COMMAND;
+		return request.getContextPath() + CUSTOMER_PAGE_COMMAND;
 	}	
 
 }
