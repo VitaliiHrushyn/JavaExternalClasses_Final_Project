@@ -30,34 +30,38 @@ public abstract class AbstractRoleFilter implements Filter {
 			 											throws ServletException, IOException {    
         request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
+        role = setRole(session);
         
         String loginCommandURI = request.getContextPath() + LOGIN_COMMAND;
         String logoutCommandURI = request.getContextPath() + LOGOUT_COMMAND;
         String registrationCommandURI = request.getContextPath() + REGISTRATION_COMMAND;
-        String rolePageCommandURI = getRolePageCommandURI();        
+        String rolePageCommandURI = getRolePageCommandURI();       
 
-        role = UserRole.UNKNOWN;
-        if (session.getAttribute("user") != null) {
-        	role = ((User) session.getAttribute("user")).getRole();
-        }
-
-        boolean isValidRole = validateRole();
+        boolean isRoleValid = validateRole();
+        
         boolean isLoginCommand = request.getRequestURI().equals(loginCommandURI);
         boolean isRegistrationCommand = request.getRequestURI().equals(registrationCommandURI);
-        boolean isURIcontainsProperlyPath = validateRoleURI();
+        boolean isURIcontainsProperlyRolePath = validateRoleURI();
         boolean isLogoutCommand = request.getRequestURI().equals(logoutCommandURI);
+        
+        boolean isURIinvalid = isLoginCommand || isRegistrationCommand ||
+        		(!isURIcontainsProperlyRolePath && !isLogoutCommand);
 
-        if (isValidRole && ( isLoginCommand || 
-        					 isRegistrationCommand ||
-        					 (!isURIcontainsProperlyPath && !isLogoutCommand)
-        				   )
-        	) {
+        if (isRoleValid && isURIinvalid) {
         	response.sendRedirect(rolePageCommandURI);
         } else {            
             chain.doFilter(request, response);
         }
     }		
+
+	private UserRole setRole(HttpSession session) {		
+        if (session.getAttribute("user") != null) {
+        	return ((User) session.getAttribute("user")).getRole();
+        } else {
+        	return UserRole.UNKNOWN;
+        }
+	}
 
 	abstract String getRolePageCommandURI();
 
