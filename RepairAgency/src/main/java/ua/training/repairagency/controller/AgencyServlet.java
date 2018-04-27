@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.training.repairagency.controller.commands.*;
+import ua.training.repairagency.controller.commands.customer.*;
+import ua.training.repairagency.controller.commands.manager.*;
 
 /**
  * Servlet implementation class AgencyServlet
@@ -27,13 +29,22 @@ public class AgencyServlet extends HttpServlet {
 	 */
 	public void init() {
 		commands = new HashMap<>();
+		
 		commands.put("exception", new ExceptionCommand());
-		commands.put("message", new MessageCommand());
 		commands.put("logout", new LogoutCommand());
 		commands.put("login", new LoginCommand());
-		commands.put("register", new RegisterCommand());
+		commands.put("registration", new RegistrationCommand());
 		commands.put("404", new Error404Command());
-		commands.put("index", new IndexCommand());
+		
+		commands.put("manager/page", new ManagerPageCommand());
+		commands.put("manager/message", new ManagerMessageCommand());
+		commands.put("manager/workmen", new ManagerGetAllWorkmenCommand());
+		commands.put("manager/applications", new ManagerGetAllAppsCommand());
+		
+		commands.put("customer/page", new CustomerPageCommand());
+		commands.put("customer/message", new CustomerMessageCommand());
+		commands.put("customer/workmen", new CustomerGetAllWorkmenCommand());
+		commands.put("customer/applications", new CustomerGetAllAppsCommand());
 	}
 
 	/**
@@ -60,17 +71,19 @@ public class AgencyServlet extends HttpServlet {
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException, ClassNotFoundException, 
 				InstantiationException, IllegalAccessException, SQLException {
-		String[] URIArr = request.getRequestURI().split("/");
-		String commandName = URIArr[URIArr.length - 1];
+		
+		String requestURI = request.getRequestURI();
+		String contextPath = request.getContextPath() + "/app/";		
+		String commandName = requestURI.replaceAll(contextPath, "");
+
 		String path = commands.getOrDefault
 				(commandName, (r)->commands.get("404").execute(request)).execute(request);
 		
 		if (path.contains("redirect:")) {
 			response.sendRedirect(request.getContextPath() + path.replace("redirect:", ""));
-			
 		} else {
 			request.getRequestDispatcher(path).forward(request, response);
-		}
-		
+		}		
 	}
+	
 }

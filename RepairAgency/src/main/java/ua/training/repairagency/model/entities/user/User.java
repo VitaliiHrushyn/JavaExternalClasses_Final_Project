@@ -27,5 +27,5 @@ public interface User extends Entity {
 	String getPhone();
 	
 	void setPhone(String phone);
-
+	
 }

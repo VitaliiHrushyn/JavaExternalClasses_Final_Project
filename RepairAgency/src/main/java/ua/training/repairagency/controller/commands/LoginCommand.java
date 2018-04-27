@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import ua.training.repairagency.model.entities.user.User;
+import ua.training.repairagency.model.entities.user.UserImpl;
+import ua.training.repairagency.model.entities.user.UserRole;
+
 public class LoginCommand implements Command {
 
 	@Override
@@ -18,25 +22,34 @@ public class LoginCommand implements Command {
 		
 		HttpSession session = request.getSession();
 		
-		String message;
+		String message = null;
 		String path;
 		
 		//TODO : use Optional to avoid checking for a null
 		
 		if ((username != null && password != null) && (!username.isEmpty() && !password.isEmpty())) {		
-			message = "command - name: "+username+", pass: "+password;
-			session.setAttribute("user", "stub");
-			path = INDEX_PAGE;
-		} else {
-			message = "login command empty";
-			session.setAttribute("user", null);
-			path = LOGIN_PAGE;
-		}
 			
-		request.setAttribute("message", message);
+			//TODO properly
 		
-System.out.println("login command user: "+request.getSession().getAttribute("user"));
-
+			User user = new UserImpl();
+			if (username.equals("manager")) {
+				user.setRole(UserRole.MANAGER);
+				path = REDIRECT_MANAGER_PAGE;
+			} else {
+				user.setRole(UserRole.CUSTOMER);
+				path = REDIRECT_CUSTOMER_PAGE;
+			}
+			// 
+			
+			session.setAttribute("user", user);
+			
+		} else {
+			message = "login or/and password are wrong";
+			session.setAttribute("user", null);
+			path = LOGIN_PAGE;		
+		}	
+		request.setAttribute("loginmessage", message);
+		
 		return path;
 	}
 
