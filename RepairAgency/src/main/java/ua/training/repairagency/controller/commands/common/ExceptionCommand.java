@@ -1,6 +1,8 @@
-package ua.training.repairagency.controller.commands;
+package ua.training.repairagency.controller.commands.common;
 
 import javax.servlet.http.HttpServletRequest;
+
+import ua.training.repairagency.controller.commands.Command;
 
 public class ExceptionCommand implements Command {
     @Override

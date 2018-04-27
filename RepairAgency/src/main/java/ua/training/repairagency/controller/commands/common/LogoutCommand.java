@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.commands;
+package ua.training.repairagency.controller.commands.common;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
 
@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import ua.training.repairagency.controller.commands.Command;
 
 public class LogoutCommand implements Command {
 

@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.training.repairagency.controller.commands.*;
+import ua.training.repairagency.controller.commands.common.Error404Command;
+import ua.training.repairagency.controller.commands.common.ExceptionCommand;
+import ua.training.repairagency.controller.commands.common.LoginCommand;
+import ua.training.repairagency.controller.commands.common.LogoutCommand;
+import ua.training.repairagency.controller.commands.common.RegistrationCommand;
 import ua.training.repairagency.controller.commands.customer.*;
 import ua.training.repairagency.controller.commands.manager.*;
 

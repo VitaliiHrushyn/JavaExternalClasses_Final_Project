@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.filters;
+package ua.training.repairagency.controller.filters.authentication;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
 
@@ -19,7 +19,8 @@ public class WorkmanFilter extends AbstractRoleFilter implements Filter {
 	protected boolean validateURI() {
 		return request.getRequestURI().contains("workman");
 	}
-
+	
+	//TODO make it properly
 	@Override
 	protected String getCommandPageURI() {
 		return null; //request.getContextPath() + WORKMAN_PAGE_COMMAND;
