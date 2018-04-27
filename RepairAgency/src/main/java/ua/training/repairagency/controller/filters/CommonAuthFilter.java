@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebFilter(urlPatterns="/*")
-public class AuthorizationFilter implements Filter {
+public class CommonAuthFilter implements Filter {
 
 	@Override
 	public void destroy() {}

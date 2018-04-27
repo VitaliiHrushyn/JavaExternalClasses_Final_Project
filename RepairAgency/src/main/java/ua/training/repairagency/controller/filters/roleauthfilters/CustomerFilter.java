@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.filters.authentication;
+package ua.training.repairagency.controller.filters.roleauthfilters;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
 
