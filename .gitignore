@@ -26,3 +26,5 @@ hs_err_pid*
 /pom.properties/
 /RemoteSystemsTempFiles/
 /Servers/
+/*.bak/
+/*.beforefix/
