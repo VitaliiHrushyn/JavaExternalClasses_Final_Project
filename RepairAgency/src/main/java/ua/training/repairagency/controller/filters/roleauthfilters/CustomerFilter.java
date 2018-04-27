@@ -16,12 +16,12 @@ public class CustomerFilter extends AbstractRoleFilter implements Filter {
 	}
 
 	@Override
-	protected boolean validateURI() {
+	protected boolean validateRoleURI() {
 		return request.getRequestURI().contains("customer");
 	}
 
 	@Override
-	protected String getCommandPageURI() {
+	protected String getRolePageCommandURI() {
 		return request.getContextPath() + CUSTOMER_PAGE_COMMAND;
 	}	
 

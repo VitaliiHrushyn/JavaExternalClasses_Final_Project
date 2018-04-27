@@ -16,12 +16,12 @@ public class ManagerFilter extends AbstractRoleFilter implements Filter {
 	}
 
 	@Override
-	protected boolean validateURI() {
+	protected boolean validateRoleURI() {
 		return request.getRequestURI().contains("manager");
 	}
 
 	@Override
-	protected String getCommandPageURI() {
+	protected String getRolePageCommandURI() {
 		return request.getContextPath() + MANAGER_PAGE_COMMAND;
 	}	
 

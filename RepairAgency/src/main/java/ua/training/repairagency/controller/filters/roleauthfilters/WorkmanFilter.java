@@ -16,13 +16,13 @@ public class WorkmanFilter extends AbstractRoleFilter implements Filter {
 	}
 
 	@Override
-	protected boolean validateURI() {
+	protected boolean validateRoleURI() {
 		return request.getRequestURI().contains("workman");
 	}
 	
 	//TODO make it properly
 	@Override
-	protected String getCommandPageURI() {
+	protected String getRolePageCommandURI() {
 		return null; //request.getContextPath() + WORKMAN_PAGE_COMMAND;
 	}	
 

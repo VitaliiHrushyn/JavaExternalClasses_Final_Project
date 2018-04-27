@@ -35,7 +35,7 @@ public abstract class AbstractRoleFilter implements Filter {
         String loginCommandURI = request.getContextPath() + LOGIN_COMMAND;
         String logoutCommandURI = request.getContextPath() + LOGOUT_COMMAND;
         String registrationCommandURI = request.getContextPath() + REGISTRATION_COMMAND;
-        String rolePageCommandURI = getCommandPageURI();        
+        String rolePageCommandURI = getRolePageCommandURI();        
 
         role = UserRole.UNKNOWN;
         if (session.getAttribute("user") != null) {
@@ -45,7 +45,7 @@ public abstract class AbstractRoleFilter implements Filter {
         boolean isValidRole = validateRole();
         boolean isLoginCommand = request.getRequestURI().equals(loginCommandURI);
         boolean isRegistrationCommand = request.getRequestURI().equals(registrationCommandURI);
-        boolean isURIcontainsProperlyPath = validateURI();
+        boolean isURIcontainsProperlyPath = validateRoleURI();
         boolean isLogoutCommand = request.getRequestURI().equals(logoutCommandURI);
 
         if (isValidRole && ( isLoginCommand || 
@@ -59,9 +59,9 @@ public abstract class AbstractRoleFilter implements Filter {
         }
     }		
 
-	abstract String getCommandPageURI();
+	abstract String getRolePageCommandURI();
 
-	abstract boolean validateURI();
+	abstract boolean validateRoleURI();
 
 	abstract boolean validateRole();
 
