@@ -16,7 +16,7 @@ public class ConnectionPoolHolder {
 	
 	public static DataSource getDataSource(){
 
-        if (dataSource == null){
+        if (dataSource == null) {
             synchronized (ConnectionPoolHolder.class) {
                 if (dataSource == null) {
                     BasicDataSource ds = new BasicDataSource();
@@ -32,8 +32,6 @@ public class ConnectionPoolHolder {
             }
         }
         return dataSource;
-
     }
-
 
 }

@@ -11,6 +11,8 @@ import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserImpl;
 import ua.training.repairagency.model.entities.user.UserRole;
+import ua.training.repairagency.model.services.Service;
+import ua.training.repairagency.model.services.manager.CreateManagerService;
 
 public class RegistrationCommand implements Command {
 
@@ -34,16 +36,10 @@ public class RegistrationCommand implements Command {
 				(!username.isEmpty() && !password.isEmpty()) && !confirmpassword.isEmpty() &&
 				password.equals(confirmpassword)) {		
 			
-			//TODO remake this user creation stub
-			User newUser = new UserImpl();
-			newUser.setRole(UserRole.MANAGER);
-			newUser.setLogin("manager");
-			newUser.setPassword("manager");
+			Service service = new CreateManagerService();
+			User manager = service.execute();
 			
-			//
-			
-			
-			session.setAttribute("user", newUser);
+			session.setAttribute("user", manager);
 			
 			
 			path = REDIRECT_MANAGER_PAGE;
@@ -55,7 +51,7 @@ public class RegistrationCommand implements Command {
 			
 		request.setAttribute("regmessage", message);
 		
-
+System.out.println("reg comm session role: "+((User) request.getSession().getAttribute("user")).getRole().toString());
 		return path;
 	}
 

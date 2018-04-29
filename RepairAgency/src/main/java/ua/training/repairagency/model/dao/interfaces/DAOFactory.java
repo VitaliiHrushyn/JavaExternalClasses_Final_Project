@@ -1,4 +1,4 @@
-package ua.training.repairagency.model.dao;
+package ua.training.repairagency.model.dao.interfaces;
 
 public abstract class DAOFactory {
 	
@@ -17,7 +17,7 @@ public abstract class DAOFactory {
 		return daoFactory;
 	}
 	
-//	public abstract AbstractDAO<Car> createCarDAO();
+	public abstract UserDAO createUserDAO();
 //	
 //	public abstract AbstractDAO<Driver> createDriverDAO();
 //	
