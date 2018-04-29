@@ -15,6 +15,57 @@
 	<div>
 		content:
 		<br>
+		<b><fmt:message key="text.login" /></b>
+		<c:set var="loginmessage" value="${requestScope.loginmessage}"/>
+		<p>! <font color="red">${loginmessage}</font></p>
+        <form method="post" action="${pageContext.request.contextPath}/app/login">
+            <label for="login"><fmt:message key="login.label.login" />:</label>
+            <input type="text" id="login" name="login">
+            
+            <label for="password"><fmt:message key="login.label.password" />:</label>
+            <input type="password" id="password" name="password">
+           
+            <fmt:message key="login.button.submit" var="buttonValue" />
+            <input type="submit" name="submit" value="${buttonValue}">
+        </form>
+        <br>
+        <hr>
+        <hr>
+        <br>
+        <b><fmt:message key="text.registration" /></b>
+		<c:set var="regmessage" value="${requestScope.regmessage}"/>
+		<p> !<font color="red">${regmessage}</font></p>
+        <form method="post" action="${pageContext.request.contextPath}/app/registration">
+            
+            <label for="reglogin"><fmt:message key="register.label.login" />:</label>
+            <input type="text" id="reglogin" name="reglogin">
+            <br>
+            <label for="password"><fmt:message key="register.label.password" />:</label>
+            <input type="password" id="regpassword" name="regpassword">
+            <br>
+            <label for="confirmpassword"><fmt:message key="register.label.confirmpassword" />:</label>
+            <input type="password" id="confirmpassword" name="confirmpassword">
+            <br>
+            <label for="role"><fmt:message key="register.label.role" />:</label>
+            <select name="role">			               
+				<option value ="MANAGER"> manager </option>
+				<option value ="CUSTOMER"> customer </option>
+				<option value ="WORKMAN"> workman </option>
+			</select>
+            <br>
+            <label for="name"><fmt:message key="register.label.name" />:</label>
+            <input type="text" id="name" name="name">
+            <br>
+            <label for="email"><fmt:message key="register.label.email" />:</label>
+            <input type="text" id="email" name="email">
+            <br>
+            <label for="phone"><fmt:message key="register.label.phone" />:</label>
+            <input type="text" id="phone" name="phone">
+            <br>
+            <fmt:message key="register.button.submit" var="buttonValue" />
+            <input type="submit" name="submit" value="${buttonValue}">
+        </form>
+        <br>
 		<!--  <p>message1 :<%= request.getAttribute("message") %></p> -->
 		 	
 	</div>

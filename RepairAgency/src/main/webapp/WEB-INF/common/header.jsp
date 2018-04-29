@@ -12,10 +12,13 @@
     <body>
         
         <form>
-            <select id="language" name="language" onchange="submit()">
-                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-                <option value="uk" ${language == 'uk' ? 'selected' : ''}>Українська</option>
-            </select>
+        	<fieldset>
+	        	<legend><fmt:message key="form.choose.language" /></legend>
+	            <select id="language" name="language" onchange="submit()">
+	                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+	                <option value="uk" ${language == 'uk' ? 'selected' : ''}>Українська</option>
+	            </select>
+            </fieldset>
         </form>
     </body>
 </html>
