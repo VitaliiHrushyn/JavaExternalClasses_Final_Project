@@ -18,7 +18,7 @@ USE `repair_agency` ;
 -- Table `repair_agency`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `repair_agency`.`users` (
-  `user_id` INT NOT NULL,
+  `user_id` INT NOT NULL AUTO_INCREMENT,
   `role` ENUM('CUSTOMER', 'MANAGER', 'WORKMAN') NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `login` VARCHAR(45) NOT NULL,

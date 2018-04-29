@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import ua.training.repairagency.controller.commands.Command;
+import ua.training.repairagency.controller.commands.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
-import ua.training.repairagency.model.entities.user.UserImpl;
 import ua.training.repairagency.model.entities.user.UserRole;
+import ua.training.repairagency.model.services.GetUserByLoginService;
 
 public class LoginCommand implements Command {
 
@@ -18,40 +19,36 @@ public class LoginCommand implements Command {
 	public String execute(HttpServletRequest request)
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		
+		String login = request.getParameter("login");
+		String password = request.getParameter("password");		
 		HttpSession session = request.getSession();
 		
 		String message = null;
-		String path;
+		String path = LOGIN_PAGE;
 		
 		//TODO : use Optional to avoid checking for a null
 		
-		if ((username != null && password != null) && (!username.isEmpty() && !password.isEmpty())) {		
+		if ((login != null && password != null) && (!login.isEmpty() && !password.isEmpty())) {		
 			
-			//TODO properly
-		
-			User user = new UserImpl();
-			if (username.equals("manager")) {
-				user.setRole(UserRole.MANAGER);
-				path = REDIRECT_MANAGER_PAGE;
+			//TODO properly			
+			User user = new GetUserByLoginService().execute(login);			
+			if (user != null && user.getPassword().equals(password)) {
+				UserRole role = user.getRole();
+				path = CommandUtils.getPathFrom(role);
+				session.setAttribute("user", user);
 			} else {
-				user.setRole(UserRole.CUSTOMER);
-				path = REDIRECT_CUSTOMER_PAGE;
+				message = "login or/and password are wrong";
 			}
-			// 
-			
-			session.setAttribute("user", user);
 			
 		} else {
-			message = "login or/and password are wrong";
+			message = "login or/and password are empty";
 			session.setAttribute("user", null);
-			path = LOGIN_PAGE;		
 		}	
 		request.setAttribute("loginmessage", message);
 		
 		return path;
 	}
+
+	
 
 }

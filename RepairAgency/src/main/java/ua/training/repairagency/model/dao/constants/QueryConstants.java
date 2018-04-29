@@ -2,14 +2,13 @@ package ua.training.repairagency.model.dao.constants;
 
 public interface QueryConstants {
 	
-	/* common queries */
-	String GET_BY_ID = "get.by.id";
-	String GET_ALL = "get.all";
-	String DELETE = "delete";
-	
 	/* user queries */
-	String INSERT_USER = "insert.user";
-	String UPDATE_USER = "update.user";
+	String USER_GET_BY_ID = "user.get.by.id";
+	String USER_GET_ALL = "user.get.all";
+	String USER_DELETE = "user.delete";	
+	String USER_INSERT = "user.insert";
+	String USER_UPDATE = "user.update";
+	String USER_GET_BY_LOGIN = "user.get.by.login";
 	
 			
 			

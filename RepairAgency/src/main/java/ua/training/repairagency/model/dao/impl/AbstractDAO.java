@@ -1,4 +1,4 @@
-package ua.training.repairagency.model.dao;
+package ua.training.repairagency.model.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,6 +31,8 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 	public abstract String getByIDQuery();
 	public abstract String getDeleteQuery();
 	public abstract String getAllQuery();
+	abstract String getByParamQuery();
+
 //	public abstract String getJoinQuery();
 	
 	public abstract T extractEntity(ResultSet rs, boolean eager) throws SQLException;
@@ -125,6 +127,23 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 		return new ArrayList<>(uniqueEnteties.values());
 	}
 	
+	@Override	
+	public T getByParam(String value) {
+		T entity = null;		
+		try(PreparedStatement statement = connection.prepareStatement(getByParamQuery())) {
+			statement.setString(1, value);
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				entity = extractEntity(rs, true);	
+			}
+		} catch (SQLException e) {
+			//TODO handle exception
+			throw new RuntimeException(e);
+		}		
+		return entity;
+	}	
+	
+
 //	public List<T> getJoin(int id) {
 //		Map<Integer, T> uniqueEnteties = new HashMap<>();
 //		try(PreparedStatement statement = connection.prepareStatement(getJoinQuery())) {

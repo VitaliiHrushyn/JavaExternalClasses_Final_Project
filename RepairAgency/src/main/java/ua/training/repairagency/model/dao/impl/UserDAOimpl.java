@@ -5,46 +5,47 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import static ua.training.repairagency.model.dao.constants.QueryConstants.*;
 import static ua.training.repairagency.model.dao.constants.ColumnConstants.*;
 
-import ua.training.repairagency.model.dao.AbstractDAO;
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserImpl;
 import ua.training.repairagency.model.entities.user.UserRole;
 
 public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
+	
+	private static final String QUERY_BUNDLE_NAME = "database/db_queries";
+	private static final String COLUMN_BUNDLE_NAME = "database/db_columns";
+	
+	private static ResourceBundle queryBundle = ResourceBundle.getBundle(QUERY_BUNDLE_NAME);
+	private static ResourceBundle columnBundle = ResourceBundle.getBundle(COLUMN_BUNDLE_NAME);
+		
+	/* column names */
+	private static final String ID = columnBundle.getString(USER_ID);
+	private static final String ROLE = columnBundle.getString(USER_ROLE);
+	private static final String NAME = columnBundle.getString(USER_NAME);
+	private static final String LOGIN = columnBundle.getString(USER_LOGIN);
+	private static final String PASSWORD = columnBundle.getString(USER_PASSWORD);
+	private static final String EMAIL = columnBundle.getString(USER_EMAIL);
+	private static final String PHONE = columnBundle.getString(USER_PHONE);
+		
+	/* queries */
+	private static final String GET_BY_ID = queryBundle.getString(USER_GET_BY_ID);
+	private static final String GET_ALL = queryBundle.getString(USER_GET_ALL);
+	private static final String DELETE = queryBundle.getString(USER_DELETE);
+	private static final String INSERT = queryBundle.getString(USER_INSERT);
+	private static final String UPDATE = queryBundle.getString(USER_UPDATE);
+	private static final String GET_BY_LOGIN = queryBundle.getString(USER_GET_BY_LOGIN);
 
 		public UserDAOimpl(Connection connection) {
 			super(connection);
+//			queryBundle = ResourceBundle.getBundle(QUERY_BUNDLE_NAME);
+//			columnBundle = ResourceBundle.getBundle(COLUMN_BUNDLE_NAME);
 		}
-
-		/* data base table name */
-		private static final String TABLE_NAME = USER_TABLE_NAME;
 		
-		/* column names */
-		private static final String ID = USER_ID;
-		private static final String ROLE = USER_ROLE;
-		private static final String NAME = USER_NAME;
-		private static final String LOGIN = USER_LOGIN;
-		private static final String PASSWORD = USER_PASSWORD;
-		private static final String EMAIL = USER_EMAIL;
-		private static final String PHONE = USER_PHONE;
-		
-		/* queries */
-		private static final String GET_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = ?;";
-		private static final String GET_ALL = "SELECT * FROM " + TABLE_NAME + ";";
-		private static final String DELETE = "DELETE FROM " + TABLE_NAME + " WHERE " + ID + " = ?;";
-//		private static final String GET_JOIN_WHERE = "SELECT * FROM User "
-//				+ "JOIN User_driver ON User.idUser = User_driver.idUser "
-//				+ "JOIN driver ON driver.iddriver = User_driver.iddriver "
-//				+ " WHERE " + DRIVER_ID + " = ?;";
-		
-		private static final String INSERT = INSERT_USER;
-		private static final String UPDATE = UPDATE_USER;
-
 		@Override
 		public String getCreateQuery() {
 			return INSERT;
@@ -54,16 +55,16 @@ public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 		public void fillCreateStatement(PreparedStatement statement, User user) throws SQLException {
 			statement.setString(1, user.getRole().toString());
 			statement.setString(2, user.getName());
-			statement.setString(2, user.getLogin());
-			statement.setString(2, user.getPassword());
-			statement.setString(2, user.getEmail());
-			statement.setString(2, user.getPhone());
+			statement.setString(3, user.getLogin());
+			statement.setString(4, user.getPassword());
+			statement.setString(5, user.getEmail());
+			statement.setString(6, user.getPhone());
 		}
 
 		@Override
 		public User extractEntity(ResultSet rs, boolean eager) throws SQLException {
 			User user = new UserImpl();
-			user.setId(rs.getInt(USER_ID));
+			user.setId(rs.getInt(ID));
 			user.setRole(UserRole.valueOf(rs.getString(ROLE)));
 			user.setName(rs.getString(NAME));
 			user.setLogin(rs.getString(LOGIN));
@@ -114,6 +115,13 @@ public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 			return GET_ALL;
 		}
 
+		@Override
+		String getByParamQuery() {
+			System.out.println("GET_BY_LOGIN: "+GET_BY_LOGIN);
+			return GET_BY_LOGIN;
+		}
+
+		
 //		@Override
 //		public String getJoinQuery() {
 //			return null; //TODO

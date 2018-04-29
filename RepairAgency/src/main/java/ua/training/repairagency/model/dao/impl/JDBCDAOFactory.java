@@ -5,14 +5,13 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import ua.training.repairagency.model.dao.ConnectionPoolHolder;
-import ua.training.repairagency.model.dao.interfaces.DAOFactory;
+import ua.training.repairagency.model.dao.DAOFactory;
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
 
 public class JDBCDAOFactory extends DAOFactory {
 	
 	private DataSource dataSource = ConnectionPoolHolder.getDataSource();
 	
-	@SuppressWarnings("unused")
 	private Connection getConnection() {
 		try {
 			return dataSource.getConnection();
