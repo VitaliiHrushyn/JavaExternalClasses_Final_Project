@@ -191,6 +191,7 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new RuntimeException(e);
+			//e.printStackTrace();
 		}		
 	}	
 

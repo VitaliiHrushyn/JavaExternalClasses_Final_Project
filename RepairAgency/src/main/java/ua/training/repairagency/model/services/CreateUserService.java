@@ -8,6 +8,7 @@ import ua.training.repairagency.model.dao.interfaces.UserDAO;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserImpl;
 import ua.training.repairagency.model.entities.user.UserRole;
+import ua.training.repairagency.model.exceptions.NotUniqueParamException;
 
 //TODO decide if implementation (and Service interface at all) needed
 //TODO properly
@@ -27,9 +28,9 @@ public class CreateUserService implements Service {
 		User insertedUser = null;
 		try(UserDAO dao = DAOFactory.getInstance().createUserDAO()){
 			insertedUser = dao.create(user);
-		} catch (Exception e) {
+		} catch (NotUniqueParamException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e.getClass().toString());
 		}		
 		return insertedUser;
 	}
