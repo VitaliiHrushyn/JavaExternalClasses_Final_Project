@@ -22,7 +22,7 @@ import static ua.training.repairagency.controller.constants.PathConstants.*;
 /**
  * Servlet implementation class AgencyServlet
  */
-@WebServlet("/app/*")
+@WebServlet(SERVLET_URL_PATTERN)
 public class AgencyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -79,13 +79,13 @@ public class AgencyServlet extends HttpServlet {
 		
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath() + CONTEXT_PATH_ADDON;		
-		String commandName = requestURI.replaceAll(contextPath, "");
+		String commandName = requestURI.replaceAll(contextPath, EMPTY_PATH);
 
 		String path = commands.getOrDefault
-				(commandName, (r)->commands.get("404").execute(request)).execute(request);
+				(commandName, (r)->commands.get(ERROR_404_PATH).execute(request)).execute(request);
 		
-		if (path.contains("redirect:")) {
-			response.sendRedirect(request.getContextPath() + path.replace("redirect:", ""));
+		if (path.contains(REDIRECT)) {
+			response.sendRedirect(request.getContextPath() + path.replace(REDIRECT, EMPTY_PATH));
 		} else {
 			request.getRequestDispatcher(path).forward(request, response);
 		}		

@@ -6,7 +6,10 @@ public interface PathConstants {
 	 * SERVLET constants
 	 */
 	/* common */
+	String SERVLET_URL_PATTERN = "/app/*";
 	String CONTEXT_PATH_ADDON = "/app/";
+	String EMPTY_PATH = "";
+	String REDIRECT = "redirect:";
 	String EXCEPTION_PATH = "exception";
 	String LOGOUT_PATH = "logout";
 	String LOGIN_PATH = "login";
