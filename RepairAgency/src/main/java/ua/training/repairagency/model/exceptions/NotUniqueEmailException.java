@@ -12,4 +12,8 @@ public class NotUniqueEmailException extends Exception {
 		super(message);
 	}
 	
+	public NotUniqueEmailException(Throwable e) {
+		super(e);
+	}
+	
 }

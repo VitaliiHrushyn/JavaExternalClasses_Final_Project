@@ -12,4 +12,8 @@ public class NotUniquePhoneException extends Exception {
 		super(message);
 	}
 	
+	public NotUniquePhoneException(Throwable e) {
+		super(e);
+	}
+	
 }

@@ -8,6 +8,8 @@ public interface AttributeAndParamConstants {
 	String WORKMAN = "workman";	
 	String LOGIN = "login";
 	String PASSWORD = "password";
+	String EMAIL = "email";
+	String PHONE = "phone";
 	
 	String LOGINMESSAGE = "loginmessage";
 	

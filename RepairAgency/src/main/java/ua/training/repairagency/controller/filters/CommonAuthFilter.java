@@ -37,12 +37,8 @@ public class CommonAuthFilter implements Filter {
         boolean isRegistrationCommand = request.getRequestURI().equals(registrationCommandURI);
 
         if (isLoggedIn || isLoginCommand || isRegistrationCommand) {
- System.out.println("1 filter - PASS, logged: " +isLoggedIn+", user: "+session.getAttribute(USER)
- +", isLoginCom: "+isLoginCommand+", isRegCom: "+isRegistrationCommand);
         	chain.doFilter(request, response);
         } else {
- System.out.println("1 filter - REDIRECT, logged: " +isLoggedIn+", user: "+session.getAttribute(USER)
- +", isLoginCom: "+isLoginCommand+", isRegCom: "+isRegistrationCommand);
             response.sendRedirect(loginCommandURI);
         }
     }		

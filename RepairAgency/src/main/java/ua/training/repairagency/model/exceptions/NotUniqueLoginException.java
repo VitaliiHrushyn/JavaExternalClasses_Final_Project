@@ -12,4 +12,7 @@ public class NotUniqueLoginException extends Exception {
 		super(message);
 	}
 	
+	public NotUniqueLoginException(Throwable e) {
+		super(e);
+	}
 }
