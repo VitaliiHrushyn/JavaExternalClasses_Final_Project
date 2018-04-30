@@ -36,6 +36,7 @@ public class LoginCommand implements Command {
 		
 		if (checkLoginPassword(login, password)) {				
 			User user = new GetUserByLoginService().execute(login);			
+			
 			if (validateUserPassword(password, user)) {
 				path = CommandUtils.getPathFromRole(user.getRole());
 				session.setAttribute(USER, user);

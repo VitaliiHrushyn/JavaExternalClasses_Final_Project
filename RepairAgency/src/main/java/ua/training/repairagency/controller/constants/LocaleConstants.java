@@ -7,7 +7,6 @@ public interface LocaleConstants {
 	String COUNTRY = "UA";
 	
 	String LOGIN_FAIL_MESSAGE = "message.login.fail";
-	String LOGIN_EMPTY_MESSAGE = "messag.login.empty";
-	
+	String LOGIN_EMPTY_MESSAGE = "messag.login.empty";	
 	
 }

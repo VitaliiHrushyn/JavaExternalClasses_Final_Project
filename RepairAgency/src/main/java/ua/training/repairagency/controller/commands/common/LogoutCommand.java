@@ -1,24 +1,18 @@
 package ua.training.repairagency.controller.commands.common;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
-
-import java.sql.SQLException;
+import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import ua.training.repairagency.controller.commands.Command;
 
 public class LogoutCommand implements Command {
 
 	@Override
-	public String execute(HttpServletRequest request)
-			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+	public String execute(HttpServletRequest request) {
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("user", null);
-		
-//		request.setAttribute("message", "Loged OUT");
+		request.getSession().setAttribute(USER, null);
 
 		return REDIRECT_LOGIN_COMMAND;
 	}
