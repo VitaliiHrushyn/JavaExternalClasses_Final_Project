@@ -20,5 +20,12 @@
 	            </select>
             </fieldset>
         </form>
+        <div>
+        	<h2>
+        		<fmt:message key="text.greatings" />, 
+        		<c:if test="${user.name != null}"> ${user.name}! </c:if>
+        		<c:if test="${user.name == null}"> <fmt:message key="text.guest.name" />! </c:if>
+        	</h2>
+        </div>
     </body>
 </html>
