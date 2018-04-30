@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.utils.CommandUtils;
+import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserRole;
 import ua.training.repairagency.model.services.GetUserByLoginService;

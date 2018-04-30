@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.commands.utils;
+package ua.training.repairagency.controller.utils;
 
 import static ua.training.repairagency.controller.constants.PathConstants.LOGIN_PAGE;
 import static ua.training.repairagency.controller.constants.PathConstants.REDIRECT_CUSTOMER_PAGE;
