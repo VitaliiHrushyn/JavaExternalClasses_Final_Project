@@ -1,15 +1,15 @@
 package ua.training.repairagency.model.dao.impl;
 
+import static ua.training.repairagency.model.constants.ColumnConstants.*;
+import static ua.training.repairagency.model.constants.QueryConstants.*;
+import static ua.training.repairagency.model.constants.ResourceConstants.*;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import static ua.training.repairagency.model.dao.constants.QueryConstants.*;
-import static ua.training.repairagency.model.dao.constants.ColumnConstants.*;
-import static ua.training.repairagency.model.dao.constants.ResourceConstants.*;
 
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
 import ua.training.repairagency.model.entities.user.User;
@@ -18,16 +18,11 @@ import ua.training.repairagency.model.entities.user.UserRole;
 
 public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 	
-	private static final String QUERY_BUNDLE_NAME = RESOURCE_DB_QUERIES;
-	private static final String COLUMN_BUNDLE_NAME = RESOURCE_DB_COLUMNS;
-	
-	private ResourceBundle columnBundle;
-	private ResourceBundle queryBundle;
+	private ResourceBundle columnBundle = ResourceBundle.getBundle(RESOURCE_DB_COLUMNS);
+	private ResourceBundle queryBundle = ResourceBundle.getBundle(RESOURCE_DB_QUERIES);
 		
 	public UserDAOimpl(Connection connection) {
 		super(connection);
-		queryBundle = ResourceBundle.getBundle(QUERY_BUNDLE_NAME);
-		columnBundle = ResourceBundle.getBundle(COLUMN_BUNDLE_NAME);
 	}
 		
 	@Override

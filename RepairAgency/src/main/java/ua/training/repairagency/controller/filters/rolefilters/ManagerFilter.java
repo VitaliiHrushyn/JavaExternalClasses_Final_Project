@@ -1,7 +1,7 @@
 package ua.training.repairagency.controller.filters.rolefilters;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
-import static ua.training.repairagency.controller.constants.AttributeConstants.*;
+import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
 
 import javax.servlet.Filter;
 import javax.servlet.annotation.WebFilter;
@@ -18,7 +18,7 @@ public class ManagerFilter extends AbstractRoleFilter implements Filter {
 
 	@Override
 	protected boolean validateRoleURI() {
-		return request.getRequestURI().contains(MANAGER_ATTRIBUTE);
+		return request.getRequestURI().contains(MANAGER);
 	}
 
 	@Override

@@ -40,7 +40,7 @@ public class RegistrationCommand implements Command {
 			
 			session.setAttribute("user", user);
 					
-			path = CommandUtils.getPathFrom(user.getRole());
+			path = CommandUtils.getPathFromRole(user.getRole());
 		} else {
 			message = "register command is invalid";
 			session.setAttribute("user", null);

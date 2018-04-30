@@ -9,7 +9,7 @@ import ua.training.repairagency.model.entities.user.UserRole;
 
 public class CommandUtils {
 	
-	public static String getPathFrom(UserRole role) {
+	public static String getPathFromRole(UserRole role) {
 		if (role.equals(UserRole.CUSTOMER)) {
 			return REDIRECT_CUSTOMER_PAGE;
 		}

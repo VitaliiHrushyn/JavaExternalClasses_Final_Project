@@ -2,7 +2,7 @@ package ua.training.repairagency.model.dao;
 
 import org.apache.commons.dbcp.BasicDataSource;
 
-import static ua.training.repairagency.model.dao.constants.ConnectionConstants.*;
+import static ua.training.repairagency.model.constants.ConnectionConstants.*;
 
 import java.util.ResourceBundle;
 

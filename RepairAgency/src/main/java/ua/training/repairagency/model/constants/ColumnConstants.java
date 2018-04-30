@@ -1,4 +1,4 @@
-package ua.training.repairagency.model.dao.constants;
+package ua.training.repairagency.model.constants;
 
 public interface ColumnConstants {
 	
