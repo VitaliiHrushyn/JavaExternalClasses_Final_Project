@@ -1,6 +1,7 @@
 package ua.training.repairagency.controller.filters;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
+import static ua.training.repairagency.controller.constants.AttributeConstants.*;
 
 import java.io.IOException;
 
@@ -31,7 +32,7 @@ public class CommonAuthFilter implements Filter {
         String loginCommandURI = request.getContextPath() + LOGIN_COMMAND;
         String registrationCommandURI = request.getContextPath() + REGISTRATION_COMMAND;        
 
-        boolean isLoggedIn = session != null && session.getAttribute("user") != null;
+        boolean isLoggedIn = (session != null) && (session.getAttribute(USER_ATTRIBUTE) != null);
         boolean isLoginCommand = request.getRequestURI().equals(loginCommandURI);
         boolean isRegistrationCommand = request.getRequestURI().equals(registrationCommandURI);
 

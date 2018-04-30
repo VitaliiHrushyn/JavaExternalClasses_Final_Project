@@ -31,6 +31,6 @@ public interface PathConstants {
 	 */
 	String WORKMAN_PAGE = "/WEB-INF/workman/index.jsp";	
 	String REDIRECT_WORKMAN_PAGE = "redirect:/app/workman/page";
-	String CUSTOMER_WORKMAN_COMMAND = "/app/workman/page";
+	String WORKMAN_PAGE_COMMAND = "/app/workman/page";
 	
 }

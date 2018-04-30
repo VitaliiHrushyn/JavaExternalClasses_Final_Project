@@ -1,6 +1,7 @@
-package ua.training.repairagency.controller.filters.roleauthfilters;
+package ua.training.repairagency.controller.filters.rolefilters;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
+import static ua.training.repairagency.controller.constants.AttributeConstants.*;
 
 import javax.servlet.Filter;
 import javax.servlet.annotation.WebFilter;
@@ -17,7 +18,7 @@ public class CustomerFilter extends AbstractRoleFilter implements Filter {
 
 	@Override
 	protected boolean validateRoleURI() {
-		return request.getRequestURI().contains("customer");
+		return request.getRequestURI().contains(CUSTOMER_ATTRIBUTE);
 	}
 
 	@Override
