@@ -4,7 +4,6 @@ import static ua.training.repairagency.controller.constants.PathConstants.*;
 import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
 import static ua.training.repairagency.controller.constants.LocaleConstants.*;
 
-import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -22,8 +21,7 @@ public class LoginCommand implements Command {
 	private ResourceBundle messageBundle = ResourceBundle.getBundle(MESSAGES_BUNDLE_NAME, locale);
 
 	@Override
-	public String execute(HttpServletRequest request)
-			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+	public String execute(HttpServletRequest request) {
 		
 		String login = request.getParameter(LOGIN);
 		String password = request.getParameter(PASSWORD);		
