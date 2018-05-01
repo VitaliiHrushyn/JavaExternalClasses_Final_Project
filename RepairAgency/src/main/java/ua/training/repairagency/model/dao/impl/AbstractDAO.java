@@ -1,7 +1,5 @@
 package ua.training.repairagency.model.dao.impl;
 
-import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +12,6 @@ import java.util.Map;
 
 import ua.training.repairagency.model.dao.interfaces.GenericDAO;
 import ua.training.repairagency.model.entities.Entity;
-import ua.training.repairagency.model.exceptions.*;
 
 public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {	
 	
@@ -40,10 +37,8 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 	
 	public abstract T extractEntity(ResultSet rs, boolean eager) throws SQLException;
 
-
 	@Override
-	public T create(T entity) 
-			throws NotUniqueLoginException, NotUniqueEmailException, NotUniquePhoneException { 
+	public T create(T entity) throws SQLException { 
 		try(PreparedStatement statement = 
 				connection.prepareStatement(getCreateQuery(), Statement.RETURN_GENERATED_KEYS)) {
 			fillCreateStatement(statement, entity);
@@ -54,30 +49,9 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 			} else {				
 				return null;	
 			}
-		} catch (SQLException e) {
-//		System.out.println("message: "+e.getMessage());
-//		System.out.println("error code: "+e.getErrorCode());
-//		System.out.println("SQL state: "+e.getSQLState());
-			getCustomException(e);
-			throw new RuntimeException(e);
 		}
 	}
 	
-	private void getCustomException(SQLException e) 
-			throws NotUniqueLoginException, NotUniqueEmailException, NotUniquePhoneException {
-		if (e.getErrorCode() == 1062) {
-			if (e.getMessage().contains(LOGIN)) {
-				throw new NotUniqueLoginException(e);
-			}
-			if (e.getMessage().contains(EMAIL)) {
-				throw new NotUniqueEmailException(e);
-			}
-			if (e.getMessage().contains(PHONE)) {
-				throw new NotUniquePhoneException(e);
-			}
-		} 
-		throw new RuntimeException(e);		
-	}
 
 	@Override	
 	public T getById(int id) {

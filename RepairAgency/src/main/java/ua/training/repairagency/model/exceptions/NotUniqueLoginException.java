@@ -1,6 +1,6 @@
 package ua.training.repairagency.model.exceptions;
-
-public class NotUniqueLoginException extends NotUniqueParamException {
+@Deprecated
+public class NotUniqueLoginException extends NotUniqueFieldValueException {
 
 	private static final long serialVersionUID = 1L;
 

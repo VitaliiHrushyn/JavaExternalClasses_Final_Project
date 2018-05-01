@@ -15,7 +15,13 @@
 	<div>
 		<b><fmt:message key="text.login" /></b>
 		<c:set var="loginmessage" value="${requestScope.loginmessage}"/>
-		<p>... <font color="red">${loginmessage}</font></p>
+		<p>... 
+			<font color="red">
+				<c:if test = "${loginmessage != null}" >
+					<fmt:message key="${loginmessage}"/>
+				</c:if>
+			</font>
+		</p>
         <form method="post" action="${pageContext.request.contextPath}/app/login">
             <label for="login"><fmt:message key="login.label.login" />:</label>
             <input type="text" id="login" name="login">
@@ -32,7 +38,15 @@
         <br>
         <b><fmt:message key="text.registration" /></b>
 		<c:set var="regmessage" value="${requestScope.regmessage}"/>
-		<p>... <font color="red">${regmessage}</font></p>
+		
+		<p>... 
+			<font color="red">
+				<c:if test = "${regmessage != null}" >
+					<fmt:message key="${regmessage}"/>
+				</c:if>
+			</font>
+		</p>
+        
         <form method="post" action="${pageContext.request.contextPath}/app/registration">
             
             <label for="reglogin"><fmt:message key="register.label.login" />:</label>
@@ -63,9 +77,7 @@
             <fmt:message key="register.button.submit" var="buttonValue" />
             <input type="submit" name="submit" value="${buttonValue}">
         </form>
-        <br>
-		<!--  <p>message1 :<%= request.getAttribute("message") %></p> -->
-		 	
+        <br>		 	
 	</div>
 </body>
 </html>

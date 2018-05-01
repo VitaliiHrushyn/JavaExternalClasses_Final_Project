@@ -1,9 +1,6 @@
 package ua.training.repairagency.controller.utils;
 
-import static ua.training.repairagency.controller.constants.PathConstants.LOGIN_PAGE;
-import static ua.training.repairagency.controller.constants.PathConstants.REDIRECT_CUSTOMER_PAGE;
-import static ua.training.repairagency.controller.constants.PathConstants.REDIRECT_MANAGER_PAGE;
-import static ua.training.repairagency.controller.constants.PathConstants.REDIRECT_WORKMAN_PAGE;
+import static ua.training.repairagency.controller.constants.PathConstants.*;
 
 import ua.training.repairagency.model.entities.user.UserRole;
 

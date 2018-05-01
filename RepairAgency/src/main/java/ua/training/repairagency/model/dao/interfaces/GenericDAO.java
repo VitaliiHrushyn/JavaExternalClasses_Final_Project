@@ -1,14 +1,11 @@
 package ua.training.repairagency.model.dao.interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
-
-import ua.training.repairagency.model.exceptions.NotUniqueEmailException;
-import ua.training.repairagency.model.exceptions.NotUniqueLoginException;
-import ua.training.repairagency.model.exceptions.NotUniquePhoneException;
 
 public interface GenericDAO<T> extends AutoCloseable {
 	
-	T create(T entity) throws NotUniqueLoginException, NotUniqueEmailException, NotUniquePhoneException;
+	T create(T entity) throws SQLException;
 	
 	T update(T entity);
 	

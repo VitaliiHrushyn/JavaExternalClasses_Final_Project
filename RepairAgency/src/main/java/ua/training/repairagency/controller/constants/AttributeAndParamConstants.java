@@ -10,6 +10,12 @@ public interface AttributeAndParamConstants {
 	String PASSWORD = "password";
 	String EMAIL = "email";
 	String PHONE = "phone";
+	String ROLE = "role";
+	String NAME = "name";
+	String REGISTRATION_LOGIN = "reglogin";
+	String REGISTRATION_PASSWORD = "regpassword";
+	String CONFIRM_PASSWORD = "confirmpassword";
+	String REGISTRATION_MESSAGE_PARAM = "regmessage";
 	
 	String LOGINMESSAGE = "loginmessage";
 	

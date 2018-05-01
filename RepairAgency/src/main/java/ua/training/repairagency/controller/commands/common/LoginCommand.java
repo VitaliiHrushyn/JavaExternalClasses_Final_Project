@@ -4,9 +4,6 @@ import static ua.training.repairagency.controller.constants.PathConstants.*;
 import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
 import static ua.training.repairagency.controller.constants.LocaleConstants.*;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,9 +13,6 @@ import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.services.GetUserByLoginService;
 
 public class LoginCommand implements Command {
-	
-	private Locale locale = new Locale(LANGUAGE, COUNTRY);
-	private ResourceBundle messageBundle = ResourceBundle.getBundle(MESSAGES_BUNDLE_NAME, locale);
 
 	@Override
 	public String execute(HttpServletRequest request) {
@@ -39,11 +33,11 @@ public class LoginCommand implements Command {
 				path = CommandUtils.getPathFromRole(user.getRole());
 				session.setAttribute(USER, user);
 			} else {
-				message = messageBundle.getString(LOGIN_FAIL_MESSAGE);
+				message = LOGIN_FAIL_MESSAGE;
 			}
 			
 		} else {
-			message = messageBundle.getString(LOGIN_EMPTY_MESSAGE);
+			message = LOGIN_EMPTY_MESSAGE;
 		}	
 		request.setAttribute(LOGINMESSAGE, message);		
 		return path;
