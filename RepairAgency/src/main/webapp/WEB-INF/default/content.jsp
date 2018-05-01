@@ -22,6 +22,14 @@
 				</c:if>
 			</font>
 		</p>
+		<c:set var="passwordmessage" value="${requestScope.passwordmessage}"/>
+		<p>... 
+			<font color="red">
+				<c:if test = "${passwordmessage != null}" >
+					<fmt:message key="${passwordmessage}"/>
+				</c:if>
+			</font>
+		</p>
         <form method="post" action="${pageContext.request.contextPath}/app/login">
             <label for="login"><fmt:message key="login.label.login" />:</label>
             <input type="text" id="login" name="login">

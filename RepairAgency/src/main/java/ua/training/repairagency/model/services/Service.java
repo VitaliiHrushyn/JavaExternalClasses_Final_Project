@@ -2,7 +2,7 @@ package ua.training.repairagency.model.services;
 
 
 public interface Service {
-	
+	//TODO properly
 	default <T, E> T execute(E param) {
 		throw new UnsupportedOperationException();
 	}

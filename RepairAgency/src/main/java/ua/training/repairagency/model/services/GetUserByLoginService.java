@@ -10,14 +10,14 @@ public class GetUserByLoginService implements Service {
 	
 	public User execute(String login) {
 		
-		User manager = null;
+		User user = null;
 		try(UserDAO dao = DAOFactory.getInstance().createUserDAO()){
-			manager = dao.getByParam(login);
+			user = dao.getByParam(login);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		return manager;
+		return user;
 	}	
 
 }
