@@ -2,8 +2,6 @@ package ua.training.repairagency.controller.commands.customer;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
 
-import java.sql.SQLException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.commands.Command;

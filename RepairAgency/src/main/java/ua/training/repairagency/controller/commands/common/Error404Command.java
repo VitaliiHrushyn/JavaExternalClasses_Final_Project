@@ -1,6 +1,6 @@
 package ua.training.repairagency.controller.commands.common;
 
-import static ua.training.repairagency.controller.constants.PathConstants.*;
+import static ua.training.repairagency.controller.constants.PathConstants.PAGE_404;
 
 import javax.servlet.http.HttpServletRequest;
 

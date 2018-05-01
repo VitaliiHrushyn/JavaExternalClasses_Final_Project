@@ -17,6 +17,7 @@ public interface AttributeAndParamConstants {
 	String CONFIRM_PASSWORD = "confirmpassword";
 	String REGISTRATION_MESSAGE_PARAM = "regmessage";
 	
-	String LOGINMESSAGE = "loginmessage";
+	String LOGIN_MESSAGE_PARAM = "loginmessage";
+	String COMMAND_RESULT_PARAM = "command_result";
 	
 }

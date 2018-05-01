@@ -10,7 +10,7 @@ public interface PathConstants {
 	String CONTEXT_PATH_ADDON = "/app/";
 	String EMPTY_PATH = "";
 	String REDIRECT = "redirect:";
-	String EXCEPTION_PATH = "exception";
+	String EXCEPTION_PATH = "manager/exception";
 	String LOGOUT_PATH = "logout";
 	String LOGIN_PATH = "login";
 	String REGISTRATION_PATH = "registration";

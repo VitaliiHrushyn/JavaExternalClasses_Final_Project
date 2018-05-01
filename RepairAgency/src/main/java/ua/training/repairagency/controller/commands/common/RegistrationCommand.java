@@ -1,9 +1,8 @@
 package ua.training.repairagency.controller.commands.common;
 
-import static ua.training.repairagency.controller.constants.PathConstants.*;
-
+import static ua.training.repairagency.controller.constants.PathConstants.LOGIN_PAGE;
 import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
-import static ua.training.repairagency.controller.constants.LocaleConstants.*;
+import static ua.training.repairagency.controller.constants.MessageConstants.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
