@@ -1,6 +1,6 @@
 package ua.training.repairagency.model.services;
 
-import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
+import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;

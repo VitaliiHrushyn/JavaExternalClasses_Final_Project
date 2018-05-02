@@ -1,7 +1,7 @@
 package ua.training.repairagency.controller.commands.common;
 
-import static ua.training.repairagency.controller.constants.PathConstants.REDIRECT_LOGIN_COMMAND;
-import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.USER;
+import ua.training.repairagency.controller.constants.URL;
+import ua.training.repairagency.controller.constants.AttributeOrParam;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,8 +11,8 @@ public class LogoutCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request) {		
-		request.getSession().setAttribute(USER, null);
-		return REDIRECT_LOGIN_COMMAND;
+		request.getSession().setAttribute(AttributeOrParam.USER, null);
+		return URL.REDIRECT_LOGIN_COMMAND;
 	}
 
 }

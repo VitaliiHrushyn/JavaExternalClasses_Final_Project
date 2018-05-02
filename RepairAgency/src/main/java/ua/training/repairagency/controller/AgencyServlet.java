@@ -17,7 +17,7 @@ import ua.training.repairagency.controller.commands.customer.*;
 import ua.training.repairagency.controller.commands.manager.*;
 //TODO import ua.training.repairagency.controller.commands.workman.*;
 
-import static ua.training.repairagency.controller.constants.PathConstants.*;
+import static ua.training.repairagency.controller.constants.URL.*;
 
 /**
  * Servlet implementation class AgencyServlet

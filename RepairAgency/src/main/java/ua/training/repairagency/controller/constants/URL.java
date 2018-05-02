@@ -1,6 +1,6 @@
 package ua.training.repairagency.controller.constants;
 
-public interface PathConstants {
+public interface URL {
 	
 	/*
 	 * SERVLET constants
@@ -57,4 +57,8 @@ public interface PathConstants {
 	String REDIRECT_WORKMAN_PAGE = "redirect:/app/workman/page";
 	String WORKMAN_PAGE_COMMAND = "/app/workman/page";
 	
+	/*
+	 * FILTERS
+	 */
+	String WEB_FILTER = "/*";
 }
