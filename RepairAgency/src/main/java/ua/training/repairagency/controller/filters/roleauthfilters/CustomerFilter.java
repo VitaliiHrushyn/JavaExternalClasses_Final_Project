@@ -1,7 +1,6 @@
-package ua.training.repairagency.controller.filters.rolefilters;
+package ua.training.repairagency.controller.filters.roleauthfilters;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
-import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
 
 import javax.servlet.Filter;
 import javax.servlet.annotation.WebFilter;
@@ -9,22 +8,21 @@ import javax.servlet.annotation.WebFilter;
 import ua.training.repairagency.model.entities.user.UserRole;
 
 @WebFilter(urlPatterns="/*")
-public class WorkmanFilter extends AbstractRoleFilter implements Filter {
+public class CustomerFilter extends AbstractRoleFilter implements Filter {
 
 	@Override
 	protected boolean validateRole() {
-		return role.equals(UserRole.WORKMAN);
+		return role.equals(UserRole.CUSTOMER);
 	}
 
 	@Override
 	protected boolean validateRoleURI() {
-		return request.getRequestURI().contains(WORKMAN);
+		return request.getRequestURI().contains("customer");
 	}
-	
-	//TODO make it properly
+
 	@Override
 	protected String getRolePageCommandURI() {
-		return request.getContextPath() + WORKMAN_PAGE_COMMAND;
+		return request.getContextPath() + CUSTOMER_PAGE_COMMAND;
 	}	
 
 }

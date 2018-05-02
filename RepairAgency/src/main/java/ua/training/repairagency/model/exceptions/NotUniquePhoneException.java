@@ -1,6 +1,6 @@
 package ua.training.repairagency.model.exceptions;
-@Deprecated
-public class NotUniquePhoneException extends NotUniqueFieldValueException {
+
+public class NotUniquePhoneException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
@@ -10,10 +10,6 @@ public class NotUniquePhoneException extends NotUniqueFieldValueException {
 
 	public NotUniquePhoneException(String message) {
 		super(message);
-	}
-	
-	public NotUniquePhoneException(Throwable e) {
-		super(e);
 	}
 	
 }

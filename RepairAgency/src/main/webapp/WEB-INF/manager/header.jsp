@@ -7,17 +7,18 @@
 <!DOCTYPE html>
 <html lang="${language}">
     <head>
-        <title>${requestScope.user.role} page</title>
+        <title>customer header</title>
     </head>
     <body>
-    
-    	<jsp:include page="header.jsp"></jsp:include>
-        
-    	<jsp:include page="menu.jsp"></jsp:include>
-    	
-    	<jsp:include page="content.jsp"></jsp:include>
-        
-        <jsp:include page="footer.jsp"></jsp:include>
-        
+        <br>
+        <form>
+            <select id="language" name="language" onchange="submit()">
+                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                <option value="uk" ${language == 'uk' ? 'selected' : ''}>Українська</option>
+            </select>
+        </form>
+        <br>
+		<h2><fmt:message key="text.greatings" />, ${sessionScope.user.role}</h2>
+		<br>
     </body>
 </html>

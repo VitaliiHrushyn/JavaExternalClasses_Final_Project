@@ -12,7 +12,7 @@ public class ManagerPageCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request)
-			 {
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 		
 		request.setAttribute("message", "manager index message");
 

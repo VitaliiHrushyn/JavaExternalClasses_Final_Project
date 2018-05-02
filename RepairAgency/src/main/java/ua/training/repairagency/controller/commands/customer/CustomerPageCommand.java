@@ -12,7 +12,7 @@ public class CustomerPageCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request)
-			 {
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 		
 		request.setAttribute("message", "CUSTOMER index message");
 

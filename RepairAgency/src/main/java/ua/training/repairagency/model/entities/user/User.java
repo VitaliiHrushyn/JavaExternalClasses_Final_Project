@@ -1,9 +1,6 @@
 package ua.training.repairagency.model.entities.user;
 
-import java.util.List;
-
 import ua.training.repairagency.model.entities.Entity;
-import ua.training.repairagency.model.entities.application.Application;
 
 public interface User extends Entity {
 	
@@ -30,9 +27,5 @@ public interface User extends Entity {
 	String getPhone();
 	
 	void setPhone(String phone);
-	
-	List<Application> getApplications();
-	
-	void setApplications(List<Application> applications);
 	
 }

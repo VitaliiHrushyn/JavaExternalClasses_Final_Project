@@ -1,53 +1,62 @@
 package ua.training.repairagency.controller.commands.common;
 
-import static ua.training.repairagency.controller.constants.PathConstants.LOGIN_PAGE;
-import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
-import static ua.training.repairagency.controller.constants.MessageConstants.*;
+import static ua.training.repairagency.controller.constants.PathConstants.*;
+
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
-import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
-import ua.training.repairagency.model.services.CreateUserService;
+import ua.training.repairagency.model.entities.user.UserImpl;
+import ua.training.repairagency.model.entities.user.UserRole;
 
 public class RegistrationCommand implements Command {
-	
+
 	@Override
-	public String execute(HttpServletRequest request) {
+	public String execute(HttpServletRequest request)
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 		
-		String login = request.getParameter(REGISTRATION_LOGIN);
-		String password = request.getParameter(REGISTRATION_PASSWORD);
-		String confirmpassword = request.getParameter(CONFIRM_PASSWORD);
-				
+		String username = request.getParameter("regusername");
+		String password = request.getParameter("regpassword");
+		String confirmpassword = request.getParameter("confirmpassword");
+		
+		
 		HttpSession session = request.getSession();
 		
-		User user = null;
 		String message = null;
-		String path = LOGIN_PAGE;
+		String path;
 		
-		if (checkLoginPasswordConfirm(login, password, confirmpassword)) {				
-			try {
-				user = new CreateUserService().execute(request);				
-				path = CommandUtils.getPathFromRole(user.getRole());
-			} catch (NotUniqueFieldValueException e) {
-				message = CommandUtils.getFailMessageFromException(e);
-			} 			
+		//TODO : use Optional to avoid checking for a null
+		
+		if ((username != null && password != null && confirmpassword != null) && 
+				(!username.isEmpty() && !password.isEmpty()) && !confirmpassword.isEmpty() &&
+				password.equals(confirmpassword)) {		
+			
+			//TODO remake this user creation stub
+			User newUser = new UserImpl();
+			newUser.setRole(UserRole.MANAGER);
+			newUser.setLogin("manager");
+			newUser.setPassword("manager");
+			
+			//
+			
+			
+			session.setAttribute("user", newUser);
+			
+			
+			path = REDIRECT_MANAGER_PAGE;
 		} else {
-			message = REGISTRATION_EMPTY_MESSAGE;
+			message = "register command is invalid";
+			session.setAttribute("user", null);
+			path = LOGIN_PAGE;
 		}
-		session.setAttribute(USER, user);	
-		request.setAttribute(REGISTRATION_MESSAGE_PARAM, message);
+			
+		request.setAttribute("regmessage", message);
+		
+
 		return path;
-	}
-	
-	//TODO : use Optional to avoid checking for a null
-	private boolean checkLoginPasswordConfirm(String login, String password, String confirmpassword) {
-		return (login != null && password != null && confirmpassword != null) && 
-				(!login.isEmpty() && !password.isEmpty()) && !confirmpassword.isEmpty() &&
-				password.equals(confirmpassword);
 	}
 
 }

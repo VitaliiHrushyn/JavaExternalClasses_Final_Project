@@ -19,6 +19,8 @@ public class GetAllAppsService implements Service {
 		applications.add(new ApplicationImpl());
 		//
 		return applications;
-	}	
+	}
+	
+	
 
 }

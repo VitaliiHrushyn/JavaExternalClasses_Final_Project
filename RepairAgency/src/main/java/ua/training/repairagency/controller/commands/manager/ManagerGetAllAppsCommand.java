@@ -13,7 +13,7 @@ public class ManagerGetAllAppsCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request)
-			 {
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 				
 		request.setAttribute("command_result", new GetAllAppsService().execute());
 

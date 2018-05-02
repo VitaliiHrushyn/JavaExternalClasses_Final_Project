@@ -8,19 +8,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>customer menu</title>
+<title>customer footer</title>
 </head>
 <body>
 	<div>
-		MENU:
+		footer:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/logout">Logout</a> | 
-		<a href = "${pageContext.request.contextPath}/app/customer/message">Message</a> | 
-       	<a href = "${pageContext.request.contextPath}/app/customer/workmen">Workmen</a> | 
-       	<a href = "${pageContext.request.contextPath}/app/customer/applications">Applications</a> | 
-       	<a href = "${pageContext.request.contextPath}/app/customer/page">Home</a>
-       	<br>
-       	<br>
+		<a href = "${pageContext.request.contextPath}/app/exception">Exception</a>
+		<br>
+       
+      	<br>
 	</div>
 	
 </body>

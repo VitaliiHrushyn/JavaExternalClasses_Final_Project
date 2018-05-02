@@ -1,7 +1,6 @@
-package ua.training.repairagency.controller.filters.rolefilters;
+package ua.training.repairagency.controller.filters.roleauthfilters;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
-import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
 
 import java.io.IOException;
 
@@ -57,8 +56,8 @@ public abstract class AbstractRoleFilter implements Filter {
     }		
 
 	private UserRole setRole(HttpSession session) {		
-        if (session.getAttribute(USER) != null) {
-        	return ((User) session.getAttribute(USER)).getRole();
+        if (session.getAttribute("user") != null) {
+        	return ((User) session.getAttribute("user")).getRole();
         } else {
         	return UserRole.UNKNOWN;
         }
