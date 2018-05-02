@@ -1,6 +1,6 @@
 package ua.training.repairagency.controller.commands.customer;
 
-import static ua.training.repairagency.controller.constants.URL.*;
+import static ua.training.repairagency.controller.constants.PathConstants.*;
 
 import javax.servlet.http.HttpServletRequest;
 

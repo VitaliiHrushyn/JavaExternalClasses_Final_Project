@@ -1,6 +1,6 @@
 package ua.training.repairagency.controller.constants;
 
-public interface AttributeOrParam {
+public interface AttributeAndParamConstants {
 	
 	String USER = "user";
 	String CUSTOMER = "customer";
@@ -15,10 +15,10 @@ public interface AttributeOrParam {
 	String REGISTRATION_LOGIN = "reglogin";
 	String REGISTRATION_PASSWORD = "regpassword";
 	String CONFIRM_PASSWORD = "confirmpassword";
-	String REGISTRATION_MESSAGE = "regmessage";
+	String REGISTRATION_MESSAGE_PARAM = "regmessage";
 	
-	String LOGIN_MESSAGE = "loginmessage";
-	String AUTH_MESSAGE = "authmessage";
+	String LOGIN_MESSAGE_PARAM = "loginmessage";
+	String AUTH_MESSAGE_PARAM = "authmessage";
 	String COMMAND_RESULT_PARAM = "command_result";
 	
 }

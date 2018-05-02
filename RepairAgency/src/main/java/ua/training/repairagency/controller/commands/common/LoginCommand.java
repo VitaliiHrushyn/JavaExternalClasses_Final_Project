@@ -1,12 +1,11 @@
 package ua.training.repairagency.controller.commands.common;
 
-import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.controller.constants.Regex;
+import static ua.training.repairagency.controller.constants.PathConstants.*;
 
 import java.util.ResourceBundle;
 
-import ua.training.repairagency.controller.constants.AttributeOrParam;
-import ua.training.repairagency.controller.constants.Message;
+import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
+import static ua.training.repairagency.controller.constants.MessageConstants.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,17 +20,17 @@ public class LoginCommand implements Command {
 	private String loginMessage;
 	private String authMessage;
 	
-	ResourceBundle regexBundle = ResourceBundle.getBundle(Regex.BUNDLE_NAME);
+	ResourceBundle regexBundle = ResourceBundle.getBundle(REGEX_BUNDLE_NAME);
 
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		String login = request.getParameter(AttributeOrParam.LOGIN);
-		String password = request.getParameter(AttributeOrParam.PASSWORD);		
+		String login = request.getParameter(LOGIN);
+		String password = request.getParameter(PASSWORD);		
 		HttpSession session = request.getSession();
 		
 		
-		String path = URL.LOGIN_PAGE;
+		String path = LOGIN_PAGE;
 		
 		//TODO : use Optional to avoid checking for a null
 		if (validateLogin(login)) {
@@ -40,14 +39,14 @@ public class LoginCommand implements Command {
 			
 			if (validateUserPassword(password, user)) {
 				path = CommandUtils.getPathFromRole(user.getRole());
-				session.setAttribute(AttributeOrParam.USER, user);
+				session.setAttribute(USER, user);
 			} else {
-				authMessage = Message.AUTH_FAIL;
+				authMessage = AUTH_FAIL_MESSAGE;
 			}
 		}
 		
-		request.setAttribute(AttributeOrParam.LOGIN_MESSAGE, loginMessage);
-		request.setAttribute(AttributeOrParam.AUTH_MESSAGE, authMessage);
+		request.setAttribute(LOGIN_MESSAGE_PARAM, loginMessage);
+		request.setAttribute(AUTH_MESSAGE_PARAM, authMessage);
 		loginMessage = null;
 		authMessage = null;
 		return path;
@@ -55,10 +54,10 @@ public class LoginCommand implements Command {
 
 	private boolean validateLogin(String login) {
 		if (login == null || login.isEmpty()) {
-			loginMessage = Message.LOGIN_EMPTY;
+			loginMessage = LOGIN_EMPTY_MESSAGE;
 			return false;
-		} else if(!login.matches(regexBundle.getString(Regex.LOGIN))) {
-			loginMessage = Message.LOGIN_INVALID;
+		} else if(!login.matches(regexBundle.getString(LOGIN_REGEX))) {
+			loginMessage = LOGIN_INVALID_MESSAGE;
 			return false;
 		}
 		return true;

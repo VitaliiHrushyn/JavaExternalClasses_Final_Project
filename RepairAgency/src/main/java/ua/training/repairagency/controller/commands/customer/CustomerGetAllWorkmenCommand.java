@@ -1,7 +1,7 @@
 package ua.training.repairagency.controller.commands.customer;
 
-import static ua.training.repairagency.controller.constants.URL.CUSTOMER_PAGE;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.COMMAND_RESULT_PARAM;
+import static ua.training.repairagency.controller.constants.PathConstants.CUSTOMER_PAGE;
+import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.COMMAND_RESULT_PARAM;
 
 import javax.servlet.http.HttpServletRequest;
 

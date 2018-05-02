@@ -1,7 +1,7 @@
 package ua.training.repairagency.controller.filters;
 
-import static ua.training.repairagency.controller.constants.URL.*;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
+import static ua.training.repairagency.controller.constants.PathConstants.*;
+import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
 
 import java.io.IOException;
 

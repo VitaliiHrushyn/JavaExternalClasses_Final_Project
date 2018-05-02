@@ -1,8 +1,8 @@
 package ua.training.repairagency.controller.commands.common;
 
-import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.controller.constants.AttributeOrParam;
-import ua.training.repairagency.controller.constants.Message;
+import static ua.training.repairagency.controller.constants.PathConstants.LOGIN_PAGE;
+import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
+import static ua.training.repairagency.controller.constants.MessageConstants.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,15 +18,15 @@ public class RegistrationCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		String login = request.getParameter(AttributeOrParam.REGISTRATION_LOGIN);
-		String password = request.getParameter(AttributeOrParam.REGISTRATION_PASSWORD);
-		String confirmpassword = request.getParameter(AttributeOrParam.CONFIRM_PASSWORD);
+		String login = request.getParameter(REGISTRATION_LOGIN);
+		String password = request.getParameter(REGISTRATION_PASSWORD);
+		String confirmpassword = request.getParameter(CONFIRM_PASSWORD);
 				
 		HttpSession session = request.getSession();
 		
 		User user = null;
 		String message = null;
-		String path = URL.LOGIN_PAGE;
+		String path = LOGIN_PAGE;
 		
 		if (checkLoginPasswordConfirm(login, password, confirmpassword)) {				
 			try {
@@ -36,10 +36,10 @@ public class RegistrationCommand implements Command {
 				message = CommandUtils.getFailMessageFromException(e);
 			} 			
 		} else {
-			message = Message.REGISTRATION_EMPTY;
+			message = REGISTRATION_EMPTY_MESSAGE;
 		}
-		session.setAttribute(AttributeOrParam.USER, user);	
-		request.setAttribute(AttributeOrParam.REGISTRATION_MESSAGE, message);
+		session.setAttribute(USER, user);	
+		request.setAttribute(REGISTRATION_MESSAGE_PARAM, message);
 		return path;
 	}
 	

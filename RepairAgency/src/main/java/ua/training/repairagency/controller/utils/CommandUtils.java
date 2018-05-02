@@ -1,8 +1,8 @@
 package ua.training.repairagency.controller.utils;
 
-import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
-import static ua.training.repairagency.controller.constants.Message.*;
-import static ua.training.repairagency.controller.constants.URL.*;
+import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
+import static ua.training.repairagency.controller.constants.MessageConstants.*;
+import static ua.training.repairagency.controller.constants.PathConstants.*;
 
 import ua.training.repairagency.model.entities.user.UserRole;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
