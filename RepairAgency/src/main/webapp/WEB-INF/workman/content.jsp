@@ -8,17 +8,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>customer footer</title>
+<title>content</title>
 </head>
 <body>
 	<div>
-		footer:
+		content:
+		<br>		
+		<c:set var="message" value="${requestScope.message}"/>
+		<fmt:message key="text.message" />: ${message}
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/exception">Exception</a>
-		<br>
-       
-      	<br>
+		<p>result: ${requestScope.command_result}</p>
 	</div>
-	
 </body>
 </html>

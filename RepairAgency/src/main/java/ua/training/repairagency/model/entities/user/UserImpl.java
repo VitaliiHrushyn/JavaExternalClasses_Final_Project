@@ -1,10 +1,18 @@
 package ua.training.repairagency.model.entities.user;
-import ua.training.repairagency.model.entities.AbstractEntity;
+import java.util.List;
 
-public class UserImpl extends AbstractEntity implements User {
-	
+import ua.training.repairagency.model.entities.AbstractEntity;
+import ua.training.repairagency.model.entities.application.Application;
+
+public class UserImpl extends AbstractEntity implements User {	
 	
 	private UserRole role;
+	private String name;
+	private String login;
+	private String password;
+	private String email;
+	private String phone;
+	private List<Application> applications;
 
 	@Override
 	public UserRole getRole() {
@@ -14,67 +22,136 @@ public class UserImpl extends AbstractEntity implements User {
 	@Override
 	public void setRole(UserRole role) {
 		this.role = role;
-
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public void setName(String name) {
-		// TODO Auto-generated method stub
-
+		this.name = name;
 	}
 
 	@Override
 	public String getLogin() {
-		// TODO Auto-generated method stub
-		return null;
+		return login;
 	}
 
 	@Override
 	public void setLogin(String login) {
-		// TODO Auto-generated method stub
-
+		this.login = login;
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
+		return password;
 	}
 
 	@Override
 	public void setPassword(String password) {
-		// TODO Auto-generated method stub
-
+		this.password = password;
 	}
 
 	@Override
 	public String getEmail() {
-		// TODO Auto-generated method stub
-		return null;
+		return email;
 	}
 
 	@Override
 	public void setEmail(String email) {
-		// TODO Auto-generated method stub
-
+		this.email = email;
 	}
 
 	@Override
 	public String getPhone() {
-		// TODO Auto-generated method stub
-		return null;
+		return phone;
 	}
 
 	@Override
 	public void setPhone(String phone) {
-		// TODO Auto-generated method stub
-
+		this.phone = phone;
 	}
+
+	@Override
+	public List<Application> getApplications() {
+		return applications;
+	}
+
+	@Override
+	public void setApplications(List<Application> applications) {
+		this.applications = applications;
+	}
+
+	@Override
+	public String toString() {
+		return "UserImpl [role=" + role + ", name=" + name + ", login=" + login + ", password=" + password + ", email="
+				+ email + ", phone=" + phone + ", applications=" + applications + "]";
+	}
+	
+	
+	
+	//TODO equals and hash code
+	
+//	/**
+//     * User builder
+//     */
+//    public static final class UserBuilder {
+//        private Integer id;
+//        private UserRole role;
+//        private String name;
+//        private String login;
+//        private String password;
+//        private String email;
+//        private String phone;
+//
+//        public UserBuilder setId(Integer id) {
+//            this.id = id;
+//            return this;
+//        }
+//
+//        public UserBuilder setRole(UserRole role) {
+//            this.role = role;
+//            return this;
+//        }
+//
+//        public UserBuilder setName(String name) {
+//            this.name = name;
+//            return this;
+//        }
+//
+//        public UserBuilder setLogin(String login) {
+//            this.login = login;
+//            return this;
+//        }
+//
+//        public UserBuilder setPassword(String password) {
+//            this.password = password;
+//            return this;
+//        }
+//        
+//        public UserBuilder setEmail(String email) {
+//            this.email = email;
+//            return this;
+//        }
+//
+//        public UserBuilder setPhone(String phone) {
+//            this.phone = phone;
+//            return this;
+//        }
+//
+//        public User build(){
+//            User user = new UserImpl();
+//            user.setId(id);
+//            user.setRole(role);
+//            user.setName(name);
+//            user.setLogin(login);
+//            user.setPassword(password);
+//            user.setEmail(email);
+//            user.setPhone(phone);
+//            return user;
+//        }
+//    }
 
 }

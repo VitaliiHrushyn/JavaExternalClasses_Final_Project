@@ -2,56 +2,69 @@ package ua.training.repairagency.controller.commands.common;
 
 import static ua.training.repairagency.controller.constants.PathConstants.*;
 
-import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
+import static ua.training.repairagency.controller.constants.MessageConstants.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import ua.training.repairagency.controller.commands.Command;
+import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
-import ua.training.repairagency.model.entities.user.UserImpl;
-import ua.training.repairagency.model.entities.user.UserRole;
+import ua.training.repairagency.model.services.GetUserByLoginService;
 
 public class LoginCommand implements Command {
+	
+	private String loginMessage;
+	private String authMessage;
+	
+	ResourceBundle regexBundle = ResourceBundle.getBundle(REGEX_BUNDLE_NAME);
 
 	@Override
-	public String execute(HttpServletRequest request)
-			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+	public String execute(HttpServletRequest request) {
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		
+		String login = request.getParameter(LOGIN);
+		String password = request.getParameter(PASSWORD);		
 		HttpSession session = request.getSession();
 		
-		String message = null;
-		String path;
+		
+		String path = LOGIN_PAGE;
 		
 		//TODO : use Optional to avoid checking for a null
-		
-		if ((username != null && password != null) && (!username.isEmpty() && !password.isEmpty())) {		
+		if (validateLogin(login)) {
 			
-			//TODO properly
-		
-			User user = new UserImpl();
-			if (username.equals("manager")) {
-				user.setRole(UserRole.MANAGER);
-				path = REDIRECT_MANAGER_PAGE;
+			User user = new GetUserByLoginService().execute(login);
+			
+			if (validateUserPassword(password, user)) {
+				path = CommandUtils.getPathFromRole(user.getRole());
+				session.setAttribute(USER, user);
 			} else {
-				user.setRole(UserRole.CUSTOMER);
-				path = REDIRECT_CUSTOMER_PAGE;
+				authMessage = AUTH_FAIL_MESSAGE;
 			}
-			// 
-			
-			session.setAttribute("user", user);
-			
-		} else {
-			message = "login or/and password are wrong";
-			session.setAttribute("user", null);
-			path = LOGIN_PAGE;		
-		}	
-		request.setAttribute("loginmessage", message);
+		}
 		
+		request.setAttribute(LOGIN_MESSAGE_PARAM, loginMessage);
+		request.setAttribute(AUTH_MESSAGE_PARAM, authMessage);
+		loginMessage = null;
+		authMessage = null;
 		return path;
+	}
+
+	private boolean validateLogin(String login) {
+		if (login == null || login.isEmpty()) {
+			loginMessage = LOGIN_EMPTY_MESSAGE;
+			return false;
+		} else if(!login.matches(regexBundle.getString(LOGIN_REGEX))) {
+			loginMessage = LOGIN_INVALID_MESSAGE;
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean validateUserPassword(String password, User user) {
+		return user != null && user.getPassword().equals(password);
 	}
 
 }

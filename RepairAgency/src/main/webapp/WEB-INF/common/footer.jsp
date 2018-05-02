@@ -14,7 +14,7 @@
 	<div>
 		footer:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/exception">Exception</a>
+		<a href = "${pageContext.request.contextPath}/app/manager/exception">manager Exception</a>
 		<br>
 	</div>
 	
