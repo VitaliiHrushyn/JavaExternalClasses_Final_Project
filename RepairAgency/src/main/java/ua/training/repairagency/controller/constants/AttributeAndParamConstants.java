@@ -18,7 +18,7 @@ public interface AttributeAndParamConstants {
 	String REGISTRATION_MESSAGE_PARAM = "regmessage";
 	
 	String LOGIN_MESSAGE_PARAM = "loginmessage";
-	String PASSWORD_MESSAGE_PARAM = "passwordmessage";
+	String AUTH_MESSAGE_PARAM = "authmessage";
 	String COMMAND_RESULT_PARAM = "command_result";
 	
 }
