@@ -12,7 +12,6 @@ import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 import ua.training.repairagency.model.services.CreateUserService;
-import ua.training.repairagency.model.utils.DAOutils;
 
 public class RegistrationCommand implements Command {
 	
@@ -34,7 +33,7 @@ public class RegistrationCommand implements Command {
 				user = new CreateUserService().execute(request);				
 				path = CommandUtils.getPathFromRole(user.getRole());
 			} catch (NotUniqueFieldValueException e) {
-				message = DAOutils.getFailMessageFromException(e);
+				message = CommandUtils.getFailMessageFromException(e);
 			} 			
 		} else {
 			message = REGISTRATION_EMPTY_MESSAGE;

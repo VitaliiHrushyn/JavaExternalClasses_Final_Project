@@ -14,24 +14,32 @@
 <body>
 	<div>
 		<b><fmt:message key="text.login" /></b>
-		<c:set var="loginmessage" value="${requestScope.loginmessage}"/>
-		<p>... 
-			<font color="red">
-				<c:if test = "${loginmessage != null}" >
-					<fmt:message key="${loginmessage}"/>
-				</c:if>
-			</font>
-		</p>
+		
         <form method="post" action="${pageContext.request.contextPath}/app/login">
             <label for="login"><fmt:message key="login.label.login" />:</label>
             <input type="text" id="login" name="login">
-            
+           
             <label for="password"><fmt:message key="login.label.password" />:</label>
             <input type="password" id="password" name="password">
            
             <fmt:message key="login.button.submit" var="buttonValue" />
             <input type="submit" name="submit" value="${buttonValue}">
-        </form>
+         
+          <span>
+          	<font color="red">
+            <c:set var="loginmessage" value="${requestScope.loginmessage}"/>
+				<c:if test = "${loginmessage != null}" >
+					<fmt:message key="${loginmessage}"/>
+				</c:if>		
+			<c:set var="authmessage" value="${requestScope.authmessage}"/>
+				<c:if test = "${authmessage != null}" >
+					<fmt:message key="${authmessage}"/>
+				</c:if>
+         	</font>
+         </span> 
+           
+        </form>    
+		
         <br>
         <hr>
         <hr>
