@@ -1,8 +1,6 @@
 package ua.training.repairagency.controller.commands.common;
 
-import static ua.training.repairagency.controller.constants.PathConstants.*;
-
-import java.sql.SQLException;
+import static ua.training.repairagency.controller.constants.PathConstants.PAGE_404;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,11 +9,7 @@ import ua.training.repairagency.controller.commands.Command;
 public class Error404Command implements Command {
 
 	@Override
-	public String execute(HttpServletRequest request)
-			throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
-		
-		request.setAttribute("message", "message from 404 command");
-
+	public String execute(HttpServletRequest request) {
 		return PAGE_404;
 	}
 

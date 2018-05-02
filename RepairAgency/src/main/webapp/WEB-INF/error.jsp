@@ -15,9 +15,9 @@
            Error Page<br/>
             <i>Error <%= exception %></i> 
         </h2>
-    <br>
-        <a href="${pageContext.request.contextPath}/app/index">Index</a>
-
-
+        <p>Unexpected error has occurred</p>
+    	<br>
+        <a href="${pageContext.request.contextPath}/app/logout">Return to main page</a>
+		<br>
     </body>
 </html>

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.commands.Command;
 
+@Deprecated
 public class ExceptionCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
