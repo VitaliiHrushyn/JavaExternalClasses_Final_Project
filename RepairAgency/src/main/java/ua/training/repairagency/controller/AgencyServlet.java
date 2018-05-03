@@ -1,7 +1,6 @@
 package ua.training.repairagency.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.training.repairagency.controller.commands.*;
+import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.commands.common.*;
 import ua.training.repairagency.controller.commands.customer.*;
 import ua.training.repairagency.controller.commands.manager.*;
@@ -34,7 +33,6 @@ public class AgencyServlet extends HttpServlet {
 	public void init() {
 		commands = new HashMap<>();
 		
-		commands.put(URL.EXCEPTION, new ExceptionCommand());
 		commands.put(URL.LOGOUT, new LogoutCommand());
 		commands.put(URL.LOGIN, new LoginCommand());
 		commands.put(URL.REGISTRATION, new RegistrationCommand());
@@ -59,7 +57,7 @@ public class AgencyServlet extends HttpServlet {
 													throws ServletException, IOException {
 		try {
 			processRequest(request, response);
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
+		} catch (ServletException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -74,9 +72,7 @@ public class AgencyServlet extends HttpServlet {
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException, ClassNotFoundException, 
-				InstantiationException, IllegalAccessException, SQLException {
-		
+														throws IOException, ServletException {		
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath() + URL.CONTEXT_ADDON;		
 		String commandName = requestURI.replaceAll(contextPath, URL.EMPTY);
