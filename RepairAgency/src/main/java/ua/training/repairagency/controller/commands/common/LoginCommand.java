@@ -25,8 +25,7 @@ public class LoginCommand implements Command {
 	public String execute(HttpServletRequest request) {
 		
 		String login = request.getParameter(AttributeOrParam.LOGIN);
-		String prePassword = request.getParameter(AttributeOrParam.PASSWORD);
-		String password = prePassword != null ? CommandUtils.doCrypt(prePassword) : prePassword;		
+		String password = request.getParameter(AttributeOrParam.PASSWORD);		
 		HttpSession session = request.getSession();
 		
 		
@@ -64,7 +63,7 @@ public class LoginCommand implements Command {
 	}
 	
 	private boolean validateUserPassword(String password, User user) {
-		return user != null && user.getPassword().equals(password);
+		return user != null && user.getPassword().equals(CommandUtils.doCrypt(password));
 	}
 
 }
