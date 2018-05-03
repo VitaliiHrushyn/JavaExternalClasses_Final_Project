@@ -58,7 +58,7 @@ public class CommandUtils {
 		user.setRole(UserRole.valueOf(request.getParameter(ROLE)));
 		user.setName(request.getParameter(NAME));
 		user.setLogin(request.getParameter(REGISTRATION_LOGIN));
-		user.setPassword(request.getParameter(REGISTRATION_PASSWORD));
+		user.setPassword(doCrypt(request.getParameter(REGISTRATION_PASSWORD)));
 		user.setEmail(request.getParameter(EMAIL));
 		user.setPhone(request.getParameter(PHONE));	
 		user.setApplications(null);
