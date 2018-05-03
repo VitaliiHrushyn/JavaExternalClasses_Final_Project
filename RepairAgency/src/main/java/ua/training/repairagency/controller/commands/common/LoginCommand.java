@@ -1,5 +1,7 @@
 package ua.training.repairagency.controller.commands.common;
 
+import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
+
 import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.controller.constants.RegEx;
-import ua.training.repairagency.controller.constants.AttributeOrParam;
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.utils.CommandUtils;
@@ -24,8 +25,8 @@ public class LoginCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		String login = request.getParameter(AttributeOrParam.LOGIN);
-		String password = request.getParameter(AttributeOrParam.PASSWORD);		
+		String login = request.getParameter(LOGIN);
+		String password = request.getParameter(PASSWORD);		
 		HttpSession session = request.getSession();
 		
 		
@@ -38,14 +39,14 @@ public class LoginCommand implements Command {
 			
 			if (validateUserPassword(password, user)) {
 				path = CommandUtils.getPathFromRole(user.getRole());
-				session.setAttribute(AttributeOrParam.USER, user);
+				session.setAttribute(USER, user);
 			} else {
 				authMessage = Message.AUTH_FAIL;
 			}
 		}
 		
-		request.setAttribute(AttributeOrParam.LOGIN_MESSAGE, loginMessage);
-		request.setAttribute(AttributeOrParam.AUTH_MESSAGE, authMessage);
+		request.setAttribute(LOGIN_MESSAGE, loginMessage);
+		request.setAttribute(AUTH_MESSAGE, authMessage);
 		loginMessage = null;
 		authMessage = null;
 		return path;

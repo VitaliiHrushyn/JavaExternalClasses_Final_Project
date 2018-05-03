@@ -1,11 +1,6 @@
 package ua.training.repairagency.controller.utils;
 
-import static ua.training.repairagency.controller.constants.AttributeOrParam.EMAIL;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.NAME;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.PHONE;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.REGISTRATION_LOGIN;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.REGISTRATION_PASSWORD;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.ROLE;
+import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import javax.servlet.http.HttpServletRequest;
 

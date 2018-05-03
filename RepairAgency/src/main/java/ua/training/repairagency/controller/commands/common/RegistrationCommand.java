@@ -1,5 +1,7 @@
 package ua.training.repairagency.controller.commands.common;
 
+import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,9 +17,9 @@ public class RegistrationCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		String login = request.getParameter(AttributeOrParam.REGISTRATION_LOGIN);
-		String password = (request.getParameter(AttributeOrParam.REGISTRATION_PASSWORD));
-		String confirmpassword = request.getParameter(AttributeOrParam.CONFIRM_PASSWORD);
+		String login = request.getParameter(REGISTRATION_LOGIN);
+		String password = (request.getParameter(REGISTRATION_PASSWORD));
+		String confirmpassword = request.getParameter(CONFIRM_PASSWORD);
 				
 		HttpSession session = request.getSession();
 		
@@ -35,8 +37,8 @@ public class RegistrationCommand implements Command {
 		} else {
 			message = Message.REGISTRATION_EMPTY;
 		}
-		session.setAttribute(AttributeOrParam.USER, user);	
-		request.setAttribute(AttributeOrParam.REGISTRATION_MESSAGE, message);
+		session.setAttribute(USER, user);	
+		request.setAttribute(REGISTRATION_MESSAGE, message);
 		return path;
 	}
 	

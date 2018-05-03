@@ -1,6 +1,5 @@
 package ua.training.repairagency.model.services;
 
-
 import ua.training.repairagency.model.dao.DAOFactory;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 

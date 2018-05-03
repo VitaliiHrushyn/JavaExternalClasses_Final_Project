@@ -1,5 +1,7 @@
 package ua.training.repairagency.controller.filters;
 
+import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
+
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -21,9 +23,9 @@ public class EncodingFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
+		request.setCharacterEncoding(UTF_8);
+		response.setCharacterEncoding(UTF_8);
+		response.setContentType(TEXT_HTML);
 		filterChain.doFilter(request, response);		
 	}
 

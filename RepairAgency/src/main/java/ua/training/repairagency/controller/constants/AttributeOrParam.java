@@ -21,4 +21,7 @@ public interface AttributeOrParam {
 	String AUTH_MESSAGE = "authmessage";
 	String COMMAND_RESULT_PARAM = "command_result";
 	
+	String UTF_8 = "UTF-8";
+	String TEXT_HTML = "text/html";
+	
 }
