@@ -25,7 +25,8 @@ public class LoginCommand implements Command {
 	public String execute(HttpServletRequest request) {
 		
 		String login = request.getParameter(AttributeOrParam.LOGIN);
-		String password = request.getParameter(AttributeOrParam.PASSWORD);		
+		String prePassword = request.getParameter(AttributeOrParam.PASSWORD);
+		String password = prePassword != null ? CommandUtils.doCrypt(prePassword) : prePassword;		
 		HttpSession session = request.getSession();
 		
 		
@@ -34,7 +35,7 @@ public class LoginCommand implements Command {
 		//TODO : use Optional to avoid checking for a null
 		if (validateLogin(login)) {
 			
-			User user = new GetUserByLoginService().execute(login);
+			User user = new GetUserByLoginService(login).execute();
 			
 			if (validateUserPassword(password, user)) {
 				path = CommandUtils.getPathFromRole(user.getRole());

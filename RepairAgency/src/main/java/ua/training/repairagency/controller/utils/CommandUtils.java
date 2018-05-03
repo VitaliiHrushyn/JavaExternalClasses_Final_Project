@@ -1,5 +1,7 @@
 package ua.training.repairagency.controller.utils;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import ua.training.repairagency.controller.constants.AttributeOrParam;
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.constants.URL;
@@ -35,6 +37,11 @@ public class CommandUtils {
 			exceptionMessage = Message.NOT_UNIQUE_PHONE;
 		}		
 		return exceptionMessage;
+	}
+	
+	public static String doCrypt(String string) {
+System.out.println("crypted: " + DigestUtils.md5Hex(string.getBytes()));
+		return DigestUtils.md5Hex(string.getBytes());
 	}
 
 }

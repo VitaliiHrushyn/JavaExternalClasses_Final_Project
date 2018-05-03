@@ -16,7 +16,7 @@ public class RegistrationCommand implements Command {
 	public String execute(HttpServletRequest request) {
 		
 		String login = request.getParameter(AttributeOrParam.REGISTRATION_LOGIN);
-		String password = request.getParameter(AttributeOrParam.REGISTRATION_PASSWORD);
+		String password = (request.getParameter(AttributeOrParam.REGISTRATION_PASSWORD));
 		String confirmpassword = request.getParameter(AttributeOrParam.CONFIRM_PASSWORD);
 				
 		HttpSession session = request.getSession();
@@ -27,7 +27,7 @@ public class RegistrationCommand implements Command {
 		
 		if (checkLoginPasswordConfirm(login, password, confirmpassword)) {				
 			try {
-				user = new CreateUserService().execute(request);				
+				user = new CreateUserService(request).execute();				
 				path = CommandUtils.getPathFromRole(user.getRole());
 			} catch (NotUniqueFieldValueException e) {
 				message = CommandUtils.getFailMessageFromException(e);
