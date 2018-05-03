@@ -5,7 +5,6 @@ import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.controller.constants.RegEx;
@@ -18,37 +17,24 @@ import ua.training.repairagency.model.services.GetUserByLoginService;
 public class LoginCommand implements Command {
 	
 	private String loginMessage;
-	private String authMessage;
-	
-	ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME);
+	private ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME);
 
 	@Override
 	public String execute(HttpServletRequest request) {
 		
 		String login = request.getParameter(LOGIN);
 		String password = request.getParameter(PASSWORD);		
-		HttpSession session = request.getSession();
-		
-		
 		String path = URL.LOGIN_PAGE;
 		
 		//TODO : use Optional to avoid checking for a null
-		if (validateLogin(login)) {
-			
-			User user = new GetUserByLoginService(login).execute();
-			
-			if (validateUserPassword(password, user)) {
+		if (validateLogin(login)) {			
+			User user = new GetUserByLoginService(login).execute();			
+			if (checkUserPassword(user, password)) {
 				path = CommandUtils.getPathFromRole(user.getRole());
-				session.setAttribute(USER, user);
-			} else {
-				authMessage = Message.AUTH_FAIL;
+				request.getSession().setAttribute(USER, user);
 			}
-		}
-		
+		}		
 		request.setAttribute(LOGIN_MESSAGE, loginMessage);
-		request.setAttribute(AUTH_MESSAGE, authMessage);
-		loginMessage = null;
-		authMessage = null;
 		return path;
 	}
 
@@ -63,8 +49,13 @@ public class LoginCommand implements Command {
 		return true;
 	}
 	
-	private boolean validateUserPassword(String password, User user) {
-		return user != null && user.getPassword().equals(CommandUtils.doCrypt(password));
+	private boolean checkUserPassword(User user, String password) {
+		if(user != null && user.getPassword().equals(CommandUtils.doCrypt(password))) {
+			return true;
+		} else {
+			loginMessage = Message.AUTH_FAIL;
+			return false;
+		}
 	}
 
 }

@@ -27,14 +27,10 @@
          
           <span>
           	<font color="red">
-            <c:set var="loginmessage" value="${requestScope.loginmessage}"/>
+            	<c:set var="loginmessage" value="${requestScope.loginmessage}"/>
 				<c:if test = "${loginmessage != null}" >
 					<fmt:message key="${loginmessage}"/>
 				</c:if>		
-			<c:set var="authmessage" value="${requestScope.authmessage}"/>
-				<c:if test = "${authmessage != null}" >
-					<fmt:message key="${authmessage}"/>
-				</c:if>
          	</font>
          </span> 
            
