@@ -43,6 +43,8 @@ public interface URL {
 	String REDIRECT_LOGIN_COMMAND = "redirect:/app/login";
 	String LOGIN_COMMAND = "/app/login";
 	String LOGOUT_COMMAND = "/app/logout";
+	String ERROR_404_COMMAND = "/app/404";
+	String REDIRECT_ERROR_404_COMMAND = "redirect:/app/404";
 	String REGISTRATION_COMMAND = "/app/registration";
 	
 	/* manager */
