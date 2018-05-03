@@ -1,6 +1,6 @@
 package ua.training.repairagency.model.constants;
 
-public interface QueryConstants {
+public interface Query {
 	
 	/* user queries */
 	String USER_GET_BY_ID = "user.get.by.id";

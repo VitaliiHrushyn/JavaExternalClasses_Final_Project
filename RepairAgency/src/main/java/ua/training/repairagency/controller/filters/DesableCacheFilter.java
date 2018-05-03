@@ -11,13 +11,15 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 
+import ua.training.repairagency.controller.constants.URL;
+
 /**
  * 
  * @author Vitalii Hrushyn
  *
  *This filter disable caching to avoid going back to authorized page after logging out with browser back button
  */
-@WebFilter(urlPatterns="/app/*")
+@WebFilter(urlPatterns=URL.DISABLE_CACHE_FILTER_PATTERN)
 public class DesableCacheFilter implements Filter {
 
 	@Override

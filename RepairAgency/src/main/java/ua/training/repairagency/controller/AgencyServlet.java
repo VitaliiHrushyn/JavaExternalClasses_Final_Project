@@ -17,12 +17,12 @@ import ua.training.repairagency.controller.commands.customer.*;
 import ua.training.repairagency.controller.commands.manager.*;
 //TODO import ua.training.repairagency.controller.commands.workman.*;
 
-import static ua.training.repairagency.controller.constants.PathConstants.*;
+import ua.training.repairagency.controller.constants.URL;
 
 /**
  * Servlet implementation class AgencyServlet
  */
-@WebServlet(SERVLET_URL_PATTERN)
+@WebServlet(URL.SERVLET_PATTERN)
 public class AgencyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,21 +34,21 @@ public class AgencyServlet extends HttpServlet {
 	public void init() {
 		commands = new HashMap<>();
 		
-		commands.put(EXCEPTION_PATH, new ExceptionCommand());
-		commands.put(LOGOUT_PATH, new LogoutCommand());
-		commands.put(LOGIN_PATH, new LoginCommand());
-		commands.put(REGISTRATION_PATH, new RegistrationCommand());
-		commands.put(ERROR_404_PATH, new Error404Command());
+		commands.put(URL.EXCEPTION, new ExceptionCommand());
+		commands.put(URL.LOGOUT, new LogoutCommand());
+		commands.put(URL.LOGIN, new LoginCommand());
+		commands.put(URL.REGISTRATION, new RegistrationCommand());
+		commands.put(URL.ERROR_404, new Error404Command());
 		
-		commands.put(MANAGER_PAGE_PATH, new ManagerPageCommand());
-		commands.put(MANAGER_MESSAGE_PATH, new ManagerMessageCommand());
-		commands.put(MANAGER_WORKMEN_PATH, new ManagerGetAllWorkmenCommand());
-		commands.put(MANAGER_APPLICATIONS_PATH, new ManagerGetAllAppsCommand());
+		commands.put(URL.MANAGER_PAGE_PATH, new ManagerPageCommand());
+		commands.put(URL.MANAGER_MESSAGE_PATH, new ManagerMessageCommand());
+		commands.put(URL.MANAGER_WORKMEN_PATH, new ManagerGetAllWorkmenCommand());
+		commands.put(URL.MANAGER_APPLICATIONS_PATH, new ManagerGetAllAppsCommand());
 		
-		commands.put(CUSTOMER_PAGE_PATH, new CustomerPageCommand());
-		commands.put(CUSTOMER_MESSAGE_PATH, new CustomerMessageCommand());
-		commands.put(CUSTOMER_WORKMEN_PATH, new CustomerGetAllWorkmenCommand());
-		commands.put(CUSTOMER_APPLICATIONS_PATH, new CustomerGetAllAppsCommand());
+		commands.put(URL.CUSTOMER_PAGE_PATH, new CustomerPageCommand());
+		commands.put(URL.CUSTOMER_MESSAGE_PATH, new CustomerMessageCommand());
+		commands.put(URL.CUSTOMER_WORKMEN_PATH, new CustomerGetAllWorkmenCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_PATH, new CustomerGetAllAppsCommand());
 		
 	}
 
@@ -78,14 +78,14 @@ public class AgencyServlet extends HttpServlet {
 				InstantiationException, IllegalAccessException, SQLException {
 		
 		String requestURI = request.getRequestURI();
-		String contextPath = request.getContextPath() + CONTEXT_PATH_ADDON;		
-		String commandName = requestURI.replaceAll(contextPath, EMPTY_PATH);
+		String contextPath = request.getContextPath() + URL.CONTEXT_ADDON;		
+		String commandName = requestURI.replaceAll(contextPath, URL.EMPTY);
 
 		String path = commands.getOrDefault
-				(commandName, (r)->commands.get(ERROR_404_PATH).execute(request)).execute(request);
+				(commandName, (r)->commands.get(URL.ERROR_404).execute(request)).execute(request);
 		
-		if (path.contains(REDIRECT)) {
-			response.sendRedirect(request.getContextPath() + path.replace(REDIRECT, EMPTY_PATH));
+		if (path.contains(URL.REDIRECT)) {
+			response.sendRedirect(request.getContextPath() + path.replace(URL.REDIRECT, URL.EMPTY));
 		} else {
 			request.getRequestDispatcher(path).forward(request, response);
 		}		

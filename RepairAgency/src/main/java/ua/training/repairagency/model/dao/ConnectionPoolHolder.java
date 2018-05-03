@@ -2,7 +2,7 @@ package ua.training.repairagency.model.dao;
 
 import org.apache.commons.dbcp.BasicDataSource;
 
-import static ua.training.repairagency.model.constants.ConnectionConstants.*;
+import ua.training.repairagency.model.constants.DBconnection;
 
 import java.util.ResourceBundle;
 
@@ -20,10 +20,10 @@ public class ConnectionPoolHolder {
             synchronized (ConnectionPoolHolder.class) {
                 if (dataSource == null) {
                     BasicDataSource ds = new BasicDataSource();
-                    ds.setDriverClassName(dataBaseBundle.getString(DATA_BASE_DRIVER_NAME));
-                    ds.setUrl(dataBaseBundle.getString(DATA_BASE_URL));
-                    ds.setUsername(dataBaseBundle.getString(DATA_BASE_USERNAME));
-                    ds.setPassword(dataBaseBundle.getString(DATA_BASE_PASSWORD));
+                    ds.setDriverClassName(dataBaseBundle.getString(DBconnection.DRIVER_NAME));
+                    ds.setUrl(dataBaseBundle.getString(DBconnection.URL));
+                    ds.setUsername(dataBaseBundle.getString(DBconnection.USERNAME));
+                    ds.setPassword(dataBaseBundle.getString(DBconnection.PASSWORD));
                     ds.setMinIdle(5);
                     ds.setMaxIdle(10);
                     ds.setMaxOpenPreparedStatements(100);

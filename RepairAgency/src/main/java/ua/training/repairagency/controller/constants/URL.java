@@ -1,35 +1,38 @@
 package ua.training.repairagency.controller.constants;
 
-public interface PathConstants {
+public interface URL {
 	
 	/*
 	 * SERVLET constants
 	 */
 	/* common */
-	String SERVLET_URL_PATTERN = "/app/*";
-	String CONTEXT_PATH_ADDON = "/app/";
-	String EMPTY_PATH = "";
+	String SERVLET_PATTERN = "/app/*";
+	String CONTEXT_ADDON = "/app/";
+	String EMPTY = "";
 	String REDIRECT = "redirect:";
-	String EXCEPTION_PATH = "manager/exception";
-	String LOGOUT_PATH = "logout";
-	String LOGIN_PATH = "login";
-	String REGISTRATION_PATH = "registration";
-	String ERROR_404_PATH = "404";
+	String EXCEPTION = "manager/exception";
+	String LOGOUT = "logout";
+	String LOGIN = "login";
+	String REGISTRATION = "registration";
+	String ERROR_404 = "404";
 	
 	/* manager */
 	String MANAGER_PAGE_PATH = "manager/page";
 	String MANAGER_MESSAGE_PATH = "manager/message";
 	String MANAGER_WORKMEN_PATH = "manager/workmen";
 	String MANAGER_APPLICATIONS_PATH = "manager/applications";
+	String MANAGER = "manager";
 	
 	/* customer */
 	String CUSTOMER_PAGE_PATH = "customer/page";
 	String CUSTOMER_MESSAGE_PATH = "customer/message";
 	String CUSTOMER_WORKMEN_PATH = "customer/workmen";
 	String CUSTOMER_APPLICATIONS_PATH = "customer/applications";
+	String CUSTOMER = "customer";
 	
 	/* workman */
 	//TODO
+	String WORKMAN = "workman";
 	
 	/*
 	 * COMMANDS path constants
@@ -57,4 +60,9 @@ public interface PathConstants {
 	String REDIRECT_WORKMAN_PAGE = "redirect:/app/workman/page";
 	String WORKMAN_PAGE_COMMAND = "/app/workman/page";
 	
+	/*
+	 * WEB FILTERS
+	 */
+	String FILTER_PATTERN = "/*";
+	String DISABLE_CACHE_FILTER_PATTERN = "/app/*";
 }

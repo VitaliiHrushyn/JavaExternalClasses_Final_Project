@@ -1,9 +1,6 @@
 package ua.training.repairagency.model.services;
 
-import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
-
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
+import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +10,7 @@ import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserImpl;
 import ua.training.repairagency.model.entities.user.UserRole;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
+import ua.training.repairagency.model.utils.DAOutils;
 
 //TODO decide if implementation (and Service interface at all) needed
 //TODO properly
@@ -31,18 +29,9 @@ public class CreateUserService implements Service {
 		try(UserDAO dao = DAOFactory.getInstance().createUserDAO()) {		
 			return dao.create(user);				
 		} catch (Exception e) {
-			throwNotUniqueFieldValueExceptionOrDefaultAction(e);
+			DAOutils.checkIfNotUniqueFieldValueException(e);
 			return null;
 		}		 
-	}
+	}	
 	
-	private void throwNotUniqueFieldValueExceptionOrDefaultAction(Exception e) 
-												throws NotUniqueFieldValueException  {
-		if (e.getClass().equals(SQLIntegrityConstraintViolationException.class) &&
-				((SQLException) e).getErrorCode() == 1062) {			
-				throw new NotUniqueFieldValueException(e);			
-		} else {
-			throw new RuntimeException(e);
-		}
-	}
 }

@@ -10,7 +10,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter(urlPatterns="/*")
+import ua.training.repairagency.controller.constants.URL;
+
+@WebFilter(urlPatterns=URL.FILTER_PATTERN)
 public class EncodingFilter implements Filter {
 
 	@Override

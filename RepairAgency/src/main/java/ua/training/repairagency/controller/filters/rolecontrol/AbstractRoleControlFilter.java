@@ -1,7 +1,4 @@
-package ua.training.repairagency.controller.filters.rolefilters;
-
-import static ua.training.repairagency.controller.constants.PathConstants.*;
-import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
+package ua.training.repairagency.controller.filters.rolecontrol;
 
 import java.io.IOException;
 
@@ -15,10 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ua.training.repairagency.controller.constants.URL;
+import ua.training.repairagency.controller.constants.AttributeOrParam;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserRole;
 
-public abstract class AbstractRoleFilter implements Filter {
+public abstract class AbstractRoleControlFilter implements Filter {
 	
 	protected UserRole role;
 	protected HttpServletRequest request;
@@ -34,9 +33,9 @@ public abstract class AbstractRoleFilter implements Filter {
         HttpSession session = request.getSession();
         role = setRole(session);
         
-        String loginCommandURI = request.getContextPath() + LOGIN_COMMAND;
-        String logoutCommandURI = request.getContextPath() + LOGOUT_COMMAND;
-        String registrationCommandURI = request.getContextPath() + REGISTRATION_COMMAND;
+        String loginCommandURI = request.getContextPath() + URL.LOGIN_COMMAND;
+        String logoutCommandURI = request.getContextPath() + URL.LOGOUT_COMMAND;
+        String registrationCommandURI = request.getContextPath() + URL.REGISTRATION_COMMAND;
         String rolePageCommandURI = getRolePageCommandURI();       
 
         boolean isRoleValid = validateRole();
@@ -57,8 +56,8 @@ public abstract class AbstractRoleFilter implements Filter {
     }		
 
 	private UserRole setRole(HttpSession session) {		
-        if (session.getAttribute(USER) != null) {
-        	return ((User) session.getAttribute(USER)).getRole();
+        if (session.getAttribute(AttributeOrParam.USER) != null) {
+        	return ((User) session.getAttribute(AttributeOrParam.USER)).getRole();
         } else {
         	return UserRole.UNKNOWN;
         }

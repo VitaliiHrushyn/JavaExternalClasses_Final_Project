@@ -1,6 +1,6 @@
 package ua.training.repairagency.controller.commands.common;
 
-import static ua.training.repairagency.controller.constants.PathConstants.PAGE_404;
+import ua.training.repairagency.controller.constants.URL;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ public class Error404Command implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request) {
-		return PAGE_404;
+		return URL.PAGE_404;
 	}
 
 }

@@ -1,8 +1,5 @@
 package ua.training.repairagency.controller.filters;
 
-import static ua.training.repairagency.controller.constants.PathConstants.*;
-import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
-
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -16,8 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns="/*")
-public class CommonAuthFilter implements Filter {
+import ua.training.repairagency.controller.constants.URL;
+import ua.training.repairagency.controller.constants.AttributeOrParam;
+
+@WebFilter(urlPatterns=URL.FILTER_PATTERN)
+public class GeneralAuthFilter implements Filter {
 
 	@Override
 	public void destroy() {}
@@ -29,10 +29,10 @@ public class CommonAuthFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
         
-        String loginCommandURI = request.getContextPath() + LOGIN_COMMAND;
-        String registrationCommandURI = request.getContextPath() + REGISTRATION_COMMAND;        
+        String loginCommandURI = request.getContextPath() + URL.LOGIN_COMMAND;
+        String registrationCommandURI = request.getContextPath() + URL.REGISTRATION_COMMAND;        
 
-        boolean isLoggedIn = (session != null) && (session.getAttribute(USER) != null);
+        boolean isLoggedIn = (session != null) && (session.getAttribute(AttributeOrParam.USER) != null);
         boolean isLoginCommand = request.getRequestURI().equals(loginCommandURI);
         boolean isRegistrationCommand = request.getRequestURI().equals(registrationCommandURI);
 

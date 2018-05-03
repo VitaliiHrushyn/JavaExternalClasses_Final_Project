@@ -1,8 +1,8 @@
 package ua.training.repairagency.model.dao.impl;
 
-import static ua.training.repairagency.model.constants.ColumnConstants.*;
-import static ua.training.repairagency.model.constants.QueryConstants.*;
-import static ua.training.repairagency.model.constants.ResourceConstants.*;
+import ua.training.repairagency.model.constants.Column;
+import ua.training.repairagency.model.constants.Query;
+import ua.training.repairagency.model.constants.Resource;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,8 +18,8 @@ import ua.training.repairagency.model.entities.user.UserRole;
 
 public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 	
-	private ResourceBundle columnBundle = ResourceBundle.getBundle(RESOURCE_DB_COLUMNS);
-	private ResourceBundle queryBundle = ResourceBundle.getBundle(RESOURCE_DB_QUERIES);
+	private ResourceBundle columnBundle = ResourceBundle.getBundle(Resource.DB_COLUMNS);
+	private ResourceBundle queryBundle = ResourceBundle.getBundle(Resource.DB_QUERIES);
 		
 	public UserDAOimpl(Connection connection) {
 		super(connection);
@@ -27,27 +27,27 @@ public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 		
 	@Override
 	public String getAllQuery() {
-		return queryBundle.getString(USER_GET_ALL);
+		return queryBundle.getString(Query.USER_GET_ALL);
 	}
 	
 	@Override
 	public String getByIDQuery() {
-		return queryBundle.getString(USER_GET_BY_ID);
+		return queryBundle.getString(Query.USER_GET_BY_ID);
 	}
 	
 	@Override
 	String getByParamQuery() {
-		return queryBundle.getString(USER_GET_BY_LOGIN);
+		return queryBundle.getString(Query.USER_GET_BY_LOGIN);
 	}
 	
 	@Override
 	public String getDeleteQuery() {
-		return queryBundle.getString(USER_DELETE);
+		return queryBundle.getString(Query.USER_DELETE);
 	}	
 	
 	@Override
 	public String getCreateQuery() {
-		return queryBundle.getString(USER_INSERT);
+		return queryBundle.getString(Query.USER_INSERT);
 	}
 		
 	@Override
@@ -62,7 +62,7 @@ public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 	
 	@Override
 	public String getUpdateQuery() {
-		return queryBundle.getString(USER_UPDATE);
+		return queryBundle.getString(Query.USER_UPDATE);
 	}
 	
 	@Override
@@ -79,13 +79,13 @@ public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 	@Override
 	public User extractEntity(ResultSet rs, boolean eager) throws SQLException {
 		User user = new UserImpl();
-		user.setId(rs.getInt(columnBundle.getString(USER_ID)));
-		user.setRole(UserRole.valueOf(rs.getString(columnBundle.getString(USER_ROLE))));
-		user.setName(rs.getString(columnBundle.getString(USER_NAME)));
-		user.setLogin(rs.getString(columnBundle.getString(USER_LOGIN)));
-		user.setPassword(rs.getString(columnBundle.getString(USER_PASSWORD)));
-		user.setEmail(rs.getString(columnBundle.getString(USER_EMAIL)));
-		user.setPhone(rs.getString(columnBundle.getString(USER_PHONE)));		
+		user.setId(rs.getInt(columnBundle.getString(Column.USER_ID)));
+		user.setRole(UserRole.valueOf(rs.getString(columnBundle.getString(Column.USER_ROLE))));
+		user.setName(rs.getString(columnBundle.getString(Column.USER_NAME)));
+		user.setLogin(rs.getString(columnBundle.getString(Column.USER_LOGIN)));
+		user.setPassword(rs.getString(columnBundle.getString(Column.USER_PASSWORD)));
+		user.setEmail(rs.getString(columnBundle.getString(Column.USER_EMAIL)));
+		user.setPhone(rs.getString(columnBundle.getString(Column.USER_PHONE)));		
 		if (eager) {
 //TODO				user.setApplications();
 		}

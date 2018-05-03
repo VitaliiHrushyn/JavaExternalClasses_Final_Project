@@ -1,6 +1,6 @@
 package ua.training.repairagency.model.constants;
 
-public interface ColumnConstants {
+public interface Column {
 	
 	/* 
 	 * users table 
