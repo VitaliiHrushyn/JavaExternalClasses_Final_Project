@@ -66,5 +66,5 @@ public interface URL {
 	 * WEB FILTERS
 	 */
 	String FILTER_PATTERN = "/*";
-	String DISABLE_CACHE_FILTER_PATTERN = "/app/*";
+	String DISABLE_CACHE_FILTER_PATTERN = "/*";
 }

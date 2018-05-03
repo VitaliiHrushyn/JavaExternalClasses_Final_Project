@@ -62,7 +62,4 @@ public class CommandUtils {
 		return user;
 	}
 	
-	public static String concatMessage(String message, String string) {
-		return message.concat(", ").concat(string);
-	}
 }

@@ -40,13 +40,15 @@
         <hr>
         <br>
         <b><fmt:message key="text.registration" /></b>
-		<c:set var="regmessage" value="${requestScope.regmessage}"/>
+		<c:set var="regmessage" value="${requestScope.regmessages}"/>
 		
 		<p>... 
 			<font color="red">
-				<c:if test = "${regmessage != null}" >
-					<fmt:message key="${regmessage}"/>
-				</c:if>
+				<c:forEach var="regmessage" items="${regmessages}">
+					<c:if test = "${regmessage != null}" >
+						<fmt:message key="${regmessage}"/>
+					</c:if>
+				</c:forEach>
 			</font>
 		</p>
         

@@ -18,6 +18,7 @@
 		<fmt:message key="text.message" />: ${message}
 		<br>
 		<p>result: ${requestScope.command_result}</p>
+		<p>user: ${sessionScope.user }</p>
 	</div>
 </body>
 </html>
