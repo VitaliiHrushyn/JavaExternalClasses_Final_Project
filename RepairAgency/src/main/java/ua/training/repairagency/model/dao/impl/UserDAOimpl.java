@@ -54,10 +54,11 @@ public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 	public void fillCreateStatement(PreparedStatement statement, User user) throws SQLException {
 		statement.setString(1, user.getRole().toString());
 		statement.setString(2, user.getName());
-		statement.setString(3, user.getLogin());
-		statement.setString(4, user.getPassword());
-		statement.setString(5, user.getEmail());
-		statement.setString(6, user.getPhone());
+		statement.setString(3, user.getSurname());
+		statement.setString(4, user.getLogin());
+		statement.setString(5, user.getPassword());
+		statement.setString(6, user.getEmail());
+		statement.setString(7, user.getPhone());
 	}
 	
 	@Override
@@ -69,11 +70,12 @@ public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 	public void fillUpdateStatement(PreparedStatement statement, User user) throws SQLException {
 		statement.setString(1, user.getRole().toString());
 		statement.setString(2, user.getName());
-		statement.setString(3, user.getLogin());
-		statement.setString(4, user.getPassword());
-		statement.setString(5, user.getEmail());
-		statement.setString(6, user.getPhone());
-		statement.setInt(7, user.getId());		
+		statement.setString(3, user.getSurname());
+		statement.setString(4, user.getLogin());
+		statement.setString(5, user.getPassword());
+		statement.setString(6, user.getEmail());
+		statement.setString(7, user.getPhone());
+		statement.setInt(8, user.getId());		
 	}
 	
 	@Override
@@ -82,6 +84,7 @@ public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 		user.setId(rs.getInt(columnBundle.getString(Column.USER_ID)));
 		user.setRole(UserRole.valueOf(rs.getString(columnBundle.getString(Column.USER_ROLE))));
 		user.setName(rs.getString(columnBundle.getString(Column.USER_NAME)));
+		user.setSurname(rs.getString(columnBundle.getString(Column.USER_SURNAME)));
 		user.setLogin(rs.getString(columnBundle.getString(Column.USER_LOGIN)));
 		user.setPassword(rs.getString(columnBundle.getString(Column.USER_PASSWORD)));
 		user.setEmail(rs.getString(columnBundle.getString(Column.USER_EMAIL)));

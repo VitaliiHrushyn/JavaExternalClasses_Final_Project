@@ -52,6 +52,7 @@ public class CommandUtils {
 		User user = new UserImpl();
 		user.setRole(UserRole.valueOf(request.getParameter(ROLE)));
 		user.setName(request.getParameter(NAME));
+		user.setSurname(request.getParameter(SURNAME));
 		user.setLogin(request.getParameter(REGISTRATION_LOGIN));
 		user.setPassword(doCrypt(request.getParameter(REGISTRATION_PASSWORD)));
 		user.setEmail(request.getParameter(EMAIL));
@@ -59,5 +60,9 @@ public class CommandUtils {
 		user.setApplications(null);
 		
 		return user;
+	}
+	
+	public static String concatMessage(String message, String string) {
+		return message.concat(", ").concat(string);
 	}
 }

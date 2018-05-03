@@ -13,10 +13,12 @@ public interface Column {
 	String USER_ID = "user.id";
 	String USER_ROLE = "user.role";
 	String USER_NAME = "user.name";
+	String USER_SURNAME = "user.surname";
 	String USER_LOGIN = "user.login";
 	String USER_PASSWORD = "user.password";
 	String USER_EMAIL = "user.email";
 	String USER_PHONE = "user.phone";
+	
 	
 	
 	

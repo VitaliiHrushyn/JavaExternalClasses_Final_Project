@@ -32,8 +32,7 @@
 					<fmt:message key="${loginmessage}"/>
 				</c:if>		
          	</font>
-         </span> 
-           
+         </span>           
         </form>    
 		
         <br>
@@ -71,6 +70,9 @@
             <br>
             <label for="name"><fmt:message key="register.label.name" />:</label>
             <input type="text" id="name" name="name">
+            <br>
+            <label for="surname"><fmt:message key="register.label.surname" />:</label>
+            <input type="text" id="surname" name="surname">
             <br>
             <label for="email"><fmt:message key="register.label.email" />:</label>
             <input type="text" id="email" name="email">

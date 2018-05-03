@@ -13,7 +13,11 @@ public interface User extends Entity {
 	
 	String getName();
 	
-	void setName(String name);
+	void setName(String surname);
+	
+	String getSurname();
+	
+	void setSurname(String surname);
 	
 	String getLogin();
 	

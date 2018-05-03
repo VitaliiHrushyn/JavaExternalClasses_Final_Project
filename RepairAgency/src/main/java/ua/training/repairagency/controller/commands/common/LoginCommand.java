@@ -16,7 +16,7 @@ import ua.training.repairagency.model.services.GetUserByLoginService;
 
 public class LoginCommand implements Command {
 	
-	private String loginMessage;
+	private String message;
 	private ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME);
 
 	@Override
@@ -34,16 +34,16 @@ public class LoginCommand implements Command {
 				request.getSession().setAttribute(USER, user);
 			}
 		}		
-		request.setAttribute(LOGIN_MESSAGE, loginMessage);
+		request.setAttribute(LOGIN_MESSAGE, message);
 		return path;
 	}
 
 	private boolean validateLogin(String login) {
 		if (login == null || login.isEmpty()) {
-			loginMessage = Message.LOGIN_EMPTY;
+			message = Message.LOGIN_EMPTY;
 			return false;
 		} else if(!login.matches(regexBundle.getString(RegEx.LOGIN))) {
-			loginMessage = Message.LOGIN_INVALID;
+			message = Message.LOGIN_INVALID;
 			return false;
 		}
 		return true;
@@ -53,7 +53,7 @@ public class LoginCommand implements Command {
 		if(user != null && user.getPassword().equals(CommandUtils.doCrypt(password))) {
 			return true;
 		} else {
-			loginMessage = Message.AUTH_FAIL;
+			message = Message.AUTH_FAIL;
 			return false;
 		}
 	}

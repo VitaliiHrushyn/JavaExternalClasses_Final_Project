@@ -12,6 +12,7 @@ public interface AttributeOrParam {
 	String PHONE = "phone";
 	String ROLE = "role";
 	String NAME = "name";
+	String SURNAME = "surname";
 	String REGISTRATION_LOGIN = "reglogin";
 	String REGISTRATION_PASSWORD = "regpassword";
 	String CONFIRM_PASSWORD = "confirmpassword";

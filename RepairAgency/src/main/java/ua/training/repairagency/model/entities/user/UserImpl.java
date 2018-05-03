@@ -8,6 +8,7 @@ public class UserImpl extends AbstractEntity implements User {
 	
 	private UserRole role;
 	private String name;
+	private String surname;
 	private String login;
 	private String password;
 	private String email;
@@ -32,6 +33,16 @@ public class UserImpl extends AbstractEntity implements User {
 	@Override
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@Override
+	public String getSurname() {
+		return surname;
+	}
+
+	@Override
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	@Override
