@@ -21,15 +21,11 @@ public class RegistrationCommand implements Command {
 	private List<String> messages;
 	private ResourceBundle regexBundle;
 	
-	public RegistrationCommand() {
-		super();
-		this.messages = new ArrayList<>();
-		this.regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME);
-	}
-
 	@Override
 	public String execute(HttpServletRequest request) {
 		
+		this.messages = new ArrayList<>();
+		this.regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, CommandUtils.getLocale(request));
 		HttpSession session = request.getSession();		
 		User user = null;		
 		String path = URL.LOGIN_PAGE;
@@ -67,8 +63,7 @@ public class RegistrationCommand implements Command {
 			return false;
 		}
 		boolean check = true;
-		messages.clear();
-		
+				
 		if (!login.matches(regexBundle.getString(RegEx.LOGIN))) {
 			messages.add(Message.LOGIN_INVALID);
 			messages.add(Message.COMMA);

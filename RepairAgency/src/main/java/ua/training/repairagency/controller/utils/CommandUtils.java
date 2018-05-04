@@ -2,7 +2,10 @@ package ua.training.repairagency.controller.utils;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -61,5 +64,24 @@ public class CommandUtils {
 		
 		return user;
 	}
-	
+	/*
+	 * If request doesn't contain param "language" this param is got from session.
+	 * It isn't possible to get param "language" from session every time, 
+	 * because session fall behind by one step when language is changed on jsp page,
+	 * so it is necessary (in session case) reload (F5) page every time after change language.
+	 * When request doesn't contain param "language" it is also impossible to use default language, 
+	 * because every time when page with language feature is used request looses language param 
+	 * and default language instead of chosen one is set.
+	 * @param request
+	 * @return Locale
+	 */
+	public static Locale getLocale(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String language = request.getParameter("language") != null ? 
+				request.getParameter("language") : session.getAttribute("language").toString();
+//				System.out.println("session: "+session.getAttribute("language"));
+//				System.out.println("request: "+request.getParameter("language"));
+//				System.out.println("locale: "+new Locale(language));
+		return new Locale(language);
+	}
 }

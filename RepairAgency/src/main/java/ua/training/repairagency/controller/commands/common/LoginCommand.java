@@ -17,11 +17,12 @@ import ua.training.repairagency.model.services.GetUserByLoginService;
 public class LoginCommand implements Command {
 	
 	private String message;
-	private ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME);
+	private ResourceBundle regexBundle;
 
 	@Override
 	public String execute(HttpServletRequest request) {
 		
+		this.regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, CommandUtils.getLocale(request));
 		String login = request.getParameter(LOGIN);
 		String password = request.getParameter(PASSWORD);		
 		String path = URL.LOGIN_PAGE;
