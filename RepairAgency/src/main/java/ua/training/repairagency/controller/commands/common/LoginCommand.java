@@ -12,7 +12,7 @@ import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
-import ua.training.repairagency.model.services.GetUserByLoginService;
+import ua.training.repairagency.model.services.interfaces.*;
 
 public class LoginCommand implements Command {
 	
@@ -29,7 +29,7 @@ public class LoginCommand implements Command {
 		
 		//TODO : use Optional to avoid checking for a null
 		if (validateLogin(login)) {			
-			User user = new GetUserByLoginService(login).execute();			
+			User user = ServiceFactory.getInstance().getFetchUserByLoginService().fetch(login);			
 			if (checkUserPassword(user, password)) {
 				path = CommandUtils.getPathFromRole(user.getRole());
 				request.getSession().setAttribute(USER, user);

@@ -1,23 +1,14 @@
-package ua.training.repairagency.model.services;
+package ua.training.repairagency.model.services.impl;
 
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
 import ua.training.repairagency.model.entities.user.User;
+import ua.training.repairagency.model.services.interfaces.FetchUserByLogin;
 
 //TODO decide if implementation (and Service interface at all) needed
 //TODO properly
-public class GetUserByLoginService extends AbstractService {
-	
-	String login;	
-	
-	public GetUserByLoginService(String login) {
-		super();
-		this.login = login;
-	}
+public class FetchUserByLoginService extends AbstractService implements FetchUserByLogin {	
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public User execute() {
-		
+	public User fetch(String login) {
 		User user = null;
 		try(UserDAO dao = daoFactory.createUserDAO()){
 			user = dao.getByParam(login);
