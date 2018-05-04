@@ -72,16 +72,29 @@ public class CommandUtils {
 	 * When request doesn't contain param "language" it is also impossible to use default language, 
 	 * because every time when page with language feature is used request looses language param 
 	 * and default language instead of chosen one is set.
+	 * When session also is null - set language from browser (from request), 
+	 * if system doesn't have such language locale - is used default locale.
 	 * @param request
 	 * @return Locale
 	 */
 	public static Locale getLocale(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		String language = request.getParameter("language") != null ? 
-				request.getParameter("language") : session.getAttribute("language").toString();
-//				System.out.println("session: "+session.getAttribute("language"));
-//				System.out.println("request: "+request.getParameter("language"));
-//				System.out.println("locale: "+new Locale(language));
+		HttpSession session = request.getSession();		
+//		System.out.println("session: "+session.getAttribute("language"));
+//		System.out.println("request: "+request.getParameter("language"));		
+		String language;
+		if (request.getParameter("language") != null) {
+			language = request.getParameter("language");
+		}
+		else if (session.getAttribute("language") != null) {
+			language = session.getAttribute("language").toString();
+		}
+		else {
+			language = request.getLocale().getLanguage();
+			session.setAttribute("language", language);			
+		}		
+//		System.out.println("language: "+language);
+//		System.out.println("locale: "+new Locale(language));
+//		System.out.println("----------");		
 		return new Locale(language);
 	}
 }
