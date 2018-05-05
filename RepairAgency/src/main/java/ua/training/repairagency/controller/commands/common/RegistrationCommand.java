@@ -24,7 +24,7 @@ public class RegistrationCommand implements Command {
 		
 		if (CommandUtils.checkRegistrationCredentials(request, messages)) {				
 			try {
-				User user = ServiceFactory.getInstance().getUserService().insertUser(CommandUtils.createUser(request));				
+				User user = ServiceFactory.getInstance().getUserService().insert(CommandUtils.createUser(request));				
 				request.getSession().setAttribute(USER, user);
 				path = CommandUtils.getUserPage(user);
 			} catch (NotUniqueFieldValueException e) {

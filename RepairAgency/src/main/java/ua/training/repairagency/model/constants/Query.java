@@ -10,6 +10,14 @@ public interface Query {
 	String USER_UPDATE = "user.update";
 	String USER_GET_BY_LOGIN = "user.get.by.login";
 	
+	/* application queries */
+	String APPLICATION_GET_BY_ID = "application.get.by.id";
+	String APPLICATION_GET_ALL = "application.get.all";
+	String APPLICATION_DELETE = "application.delete";	
+	String APPLICATION_INSERT = "application.insert";
+	String APPLICATION_UPDATE = "application.update";
+//	String APPLICATION_GET_BY_LOGIN = "user.get.by.login";
+	
 			
 			
 	

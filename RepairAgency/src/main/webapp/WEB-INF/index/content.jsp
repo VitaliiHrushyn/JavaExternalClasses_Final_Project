@@ -12,7 +12,7 @@
 <title>default content</title>
 </head>
 <body>	
-	<p>INDEX PAGE</p>
+	<p><fmt:message key="text.index.head" /></p>
 	<p><fmt:message key="text.index.content" /></p>
 	
 </body>

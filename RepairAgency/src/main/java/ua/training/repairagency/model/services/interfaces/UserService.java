@@ -5,8 +5,10 @@ import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 
 public interface UserService {
 	
-	User getUserByLogin(String login);
+	User getById(int userId);
 	
-	User insertUser(User user) throws NotUniqueFieldValueException;
+	User getByLogin(String login);
+	
+	User insert(User user) throws NotUniqueFieldValueException;
 
 }

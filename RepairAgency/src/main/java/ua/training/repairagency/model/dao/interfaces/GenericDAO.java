@@ -17,6 +17,6 @@ public interface GenericDAO<T> extends AutoCloseable {
 
 	T delete(int id);
 	
-	T getByParam(String value);
+	T getByParam(String name, String value);
 
 }

@@ -2,26 +2,20 @@ package ua.training.repairagency.model.dao.impl;
 
 import ua.training.repairagency.model.constants.Column;
 import ua.training.repairagency.model.constants.Query;
-import ua.training.repairagency.model.constants.Resource;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.ResourceBundle;
 
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserImpl;
 import ua.training.repairagency.model.entities.user.UserRole;
 
-public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
-	
-	private ResourceBundle columnBundle = ResourceBundle.getBundle(Resource.DB_COLUMNS);
-	private ResourceBundle queryBundle = ResourceBundle.getBundle(Resource.DB_QUERIES);
+public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 		
-	public UserDAOimpl(Connection connection) {
+	public UserDAOImpl(Connection connection) {
 		super(connection);
 	}
 		
@@ -36,8 +30,12 @@ public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 	}
 	
 	@Override
-	String getByParamQuery() {
-		return queryBundle.getString(Query.USER_GET_BY_LOGIN);
+	String getByParamQuery(String name) {
+		if (name.equals(Column.USER_LOGIN)) {
+			return queryBundle.getString(Query.USER_GET_BY_LOGIN);
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	@Override
@@ -89,9 +87,7 @@ public class UserDAOimpl extends AbstractDAO<User> implements UserDAO {
 		user.setPassword(rs.getString(columnBundle.getString(Column.USER_PASSWORD)));
 		user.setEmail(rs.getString(columnBundle.getString(Column.USER_EMAIL)));
 		user.setPhone(rs.getString(columnBundle.getString(Column.USER_PHONE)));		
-		if (eager) {
-//TODO				user.setApplications();
-		}
+		
 		return user;
 	}
 

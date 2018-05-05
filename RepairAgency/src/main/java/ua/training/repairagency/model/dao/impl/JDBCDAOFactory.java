@@ -6,6 +6,9 @@ import javax.sql.DataSource;
 
 import ua.training.repairagency.model.dao.ConnectionPoolHolder;
 import ua.training.repairagency.model.dao.DAOFactory;
+import ua.training.repairagency.model.dao.interfaces.ApplicationDAO;
+import ua.training.repairagency.model.dao.interfaces.HistoryRecordDAO;
+import ua.training.repairagency.model.dao.interfaces.TestimonialDAO;
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
 
 public class JDBCDAOFactory extends DAOFactory {
@@ -20,21 +23,24 @@ public class JDBCDAOFactory extends DAOFactory {
 			throw new RuntimeException(e);
 		}
 	}
-// TODO
+
 	@Override
 	public UserDAO createUserDAO() {
-		return new UserDAOimpl(getConnection());
+		return new UserDAOImpl(getConnection());
 	}
-//
-//	@Override
-//	public DriverDAO createDriverDAO() {
-//		return new DriverDAO(getConnection());
-//	}
-//	
-//	@Override
-//	public CarDriverDAO createCarDriverDAO() {
-//		return new CarDriverDAO(getConnection());
-//	}
+
+	@Override
+	public ApplicationDAO createApplicationDAO() {
+		return new ApplicationDAOImpl(getConnection());
+	}
+	@Override
+	public TestimonialDAO createTestimonialDAO() {
+		return new TestimonialDAOImpl(getConnection());
+	}
+	@Override
+	public HistoryRecordDAO createHistoryRecordDAO() {
+		return new HistoryRecordDAOImpl(getConnection());
+	}
 
 }
  

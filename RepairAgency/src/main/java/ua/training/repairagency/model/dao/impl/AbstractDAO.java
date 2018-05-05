@@ -9,12 +9,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 
+import ua.training.repairagency.model.constants.Resource;
 import ua.training.repairagency.model.dao.interfaces.GenericDAO;
 import ua.training.repairagency.model.entities.Entity;
 
 public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {	
 	
+	protected ResourceBundle columnBundle = ResourceBundle.getBundle(Resource.DB_COLUMNS);
+	protected ResourceBundle queryBundle = ResourceBundle.getBundle(Resource.DB_QUERIES);
 	private Connection connection;
 	
 	public AbstractDAO(Connection connection) {
@@ -31,7 +35,7 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 	public abstract String getByIDQuery();
 	public abstract String getDeleteQuery();
 	public abstract String getAllQuery();
-	abstract String getByParamQuery();
+	abstract String getByParamQuery(String name);
 
 //	public abstract String getJoinQuery();
 	
@@ -126,9 +130,9 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 	}
 	
 	@Override	
-	public T getByParam(String value) {
+	public T getByParam(String name, String value) {
 		T entity = null;		
-		try(PreparedStatement statement = connection.prepareStatement(getByParamQuery())) {
+		try(PreparedStatement statement = connection.prepareStatement(getByParamQuery(name))) {
 			statement.setString(1, value);
 			ResultSet rs = statement.executeQuery();
 			if (rs.next()) {
