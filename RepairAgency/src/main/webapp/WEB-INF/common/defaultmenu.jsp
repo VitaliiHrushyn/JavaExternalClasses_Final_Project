@@ -14,9 +14,9 @@
 		<div>
 		MENU:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/index">Home</a> | 
-		<a href = "${pageContext.request.contextPath}/app/login">Login</a> | 
-       	<a href = "${pageContext.request.contextPath}/app/registration">Registration</a>
+		<a href = "${pageContext.request.contextPath}/app/index"><fmt:message key="text.menu.home" /></a> | 
+		<a href = "${pageContext.request.contextPath}/app/login"><fmt:message key="text.menu.login" /></a> | 
+       	<a href = "${pageContext.request.contextPath}/app/registration"><fmt:message key="text.menu.registration" /></a>
        	<br>
        	<br>
 	</div>

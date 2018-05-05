@@ -19,7 +19,7 @@
         <b><fmt:message key="text.registration" /></b>
 		<c:set var="regmessage" value="${requestScope.regmessages}"/>
 		
-		<p>... 
+		<p>|  
 			<font color="red">
 				<c:forEach var="regmessage" items="${regmessages}">
 					<fmt:message key="${regmessage}"/>.

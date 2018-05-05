@@ -12,17 +12,16 @@
 <title>default content</title>
 </head>
 <body>
-	
+	<br>
 	<div>
 		<b><fmt:message key="text.login" /></b>
-		
+		<br>
+		<br>
         <form method="post" action="${pageContext.request.contextPath}/app/login">
            
-            <input type="text" id="login" name="login" required placeholder="<fmt:message key="login.label.login" />">
-           
-          
+            <input type="text" id="login" name="login" required placeholder="<fmt:message key="login.label.login" />">  
             <input type="password" id="password" name="password" required placeholder="<fmt:message key="login.label.password" />">
-           
+
             <fmt:message key="login.button.submit" var="buttonValue" />
             <input type="submit" name="submit" value="${buttonValue}">
          
@@ -33,14 +32,8 @@
 				</c:forEach>
 			</font>
          </span>           
-        </form>    
-		
-        <br>
-        <hr>
-        <hr>
-        <br>
-        
-        <br>		 	
+        </form>     	
 	</div>
+	<br>
 </body>
 </html>
