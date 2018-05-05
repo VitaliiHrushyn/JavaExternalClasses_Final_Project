@@ -17,13 +17,7 @@ public abstract class ServiceFactory {
 		}
 		return serviceFactory;
 	}
-	
-//	public abstract Service createGetAllAppsService();
-//	public abstract Service createGetAllWorkmenService();
-	
-	public abstract FetchUserByLogin getFetchUserByLoginService();
-	public abstract InsertUser getInsertUserService();
-	
 
-
+	public abstract UserService getUserService();
+	
 }

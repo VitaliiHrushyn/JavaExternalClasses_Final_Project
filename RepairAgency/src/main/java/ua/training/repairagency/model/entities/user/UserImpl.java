@@ -1,4 +1,5 @@
 package ua.training.repairagency.model.entities.user;
+
 import java.util.List;
 
 import ua.training.repairagency.model.entities.AbstractEntity;
@@ -15,89 +16,73 @@ public class UserImpl extends AbstractEntity implements User {
 	private String phone;
 	private List<Application> applications;
 
-	@Override
+	
 	public UserRole getRole() {
 		return role;
 	}
-
-	@Override
+	
 	public void setRole(UserRole role) {
 		this.role = role;
 	}
-
-	@Override
+	
 	public String getName() {
 		return name;
 	}
-
-	@Override
+	
 	public void setName(String name) {
 		this.name = name;
-	}
+	}	
 	
-	@Override
 	public String getSurname() {
 		return surname;
 	}
-
-	@Override
+	
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-
-	@Override
+	
 	public String getLogin() {
 		return login;
 	}
-
-	@Override
+	
 	public void setLogin(String login) {
 		this.login = login;
 	}
-
-	@Override
+	
 	public String getPassword() {
 		return password;
 	}
-
-	@Override
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	@Override
+	
 	public String getEmail() {
 		return email;
 	}
-
-	@Override
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	@Override
+	
 	public String getPhone() {
 		return phone;
 	}
-
-	@Override
+	
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	@Override
+	
 	public List<Application> getApplications() {
 		return applications;
 	}
-
-	@Override
+	
 	public void setApplications(List<Application> applications) {
 		this.applications = applications;
 	}
-
-	@Override
+	
 	public String toString() {
-		return "UserImpl [role=" + role + ", name=" + name + ", login=" + login + ", password=" + password + ", email="
+		return "UserImpl [role=" + role + ", name=" + name + ", surname=" + surname + ", login=" + login + ", password=" + password + ", email="
 				+ email + ", phone=" + phone + ", applications=" + applications + "]";
 	}
 	

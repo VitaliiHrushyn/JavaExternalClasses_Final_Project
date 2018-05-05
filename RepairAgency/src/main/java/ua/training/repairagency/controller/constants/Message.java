@@ -19,6 +19,6 @@ public interface Message {
 	String SURNAME_INVALID = "message.surname.invalid";
 	String EMAIL_INVALID = "message.email.invalid";
 	String PHONE_INVALID = "message.phone.invalid";
-	String COMMA = "message.comma";
+	String POINT = "message.comma";
 	
 }

@@ -12,7 +12,7 @@ public class LogoutCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request) {		
 		request.getSession().setAttribute(USER, null);
-		return URL.REDIRECT_LOGIN_COMMAND;
+		return URL.REDIRECT_INDEX_COMMAND;
 	}
 
 }

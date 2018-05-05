@@ -30,26 +30,27 @@ public class RoleControlFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
 
         String logoutCommandURI = request.getContextPath() + URL.LOGOUT_COMMAND;
-        String error404commandURI = request.getContextPath() + URL.ERROR_404_COMMAND;
 
-        boolean isLogoutCommand = request.getRequestURI().equals(logoutCommandURI);
-        boolean isError404Command = request.getRequestURI().equals(error404commandURI);
-        
-        boolean isURIvalid = (validateRoleURI(request) || isLogoutCommand || isError404Command);
+        boolean isLogoutCommand = request.getRequestURI().equals(logoutCommandURI);        
+        boolean isURIvalid = (checkUserAndURI(request) || isLogoutCommand);
 
         if (isURIvalid) {
         	chain.doFilter(request, response);        	
         } else {   
-        	response.sendRedirect(error404commandURI);
+        	response.sendRedirect(logoutCommandURI);
         } 
     }	
 
-	private boolean validateRoleURI(HttpServletRequest request) {
+	private boolean checkUserAndURI(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute(USER);
-		if (user != null) {
+		/* 
+		 * This filter doesn't act on unlogged users 
+		 */
+		if (user == null) {
+			return true; 
+		} else {
 			return request.getRequestURI().contains(user.getRole().toString().toLowerCase());
 		}
-		return true;
 	}
 
 	@Override

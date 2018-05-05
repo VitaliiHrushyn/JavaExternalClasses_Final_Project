@@ -11,5 +11,14 @@
 		<title></title>
 	</head>
 	<body>
+		<div>
+		MENU:
+		<br>
+		<a href = "${pageContext.request.contextPath}/app/index">Home</a> | 
+		<a href = "${pageContext.request.contextPath}/app/login">Login</a> | 
+       	<a href = "${pageContext.request.contextPath}/app/registration">Registration</a>
+       	<br>
+       	<br>
+	</div>
 	</body>
 </html>

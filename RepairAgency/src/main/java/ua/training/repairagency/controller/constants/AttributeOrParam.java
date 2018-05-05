@@ -18,7 +18,7 @@ public interface AttributeOrParam {
 	String CONFIRM_PASSWORD = "confirmpassword";
 	String REGISTRATION_MESSAGES = "regmessages";
 	
-	String LOGIN_MESSAGE = "loginmessage";
+	String LOGIN_MESSAGES = "loginmessages";
 	String AUTH_MESSAGE = "authmessage";
 	String COMMAND_RESULT_PARAM = "command_result";
 	

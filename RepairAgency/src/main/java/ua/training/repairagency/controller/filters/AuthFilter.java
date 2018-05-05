@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import ua.training.repairagency.controller.constants.URL;
 
 @WebFilter(urlPatterns=URL.FILTER_PATTERN)
-public class GeneralAuthFilter implements Filter {
+public class AuthFilter implements Filter {
 
 	@Override
 	public void destroy() {}
@@ -30,17 +30,19 @@ public class GeneralAuthFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
         
+        String indexCommandURI = request.getContextPath() + URL.INDEX_COMMAND;
         String loginCommandURI = request.getContextPath() + URL.LOGIN_COMMAND;
         String registrationCommandURI = request.getContextPath() + URL.REGISTRATION_COMMAND;        
 
         boolean isLoggedIn = (session != null) && (session.getAttribute(USER) != null);
+        boolean isIndexCommand = request.getRequestURI().equals(indexCommandURI);
         boolean isLoginCommand = request.getRequestURI().equals(loginCommandURI);
         boolean isRegistrationCommand = request.getRequestURI().equals(registrationCommandURI);
 
-        if (isLoggedIn || isLoginCommand || isRegistrationCommand) {
+        if (isLoggedIn || isLoginCommand || isRegistrationCommand || isIndexCommand) {
         	chain.doFilter(request, response);
         } else {
-            response.sendRedirect(loginCommandURI);
+            response.sendRedirect(indexCommandURI);
         }
     }		
 

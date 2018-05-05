@@ -10,9 +10,9 @@ public interface URL {
 	String CONTEXT_ADDON = "/app/";
 	String EMPTY = "";
 	String REDIRECT = "redirect:";
-	String EXCEPTION = "manager/exception";
 	String LOGOUT = "logout";
 	String LOGIN = "login";
+	String INDEX = "index";
 	String REGISTRATION = "registration";
 	String ERROR_404 = "404";
 	
@@ -39,8 +39,12 @@ public interface URL {
 	 */
 	/* common */
 	String PAGE_404 = "/WEB-INF/404.jsp";
-	String LOGIN_PAGE = "/WEB-INF/default/login.jsp";
+	String LOGIN_PAGE = "/WEB-INF/login/login.jsp";
+	String INDEX_PAGE = "/WEB-INF/index/index.jsp";
+	String REGISTRATION_PAGE = "/WEB-INF/registration/registration.jsp";
 	String REDIRECT_LOGIN_COMMAND = "redirect:/app/login";
+	String REDIRECT_INDEX_COMMAND = "redirect:/app/index";
+	String INDEX_COMMAND = "/app/index";
 	String LOGIN_COMMAND = "/app/login";
 	String LOGOUT_COMMAND = "/app/logout";
 	String ERROR_404_COMMAND = "/app/404";

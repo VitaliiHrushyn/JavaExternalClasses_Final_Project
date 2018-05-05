@@ -2,12 +2,12 @@ package ua.training.repairagency.controller.commands.common;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
-import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.controller.constants.RegEx;
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.utils.CommandUtils;
@@ -16,47 +16,34 @@ import ua.training.repairagency.model.services.interfaces.*;
 
 public class LoginCommand implements Command {
 	
-	private String message;
-	private ResourceBundle regexBundle;
-
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		this.regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, CommandUtils.getLocale(request));
-		String login = request.getParameter(LOGIN);
-		String password = request.getParameter(PASSWORD);		
-		String path = URL.LOGIN_PAGE;
+		List<String> messages = new ArrayList<>();	
+		String path;
 		
-		//TODO : use Optional to avoid checking for a null
-		if (validateLogin(login)) {			
-			User user = ServiceFactory.getInstance().getFetchUserByLoginService().fetch(login);			
-			if (checkUserPassword(user, password)) {
-				path = CommandUtils.getPathFromRole(user.getRole());
-				request.getSession().setAttribute(USER, user);
-			}
-		}		
-		request.setAttribute(LOGIN_MESSAGE, message);
+		//TODO 
+		
+		if (CommandUtils.checkLoginCredentials(request, messages)) {			
+			User user = getUserIfExists(request, messages);
+			path = CommandUtils.getUserPage(user);
+			request.getSession().setAttribute(USER, user);
+		} else {
+			path = URL.LOGIN_PAGE;
+		}
+		request.setAttribute(LOGIN_MESSAGES, messages);
 		return path;
 	}
 
-	private boolean validateLogin(String login) {
-		if (login == null || login.isEmpty()) {
-			message = Message.LOGIN_EMPTY;
-			return false;
-		} else if(!login.matches(regexBundle.getString(RegEx.LOGIN))) {
-			message = Message.LOGIN_INVALID;
-			return false;
-		}
-		return true;
-	}
-	
-	private boolean checkUserPassword(User user, String password) {
-		if(user != null && user.getPassword().equals(CommandUtils.doCrypt(password))) {
-			return true;
+	private User getUserIfExists(HttpServletRequest request, List<String> messages) {
+		User user = ServiceFactory.getInstance().getUserService().getUserByLogin((request.getParameter(LOGIN)));
+		if (user != null && user.getPassword().equals(CommandUtils.doCrypt(request.getParameter(PASSWORD)))) {
+			return user;
 		} else {
-			message = Message.AUTH_FAIL;
-			return false;
-		}
+			messages.add(Message.AUTH_FAIL);
+			return null;
+		}		
 	}
+
 
 }
