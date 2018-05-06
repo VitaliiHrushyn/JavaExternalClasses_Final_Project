@@ -13,7 +13,7 @@
     
     	<jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
         
-    	<jsp:include page="/WEB-INF/common/defaultmenu.jsp"></jsp:include>
+    	<jsp:include page="/WEB-INF/default/menu.jsp"></jsp:include>
     	
     	<jsp:include page="content.jsp"></jsp:include>
         

@@ -21,11 +21,15 @@
             </fieldset>
         </form>
         <div>
-        	<h2>
-        		<fmt:message key="text.greatings" />, 
-        		<c:if test="${user.name != null}"> ${user.name}! </c:if>
-        		<c:if test="${user.name == null}"> <fmt:message key="text.guest.name" />! </c:if>
-        	</h2>
+        	<c:if test="${user.name != null}">
+	        	<h2><fmt:message key="text.greatings" />, ${user.name}!</h2>
+	        	<a href = "${pageContext.request.contextPath}/app/logout">Logout</a> 
+        	</c:if>
+        	<c:if test="${user.name == null}"> 
+        		<h2><fmt:message key="text.greatings" />, <fmt:message key="text.guest.name" />! </h2>
+        	</c:if>
+        	<br>
+        	<br>
         </div>
     </body>
 </html>

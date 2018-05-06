@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import ua.training.repairagency.model.constants.Query;
 import ua.training.repairagency.model.dao.interfaces.HistoryRecordDAO;
 import ua.training.repairagency.model.entities.historyrecord.HistoryRecord;
 
@@ -17,8 +18,7 @@ public class HistoryRecordDAOImpl extends AbstractDAO<HistoryRecord> implements 
 
 	@Override
 	public String getCreateQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return queryBundle.getString(Query.RECORD_INSERT);
 	}
 
 	@Override
@@ -29,37 +29,31 @@ public class HistoryRecordDAOImpl extends AbstractDAO<HistoryRecord> implements 
 
 	@Override
 	public String getUpdateQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public void fillUpdateStatement(PreparedStatement statement, HistoryRecord entity) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public String getByIDQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return queryBundle.getString(Query.RECORD_GET_BY_ID);
 	}
 
 	@Override
 	public String getDeleteQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public String getAllQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return queryBundle.getString(Query.RECORD_GET_ALL);
 	}
 
 	@Override
 	String getByParamQuery(String name) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

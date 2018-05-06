@@ -32,7 +32,7 @@ public class CommandUtils {
 	
 	private static String getPageFromRole(UserRole role) {
 		if (role.equals(UserRole.CUSTOMER)) {
-			return URL.REDIRECT_CUSTOMER_PAGE;
+			return URL.REDIRECT_CUSTOMER_INDEX_COMMAND;
 		}
 		if (role.equals(UserRole.MANAGER)) {
 			return URL.REDIRECT_MANAGER_PAGE;

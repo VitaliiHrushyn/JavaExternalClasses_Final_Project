@@ -12,14 +12,9 @@
 </head>
 <body>
 	<div>
-		MENU:
+		SIDE MENU:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/logout">Logout</a> | 
-		<a href = "${pageContext.request.contextPath}/app/customer/message">Message</a> | 
-       	<a href = "${pageContext.request.contextPath}/app/customer/workmen">Workmen</a> | 
-       	<a href = "${pageContext.request.contextPath}/app/customer/applications">Applications</a> | 
-       	<a href = "${pageContext.request.contextPath}/app/customer/page">Home</a>
-       	<br>
+		<a href = "${pageContext.request.contextPath}/app/customer/message">Show all messages</a>     	 
        	<br>
 	</div>
 	

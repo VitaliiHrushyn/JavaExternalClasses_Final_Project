@@ -1,6 +1,6 @@
 package ua.training.repairagency.controller.commands.customer;
 
-import static ua.training.repairagency.controller.constants.URL.CUSTOMER_PAGE;
+import static ua.training.repairagency.controller.constants.URL.CUSTOMER_INDEX_PAGE;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +13,7 @@ public class CustomerPageCommand implements Command {
 		
 		request.setAttribute("message", "CUSTOMER index message");
 
-		return CUSTOMER_PAGE;
+		return CUSTOMER_INDEX_PAGE;
 	}
 
 }

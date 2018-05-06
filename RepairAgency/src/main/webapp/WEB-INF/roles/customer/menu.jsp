@@ -6,19 +6,20 @@
 <fmt:setBundle basename="locale/messages"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title></title>
-	</head>
-	<body>
-		<div>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>customer menu</title>
+</head>
+<body>
+	<div>
 		MENU:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/index"><fmt:message key="text.menu.home" /></a> | 
-		<a href = "${pageContext.request.contextPath}/app/login"><fmt:message key="text.menu.login" /></a> | 
-       	<a href = "${pageContext.request.contextPath}/app/registration"><fmt:message key="text.menu.registration" /></a>
+		<a href = "${pageContext.request.contextPath}/app/customer/index">Profile</a> | 
+		<a href = "${pageContext.request.contextPath}/app/customer/applications">Applications</a> |
+		<a href = "${pageContext.request.contextPath}/app/customer/message">Messages</a> |      	 
        	<br>
        	<br>
 	</div>
-	</body>
+	
+</body>
 </html>

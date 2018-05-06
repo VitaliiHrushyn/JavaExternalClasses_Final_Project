@@ -7,13 +7,13 @@
 <!DOCTYPE html>
 <html lang="${language}">
     <head>
-        <title>Login page</title>
+        <title>${requestScope.user.role} page</title>
     </head>
     <body>
     
     	<jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
         
-    	<jsp:include page="/WEB-INF/common/defaultmenu.jsp"></jsp:include>
+    	<jsp:include page="/WEB-INF/roles/customer/menu.jsp"></jsp:include>
     	
     	<jsp:include page="content.jsp"></jsp:include>
         

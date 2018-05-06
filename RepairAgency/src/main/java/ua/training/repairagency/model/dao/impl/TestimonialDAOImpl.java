@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import ua.training.repairagency.model.constants.Query;
 import ua.training.repairagency.model.dao.interfaces.TestimonialDAO;
 import ua.training.repairagency.model.entities.testimonial.Testimonial;
 
@@ -17,8 +18,7 @@ public class TestimonialDAOImpl extends AbstractDAO<Testimonial> implements Test
 
 	@Override
 	public String getCreateQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
 	}
 
 	@Override
@@ -29,8 +29,7 @@ public class TestimonialDAOImpl extends AbstractDAO<Testimonial> implements Test
 
 	@Override
 	public String getUpdateQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
 	}
 
 	@Override
@@ -41,20 +40,17 @@ public class TestimonialDAOImpl extends AbstractDAO<Testimonial> implements Test
 
 	@Override
 	public String getByIDQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
 	}
 
 	@Override
 	public String getDeleteQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
 	}
 
 	@Override
 	public String getAllQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
 	}
 
 	@Override

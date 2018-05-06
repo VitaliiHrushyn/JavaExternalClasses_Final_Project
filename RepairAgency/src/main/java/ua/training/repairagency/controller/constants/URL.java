@@ -5,6 +5,26 @@ public interface URL {
 	/*
 	 * SERVLET constants
 	 */
+		
+	
+	
+	
+	/*
+	 * COMMANDS path constants
+	 */
+	/* common */
+	String PAGE_404 = "/WEB-INF/404.jsp";
+	String LOGIN_PAGE = "/WEB-INF/default/login/login.jsp";
+	String INDEX_PAGE = "/WEB-INF/default/index/index.jsp";
+	String REGISTRATION_PAGE = "/WEB-INF/default/registration/registration.jsp";
+	String REDIRECT_LOGIN_COMMAND = "redirect:/app/login";
+	String REDIRECT_INDEX_COMMAND = "redirect:/app/index";
+	String INDEX_COMMAND = "/app/index";
+	String LOGIN_COMMAND = "/app/login";
+	String LOGOUT_COMMAND = "/app/logout";
+	String ERROR_404_COMMAND = "/app/404";
+	String REDIRECT_ERROR_404_COMMAND = "redirect:/app/404";
+	String REGISTRATION_COMMAND = "/app/registration";
 	/* common */
 	String SERVLET_PATTERN = "/app/*";
 	String CONTEXT_ADDON = "/app/";
@@ -16,6 +36,12 @@ public interface URL {
 	String REGISTRATION = "registration";
 	String ERROR_404 = "404";
 	
+	
+	
+	/* manager */
+	String MANAGER_PAGE = "/WEB-INF/roles/manager/index.jsp";
+	String REDIRECT_MANAGER_PAGE = "redirect:/app/manager/page";
+	String MANAGER_PAGE_COMMAND = "/app/manager/page";
 	/* manager */
 	String MANAGER_PAGE_PATH = "manager/page";
 	String MANAGER_MESSAGE_PATH = "manager/message";
@@ -23,48 +49,34 @@ public interface URL {
 	String MANAGER_APPLICATIONS_PATH = "manager/applications";
 	String MANAGER = "manager";
 	
+	
+	
 	/* customer */
-	String CUSTOMER_PAGE_PATH = "customer/page";
+	String CUSTOMER_URL = "/WEB-INF/roles/customer/";
+	String CUSTOMER_INDEX_PAGE = CUSTOMER_URL + "index/index.jsp";	
+	String CUSTOMER_APPLICATION_PAGE = CUSTOMER_URL + "applications/index.jsp";
+	String CUSTOMER_MESSAGE_PAGE = CUSTOMER_URL + "messages/index.jsp";
+	
+	String CUSTOMER_INDEX_COMMAND = "/app/customer/index";
+	String REDIRECT_CUSTOMER_INDEX_COMMAND = REDIRECT + CUSTOMER_INDEX_COMMAND;
+	
+	/* commands path */
+	String CUSTOMER_INDEX_PATH = "customer/index";
 	String CUSTOMER_MESSAGE_PATH = "customer/message";
-	String CUSTOMER_WORKMEN_PATH = "customer/workmen";
+	String CUSTOMER_EDITPROFILE_PATH = "customer/editprofile";
+	String CUSTOMER_CHANGEPASSWORD_PATH = "customer/changepassword";
 	String CUSTOMER_APPLICATIONS_PATH = "customer/applications";
 	String CUSTOMER = "customer";
-	
-	/* workman */
-	//TODO
-	String WORKMAN = "workman";
-	
-	/*
-	 * COMMANDS path constants
-	 */
-	/* common */
-	String PAGE_404 = "/WEB-INF/404.jsp";
-	String LOGIN_PAGE = "/WEB-INF/login/login.jsp";
-	String INDEX_PAGE = "/WEB-INF/index/index.jsp";
-	String REGISTRATION_PAGE = "/WEB-INF/registration/registration.jsp";
-	String REDIRECT_LOGIN_COMMAND = "redirect:/app/login";
-	String REDIRECT_INDEX_COMMAND = "redirect:/app/index";
-	String INDEX_COMMAND = "/app/index";
-	String LOGIN_COMMAND = "/app/login";
-	String LOGOUT_COMMAND = "/app/logout";
-	String ERROR_404_COMMAND = "/app/404";
-	String REDIRECT_ERROR_404_COMMAND = "redirect:/app/404";
-	String REGISTRATION_COMMAND = "/app/registration";
-	
-	/* manager */
-	String MANAGER_PAGE = "/WEB-INF/manager/index.jsp";
-	String REDIRECT_MANAGER_PAGE = "redirect:/app/manager/page";
-	String MANAGER_PAGE_COMMAND = "/app/manager/page";
-	
-	/* customer */
-	String CUSTOMER_PAGE = "/WEB-INF/customer/index.jsp";	
-	String REDIRECT_CUSTOMER_PAGE = "redirect:/app/customer/page";
-	String CUSTOMER_PAGE_COMMAND = "/app/customer/page";
 	
 	/* workman */
 	String WORKMAN_PAGE = "/WEB-INF/workman/index.jsp";	
 	String REDIRECT_WORKMAN_PAGE = "redirect:/app/workman/page";
 	String WORKMAN_PAGE_COMMAND = "/app/workman/page";
+	/* workman */
+	//TODO
+	String WORKMAN = "workman";
+	
+	
 	
 	/*
 	 * WEB FILTERS
