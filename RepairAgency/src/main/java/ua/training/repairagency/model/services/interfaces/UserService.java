@@ -11,4 +11,6 @@ public interface UserService {
 	
 	User insert(User user) throws NotUniqueFieldValueException;
 
+	User update(User user) throws NotUniqueFieldValueException;
+
 }

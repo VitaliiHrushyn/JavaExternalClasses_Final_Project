@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="${language}">
     <head>
-        <title>${requestScope.user.role} page</title>
+        <title>${sessionScope.user.name} change password</title>
     </head>
     <body>
     
@@ -15,7 +15,7 @@
         
     	<jsp:include page="/WEB-INF/roles/customer/menu.jsp"></jsp:include>
     	
-    	<jsp:include page="content.jsp"></jsp:include>
+    	<jsp:include page="content/changepassword.jsp"></jsp:include>
         
         <jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>
         

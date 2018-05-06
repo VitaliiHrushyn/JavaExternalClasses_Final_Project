@@ -74,14 +74,12 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 	}	
 
 	@Override
-	public T update(T entity) {
+	public T update(T entity) throws SQLException {
 		try(PreparedStatement statement = connection.prepareStatement(getUpdateQuery())) {
 			fillUpdateStatement(statement, entity);
 			if (statement.executeUpdate() > 0) {
 				return entity;
 			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
 		}
 		return null;
 	}	

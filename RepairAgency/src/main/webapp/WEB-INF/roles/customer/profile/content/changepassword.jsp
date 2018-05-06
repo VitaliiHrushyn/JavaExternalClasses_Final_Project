@@ -8,17 +8,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>customer menu</title>
+<title>content</title>
 </head>
 <body>
 	<div>
-		SIDE MENU:
-			<br>
-			<a href = "${pageContext.request.contextPath}/app/customer/editprofile">Edit profile</a>
-			<br>
-			<a href = "${pageContext.request.contextPath}/app/customer/changepassword">Change password</a>
-			<br>
+		content:
+		<br>
+		<div>
+			<jsp:include page="sidemenu.jsp"></jsp:include>
+		</div>
+		<br>		
+		CHANGE PASSWORD
 	</div>
-	
 </body>
 </html>

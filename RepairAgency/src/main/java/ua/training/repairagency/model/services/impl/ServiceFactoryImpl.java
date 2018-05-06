@@ -9,7 +9,7 @@ import ua.training.repairagency.model.services.interfaces.UserService;
 public class ServiceFactoryImpl extends ServiceFactory {
 
 	@Override
-	public UserService getUserService() {
+	public UserService createUserService() {
 		return new UserServiceImpl();
 	}
 

@@ -46,4 +46,15 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public User update(User user) throws NotUniqueFieldValueException {
+		try(UserDAO dao = daoFactory.createUserDAO()){
+			user = dao.update(user);
+		} catch (Exception e) {
+			DAOutils.checkIfNotUniqueFieldValueException(e);
+			return null;
+		}		
+		return user;
+	}
+
 }

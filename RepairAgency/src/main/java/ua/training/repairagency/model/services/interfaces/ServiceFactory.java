@@ -18,7 +18,7 @@ public abstract class ServiceFactory {
 		return serviceFactory;
 	}
 
-	public abstract UserService getUserService();
+	public abstract UserService createUserService();
 	public abstract ApplicationService getApplicationService();
 	public abstract TestimonialService getTestimonialService();
 	public abstract HistoryRecordService getHistoryRecordService();

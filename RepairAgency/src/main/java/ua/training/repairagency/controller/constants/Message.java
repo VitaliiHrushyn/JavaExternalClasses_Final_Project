@@ -21,4 +21,5 @@ public interface Message {
 	String PHONE_INVALID = "message.phone.invalid";
 	String POINT = "message.comma";
 	
+	String UPDATE_USER_SUCCESS = "message.update.user.saccess";
 }

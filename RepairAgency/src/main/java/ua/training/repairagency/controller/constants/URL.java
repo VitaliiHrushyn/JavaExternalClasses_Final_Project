@@ -51,24 +51,32 @@ public interface URL {
 	
 	
 	
-	/* customer */
+	/* 
+	 * customer 
+	 */
 	String CUSTOMER_URL = "/WEB-INF/roles/customer/";
-	String CUSTOMER_INDEX_PAGE = CUSTOMER_URL + "index/index.jsp";	
+	String CUSTOMER_PROFILE_PAGE = CUSTOMER_URL + "profile/profile.jsp";
+	String CUSTOMER_EDITPROFILE_PAGE = CUSTOMER_URL + "profile/editprofile.jsp";	
+	String CUSTOMER_CHANGEPASSWORD_PAGE = CUSTOMER_URL + "profile/changepassword.jsp";	
 	String CUSTOMER_APPLICATION_PAGE = CUSTOMER_URL + "applications/index.jsp";
 	String CUSTOMER_MESSAGE_PAGE = CUSTOMER_URL + "messages/index.jsp";
 	
-	String CUSTOMER_INDEX_COMMAND = "/app/customer/index";
-	String REDIRECT_CUSTOMER_INDEX_COMMAND = REDIRECT + CUSTOMER_INDEX_COMMAND;
+	String CUSTOMER_PROFILE_COMMAND = "/app/customer/profile";
+	String REDIRECT_CUSTOMER_INDEX_COMMAND = REDIRECT + CUSTOMER_PROFILE_COMMAND;
 	
 	/* commands path */
-	String CUSTOMER_INDEX_PATH = "customer/index";
+	String CUSTOMER_PROFILE_PATH = "customer/profile";
+	String CUSTOMER_EDITPROFILE_PATH = "customer/profile/editprofile";
+	String CUSTOMER_CHANGEPASSWORD_PATH = "customer/profile/changepassword";
+	
 	String CUSTOMER_MESSAGE_PATH = "customer/message";
-	String CUSTOMER_EDITPROFILE_PATH = "customer/editprofile";
-	String CUSTOMER_CHANGEPASSWORD_PATH = "customer/changepassword";
 	String CUSTOMER_APPLICATIONS_PATH = "customer/applications";
 	String CUSTOMER = "customer";
 	
-	/* workman */
+	
+	/* 
+	 * workman 
+	 */
 	String WORKMAN_PAGE = "/WEB-INF/workman/index.jsp";	
 	String REDIRECT_WORKMAN_PAGE = "redirect:/app/workman/page";
 	String WORKMAN_PAGE_COMMAND = "/app/workman/page";

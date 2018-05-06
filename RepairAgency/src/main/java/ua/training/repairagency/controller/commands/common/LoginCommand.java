@@ -36,7 +36,7 @@ public class LoginCommand implements Command {
 	}
 
 	private User getUserIfExists(HttpServletRequest request, List<String> messages) {
-		User user = ServiceFactory.getInstance().getUserService().getByLogin((request.getParameter(LOGIN)));
+		User user = ServiceFactory.getInstance().createUserService().getByLogin((request.getParameter(LOGIN)));
 		if (user != null && user.getPassword().equals(CommandUtils.doCrypt(request.getParameter(PASSWORD)))) {
 			return user;
 		} else {

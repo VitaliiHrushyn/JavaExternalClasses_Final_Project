@@ -44,7 +44,9 @@ public class AgencyServlet extends HttpServlet {
 		commands.put(URL.MANAGER_WORKMEN_PATH, new ManagerGetAllWorkmenCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_PATH, new ManagerGetAllAppsCommand());
 		
-		commands.put(URL.CUSTOMER_INDEX_PATH, new CustomerPageCommand());
+		commands.put(URL.CUSTOMER_PROFILE_PATH, new CustomerProfilePageCommand());
+		commands.put(URL.CUSTOMER_EDITPROFILE_PATH, new CustomerEditprofileCommand());
+		commands.put(URL.CUSTOMER_CHANGEPASSWORD_PATH, new CustomerChangepasswordCommand());
 		commands.put(URL.CUSTOMER_MESSAGE_PATH, new CustomerMessageCommand());
 //		commands.put(URL.CUSTOMER_WORKMEN_PATH, new CustomerGetAllWorkmenCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_PATH, new CustomerApplicationCommand());

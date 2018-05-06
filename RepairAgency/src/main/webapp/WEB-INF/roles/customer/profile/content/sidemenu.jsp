@@ -12,20 +12,14 @@
 </head>
 <body>
 	<div>
-		MENU:
-		<br>
-		<a href = "${pageContext.request.contextPath}/app/customer/profile">Profile</a> | 
-		<a href = "${pageContext.request.contextPath}/app/customer/applications">Applications</a> |
-		<a href = "${pageContext.request.contextPath}/app/customer/message">Messages</a> |      	 
-       	<br>
-       	<span>
-			<font color="red">
-				<c:forEach var="message" items="${messages}">
-					<fmt:message key="${message}"/>.
-				</c:forEach>
-			</font>
-         </span>     
-       	<br>
+		SIDE MENU:
+			<br>
+			<a href = "${pageContext.request.contextPath}/app/customer/profile">Home</a>
+			<br>
+			<a href = "${pageContext.request.contextPath}/app/customer/profile/editprofile">Edit profile</a>
+			<br>
+			<a href = "${pageContext.request.contextPath}/app/customer/profile/changepassword">Change password</a>
+			<br>
 	</div>
 	
 </body>

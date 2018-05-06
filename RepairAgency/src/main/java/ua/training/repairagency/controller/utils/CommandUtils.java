@@ -71,7 +71,16 @@ public class CommandUtils {
 		user.setPassword(doCrypt(request.getParameter(REGISTRATION_PASSWORD)));
 		user.setEmail(request.getParameter(EMAIL));
 		user.setPhone(request.getParameter(PHONE));	
-		user.setApplications(null);
+		
+		return user;
+	}
+	
+	public static User updateUser(User user, HttpServletRequest request) {
+		user.setName(request.getParameter(NAME));
+		user.setSurname(request.getParameter(SURNAME));
+		user.setLogin(request.getParameter(LOGIN));
+		user.setEmail(request.getParameter(EMAIL));
+		user.setPhone(request.getParameter(PHONE));	
 		
 		return user;
 	}

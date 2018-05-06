@@ -7,7 +7,7 @@ public interface GenericDAO<T> extends AutoCloseable {
 	
 	T create(T entity) throws SQLException;
 	
-	T update(T entity);
+	T update(T entity) throws SQLException;
 	
 	T getById(int id);
 	
