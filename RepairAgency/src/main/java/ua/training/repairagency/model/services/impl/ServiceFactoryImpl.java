@@ -14,7 +14,7 @@ public class ServiceFactoryImpl extends ServiceFactory {
 	}
 
 	@Override
-	public ApplicationService getApplicationService() {
+	public ApplicationService createApplicationService() {
 		return new ApplicationServiceImpl();
 	}
 

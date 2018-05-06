@@ -14,15 +14,15 @@
 	<div>
 		SIDE MENU:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/customer/page">Create new</a>
+		<a href = "${pageContext.request.contextPath}/app/customer/applications/create"><fmt:message key="text.menu.create_new" /></a>
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/customer/applications">Show all</a>
+		<a href = "${pageContext.request.contextPath}/app/customer/applications/all"><fmt:message key="text.menu.show.all" /></a>
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/customer/message">Show current</a>     	 
+		<a href = "${pageContext.request.contextPath}/app/customer/applications/current"><fmt:message key="text.menu.show.current" /></a>     	 
        	<br>
-       	<a href = "${pageContext.request.contextPath}/app/customer/message">Show active</a>     	 
+       	<a href = "${pageContext.request.contextPath}/app/customer/applications/active"><fmt:message key="text.menu.show.activ" /></a>     	 
        	<br>
-       	<a href = "${pageContext.request.contextPath}/app/customer/message">Show non active</a>     	 
+       	<a href = "${pageContext.request.contextPath}/app/customer/applications/nonactive"><fmt:message key="text.menu.show.nonactive" /></a>     	 
        	<br>
 	</div>
 	

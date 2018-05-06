@@ -1,6 +1,7 @@
 package ua.training.repairagency.model.entities.application;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import ua.training.repairagency.model.entities.AbstractEntity;
@@ -77,5 +78,18 @@ public class ApplicationImpl extends AbstractEntity implements Application {
 	public Date getCreatTime() {
 		return creatTime;
 	}
+	
+	public void setCreatTime(Date createTime) {
+		this.creatTime = createTime;
+	}
+
+	@Override
+	public String toString() {
+		return "ApplicationImpl [status=" + status + ", description=" + description + ", managerComment="
+				+ managerComment + ", price=" + price + ", workman=" + workman
+				+ ", testimonial=" + testimonial + ", creatTime=" + creatTime + "]";
+	}
+	
+	
 
 }

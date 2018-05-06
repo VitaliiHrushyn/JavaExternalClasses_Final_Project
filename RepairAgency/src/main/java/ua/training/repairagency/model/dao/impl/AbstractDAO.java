@@ -141,6 +141,33 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 			throw new RuntimeException(e);
 		}		
 		return entity;
+	}
+	
+	@Override	
+	public List<T> getAllByParam(String name, String value) {
+		Map<Integer, T> uniqueEnteties = new HashMap<>();
+		try(PreparedStatement statement = connection.prepareStatement(getByParamQuery(name))) {
+			statement.setString(1, value);
+			ResultSet rs = statement.executeQuery();			
+			while(rs.next()) {
+				T entity = extractEntity(rs, false);
+				uniqueEnteties.putIfAbsent(entity.getId(), entity);;	
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}				
+		return new ArrayList<>(uniqueEnteties.values());
+//		try(PreparedStatement statement = connection.prepareStatement(getByParamQuery(name))) {
+//			statement.setString(1, value);
+//			ResultSet rs = statement.executeQuery();
+//			if (rs.next()) {
+//				entity = extractEntity(rs, true);	
+//			}
+//		} catch (SQLException e) {
+//			//TODO handle exception
+//			throw new RuntimeException(e);
+//		}		
+//		return entity;
 	}	
 	
 

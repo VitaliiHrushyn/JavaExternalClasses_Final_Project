@@ -31,7 +31,7 @@
         	<br>
         	<span>
 			<font color="red">
-				<c:forEach var="message" items="${messages}">
+				<c:forEach var="message" items="${requestScope.messages}">
 					<fmt:message key="${message}"/>.
 				</c:forEach>
 			</font>

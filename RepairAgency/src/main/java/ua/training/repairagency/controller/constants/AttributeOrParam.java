@@ -14,16 +14,18 @@ public interface AttributeOrParam {
 	String ROLE = "role";
 	String NAME = "name";
 	String SURNAME = "surname";
+	String DESCRIPTION = "description";
 	String REGISTRATION_LOGIN = "reglogin";
 	String REGISTRATION_PASSWORD = "regpassword";
 	String CONFIRM_PASSWORD = "confirmpassword";
 	String REGISTRATION_MESSAGES = "regmessages";
 	
 	String MESSAGES = "messages";
+	String APPLICATIONS = "applications";
 	
 	String LOGIN_MESSAGES = "loginmessages";
 	String AUTH_MESSAGE = "authmessage";
-	String COMMAND_RESULT_PARAM = "command_result";
+	String COMMAND_RESULT = "command_result";
 	
 	String UTF_8 = "UTF-8";
 	String TEXT_HTML = "text/html";

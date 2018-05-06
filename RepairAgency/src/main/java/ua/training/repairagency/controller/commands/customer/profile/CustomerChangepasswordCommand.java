@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.commands.customer;
+package ua.training.repairagency.controller.commands.customer.profile;
 
 import static ua.training.repairagency.controller.constants.URL.CUSTOMER_CHANGEPASSWORD_PAGE;
 

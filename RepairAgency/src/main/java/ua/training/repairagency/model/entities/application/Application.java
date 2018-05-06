@@ -1,6 +1,7 @@
 package ua.training.repairagency.model.entities.application;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import ua.training.repairagency.model.entities.Entity;
@@ -39,6 +40,6 @@ public interface Application extends Entity {
 	
 	Date getCreatTime();
 	
-	
+	public void setCreatTime(Date createTime);	
 
 }

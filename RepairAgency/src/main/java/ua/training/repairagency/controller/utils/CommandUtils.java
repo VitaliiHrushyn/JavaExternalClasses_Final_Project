@@ -11,13 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import ua.training.repairagency.controller.constants.AttributeOrParam;
-import ua.training.repairagency.controller.constants.Message;
-import ua.training.repairagency.controller.constants.RegEx;
-import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.model.entities.user.User;
-import ua.training.repairagency.model.entities.user.UserImpl;
-import ua.training.repairagency.model.entities.user.UserRole;
+import ua.training.repairagency.controller.constants.*;
+import ua.training.repairagency.model.entities.user.*;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 
 public class CommandUtils {
@@ -183,4 +178,6 @@ public class CommandUtils {
 			return true;
 		}		
 	}
+	
+	
 }

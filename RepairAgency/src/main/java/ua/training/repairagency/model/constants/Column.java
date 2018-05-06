@@ -19,6 +19,16 @@ public interface Column {
 	String USER_EMAIL = "user.email";
 	String USER_PHONE = "user.phone";
 	
+	String APPLICATION_ID = "application.id";
+	String APPLICATION_STATUS = "application.status";
+	String APPLICATION_DESCRIPTION = "application.description";
+	String APPLICATION_MANAGER_COMMENT = "application.manager_comment";
+	String APPLICATION_PRICE = "application.price";
+	String APPLICATION_CUSTOMER_ID = "application.customer_id";
+	String APPLICATION_WORKMAN_ID = "application.workman_id";
+	String APPLICATION_TESTIMONIAL_ID = "application.testimonial_id";
+	String APPLICATION_CREATE_TIME = "application.creat_time";
+	
 	
 	
 	

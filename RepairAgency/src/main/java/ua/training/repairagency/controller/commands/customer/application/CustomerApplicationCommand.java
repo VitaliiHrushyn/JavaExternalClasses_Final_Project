@@ -1,4 +1,6 @@
-package ua.training.repairagency.controller.commands.customer;
+package ua.training.repairagency.controller.commands.customer.application;
+
+import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,10 +11,10 @@ public class CustomerApplicationCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request) {
+		
+		request.setAttribute(COMMAND_RESULT, "customer app index page");
 				
-//		request.setAttribute("command_result", new GetAllAppsService().execute());
-
-		return URL.CUSTOMER_APPLICATION_PAGE;
+		return URL.CUSTOMER_APPLICATION_INDEX_PAGE;
 	}
 
 }

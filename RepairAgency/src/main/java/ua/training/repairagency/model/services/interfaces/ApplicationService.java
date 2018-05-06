@@ -1,18 +1,22 @@
 package ua.training.repairagency.model.services.interfaces;
 
+import java.util.List;
+
 import ua.training.repairagency.model.entities.application.AppStatus;
 import ua.training.repairagency.model.entities.application.Application;
 
 public interface ApplicationService {
 	
-	Application getAll();
+	//Application getById(int id);
 	
-	Application getByUserId(int userId);
+	List<Application> getAll();
 	
-	Application getByStatus(AppStatus atatus);
+	List<Application> getAllByUserId(int userId);
 	
-	Application getByStatusAndUserId(AppStatus status, int userId);
+	List<Application> getByStatus(AppStatus atatus);
 	
-	Application insert(Application application);
+	List<Application> getByStatusAndUserId(AppStatus status, int userId);
+	
+	Application insert(Application application) throws Exception;
 
 }

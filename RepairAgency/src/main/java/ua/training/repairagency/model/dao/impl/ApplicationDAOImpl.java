@@ -5,9 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import ua.training.repairagency.model.constants.Column;
 import ua.training.repairagency.model.constants.Query;
 import ua.training.repairagency.model.dao.interfaces.ApplicationDAO;
+import ua.training.repairagency.model.entities.application.AppStatus;
 import ua.training.repairagency.model.entities.application.Application;
+import ua.training.repairagency.model.entities.application.ApplicationImpl;
+import ua.training.repairagency.model.services.interfaces.ServiceFactory;
 
 public class ApplicationDAOImpl extends AbstractDAO<Application> implements ApplicationDAO {
 
@@ -17,13 +21,22 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 
 	@Override
 	public String getCreateQuery() {
+		System.out.println("EMPTY STATEMENT " + queryBundle.getString(Query.APPLICATION_INSERT));
 		return queryBundle.getString(Query.APPLICATION_INSERT);
 	}
 
 	@Override
-	public void fillCreateStatement(PreparedStatement statement, Application entity) throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public void fillCreateStatement(PreparedStatement statement, Application application) throws SQLException {
+		// status, description, manager_comment, price, customer_id, 
+		// workman_id, testimonial_id) values (?, ?, ?, ?, ?, ?, ?);
+		statement.setString(1, application.getStatus().toString());
+		statement.setString(2, application.getDescription());
+		//statement.setString(3, application.getManagerComment());
+		//statement.setBigDecimal(4, application.getPrice());
+		statement.setInt(3, application.getCustomer().getId());
+		//statement.setInt(6, application.getWorkman().getId());
+		//statement.setInt(7, application.getTestimonial().getId());
+				
 	}
 
 	@Override
@@ -33,8 +46,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 
 	@Override
 	public void fillUpdateStatement(PreparedStatement statement, Application entity) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -54,14 +66,23 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 
 	@Override
 	String getByParamQuery(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID);
 	}
 
 	@Override
 	public Application extractEntity(ResultSet rs, boolean eager) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Application application = new ApplicationImpl();
+		application.setId(rs.getInt(columnBundle.getString(Column.APPLICATION_ID)));
+		application.setStatus(AppStatus.valueOf((rs.getString(columnBundle.getString(Column.APPLICATION_STATUS)))));
+		application.setDescription(rs.getString(columnBundle.getString(Column.APPLICATION_DESCRIPTION)));
+		application.setManagerComment(rs.getString(columnBundle.getString(Column.APPLICATION_MANAGER_COMMENT)));
+		application.setPrice(rs.getBigDecimal(columnBundle.getString(Column.APPLICATION_PRICE)));
+		application.setCustomer(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_CUSTOMER_ID))));
+		application.setWorkman(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_WORKMAN_ID))));
+//		application.setTestimonial(ServiceFactory.getInstance().createTestimonialService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_TESTIMONIAL_ID))));
+		application.setCreatTime(rs.getDate(columnBundle.getString(Column.APPLICATION_CREATE_TIME)));
+		
+		return application;
 	}
 
 	

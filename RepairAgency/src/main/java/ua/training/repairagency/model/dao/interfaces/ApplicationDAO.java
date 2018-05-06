@@ -4,4 +4,5 @@ import ua.training.repairagency.model.entities.application.Application;
 
 public interface ApplicationDAO extends GenericDAO<Application> {
 
+
 }

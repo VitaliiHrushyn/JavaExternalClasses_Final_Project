@@ -17,6 +17,7 @@ public interface Query {
 	String APPLICATION_INSERT = "application.insert";
 	String APPLICATION_UPDATE = "application.update";
 //	String APPLICATION_GET_BY_LOGIN = "application.get.by.login";
+	String APPLICATION_GET_BY_CUSTOMER_ID = "application.get.by.customer_id";
 	
 	/* history record queries */
 	String RECORD_GET_BY_ID = "record.get.by.id";
@@ -32,6 +33,7 @@ public interface Query {
 	String TESTIMONIAL_INSERT = "testimonial.insert";
 	String TESTIMONIAL_UPDATE = "testimonial.update";
 //	String TESTIMONIAL_GET_BY_LOGIN = "testimonial.get.by.login";		
+	
 	
 	
 	

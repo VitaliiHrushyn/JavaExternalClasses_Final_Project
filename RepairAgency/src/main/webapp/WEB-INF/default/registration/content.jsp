@@ -39,11 +39,11 @@
             <br>
             <input type="text" id="surname" name="surname" required placeholder="<fmt:message key="register.label.surname" />">
             <br>
-            <input type="text" id="email" name="email" required placeholder="<fmt:message key="register.label.email" />">
+            <input type="email" id="email" name="email" required placeholder="<fmt:message key="register.label.email" />">
             <br>
             <input type="text" id="phone" name="phone" required placeholder="<fmt:message key="register.label.phone" />">
             <br>
-            <fmt:message key="register.button.submit" var="buttonValue" />
+            <fmt:message key="text.button.submit" var="buttonValue" />
             <input type="submit" name="submit" value="${buttonValue}">
         </form>
         <br>		 	

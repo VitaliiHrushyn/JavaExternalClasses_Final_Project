@@ -22,4 +22,6 @@ public interface Message {
 	String POINT = "message.comma";
 	
 	String UPDATE_USER_SUCCESS = "message.update.user.saccess";
+	String APPLICATION_CREATE_SUCCESS = "message.create.application.success";
+	String APPLICATION_CREATE_FAIL = "message.create.application.fail";
 }
