@@ -12,7 +12,6 @@
 </head>
 <body>
 	<div>
-		content:
 		<br>
 		<div>
 			<jsp:include page="sidemenu.jsp"></jsp:include>

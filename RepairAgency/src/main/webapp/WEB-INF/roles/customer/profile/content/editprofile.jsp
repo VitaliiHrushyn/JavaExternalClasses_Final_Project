@@ -12,14 +12,13 @@
 </head>
 <body>
 	<div>
-		content:
 		<br>
 		<div>
 			<jsp:include page="sidemenu.jsp"></jsp:include>
 		</div>
 		<br>						
 		<c:set var="user" value="${sessionScope.user}"/>
-		<h3>Editing profile, user: ${user.name} </h3>
+		<h3><fmt:message key="text.editprofile.user" />: ${user.name} </h3>
 		<br>
 		<form method ="post" action="${pageContext.request.contextPath}/app/customer/profile/editprofile">
 			
@@ -35,7 +34,7 @@
 			<br>
 			<fmt:message key="register.label.phone" />: <input type="text" name="phone" value="${user.phone}">
 			<br>
-			<input type="submit" value="Save changes">
+			<input type="submit" value="<fmt:message key="text.button.savechanges" />">
 		</form>	
 		<br>
 	</div>

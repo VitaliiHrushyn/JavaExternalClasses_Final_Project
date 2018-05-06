@@ -23,7 +23,7 @@
         <div>
         	<c:if test="${user.name != null}">
 	        	<h2><fmt:message key="text.greatings" />, ${user.name}!</h2>
-	        	<a href = "${pageContext.request.contextPath}/app/logout">Logout</a> 
+	        	<a href = "${pageContext.request.contextPath}/app/logout"><fmt:message key="text.menu.logout" /></a> 
         	</c:if>
         	<c:if test="${user.name == null}"> 
         		<h2><fmt:message key="text.greatings" />, <fmt:message key="text.guest.name" />! </h2>

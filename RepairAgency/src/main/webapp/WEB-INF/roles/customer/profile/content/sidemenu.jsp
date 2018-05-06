@@ -14,11 +14,11 @@
 	<div>
 		SIDE MENU:
 			<br>
-			<a href = "${pageContext.request.contextPath}/app/customer/profile">Home</a>
+			<a href = "${pageContext.request.contextPath}/app/customer/profile"><fmt:message key="text.menu.home" /></a>
 			<br>
-			<a href = "${pageContext.request.contextPath}/app/customer/profile/editprofile">Edit profile</a>
+			<a href = "${pageContext.request.contextPath}/app/customer/profile/editprofile"><fmt:message key="text.menu.editprofile" /></a>
 			<br>
-			<a href = "${pageContext.request.contextPath}/app/customer/profile/changepassword">Change password</a>
+			<a href = "${pageContext.request.contextPath}/app/customer/profile/changepassword"><fmt:message key="text.menu.changepassword" /></a>
 			<br>
 	</div>
 	

@@ -12,13 +12,12 @@
 </head>
 <body>
 	<div>
-		content:
 		<br>
 		<div>
 			<jsp:include page="sidemenu.jsp"></jsp:include>
 		</div>
 		<br>		
-		CHANGE PASSWORD
+		<fmt:message key="text.header.changepassword" />
 	</div>
 </body>
 </html>
