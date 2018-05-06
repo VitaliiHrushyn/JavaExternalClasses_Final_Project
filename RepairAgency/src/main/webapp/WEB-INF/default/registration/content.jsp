@@ -15,18 +15,11 @@
 	
 	<div>
 		
-        <br>
+        <br>       
         <b><fmt:message key="text.registration" /></b>
 		<c:set var="regmessage" value="${requestScope.regmessages}"/>
-		
-		<p>|  
-			<font color="red">
-				<c:forEach var="regmessage" items="${regmessages}">
-					<fmt:message key="${regmessage}"/>.
-				</c:forEach>
-			</font>
-		</p>
-        
+         <br>
+         <br>
         <form method="post" action="${pageContext.request.contextPath}/app/registration">
             
             <input type="text" id="reglogin" name="reglogin" required placeholder="<fmt:message key="register.label.login" />">

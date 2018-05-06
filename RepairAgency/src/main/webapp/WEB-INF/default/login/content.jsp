@@ -24,14 +24,7 @@
 
             <fmt:message key="login.button.submit" var="buttonValue" />
             <input type="submit" name="submit" value="${buttonValue}">
-         
-          <span>
-			<font color="red">
-				<c:forEach var="loginmessage" items="${loginmessages}">
-					<fmt:message key="${loginmessage}"/>.
-				</c:forEach>
-			</font>
-         </span>           
+           
         </form>     	
 	</div>
 	<br>

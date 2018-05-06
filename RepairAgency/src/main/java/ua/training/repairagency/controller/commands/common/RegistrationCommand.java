@@ -12,7 +12,6 @@ import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
-import ua.training.repairagency.model.services.interfaces.ServiceFactory;
 
 public class RegistrationCommand implements Command {	
 	
@@ -34,7 +33,7 @@ public class RegistrationCommand implements Command {
 		} else {
 			path = URL.REGISTRATION_PAGE;
 		}
-		request.setAttribute(REGISTRATION_MESSAGES, messages);
+		request.setAttribute(MESSAGES, messages);
 		return path;
 	}	
 	

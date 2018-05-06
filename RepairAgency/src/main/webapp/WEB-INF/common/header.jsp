@@ -29,7 +29,15 @@
         		<h2><fmt:message key="text.greatings" />, <fmt:message key="text.guest.name" />! </h2>
         	</c:if>
         	<br>
+        	<span>
+			<font color="red">
+				<c:forEach var="message" items="${messages}">
+					<fmt:message key="${message}"/>.
+				</c:forEach>
+			</font>
+         </span> 
         	<br>
         </div>
+        <br>
     </body>
 </html>

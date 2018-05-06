@@ -14,7 +14,7 @@
     	<jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
         
     	<jsp:include page="/WEB-INF/roles/customer/menu.jsp"></jsp:include>
-    	
+    	    	
     	<jsp:include page="content/editprofile.jsp"></jsp:include>
         
         <jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>

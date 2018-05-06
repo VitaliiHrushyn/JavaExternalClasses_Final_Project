@@ -31,7 +31,7 @@ public class LoginCommand implements Command {
 		} else {
 			path = URL.LOGIN_PAGE;
 		}
-		request.setAttribute(LOGIN_MESSAGES, messages);
+		request.setAttribute(MESSAGES, messages);
 		return path;
 	}
 
