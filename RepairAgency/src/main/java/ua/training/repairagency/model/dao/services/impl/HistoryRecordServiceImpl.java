@@ -1,7 +1,7 @@
-package ua.training.repairagency.model.services.impl;
+package ua.training.repairagency.model.dao.services.impl;
 
 import ua.training.repairagency.model.entities.historyrecord.HistoryRecord;
-import ua.training.repairagency.model.services.interfaces.HistoryRecordService;
+import ua.training.repairagency.model.dao.services.interfaces.HistoryRecordService;
 
 public class HistoryRecordServiceImpl implements HistoryRecordService {
 

@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.model.services.manager.GetAllAppsService;
 
 public class ManagerGetAllAppsCommand implements Command {
 
@@ -15,7 +14,7 @@ public class ManagerGetAllAppsCommand implements Command {
 	public String execute(HttpServletRequest request)
 			 {
 				
-		request.setAttribute("command_result", new GetAllAppsService().execute());
+		request.setAttribute("command_result", null);
 
 		return MANAGER_PAGE;
 	}

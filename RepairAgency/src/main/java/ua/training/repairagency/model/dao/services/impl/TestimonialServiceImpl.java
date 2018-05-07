@@ -1,7 +1,7 @@
-package ua.training.repairagency.model.services.impl;
+package ua.training.repairagency.model.dao.services.impl;
 
+import ua.training.repairagency.model.dao.services.interfaces.TestimonialService;
 import ua.training.repairagency.model.entities.testimonial.Testimonial;
-import ua.training.repairagency.model.services.interfaces.TestimonialService;
 
 public class TestimonialServiceImpl implements TestimonialService {
 

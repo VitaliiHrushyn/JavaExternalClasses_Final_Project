@@ -1,6 +1,6 @@
-package ua.training.repairagency.model.services.interfaces;
+package ua.training.repairagency.model.dao.services.interfaces;
 
-import ua.training.repairagency.model.services.impl.ServiceFactoryImpl;
+import ua.training.repairagency.model.dao.services.impl.ServiceFactoryImpl;
 
 public abstract class ServiceFactory {
 	

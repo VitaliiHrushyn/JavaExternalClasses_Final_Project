@@ -8,10 +8,10 @@ import java.sql.SQLException;
 import ua.training.repairagency.model.constants.Column;
 import ua.training.repairagency.model.constants.Query;
 import ua.training.repairagency.model.dao.interfaces.ApplicationDAO;
+import ua.training.repairagency.model.dao.services.interfaces.ServiceFactory;
 import ua.training.repairagency.model.entities.application.AppStatus;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.application.ApplicationImpl;
-import ua.training.repairagency.model.services.interfaces.ServiceFactory;
 
 public class ApplicationDAOImpl extends AbstractDAO<Application> implements ApplicationDAO {
 

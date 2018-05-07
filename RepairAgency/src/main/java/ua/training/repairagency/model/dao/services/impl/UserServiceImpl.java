@@ -1,11 +1,11 @@
-package ua.training.repairagency.model.services.impl;
+package ua.training.repairagency.model.dao.services.impl;
 
 import ua.training.repairagency.model.constants.Column;
 import ua.training.repairagency.model.dao.DAOFactory;
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
+import ua.training.repairagency.model.dao.services.interfaces.UserService;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
-import ua.training.repairagency.model.services.interfaces.UserService;
 import ua.training.repairagency.model.utils.DAOutils;
 
 public class UserServiceImpl implements UserService {

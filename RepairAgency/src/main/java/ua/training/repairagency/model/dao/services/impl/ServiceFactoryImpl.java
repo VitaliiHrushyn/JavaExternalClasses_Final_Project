@@ -1,10 +1,10 @@
-package ua.training.repairagency.model.services.impl;
+package ua.training.repairagency.model.dao.services.impl;
 
-import ua.training.repairagency.model.services.interfaces.ApplicationService;
-import ua.training.repairagency.model.services.interfaces.HistoryRecordService;
-import ua.training.repairagency.model.services.interfaces.ServiceFactory;
-import ua.training.repairagency.model.services.interfaces.TestimonialService;
-import ua.training.repairagency.model.services.interfaces.UserService;
+import ua.training.repairagency.model.dao.services.interfaces.ApplicationService;
+import ua.training.repairagency.model.dao.services.interfaces.HistoryRecordService;
+import ua.training.repairagency.model.dao.services.interfaces.ServiceFactory;
+import ua.training.repairagency.model.dao.services.interfaces.TestimonialService;
+import ua.training.repairagency.model.dao.services.interfaces.UserService;
 
 public class ServiceFactoryImpl extends ServiceFactory {
 

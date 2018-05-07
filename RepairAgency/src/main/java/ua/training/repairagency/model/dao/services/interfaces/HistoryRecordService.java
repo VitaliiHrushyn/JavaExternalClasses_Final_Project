@@ -1,4 +1,4 @@
-package ua.training.repairagency.model.services.interfaces;
+package ua.training.repairagency.model.dao.services.interfaces;
 
 import ua.training.repairagency.model.entities.historyrecord.HistoryRecord;
 
