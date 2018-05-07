@@ -21,14 +21,11 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 
 	@Override
 	public String getCreateQuery() {
-		System.out.println("EMPTY STATEMENT " + queryBundle.getString(Query.APPLICATION_INSERT));
 		return queryBundle.getString(Query.APPLICATION_INSERT);
 	}
 
 	@Override
 	public void fillCreateStatement(PreparedStatement statement, Application application) throws SQLException {
-		// status, description, manager_comment, price, customer_id, 
-		// workman_id, testimonial_id) values (?, ?, ?, ?, ?, ?, ?);
 		statement.setString(1, application.getStatus().toString());
 		statement.setString(2, application.getDescription());
 		//statement.setString(3, application.getManagerComment());
@@ -79,13 +76,10 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		application.setPrice(rs.getBigDecimal(columnBundle.getString(Column.APPLICATION_PRICE)));
 		application.setCustomer(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_CUSTOMER_ID))));
 		application.setWorkman(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_WORKMAN_ID))));
-//		application.setTestimonial(ServiceFactory.getInstance().createTestimonialService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_TESTIMONIAL_ID))));
+//TODO		application.setTestimonial(ServiceFactory.getInstance().createTestimonialService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_TESTIMONIAL_ID))));
 		application.setCreatTime(rs.getDate(columnBundle.getString(Column.APPLICATION_CREATE_TIME)));
 		
 		return application;
 	}
-
-	
-
 
 }

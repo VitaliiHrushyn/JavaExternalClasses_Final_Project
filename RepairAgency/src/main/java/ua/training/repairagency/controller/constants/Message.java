@@ -7,6 +7,7 @@ public interface Message {
 //	String PASSWORD_EMPTY_MESSAGE = "message.password.empty";	
 	String LOGIN_FAIL_MESSAGE = "message.auth.fail";	
 	String REGISTRATION_EMPTY = "message.registration.empty";
+	String USER_ALREADY_LOGGINED = "message.user.already.loggined";
 	
 	String NOT_UNIQUE_LOGIN ="message.not.unique.login";
 	String NOT_UNIQUE_EMAIL ="message.not.unique.email";
@@ -24,4 +25,5 @@ public interface Message {
 	String UPDATE_USER_SUCCESS = "message.update.user.saccess";
 	String APPLICATION_CREATE_SUCCESS = "message.create.application.success";
 	String APPLICATION_CREATE_FAIL = "message.create.application.fail";
+	
 }

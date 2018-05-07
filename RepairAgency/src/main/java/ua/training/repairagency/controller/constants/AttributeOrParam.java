@@ -19,6 +19,7 @@ public interface AttributeOrParam {
 	String REGISTRATION_PASSWORD = "regpassword";
 	String CONFIRM_PASSWORD = "confirmpassword";
 	String REGISTRATION_MESSAGES = "regmessages";
+	String LOGGED_USERS = "logged_users";
 	
 	String MESSAGES = "messages";
 	String APPLICATIONS = "applications";
