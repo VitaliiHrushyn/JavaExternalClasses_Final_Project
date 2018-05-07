@@ -3,29 +3,31 @@ package ua.training.repairagency.controller.commands.common;
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.controller.commands.Command;
+import ua.training.repairagency.controller.commands.AbstractCommand;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
+import ua.training.repairagency.model.utils.UserUtils;
 
-public class RegistrationCommand implements Command {	
+public class RegistrationCommand extends AbstractCommand {	
 	
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		List<String> messages = new ArrayList<>();
-		String path;
+		messages = new ArrayList<>();
 		
 		if (CommandUtils.checkRegistrationCredentials(request, messages)) {				
 			try {
-				User user = serviceFactory.createUserService().insert(CommandUtils.createUser(request));				
+				User user = serviceFactory
+						.createUserService()
+						.insert(UserUtils.createUser(request));	
+				
 				request.getSession().setAttribute(USER, user);
-				path = CommandUtils.getUserPage(user);
+				path = CommandUtils.getUserPage(user);				
 			} catch (NotUniqueFieldValueException e) {
 				messages.add(CommandUtils.getFailMessageFromException(e));
 				path = URL.REGISTRATION_PAGE;

@@ -9,21 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.controller.constants.Message;
-import ua.training.repairagency.controller.commands.Command;
+import ua.training.repairagency.controller.commands.AbstractCommand;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
-import ua.training.repairagency.model.services.interfaces.*;
+import ua.training.repairagency.model.utils.UserUtils;
 
-public class LoginCommand implements Command {
+public class LoginCommand extends AbstractCommand {
 	
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		List<String> messages = new ArrayList<>();	
-		String path;
-		
-		//TODO 
-		
+		messages = new ArrayList<>();	
+						
 		if (CommandUtils.checkLoginCredentials(request, messages)) {			
 			User user = getUserIfExists(request, messages);
 			path = CommandUtils.getUserPage(user);
@@ -36,8 +33,11 @@ public class LoginCommand implements Command {
 	}
 
 	private User getUserIfExists(HttpServletRequest request, List<String> messages) {
-		User user = ServiceFactory.getInstance().createUserService().getByLogin((request.getParameter(LOGIN)));
-		if (user != null && user.getPassword().equals(CommandUtils.doCrypt(request.getParameter(PASSWORD)))) {
+		User user = serviceFactory
+				.createUserService()
+				.getByLogin((request.getParameter(LOGIN)));
+		
+		if (user != null && checkUserPassword(request, user)) {
 			return user;
 		} else {
 			messages.add(Message.AUTH_FAIL);
@@ -45,5 +45,8 @@ public class LoginCommand implements Command {
 		}		
 	}
 
+	private boolean checkUserPassword(HttpServletRequest request, User user) {
+		return user.getPassword().equals(UserUtils.doCrypt(request.getParameter(PASSWORD)));
+	}
 
 }

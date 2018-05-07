@@ -8,12 +8,15 @@ import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 public class DAOutils {
 	
 	public static void checkIfNotUniqueFieldValueException(Exception e) 
-			throws NotUniqueFieldValueException  {
-		if (e.getClass().equals(SQLIntegrityConstraintViolationException.class) &&
-		((SQLException) e).getErrorCode() == 1062) {			
-		throw new NotUniqueFieldValueException(e);			
+												throws NotUniqueFieldValueException  {
+		
+		if (
+			e.getClass().equals(SQLIntegrityConstraintViolationException.class) &&
+			((SQLException) e).getErrorCode() == 1062
+			) {			
+			throw new NotUniqueFieldValueException(e);		
 		} else {
-		throw new RuntimeException(e);
+			throw new RuntimeException(e);
 		}
 	}
 	

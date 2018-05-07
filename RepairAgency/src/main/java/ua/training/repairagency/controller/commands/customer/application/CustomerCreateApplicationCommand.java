@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.controller.utils.ApplicationUtil;
+import ua.training.repairagency.model.utils.ApplicationUtil;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 
 public class CustomerCreateApplicationCommand extends AbstractCommand {
@@ -20,7 +20,10 @@ public class CustomerCreateApplicationCommand extends AbstractCommand {
 		
 		if (!isRequestEmpty(request)) {
 			try {
-				serviceFactory.createApplicationService().insert(ApplicationUtil.create(request)); 
+				serviceFactory
+				.createApplicationService()
+				.insert(ApplicationUtil.createNewApp(request)); 
+				
 				messages.add(Message.APPLICATION_CREATE_SUCCESS);
 				path = URL.CUSTOMER_APPLICATION_INDEX_PAGE;
 			} catch (Exception e) {
@@ -30,8 +33,7 @@ public class CustomerCreateApplicationCommand extends AbstractCommand {
 			} 
 		} else {
 			path = URL.CUSTOMER_APPLICATION_CREATE_PAGE;
-		}
-		
+		}		
 		
 		request.setAttribute(MESSAGES, messages);
 		return path;

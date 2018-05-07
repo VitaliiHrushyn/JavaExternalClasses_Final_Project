@@ -9,8 +9,6 @@ import java.util.ResourceBundle;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 import ua.training.repairagency.controller.constants.*;
 import ua.training.repairagency.model.entities.user.*;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
@@ -40,45 +38,19 @@ public class CommandUtils {
 	
 	public static String getFailMessageFromException(NotUniqueFieldValueException e) {
 		String exceptionErrorMessage = e.getMessage();
-		String exceptionMessage = null;
+		String message = null;
 		if (exceptionErrorMessage.contains(AttributeOrParam.LOGIN)) {
-			exceptionMessage = Message.NOT_UNIQUE_LOGIN;
+			message = Message.NOT_UNIQUE_LOGIN;
 		}
 		if (exceptionErrorMessage.contains(AttributeOrParam.EMAIL)) {
-			exceptionMessage = Message.NOT_UNIQUE_EMAIL;
+			message = Message.NOT_UNIQUE_EMAIL;
 		}
 		if (exceptionErrorMessage.contains(AttributeOrParam.PHONE)) {
-			exceptionMessage = Message.NOT_UNIQUE_PHONE;
+			message = Message.NOT_UNIQUE_PHONE;
 		}		
-		return exceptionMessage;
+		return message;
 	}
 	
-	public static String doCrypt(String string) {
-		return DigestUtils.md5Hex(string.getBytes());
-	}
-	
-	public static User createUser(HttpServletRequest request) {
-		User user = new UserImpl();
-		user.setRole(UserRole.valueOf(request.getParameter(ROLE)));
-		user.setName(request.getParameter(NAME));
-		user.setSurname(request.getParameter(SURNAME));
-		user.setLogin(request.getParameter(REGISTRATION_LOGIN));
-		user.setPassword(doCrypt(request.getParameter(REGISTRATION_PASSWORD)));
-		user.setEmail(request.getParameter(EMAIL));
-		user.setPhone(request.getParameter(PHONE));	
-		
-		return user;
-	}
-	
-	public static User updateUser(User user, HttpServletRequest request) {
-		user.setName(request.getParameter(NAME));
-		user.setSurname(request.getParameter(SURNAME));
-		user.setLogin(request.getParameter(LOGIN));
-		user.setEmail(request.getParameter(EMAIL));
-		user.setPhone(request.getParameter(PHONE));	
-		
-		return user;
-	}
 	/*
 	 * If request doesn't contain param "language" this param is got from session.
 	 * It isn't possible to get param "language" from session every time, 

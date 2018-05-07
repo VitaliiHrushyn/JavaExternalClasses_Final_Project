@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ua.training.repairagency.model.services.interfaces.ServiceFactory;
+
 public abstract class AbstractCommand implements Command {
 
+	protected ServiceFactory serviceFactory = ServiceFactory.getInstance();
 	protected List<String> messages;
 	protected String path;
 	

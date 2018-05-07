@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.user.User;
-import ua.training.repairagency.controller.commands.Command;
+import ua.training.repairagency.controller.commands.AbstractCommand;
 
-public class CustomerAllApplicationCommand implements Command {
+public class CustomerAllApplicationCommand extends AbstractCommand {
 
 	@Override
 	public String execute(HttpServletRequest request) {
 		
 		List<Application> applications = new ArrayList<>();
-		applications = serviceFactory.createApplicationService().
-				getAllByUserId(((User) request.getSession().getAttribute(USER)).getId());
+		applications = serviceFactory
+				.createApplicationService()
+				.getAllByUserId( ((User)request.getSession().getAttribute(USER)).getId() );
 		
-		request.setAttribute(APPLICATIONS, applications);
-				
+		request.setAttribute(APPLICATIONS, applications);				
 		return URL.CUSTOMER_APPLICATION_ALL_PAGE; 
 	}
 	

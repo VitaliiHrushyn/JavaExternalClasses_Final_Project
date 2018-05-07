@@ -11,7 +11,7 @@ public class CustomerActiveApplicationCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request) {
-		
+		//TODO
 		request.setAttribute(COMMAND_RESULT, "customer ACTIVE app");
 				
 		return URL.CUSTOMER_APPLICATION_CREATE_PAGE;
