@@ -6,7 +6,6 @@ public interface Message {
 	
 	String AUTH_FAIL = "message.auth.fail";
 	String LOGIN_EMPTY = "message.login.empty";	
-//	String PASSWORD_EMPTY_MESSAGE = "message.password.empty";	
 	String LOGIN_FAIL_MESSAGE = "message.auth.fail";	
 	String REGISTRATION_EMPTY = "message.registration.empty";
 	String USER_ALREADY_LOGGINED = "message.user.already.loggined";

@@ -15,10 +15,4 @@ public interface GenericDAO<T> extends AutoCloseable {
 	
 	T delete(T entity);
 
-//	T delete(int id);
-	
-//	T getByParam(String name, String value);
-	
-//	List<T> getAllByParam(String name, String value);
-
 }

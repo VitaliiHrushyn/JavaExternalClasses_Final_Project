@@ -21,8 +21,6 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 	public ApplicationDAOImpl(Connection connection) {
 		super(connection);
 	}
-
-
 	
 	public Application create(Application application) throws SQLException { 
 		try(PreparedStatement statement = 
@@ -73,7 +71,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 	@Override
 	public Application update(Application application) throws SQLException {
 		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.APPLICATION_UPDATE))) {
-//			statement.setString(1, 1);
+//	TODO		statement.setString(1, 1);
 			if (statement.executeUpdate() > 0) {
 				return application;
 			}

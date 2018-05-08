@@ -1,6 +1,5 @@
 package ua.training.repairagency.model.dao.services.impl;
 
-import ua.training.repairagency.model.constants.Column;
 import ua.training.repairagency.model.dao.DAOFactory;
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
 import ua.training.repairagency.model.dao.services.interfaces.UserService;
