@@ -49,14 +49,13 @@ public class LoginCommand extends AbstractCommand {
 
 	private boolean checkUserPassword(HttpServletRequest request, User user) {
 		if (user == null) {
-			loggerAuth.info("Login process FAIL: DB has no such login=" + request.getParameter(LOGIN) + ";");
+			authLogger.info("Login FAIL: DB has no such login=" + request.getParameter(LOGIN) + ";");
 			return false;
 		}
 		else if (user.getPassword().equals(UserUtils.doCrypt(request.getParameter(PASSWORD)))) {
-			loggerAuth.info("Login process success: " + user + ";");
 			return true;
 		} else {
-			loggerAuth.info("Login process FAIL: wrong password=" + request.getParameter(PASSWORD) + " for " + user + ";");
+			authLogger.info("Login FAIL: wrong password=" + request.getParameter(PASSWORD) + " for " + user + ";");
 			return false;
 		}
 	}
