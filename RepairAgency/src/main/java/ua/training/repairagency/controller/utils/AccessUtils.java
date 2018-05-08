@@ -10,7 +10,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.model.entities.user.User;
+import ua.training.repairagency.model.entities.user.UserRole;
 
 public class AccessUtils {
 	
@@ -37,6 +39,29 @@ public class AccessUtils {
 		Map<Integer, HttpSession> loggedUsers = (HashMap<Integer, HttpSession>) context.getAttribute(LOGGED_USERS);
 		loggedUsers.remove(userId);
 		context.setAttribute(LOGGED_USERS, loggedUsers);
-	}	
+	}
+	
+	public static String loginUserAndGetUsePage(HttpServletRequest request, User user) {
+		if (user == null) {
+			return URL.LOGIN_PAGE;
+		} else {
+			request.getSession().setAttribute(USER, user);
+			setUserAsLogged(request, user.getId());
+			return getPageFromRole(user.getRole());
+		}		
+	}
+	
+	private static String getPageFromRole(UserRole role) {
+		if (role.equals(UserRole.CUSTOMER)) {
+			return URL.REDIRECT_CUSTOMER_PROFILE_COMMAND;
+		}
+		if (role.equals(UserRole.MANAGER)) {
+			return URL.REDIRECT_MANAGER_PROFILE_COMMAND;
+		}
+		if (role.equals(UserRole.WORKMAN)) {
+			return URL.REDIRECT_WORKMAN_PROFILE_COMMAND;
+		}
+		return URL.LOGIN_PAGE;
+	}
 	
 }

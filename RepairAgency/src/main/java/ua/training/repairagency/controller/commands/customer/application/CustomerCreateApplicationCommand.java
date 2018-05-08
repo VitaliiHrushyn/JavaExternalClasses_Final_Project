@@ -29,19 +29,19 @@ public class CustomerCreateApplicationCommand extends AbstractCommand {
 				.insert(ApplicationUtil.createNewApp(request)); 
 				
 				infoMessages.add(messageBundle.getString(Message.APPLICATION_CREATE_SUCCESS));
-				path = URL.CUSTOMER_APPLICATION_INDEX_PAGE;
+				page = URL.CUSTOMER_APPLICATION_INDEX_PAGE;
 			} catch (Exception e) {
 				e.printStackTrace();
 				errorMessages.add(messageBundle.getString(Message.APPLICATION_CREATE_FAIL));
-				path = URL.CUSTOMER_APPLICATION_CREATE_PAGE;
+				page = URL.CUSTOMER_APPLICATION_CREATE_PAGE;
 			} 
 		} else {
-			path = URL.CUSTOMER_APPLICATION_CREATE_PAGE;
+			page = URL.CUSTOMER_APPLICATION_CREATE_PAGE;
 		}		
 		
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		request.setAttribute(INFO_MESSAGES, infoMessages);		
-		return path;
+		return page;
 	}
 
 	private boolean isRequestEmpty(HttpServletRequest request) {

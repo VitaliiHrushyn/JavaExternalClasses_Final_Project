@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import ua.training.repairagency.model.dao.services.ServiceFactory;
 
 public abstract class AbstractCommand implements Command {
-
+	
 	protected ResourceBundle messageBundle;
 	protected ServiceFactory serviceFactory = ServiceFactory.getInstance();
 	protected List<String> infoMessages;
 	protected List<String> errorMessages;
-	protected String path;
+	protected String page;
 	
 	@Override
 	public abstract String execute(HttpServletRequest request);

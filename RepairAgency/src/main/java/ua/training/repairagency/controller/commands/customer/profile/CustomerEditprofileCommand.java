@@ -36,17 +36,17 @@ public class CustomerEditprofileCommand extends AbstractCommand {
 				
 				request.getSession().setAttribute(USER, user);
 				infoMessages.add(messageBundle.getString(Message.UPDATE_USER_SUCCESS));
-				path = URL.CUSTOMER_PROFILE_PAGE; 
+				page = URL.CUSTOMER_PROFILE_PAGE; 
 			} catch (NotUniqueFieldValueException e) {
 				errorMessages.add(messageBundle.getString(CommandUtils.getFailMessageFromException(e)));
-				path = URL.CUSTOMER_EDITPROFILE_PAGE;
+				page = URL.CUSTOMER_EDITPROFILE_PAGE;
 			}
 		} else {
-			path = URL.CUSTOMER_EDITPROFILE_PAGE;
+			page = URL.CUSTOMER_EDITPROFILE_PAGE;
 		}
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		request.setAttribute(INFO_MESSAGES, infoMessages);
-		return path;
+		return page;
 	}
 
 }
