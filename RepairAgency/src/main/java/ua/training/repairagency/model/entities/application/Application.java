@@ -39,6 +39,6 @@ public interface Application extends Entity {
 	
 	Date getCreatTime();
 	
-	
+	public void setCreatTime(Date createTime);	
 
 }

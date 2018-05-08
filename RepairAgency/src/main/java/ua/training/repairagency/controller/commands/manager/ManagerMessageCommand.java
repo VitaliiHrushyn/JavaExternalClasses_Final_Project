@@ -1,6 +1,6 @@
 package ua.training.repairagency.controller.commands.manager;
 
-import static ua.training.repairagency.controller.constants.PathConstants.*;
+import static ua.training.repairagency.controller.constants.URL.*;
 
 import java.sql.SQLException;
 
@@ -16,7 +16,7 @@ public class ManagerMessageCommand implements Command {
 		
 		request.setAttribute("message", "message from manager message command");
 
-		return MANAGER_PAGE;
+		return MANAGER_PROFILE;
 	}
 
 }

@@ -1,70 +1,60 @@
 package ua.training.repairagency.controller.commands.common;
 
-import static ua.training.repairagency.controller.constants.PathConstants.*;
+import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
-import static ua.training.repairagency.controller.constants.AttributeAndParamConstants.*;
-import static ua.training.repairagency.controller.constants.MessageConstants.*;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import ua.training.repairagency.controller.commands.Command;
+import ua.training.repairagency.controller.constants.URL;
+import ua.training.repairagency.controller.constants.Message;
+import ua.training.repairagency.controller.commands.AbstractCommand;
+import ua.training.repairagency.controller.utils.AccessUtils;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
-import ua.training.repairagency.model.services.GetUserByLoginService;
+import ua.training.repairagency.model.utils.UserUtils;
 
-public class LoginCommand implements Command {
+public class LoginCommand extends AbstractCommand {
 	
-	private String loginMessage;
-	private String authMessage;
-	
-	ResourceBundle regexBundle = ResourceBundle.getBundle(REGEX_BUNDLE_NAME);
-
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		String login = request.getParameter(LOGIN);
-		String password = request.getParameter(PASSWORD);		
-		HttpSession session = request.getSession();
-		
-		
-		String path = LOGIN_PAGE;
-		
-		//TODO : use Optional to avoid checking for a null
-		if (validateLogin(login)) {
-			
-			User user = new GetUserByLoginService().execute(login);
-			
-			if (validateUserPassword(password, user)) {
-				path = CommandUtils.getPathFromRole(user.getRole());
-				session.setAttribute(USER, user);
-			} else {
-				authMessage = AUTH_FAIL_MESSAGE;
-			}
+		messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, CommandUtils.getLocale(request));
+		errorMessages = new ArrayList<>();
+						
+		if (CommandUtils.checkLoginCredentials(request, errorMessages)) {			
+			User user = getAndCheckUserIfExists(request, errorMessages);
+			path = CommandUtils.getUserPage(user);
+			request.getSession().setAttribute(USER, user);			
+		} else {
+			path = URL.LOGIN_PAGE;
 		}
-		
-		request.setAttribute(LOGIN_MESSAGE_PARAM, loginMessage);
-		request.setAttribute(AUTH_MESSAGE_PARAM, authMessage);
-		loginMessage = null;
-		authMessage = null;
+		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		return path;
 	}
 
-	private boolean validateLogin(String login) {
-		if (login == null || login.isEmpty()) {
-			loginMessage = LOGIN_EMPTY_MESSAGE;
-			return false;
-		} else if(!login.matches(regexBundle.getString(LOGIN_REGEX))) {
-			loginMessage = LOGIN_INVALID_MESSAGE;
-			return false;
-		}
-		return true;
-	}
-	
-	private boolean validateUserPassword(String password, User user) {
-		return user != null && user.getPassword().equals(password);
+	private User getAndCheckUserIfExists(HttpServletRequest request, List<String> errorMessages) {
+		User user = serviceFactory
+				.createUserService()
+				.getByLogin((request.getParameter(LOGIN)));
+		
+		if (!checkUserPassword(request, user)) {
+			errorMessages.add(messageBundle.getString(Message.AUTH_FAIL));
+			return null;
+		} else {
+			AccessUtils.setUserAsLogged(request, user.getId());
+			return user;
+		}	
 	}
 
+	private boolean checkUserPassword(HttpServletRequest request, User user) {
+		if (user == null) {
+			return false;
+		} 
+		return user.getPassword().equals(UserUtils.doCrypt(request.getParameter(PASSWORD)));
+	}
+	
 }
+ 

@@ -4,4 +4,6 @@ import ua.training.repairagency.model.entities.user.User;
 
 public interface UserDAO extends GenericDAO<User> {
 	
+	User getByLogin(String login);
+	
 }

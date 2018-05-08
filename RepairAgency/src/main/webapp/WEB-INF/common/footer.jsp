@@ -12,9 +12,10 @@
 </head>
 <body>
 	<div>
+		<br><br>
 		footer:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/manager/exception">manager Exception</a>
+		<a href = "${pageContext.request.contextPath}/app/logout">To index page</a>
 		<br>
 	</div>
 	

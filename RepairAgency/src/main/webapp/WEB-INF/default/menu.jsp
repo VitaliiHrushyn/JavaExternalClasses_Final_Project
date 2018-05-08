@@ -11,5 +11,13 @@
 		<title></title>
 	</head>
 	<body>
+		<div>
+		MENU:
+		<br>
+		<a href = "${pageContext.request.contextPath}/app/index"><fmt:message key="text.menu.home" /></a> | 
+		<a href = "${pageContext.request.contextPath}/app/login"><fmt:message key="text.menu.login" /></a> |
+       	<a href = "${pageContext.request.contextPath}/app/registration"><fmt:message key="text.menu.registration" /></a>
+       	<br>
+	</div>
 	</body>
 </html>
