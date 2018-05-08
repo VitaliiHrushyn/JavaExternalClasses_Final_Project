@@ -6,15 +6,8 @@ import java.util.Map;
 import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.commands.common.*;
 import ua.training.repairagency.controller.commands.customer.*;
-import ua.training.repairagency.controller.commands.customer.application.CustomerActiveApplicationCommand;
-import ua.training.repairagency.controller.commands.customer.application.CustomerAllApplicationCommand;
-import ua.training.repairagency.controller.commands.customer.application.CustomerApplicationCommand;
-import ua.training.repairagency.controller.commands.customer.application.CustomerCreateApplicationCommand;
-import ua.training.repairagency.controller.commands.customer.application.CustomerCurrentApplicationCommand;
-import ua.training.repairagency.controller.commands.customer.application.CustomerNonactiveApplicationCommand;
-import ua.training.repairagency.controller.commands.customer.profile.CustomerChangepasswordCommand;
-import ua.training.repairagency.controller.commands.customer.profile.CustomerEditprofileCommand;
-import ua.training.repairagency.controller.commands.customer.profile.CustomerProfilePageCommand;
+import ua.training.repairagency.controller.commands.customer.application.*;
+import ua.training.repairagency.controller.commands.customer.profile.*;
 import ua.training.repairagency.controller.commands.manager.*;
 import ua.training.repairagency.controller.constants.URL;
 
@@ -34,6 +27,7 @@ public class CommandsCreator {
 		commands.put(URL.MANAGER_WORKMEN_PATH, new ManagerGetAllWorkmenCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_PATH, new ManagerGetAllAppsCommand());
 		
+	//	commands.put(URL.CUSTOMER_LOGIN_PATH, new CustomerLoginCommand());
 		commands.put(URL.CUSTOMER_PROFILE_PATH, new CustomerProfilePageCommand());
 		commands.put(URL.CUSTOMER_ROFILE_EDIT_PATH, new CustomerEditprofileCommand());
 		commands.put(URL.CUSTOMER_PROFILE_CHANGEPASSWORD_PATH, new CustomerChangepasswordCommand());

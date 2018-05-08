@@ -16,7 +16,7 @@ public class ManagerGetAllAppsCommand implements Command {
 				
 		request.setAttribute("command_result", null);
 
-		return MANAGER_PAGE;
+		return MANAGER_PROFILE;
 	}
 
 }

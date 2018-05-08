@@ -16,7 +16,7 @@ public class ManagerMessageCommand implements Command {
 		
 		request.setAttribute("message", "message from manager message command");
 
-		return MANAGER_PAGE;
+		return MANAGER_PROFILE;
 	}
 
 }

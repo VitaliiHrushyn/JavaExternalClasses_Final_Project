@@ -16,7 +16,7 @@ public class ManagerPageCommand implements Command {
 		
 		request.setAttribute("message", "manager index message");
 
-		return MANAGER_PAGE;
+		return MANAGER_PROFILE;
 	}
 
 }
