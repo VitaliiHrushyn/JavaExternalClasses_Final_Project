@@ -43,11 +43,8 @@ public class LoginCommand extends AbstractCommand {
 		if (!checkUserPassword(request, user)) {
 			errorMessages.add(messageBundle.getString(Message.AUTH_FAIL));
 			return null;
-		} 
-		else if (!AccessUtils.setUserAsLogged(request, user.getId())) {
-			errorMessages.add(messageBundle.getString(Message.USER_ALREADY_LOGGINED));
-			return null;
 		} else {
+			AccessUtils.setUserAsLogged(request, user.getId());
 			return user;
 		}	
 	}

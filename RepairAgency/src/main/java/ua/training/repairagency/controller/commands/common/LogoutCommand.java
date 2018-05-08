@@ -13,7 +13,7 @@ public class LogoutCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request) {			
 		AccessUtils.deleteUserFromLoggedUsers(request.getSession());
-		request.getSession().setAttribute(USER, null);
+		request.getSession().removeAttribute(USER);
 		return URL.REDIRECT_INDEX_COMMAND;
 	}
 

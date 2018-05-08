@@ -8,7 +8,7 @@ public interface Message {
 	String LOGIN_EMPTY = "message.login.empty";	
 	String LOGIN_FAIL_MESSAGE = "message.auth.fail";	
 	String REGISTRATION_EMPTY = "message.registration.empty";
-	String USER_ALREADY_LOGGINED = "message.user.already.loggined";
+//	String USER_ALREADY_LOGGINED = "message.user.already.loggined";
 	
 	String NOT_UNIQUE_LOGIN ="message.not.unique.login";
 	String NOT_UNIQUE_EMAIL ="message.not.unique.email";

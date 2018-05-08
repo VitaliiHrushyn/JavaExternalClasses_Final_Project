@@ -2,13 +2,10 @@ package ua.training.repairagency.controller.utils;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.Set;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
