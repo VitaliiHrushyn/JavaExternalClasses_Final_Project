@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.commands.AbstractCommand;
+import ua.training.repairagency.controller.utils.AccessUtils;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.utils.UserUtils;
@@ -43,7 +44,7 @@ public class LoginCommand extends AbstractCommand {
 			errorMessages.add(messageBundle.getString(Message.AUTH_FAIL));
 			return null;
 		} 
-		else if (!CommandUtils.setUserAsLogged(request, user.getId())) {
+		else if (!AccessUtils.setUserAsLogged(request, user.getId())) {
 			errorMessages.add(messageBundle.getString(Message.USER_ALREADY_LOGGINED));
 			return null;
 		} else {

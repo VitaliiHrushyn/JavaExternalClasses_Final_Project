@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 
-import ua.training.repairagency.model.dao.services.interfaces.ServiceFactory;
+import ua.training.repairagency.model.dao.services.ServiceFactory;
 
 public abstract class AbstractCommand implements Command {
 

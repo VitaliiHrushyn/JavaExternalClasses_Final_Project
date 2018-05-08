@@ -3,7 +3,7 @@ package ua.training.repairagency.controller.listener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import ua.training.repairagency.controller.utils.CommandUtils;
+import ua.training.repairagency.controller.utils.AccessUtils;
 
 public class SessionListener implements HttpSessionListener {
 
@@ -12,6 +12,6 @@ public class SessionListener implements HttpSessionListener {
 
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
-        CommandUtils.deleteUserFromLoggedUsers(httpSessionEvent.getSession());
+        AccessUtils.deleteUserFromLoggedUsers(httpSessionEvent.getSession());
     }
 }
