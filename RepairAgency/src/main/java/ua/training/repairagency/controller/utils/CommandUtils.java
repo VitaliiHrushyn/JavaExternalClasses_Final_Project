@@ -13,7 +13,6 @@ import org.apache.log4j.Logger;
 
 import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.constants.*;
-import ua.training.repairagency.model.entities.user.*;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 
 public class CommandUtils {
@@ -78,8 +77,8 @@ public class CommandUtils {
 		ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, getLocale(request));
 		ResourceBundle messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, getLocale(request));
 	
-		String login = request.getParameter(REGISTRATION_LOGIN);
-		String password = (request.getParameter(REGISTRATION_PASSWORD));
+		String login = request.getParameter(LOGIN);
+		String password = (request.getParameter(PASSWORD));
 		String confirmpassword = request.getParameter(CONFIRM_PASSWORD);
 		String name = request.getParameter(NAME);
 		String surname = request.getParameter(SURNAME);
@@ -121,20 +120,22 @@ public class CommandUtils {
 	}
 
 	private static boolean isRequesEmpty(HttpServletRequest request) {
-		return request.getParameter(REGISTRATION_LOGIN) == null;
+		return request.getParameter(LOGIN) == null;
 	}
 
 	public static boolean checkLoginCredentials(HttpServletRequest request, List<String> messages) {
 
+		if (isRequesEmpty(request)) {
+			return false;
+		}
+		
 		ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, getLocale(request));
 		ResourceBundle messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, getLocale(request));
 		String login = request.getParameter(LOGIN);
 		String password = (request.getParameter(PASSWORD));
 				
-		if (login == null) {
-			return false;
-		} else if ( !login.matches(regexBundle.getString(RegEx.LOGIN)) ||
-				    !password.matches(regexBundle.getString(RegEx.PASSWORD)) ) {
+		if ( !login.matches(regexBundle.getString(RegEx.LOGIN)) ||
+			 !password.matches(regexBundle.getString(RegEx.PASSWORD)) ) {
 			messages.add(messageBundle.getString(Message.AUTH_FAIL));
 			loggerAuth.info("Login process FAIL: login or password don't match RegEx: "
 					+ "login=" + login +", password=" + password + ";");

@@ -22,9 +22,9 @@
          <br>
         <form method="post" action="${pageContext.request.contextPath}/app/registration">
             
-            <input type="text" id="reglogin" name="reglogin" required placeholder="<fmt:message key="register.label.login" />">
+            <input type="text" id="login" name="login" required placeholder="<fmt:message key="register.label.login" />">
             <br>
-            <input type="password" id="regpassword" name="regpassword" required placeholder="<fmt:message key="register.label.password" />">
+            <input type="password" id="password" name="password" required placeholder="<fmt:message key="register.label.password" />">
             <br>
             <input type="password" id="confirmpassword" name="confirmpassword" required placeholder="<fmt:message key="register.label.confirmpassword" />">
             <br>
