@@ -17,7 +17,7 @@ import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 
 public class CommandUtils {
 	
-	private static final Logger loggerAuth = Logger.getLogger(Command.class);
+	private static final Logger authLogger = Logger.getLogger(Command.class);
 	
 	public static String getFailMessageFromException(NotUniqueFieldValueException e) {
 		String exceptionErrorMessage = e.getMessage();
@@ -137,7 +137,7 @@ public class CommandUtils {
 		if ( !login.matches(regexBundle.getString(RegEx.LOGIN)) ||
 			 !password.matches(regexBundle.getString(RegEx.PASSWORD)) ) {
 			messages.add(messageBundle.getString(Message.AUTH_FAIL));
-			loggerAuth.info("Login process FAIL: login or password don't match RegEx: "
+			authLogger.info("Login FAIL: login or password don't match RegEx: "
 					+ "login=" + login +", password=" + password + ";");
 			return false;
 		} else {

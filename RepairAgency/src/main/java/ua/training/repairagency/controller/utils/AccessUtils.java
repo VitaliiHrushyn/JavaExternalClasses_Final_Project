@@ -10,11 +10,16 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
+import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserRole;
 
 public class AccessUtils {
+	
+	private static final Logger authLogger = Logger.getLogger(Command.class);
 	
 	@SuppressWarnings("unchecked")
 	public static void setUserAsLogged(HttpServletRequest request, int userId) {
@@ -26,19 +31,25 @@ public class AccessUtils {
 				: new HashMap<Integer, HttpSession>();
 
 		HttpSession previousSession = loggedUsers.put(userId, request.getSession());
+		authLogger.info("Login success: " + request.getSession().getAttribute(USER) 
+				+ " to session " + request.getSession().getId() + ";");
 		if (previousSession != null) {
 			previousSession.removeAttribute(USER);
+			authLogger.info("Double login protection - automatic logout of " 
+					+ request.getSession().getAttribute(USER) + " from session " + previousSession.getId() + ";");
 		}
 		context.setAttribute(LOGGED_USERS, loggedUsers);		
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void deleteUserFromLoggedUsers(HttpSession session) {
-		int userId = ((User) session.getAttribute(USER)).getId();
+	public static void logoutUser(HttpSession session) {
+		User user = ((User) session.getAttribute(USER));
 		ServletContext context = session.getServletContext();
 		Map<Integer, HttpSession> loggedUsers = (HashMap<Integer, HttpSession>) context.getAttribute(LOGGED_USERS);
-		loggedUsers.remove(userId);
+		loggedUsers.remove(user.getId());
 		context.setAttribute(LOGGED_USERS, loggedUsers);
+		session.removeAttribute(USER);
+		authLogger.info("Logout of " + user + ";");
 	}
 	
 	public static String loginUserAndGetUsePage(HttpServletRequest request, User user) {
