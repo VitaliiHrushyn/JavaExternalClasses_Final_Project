@@ -30,12 +30,19 @@
         	</c:if>
         	<br>
         	<span>
-			<font color="red">
-				<c:forEach var="message" items="${requestScope.messages}">
-					<fmt:message key="${message}"/>.
-				</c:forEach>
-			</font>
-         </span> 
+				<font color="red">
+					<c:forEach var="message" items="${requestScope.error_messages}">
+						${message}.
+					</c:forEach>
+				</font>
+         	</span>
+         	<span>
+				<font color="green">
+					<c:forEach var="message" items="${requestScope.info_messages}">
+						${message}.
+					</c:forEach>
+				</font>
+         	</span>  
         	<br>
         </div>
         <br>

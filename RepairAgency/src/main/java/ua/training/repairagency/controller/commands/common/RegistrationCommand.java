@@ -3,9 +3,11 @@ package ua.training.repairagency.controller.commands.common;
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 import ua.training.repairagency.controller.utils.CommandUtils;
@@ -18,9 +20,10 @@ public class RegistrationCommand extends AbstractCommand {
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		messages = new ArrayList<>();
+		messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, CommandUtils.getLocale(request));
+		errorMessages = new ArrayList<>();
 		
-		if (CommandUtils.checkRegistrationCredentials(request, messages)) {				
+		if (CommandUtils.checkRegistrationCredentials(request, errorMessages)) {				
 			try {
 				User user = serviceFactory
 						.createUserService()
@@ -29,13 +32,13 @@ public class RegistrationCommand extends AbstractCommand {
 				request.getSession().setAttribute(USER, user);
 				path = CommandUtils.getUserPage(user);				
 			} catch (NotUniqueFieldValueException e) {
-				messages.add(CommandUtils.getFailMessageFromException(e));
+				errorMessages.add(messageBundle.getString(CommandUtils.getFailMessageFromException(e)));
 				path = URL.REGISTRATION_PAGE;
 			} 			
 		} else {
 			path = URL.REGISTRATION_PAGE;
 		}
-		request.setAttribute(MESSAGES, messages);
+		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		return path;
 	}	
 	

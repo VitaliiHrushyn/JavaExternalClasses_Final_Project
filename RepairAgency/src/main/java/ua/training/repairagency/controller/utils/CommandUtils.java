@@ -86,6 +86,7 @@ public class CommandUtils {
 	public static boolean checkRegistrationCredentials(HttpServletRequest request, List<String> messages) {
 		
 		ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, getLocale(request));
+		ResourceBundle messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, getLocale(request));
 	
 		String login = request.getParameter(REGISTRATION_LOGIN);
 		String password = (request.getParameter(REGISTRATION_PASSWORD));
@@ -106,31 +107,31 @@ public class CommandUtils {
 		boolean check = true;
 				
 		if (!login.matches(regexBundle.getString(RegEx.LOGIN))) {
-			messages.add(Message.LOGIN_INVALID);
+			messages.add(messageBundle.getString(Message.LOGIN_INVALID));
 			check = false;
 		}
 		if (!password.matches(regexBundle.getString(RegEx.PASSWORD))) {
-			messages.add(Message.PASSWORD_INVALID);
+			messages.add(messageBundle.getString(Message.PASSWORD_INVALID));
 			check = false;
 		}
 		if (!confirmpassword.equals(password)) {
-			messages.add(Message.CONFIRMPASSWORD_INVALID);
+			messages.add(messageBundle.getString(Message.CONFIRMPASSWORD_INVALID));
 			check = false;
 		}
 		if (!name.matches(regexBundle.getString(RegEx.NAME))) {
-			messages.add(Message.NAME_INVALID);
+			messages.add(messageBundle.getString(Message.NAME_INVALID));
 			check = false;
 		}
 		if (!surname.matches(regexBundle.getString(RegEx.SURNAME))) {
-			messages.add(Message.SURNAME_INVALID);
+			messages.add(messageBundle.getString(Message.SURNAME_INVALID));
 			check = false;
 		}
 		if (!email.matches(regexBundle.getString(RegEx.EMAIL))) {
-			messages.add(Message.EMAIL_INVALID);
+			messages.add(messageBundle.getString(Message.EMAIL_INVALID));
 			check = false;
 		}
 		if (!phone.matches(regexBundle.getString(RegEx.PHONE))){
-			messages.add(Message.PHONE_INVALID);
+			messages.add(messageBundle.getString(Message.PHONE_INVALID));
 			check = false;
 		}
 
@@ -140,6 +141,7 @@ public class CommandUtils {
 	public static boolean checkLoginCredentials(HttpServletRequest request, List<String> messages) {
 
 		ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, getLocale(request));
+		ResourceBundle messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, getLocale(request));
 		String login = request.getParameter(LOGIN);
 		String password = (request.getParameter(PASSWORD));
 				
@@ -147,7 +149,7 @@ public class CommandUtils {
 			return false;
 		} else if ( !login.matches(regexBundle.getString(RegEx.LOGIN)) ||
 				    !password.matches(regexBundle.getString(RegEx.PASSWORD)) ) {
-			messages.add(Message.AUTH_FAIL);
+			messages.add(messageBundle.getString(Message.AUTH_FAIL));
 			return false;
 		} else {
 			return true;

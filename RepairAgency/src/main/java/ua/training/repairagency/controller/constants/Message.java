@@ -2,6 +2,8 @@ package ua.training.repairagency.controller.constants;
 
 public interface Message {
 		
+	String BUNDLE_NAME = "locale/messages";
+	
 	String AUTH_FAIL = "message.auth.fail";
 	String LOGIN_EMPTY = "message.login.empty";	
 //	String PASSWORD_EMPTY_MESSAGE = "message.password.empty";	

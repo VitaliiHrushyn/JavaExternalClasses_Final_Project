@@ -21,7 +21,8 @@ public interface AttributeOrParam {
 	String REGISTRATION_MESSAGES = "regmessages";
 	String LOGGED_USERS = "logged_users";
 	
-	String MESSAGES = "messages";
+	String ERROR_MESSAGES = "error_messages";
+	String INFO_MESSAGES = "info_messages";
 	String APPLICATIONS = "applications";
 	
 	String LOGIN_MESSAGES = "loginmessages";

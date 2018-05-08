@@ -4,6 +4,7 @@ import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,30 +20,31 @@ public class LoginCommand extends AbstractCommand {
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		messages = new ArrayList<>();	
+		messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, CommandUtils.getLocale(request));
+		errorMessages = new ArrayList<>();
 						
-		if (CommandUtils.checkLoginCredentials(request, messages)) {			
-			User user = getAndCheckUserIfExists(request, messages);
+		if (CommandUtils.checkLoginCredentials(request, errorMessages)) {			
+			User user = getAndCheckUserIfExists(request, errorMessages);
 			path = CommandUtils.getUserPage(user);
 			request.getSession().setAttribute(USER, user);			
 		} else {
 			path = URL.LOGIN_PAGE;
 		}
-		request.setAttribute(MESSAGES, messages);
+		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		return path;
 	}
 
-	private User getAndCheckUserIfExists(HttpServletRequest request, List<String> messages) {
+	private User getAndCheckUserIfExists(HttpServletRequest request, List<String> errorMessages) {
 		User user = serviceFactory
 				.createUserService()
 				.getByLogin((request.getParameter(LOGIN)));
 		
 		if (!checkUserPassword(request, user)) {
-			messages.add(Message.AUTH_FAIL);
+			errorMessages.add(messageBundle.getString(Message.AUTH_FAIL));
 			return null;
 		} 
 		else if (!CommandUtils.setUserAsLogged(request, user.getId())) {
-			messages.add(Message.USER_ALREADY_LOGGINED);
+			errorMessages.add(messageBundle.getString(Message.USER_ALREADY_LOGGINED));
 			return null;
 		} else {
 			return user;

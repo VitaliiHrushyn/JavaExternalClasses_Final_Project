@@ -3,6 +3,7 @@ package ua.training.repairagency.controller.commands.customer.profile;
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,7 +20,9 @@ public class CustomerEditprofileCommand extends AbstractCommand {
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		messages = new ArrayList<>();
+		messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, CommandUtils.getLocale(request));
+		errorMessages = new ArrayList<>();
+		infoMessages = new ArrayList<>();
 		
 		if (request.getParameter(USER_ID) != null) {	
 			try {
@@ -32,16 +35,17 @@ public class CustomerEditprofileCommand extends AbstractCommand {
 						.update(UserUtils.updateUser(user, request));
 				
 				request.getSession().setAttribute(USER, user);
-				messages.add(Message.UPDATE_USER_SUCCESS);
+				infoMessages.add(messageBundle.getString(Message.UPDATE_USER_SUCCESS));
 				path = URL.CUSTOMER_PROFILE_PAGE; 
 			} catch (NotUniqueFieldValueException e) {
-				messages.add(CommandUtils.getFailMessageFromException(e));
+				errorMessages.add(messageBundle.getString(CommandUtils.getFailMessageFromException(e)));
 				path = URL.CUSTOMER_EDITPROFILE_PAGE;
 			}
 		} else {
 			path = URL.CUSTOMER_EDITPROFILE_PAGE;
 		}
-		request.setAttribute(MESSAGES, messages);
+		request.setAttribute(ERROR_MESSAGES, errorMessages);
+		request.setAttribute(INFO_MESSAGES, infoMessages);
 		return path;
 	}
 
