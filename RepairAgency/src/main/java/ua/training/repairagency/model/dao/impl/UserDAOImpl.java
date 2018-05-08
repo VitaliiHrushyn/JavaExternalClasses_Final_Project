@@ -7,6 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
 import ua.training.repairagency.model.entities.user.User;
@@ -18,66 +21,9 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	public UserDAOImpl(Connection connection) {
 		super(connection);
 	}
-		
-	@Override
-	public String getAllQuery() {
-		return queryBundle.getString(Query.USER_GET_ALL);
-	}
+
 	
-	@Override
-	public String getByIDQuery() {
-		return queryBundle.getString(Query.USER_GET_BY_ID);
-	}
-	
-	@Override
-	String getByParamQuery(String name) {
-		if (name.equals(Column.USER_LOGIN)) {
-			return queryBundle.getString(Query.USER_GET_BY_LOGIN);
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
-	
-	@Override
-	public String getDeleteQuery() {
-		return queryBundle.getString(Query.USER_DELETE);
-	}	
-	
-	@Override
-	public String getCreateQuery() {
-		return queryBundle.getString(Query.USER_INSERT);
-	}
-		
-	@Override
-	public void fillCreateStatement(PreparedStatement statement, User user) throws SQLException {
-		statement.setString(1, user.getRole().toString());
-		statement.setString(2, user.getName());
-		statement.setString(3, user.getSurname());
-		statement.setString(4, user.getLogin());
-		statement.setString(5, user.getPassword());
-		statement.setString(6, user.getEmail());
-		statement.setString(7, user.getPhone());
-	}
-	
-	@Override
-	public String getUpdateQuery() {
-		return queryBundle.getString(Query.USER_UPDATE);
-	}
-	
-	@Override
-	public void fillUpdateStatement(PreparedStatement statement, User user) throws SQLException {
-		statement.setString(1, user.getRole().toString());
-		statement.setString(2, user.getName());
-		statement.setString(3, user.getSurname());
-		statement.setString(4, user.getLogin());
-		statement.setString(5, user.getPassword());
-		statement.setString(6, user.getEmail());
-		statement.setString(7, user.getPhone());
-		statement.setInt(8, user.getId());		
-	}
-	
-	@Override
-	public User extractEntity(ResultSet rs, boolean eager) throws SQLException {
+	public User extractUser(ResultSet rs) throws SQLException {
 		User user = new UserImpl();
 		user.setId(rs.getInt(columnBundle.getString(Column.USER_ID)));
 		user.setRole(UserRole.valueOf(rs.getString(columnBundle.getString(Column.USER_ROLE))));
@@ -91,25 +37,106 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 		return user;
 	}
 
-//		private List<Driver> extractUniqueDrivers(ResultSet rs) throws SQLException {
-//			try(AbstractDAO<Driver> driverDAO = DAOFactory.getInstance().createDriverDAO()){
-//				List<Driver> drivers = driverDAO.getWhere(rs.getInt(ID));
-//				return drivers;
-//			}		
-//		}
+	@Override
+	public User getByLogin(String login) {
+		User user = null;		
+		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_GET_BY_LOGIN))) {
+			statement.setString(1, login);
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				user = extractUser(rs);	
+			}
+		} catch (SQLException e) {
+			//TODO handle exception
+			throw new RuntimeException(e);
+		}		
+		return user;
+	}
 
+
+	@Override
+	public User create(User user) throws SQLException { 
+		try(PreparedStatement statement = 
+				connection.prepareStatement(queryBundle.getString(Query.USER_INSERT), Statement.RETURN_GENERATED_KEYS)) {
+			statement.setString(1, user.getRole().toString());
+			statement.setString(2, user.getName());
+			statement.setString(3, user.getSurname());
+			statement.setString(4, user.getLogin());
+			statement.setString(5, user.getPassword());
+			statement.setString(6, user.getEmail());
+			statement.setString(7, user.getPhone());
+			statement.executeUpdate();
+			ResultSet keys = statement.getGeneratedKeys();
+			if (keys.next()) {
+				return getById(keys.getInt(1));
+			} else {				
+				return null;	
+			}
+		}
+	}
 	
 
-	
-		
-	
-	
-	
+	@Override	
+	public User getById(int id) {
+		User user = null;		
+		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_GET_BY_ID))) {
+			statement.setInt(1, id);
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				user = extractUser(rs);	
+			}
+		} catch (SQLException e) {
+			//TODO handle exception
+			throw new RuntimeException(e);
+		}		
+		return user;
+	}	
 
-		
-//		@Override
-//		public String getJoinQuery() {
-//			return null; //TODO
-//		}
+	@Override
+	public User update(User user) throws SQLException {
+		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_UPDATE))) {
+			statement.setString(1, user.getRole().toString());
+			statement.setString(2, user.getName());
+			statement.setString(3, user.getSurname());
+			statement.setString(4, user.getLogin());
+			statement.setString(5, user.getPassword());
+			statement.setString(6, user.getEmail());
+			statement.setString(7, user.getPhone());
+			statement.setInt(8, user.getId());
+			if (statement.executeUpdate() > 0) {
+				return user;
+			}
+		}
+		return null;
+	}	
+
+	@Override
+	public User delete(User user) {
+		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_DELETE))) {
+			statement.setInt(1, user.getId());
+			if (statement.executeUpdate() > 0) {
+				return user;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+		return null;
+	}
+	
+	@Override
+	public List<User> getAll(boolean eager) {
+		List<User> users = new ArrayList<>();
+		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_GET_ALL))) {
+			ResultSet rs = statement.executeQuery();			
+			while(rs.next()) {
+				users.add(extractUser(rs));	
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}				
+		return users;
+	}
+
 
 }

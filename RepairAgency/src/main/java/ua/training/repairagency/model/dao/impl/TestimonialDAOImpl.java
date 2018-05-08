@@ -17,53 +17,83 @@ public class TestimonialDAOImpl extends AbstractDAO<Testimonial> implements Test
 	}
 
 	@Override
-	public String getCreateQuery() {
-		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
-	}
-
-	@Override
-	public void fillCreateStatement(PreparedStatement statement, Testimonial entity) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String getUpdateQuery() {
-		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
-	}
-
-	@Override
-	public void fillUpdateStatement(PreparedStatement statement, Testimonial entity) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String getByIDQuery() {
-		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
-	}
-
-	@Override
-	public String getDeleteQuery() {
-		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
-	}
-
-	@Override
-	public String getAllQuery() {
-		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
-	}
-
-	@Override
-	String getByParamQuery(String name) {
+	public Testimonial create(Testimonial entity) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Testimonial extractEntity(ResultSet rs, boolean eager) throws SQLException {
+	public Testimonial update(Testimonial entity) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Testimonial getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Testimonial> getAll(boolean eager) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Testimonial delete(Testimonial entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	@Override
+//	public String getCreateQuery() {
+//		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
+//	}
+//
+//	@Override
+//	public void fillCreateStatement(PreparedStatement statement, Testimonial entity) throws SQLException {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@Override
+//	public String getUpdateQuery() {
+//		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
+//	}
+//
+//	@Override
+//	public void fillUpdateStatement(PreparedStatement statement, Testimonial entity) throws SQLException {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@Override
+//	public String getByIDQuery() {
+//		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
+//	}
+//
+//	@Override
+//	public String getDeleteQuery() {
+//		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
+//	}
+//
+//	@Override
+//	public String getAllQuery() {
+//		return queryBundle.getString(Query.TESTIMONIAL_INSERT);
+//	}
+//
+//	@Override
+//	String getByParamQuery(String name) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public Testimonial extractEntity(ResultSet rs, boolean eager) throws SQLException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	
 

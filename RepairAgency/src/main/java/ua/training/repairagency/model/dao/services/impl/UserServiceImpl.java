@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 	public User getByLogin(String login) {
 		User user = null;
 		try(UserDAO dao = daoFactory.createUserDAO()){
-			user = dao.getByParam(Column.USER_LOGIN, login);
+			user = dao.getByLogin(login);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
