@@ -27,7 +27,7 @@ public class ApplicationUtils {
 		application.setStatus(AppStatus.valueOf(request.getParameter(STATUS)));
 		application.setDescription(request.getParameter(DESCRIPTION));
 		application.setManagerComment(request.getParameter(COMMENT));
-		if (!request.getParameter(PRICE).isEmpty()) {
+		if (request.getParameter(PRICE) != null && !request.getParameter(PRICE).isEmpty()) {
 			application.setPrice(BigDecimal.valueOf(Long.valueOf(request.getParameter(PRICE))));
 		}
 //		application.setWorkman(request.getParameter(WORKMAN));

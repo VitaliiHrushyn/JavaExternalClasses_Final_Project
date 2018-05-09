@@ -30,7 +30,7 @@
 			<br>
 			<fmt:message key="application.label.comment" />: ${application.managerComment}
 			<br>		
-			<fmt:message key="application.label.price" />: <input type="text" name="price" value="${application.price}">
+			<fmt:message key="application.label.price" />: ${application.price}
 			<br>
 			<fmt:message key="application.label.customer" />: ${application.customer}
 			<br>

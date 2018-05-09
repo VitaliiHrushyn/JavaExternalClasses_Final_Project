@@ -131,7 +131,8 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		try(PreparedStatement statement = connection.prepareStatement(query)) {
 			for (int i = 0; i < values.length; i++) {
 				statement.setString(i+1, values[i]);
-			}			
+			}	
+System.out.println("statement "+statement.toString());
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {
 				applications.add(extractApplication(rs, false));	

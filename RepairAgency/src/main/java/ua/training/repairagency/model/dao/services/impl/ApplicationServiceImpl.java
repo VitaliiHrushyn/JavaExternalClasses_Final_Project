@@ -37,10 +37,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 		throw new RuntimeException();
 	}
 
-	@Override
-	public List<Application> getByStatusAndUserId(AppStatus status, int userId) {
-		throw new RuntimeException();
-	}
+//	@Override
+//	public List<Application> getAllByStatusAndUserId(AppStatus status, int userId) {
+//		throw new RuntimeException();
+//	}
 
 	@Override
 	public Application insert(Application application) throws Exception {
@@ -73,9 +73,15 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public List<Application> getAllByUserIdAndStatus(int id, String currentApplications) {
+	public List<Application> getAllByUserIdAndStatuses(int userId, String... statuses) {
+		String[] values = new String[4];
+		values[0] = String.valueOf(userId);
+		for (int i = 0; i < statuses.length; i++) {
+			values[i+1] = statuses[i];
+		}
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {			
-			return dao.getAllByQuery(queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID), String.valueOf(id));				
+			return dao.getAllByQuery(
+					queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID_AND_STATUS), values);				
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

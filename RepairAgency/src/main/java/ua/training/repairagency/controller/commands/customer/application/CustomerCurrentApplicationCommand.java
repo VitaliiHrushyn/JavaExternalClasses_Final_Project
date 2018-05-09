@@ -11,17 +11,16 @@ import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.controller.commands.AbstractCommand;
-import ua.training.repairagency.controller.constants.AttributeOrParam;
 
 public class CustomerCurrentApplicationCommand extends AbstractCommand {
 
 	@Override
 	public String execute(HttpServletRequest request) {
-		
+		int userId = ((User)request.getSession().getAttribute(USER)).getId();
 		List<Application> applications = new ArrayList<>();
 		applications = serviceFactory
 				.createApplicationService()
-				.getAllByUserIdAndStatus( ((User)request.getSession().getAttribute(USER)).getId(), CURRENT_APPLICATIONS );
+				.getAllByUserIdAndStatuses(userId, RECEIVED_APPLICATION, DONE_APPLICATION );
 		
 		request.setAttribute(APPLICATIONS, applications);				
 		return URL.CUSTOMER_APPLICATION_ALL_PAGE; 

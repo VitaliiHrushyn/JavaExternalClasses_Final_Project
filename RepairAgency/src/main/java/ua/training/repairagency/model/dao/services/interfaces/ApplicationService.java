@@ -13,14 +13,12 @@ public interface ApplicationService {
 	
 	List<Application> getByStatus(AppStatus atatus);
 	
-	List<Application> getByStatusAndUserId(AppStatus status, int userId);
+	List<Application> getAllByUserIdAndStatuses(int userId, String... statuses);
 	
 	Application insert(Application application) throws Exception;
 
 	Application getById(int id);
 
 	Application update(Application application);
-
-	List<Application> getAllByUserIdAndStatus(int id, String currentApplications);
 
 }
