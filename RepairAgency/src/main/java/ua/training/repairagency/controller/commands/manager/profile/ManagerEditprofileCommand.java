@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.commands.customer.profile;
+package ua.training.repairagency.controller.commands.manager.profile;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
@@ -15,7 +15,7 @@ import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 import ua.training.repairagency.model.utils.UserUtils;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 
-public class CustomerEditprofileCommand extends AbstractCommand {	
+public class ManagerEditprofileCommand extends AbstractCommand {	
 	
 	@Override
 	public String execute(HttpServletRequest request) {
@@ -36,13 +36,17 @@ public class CustomerEditprofileCommand extends AbstractCommand {
 				
 				request.getSession().setAttribute(USER, user);
 				infoMessages.add(messageBundle.getString(Message.UPDATE_USER_SUCCESS));
+				page = URL.CUSTOMER_PROFILE_PAGE; 
 			} catch (NotUniqueFieldValueException e) {
 				errorMessages.add(messageBundle.getString(CommandUtils.getFailMessageFromException(e)));
+				page = URL.CUSTOMER_EDITPROFILE_PAGE;
 			}
+		} else {
+			page = URL.CUSTOMER_EDITPROFILE_PAGE;
 		}
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		request.setAttribute(INFO_MESSAGES, infoMessages);
-		return URL.CUSTOMER_EDITPROFILE_PAGE;
-	
+		return page;
 	}
+
 }

@@ -17,11 +17,17 @@
 				<jsp:include page="sidemenu.jsp"></jsp:include>		
 			</div>
 			<br>
-				<p>
-					<c:forEach var="application" items="${requestScope.applications}">
-					<p>${application}</p>
+	
+				<c:forEach var="application" items="${requestScope.applications}">
+					<form method ="post" action="${pageContext.request.contextPath}/app/customer/applications/one">
+						<input type="hidden" name="id" value="${application.id}">
+						<p>
+							${application.status} | ${application.description} | ${application.createTime}
+							<input type="submit" value="<fmt:message key="text.button.show" />">
+						</p>
+					</form>
 				</c:forEach>
-				</p>
+				
 			<br>		
 		</div>
 	</body>

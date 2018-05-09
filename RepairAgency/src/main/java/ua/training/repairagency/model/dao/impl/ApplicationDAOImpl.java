@@ -71,7 +71,23 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 	@Override
 	public Application update(Application application) throws SQLException {
 		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.APPLICATION_UPDATE))) {
-//	TODO		statement.setString(1, 1);
+			statement.setString(1, application.getStatus().toString());
+			statement.setString(2, application.getDescription());
+			statement.setString(3, application.getManagerComment());
+			statement.setBigDecimal(4, application.getPrice());
+			statement.setInt(5, application.getCustomer().getId());
+			if (application.getWorkman() != null) {
+				statement.setInt(6, application.getWorkman().getId());
+			} else {
+				statement.setNull(6, java.sql.Types.INTEGER);
+			}
+			if (application.getTestimonial() != null) {
+				statement.setInt(7, application.getTestimonial().getId());
+			} else {
+				statement.setInt(7, java.sql.Types.INTEGER);
+			}
+			statement.setInt(8, application.getId());
+			
 			if (statement.executeUpdate() > 0) {
 				return application;
 			}
@@ -104,16 +120,15 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		application.setCustomer(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_CUSTOMER_ID))));
 		application.setWorkman(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_WORKMAN_ID))));
 //TODO		application.setTestimonial(ServiceFactory.getInstance().createTestimonialService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_TESTIMONIAL_ID))));
-		application.setCreatTime(rs.getDate(columnBundle.getString(Column.APPLICATION_CREATE_TIME)));
+		application.setCreateTime(rs.getDate(columnBundle.getString(Column.APPLICATION_CREATE_TIME)));
 		
 		return application;
 	}
 	
 	@Override	
-	public List<Application> getAllByParam(String name, String value) {
-	//	Map<Integer, Application> uniqueEnteties = new HashMap<>();
+	public List<Application> getAllByQuery(String query, String value) {
 		List <Application> applications = new ArrayList<>();
-		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID))) {
+		try(PreparedStatement statement = connection.prepareStatement(query)) {
 			statement.setString(1, value);
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {

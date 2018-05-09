@@ -16,7 +16,7 @@ public class ApplicationImpl extends AbstractEntity implements Application {
 	private User customer;
 	private User workman;
 	private Testimonial testimonial;
-	private Date creatTime;
+	private Date createTime;
 	
 	public AppStatus getStatus() {
 		return status;
@@ -74,19 +74,19 @@ public class ApplicationImpl extends AbstractEntity implements Application {
 		this.testimonial = testimonial;
 	}
 
-	public Date getCreatTime() {
-		return creatTime;
+	public Date getCreateTime() {
+		return createTime;
 	}
 	
-	public void setCreatTime(Date createTime) {
-		this.creatTime = createTime;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 	@Override
 	public String toString() {
 		return "ApplicationImpl [status=" + status + ", description=" + description + ", managerComment="
 				+ managerComment + ", price=" + price + ", workman=" + workman
-				+ ", testimonial=" + testimonial + ", creatTime=" + creatTime + "]";
+				+ ", testimonial=" + testimonial + ", creatTime=" + createTime + "]";
 	}
 	
 	

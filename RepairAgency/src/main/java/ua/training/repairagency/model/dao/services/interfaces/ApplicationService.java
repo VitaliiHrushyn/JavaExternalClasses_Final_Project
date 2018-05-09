@@ -6,9 +6,7 @@ import ua.training.repairagency.model.entities.application.AppStatus;
 import ua.training.repairagency.model.entities.application.Application;
 
 public interface ApplicationService {
-	
-	//Application getById(int id);
-	
+		
 	List<Application> getAll();
 	
 	List<Application> getAllByUserId(int userId);
@@ -18,5 +16,11 @@ public interface ApplicationService {
 	List<Application> getByStatusAndUserId(AppStatus status, int userId);
 	
 	Application insert(Application application) throws Exception;
+
+	Application getById(int id);
+
+	Application update(Application application);
+
+	List<Application> getAllByUserIdAndStatus(int id, String currentApplications);
 
 }

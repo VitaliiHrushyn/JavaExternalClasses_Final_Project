@@ -18,8 +18,6 @@
 			<br>
 			<a href = "${pageContext.request.contextPath}/app/customer/profile/editprofile"><fmt:message key="text.menu.editprofile" /></a>
 			<br>
-			<a href = "${pageContext.request.contextPath}/app/customer/profile/changepassword"><fmt:message key="text.menu.changepassword" /></a>
-			<br>
 	</div>
 	
 </body>

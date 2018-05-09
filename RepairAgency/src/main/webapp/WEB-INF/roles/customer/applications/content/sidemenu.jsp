@@ -16,7 +16,7 @@
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/customer/applications/create"><fmt:message key="text.menu.create_new" /></a>
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/customer/applications/all"><fmt:message key="text.menu.show.all" /></a>
+		<a href = "${pageContext.request.contextPath}/app/customer/applications/show"><fmt:message key="text.menu.show.all" /></a>
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/customer/applications/current"><fmt:message key="text.menu.show.current" /></a>     	 
        	<br>

@@ -2,19 +2,29 @@ package ua.training.repairagency.controller.commands.customer.application;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.controller.commands.Command;
+import ua.training.repairagency.model.entities.application.Application;
+import ua.training.repairagency.model.entities.user.User;
+import ua.training.repairagency.controller.commands.AbstractCommand;
+import ua.training.repairagency.controller.constants.AttributeOrParam;
 
-public class CustomerCurrentApplicationCommand implements Command {
+public class CustomerCurrentApplicationCommand extends AbstractCommand {
 
 	@Override
 	public String execute(HttpServletRequest request) {
 		
-		request.setAttribute(COMMAND_RESULT, "customer CURRENT app");
-				
-		return URL.CUSTOMER_APPLICATION_CREATE_PAGE;
+		List<Application> applications = new ArrayList<>();
+		applications = serviceFactory
+				.createApplicationService()
+				.getAllByUserIdAndStatus( ((User)request.getSession().getAttribute(USER)).getId(), CURRENT_APPLICATIONS );
+		
+		request.setAttribute(APPLICATIONS, applications);				
+		return URL.CUSTOMER_APPLICATION_ALL_PAGE; 
 	}
 	
 }

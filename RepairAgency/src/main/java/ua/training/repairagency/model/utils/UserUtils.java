@@ -29,7 +29,7 @@ public class UserUtils {
 		return user;
 	}
 	
-	public static User updateUser(User user, HttpServletRequest request) {
+	public static User updateUserFeatures(User user, HttpServletRequest request) {
 		user.setName(request.getParameter(NAME));
 		user.setSurname(request.getParameter(SURNAME));
 		user.setLogin(request.getParameter(LOGIN));
