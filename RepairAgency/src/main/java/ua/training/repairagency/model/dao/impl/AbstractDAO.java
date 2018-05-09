@@ -17,8 +17,7 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 	public AbstractDAO(Connection connection) {
 		super();
 		this.connection = connection;
-	}
-	
+	}	
 
 	@Override
 	public void close() {

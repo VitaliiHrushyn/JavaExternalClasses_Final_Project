@@ -1,6 +1,9 @@
-package ua.training.repairagency.model.dao.services.impl;
+package ua.training.repairagency.model.dao.services;
 
-import ua.training.repairagency.model.dao.services.ServiceFactory;
+import ua.training.repairagency.model.dao.services.impl.ApplicationServiceImpl;
+import ua.training.repairagency.model.dao.services.impl.HistoryRecordServiceImpl;
+import ua.training.repairagency.model.dao.services.impl.TestimonialServiceImpl;
+import ua.training.repairagency.model.dao.services.impl.UserServiceImpl;
 import ua.training.repairagency.model.dao.services.interfaces.ApplicationService;
 import ua.training.repairagency.model.dao.services.interfaces.HistoryRecordService;
 import ua.training.repairagency.model.dao.services.interfaces.TestimonialService;

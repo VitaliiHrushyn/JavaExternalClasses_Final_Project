@@ -24,7 +24,19 @@
 			
 			<input type="hidden" name="id" value="${application.id}">
 			
-			<fmt:message key="application.label.status" />: <input type="text" name="status" value="${application.status}">
+			<fmt:message key="application.label.status" />: ${application.status}
+			<br>
+			<fmt:message key="application.label.status.change" />
+			<select name="status" >
+				<option value="${application.status}" selected>${application.status}</option>			               
+				<option value ="NEW"> NEW </option>
+				<option value ="RECEIVED"> RECEIVED </option>
+				<option value ="REJECTED"> REJECTED </option>
+				<option value ="APPROVED"> APPROVED </option>
+				<option value ="EXECUTING"> EXECUTING </option>
+				<option value ="DONE"> DONE </option>
+				<option value ="FINISHED"> FINISHED </option>
+			</select>
 			<br>
 			<fmt:message key="application.label.description" />: <input type="text" name="description" value="${application.description}">
 			<br>

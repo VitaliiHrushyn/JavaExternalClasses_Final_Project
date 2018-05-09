@@ -17,10 +17,11 @@ public class CustomerNonactiveApplicationCommand extends AbstractCommand {
 	@Override
 	public String execute(HttpServletRequest request) {
 		
+		int userId = ((User)request.getSession().getAttribute(USER)).getId();
 		List<Application> applications = new ArrayList<>();
 		applications = serviceFactory
 				.createApplicationService()
-				.getAllByUserId( ((User)request.getSession().getAttribute(USER)).getId() );
+				.getAllByUserIdAndStatuses(userId, REJECTED_APPLICATION, FINISHED_APPLICATION );
 		
 		request.setAttribute(APPLICATIONS, applications);				
 		return URL.CUSTOMER_APPLICATION_ALL_PAGE; 
