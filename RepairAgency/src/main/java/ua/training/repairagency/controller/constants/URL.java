@@ -47,22 +47,20 @@ public interface URL {
 	/* 
 	 * customer 
 	 */
-	String ROLE_PAGE = "/WEB-INF/roles/";
+	String CUSTOMER_PAGE_URL = "/WEB-INF/roles/customer/";
 	
-	String CUSTOMER_PAGE = "/WEB-INF/roles/customer/";
+	String CUSTOMER_PROFILE_PAGE = CUSTOMER_PAGE_URL + "profile/profile.jsp";
+	String CUSTOMER_EDITPROFILE_PAGE = CUSTOMER_PAGE_URL + "profile/editprofile.jsp";	
+	String CUSTOMER_CHANGEPASSWORD_PAGE = CUSTOMER_PAGE_URL + "profile/changepassword.jsp";
 	
-	String CUSTOMER_PROFILE_PAGE = CUSTOMER_PAGE + "profile/profile.jsp";
-	String CUSTOMER_EDITPROFILE_PAGE = CUSTOMER_PAGE + "profile/editprofile.jsp";	
-	String CUSTOMER_CHANGEPASSWORD_PAGE = CUSTOMER_PAGE + "profile/changepassword.jsp";
+	String CUSTOMER_APPLICATION_INDEX_PAGE = CUSTOMER_PAGE_URL + "applications/index.jsp";
+	String CUSTOMER_APPLICATION_CREATE_PAGE = CUSTOMER_PAGE_URL + "applications/create.jsp";
+	String CUSTOMER_APPLICATION_SHOW_PAGE = CUSTOMER_PAGE_URL + "applications/show.jsp";
+	String CUSTOMER_APPLICATION_ONE_PAGE = CUSTOMER_PAGE_URL + "applications/one.jsp";
+	String CUSTOMER_APPLICATION_RECEIVED_PAGE = CUSTOMER_PAGE_URL + "applications/received.jsp";
+	String CUSTOMER_APPLICATION_APPROVE_PAGE = CUSTOMER_PAGE_URL + "applications/approve.jsp";
 	
-	String CUSTOMER_APPLICATION_INDEX_PAGE = CUSTOMER_PAGE + "applications/index.jsp";
-	String CUSTOMER_APPLICATION_CREATE_PAGE = CUSTOMER_PAGE + "applications/create.jsp";
-	String CUSTOMER_APPLICATION_SHOW_PAGE = CUSTOMER_PAGE + "applications/show.jsp";
-	String CUSTOMER_APPLICATION_ONE_PAGE = CUSTOMER_PAGE + "applications/one.jsp";
-	String CUSTOMER_APPLICATION_RECEIVED_PAGE = CUSTOMER_PAGE + "applications/received.jsp";
-	String CUSTOMER_APPLICATION_APPROVE_PAGE = CUSTOMER_PAGE + "applications/approve.jsp";
-	
-	String CUSTOMER_MESSAGE_PAGE = CUSTOMER_PAGE + "messages/index.jsp";
+	String CUSTOMER_MESSAGE_PAGE = CUSTOMER_PAGE_URL + "messages/index.jsp";
 	
 	String CUSTOMER_PROFILE_COMMAND = "/app/customer/profile";
 	String CUSTOMER_APPLICATION_ALL_COMMAND = "/app/customer/applications/show";
