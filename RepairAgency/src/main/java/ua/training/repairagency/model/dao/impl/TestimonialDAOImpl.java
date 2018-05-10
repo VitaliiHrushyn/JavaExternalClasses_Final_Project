@@ -71,6 +71,21 @@ public class TestimonialDAOImpl extends AbstractDAO<Testimonial> implements Test
 	}
 
 	@Override
+	public boolean delete(int testimonialId) {
+		try(PreparedStatement statement = connection
+				.prepareStatement(queryBundle.getString(Query.TESTIMONIAL_DELETE))) {
+			statement.setInt(1, testimonialId);
+			if (statement.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+		return false;
+	}
+
+	@Override
 	public Testimonial delete(Testimonial entity) {
 		throw new RuntimeException();
 	}

@@ -24,6 +24,7 @@
 			
 			<input type="hidden" name="id" value="${application.id}">			
 			<input type="hidden" name="status" value="FINISHED">
+			<input type="hidden" name="testimonial_id" value="${application.testimonial.id}">
 			
 			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
 			<br>

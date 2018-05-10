@@ -7,5 +7,7 @@ public interface TestimonialService {
 	Testimonial getById(int testiminialId);
 	
 	Testimonial insert(Testimonial testimonial);
+	
+	boolean delete(int testiminialId);
 
 }

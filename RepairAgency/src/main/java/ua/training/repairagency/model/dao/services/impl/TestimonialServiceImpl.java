@@ -27,4 +27,13 @@ public class TestimonialServiceImpl implements TestimonialService {
 		}
 	}
 
+	@Override
+	public boolean delete(int testimonialId) {
+		try(TestimonialDAO dao = daoFactory.createTestimonialDAO()) {		
+			return dao.delete(testimonialId);				
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 }

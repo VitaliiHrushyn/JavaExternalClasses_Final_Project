@@ -43,6 +43,12 @@ public class ApplicationUtils {
 						.createTestimonialService()
 						.insert(TestimonialUtils.createTestimonial(request));
 			
+			if(notEmpty(testimonialId)) {
+				factory
+				.createTestimonialService()
+				.delete(Integer.valueOf(testimonialId));
+			}
+			
 			testimonialId = String.valueOf(testimonial.getId());
 		}
 		
