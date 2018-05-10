@@ -22,8 +22,7 @@
 		<br>
 		<form method ="post" action="${pageContext.request.contextPath}/app/customer/applications/edit">
 			
-			<input type="hidden" name="id" value="${application.id}">
-			
+			<input type="hidden" name="id" value="${application.id}">			
 			<input type="hidden" name="status" value="FINISHED">
 			
 			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
@@ -32,7 +31,11 @@
 			<input type="radio" name="satisfied" value="yes"> <fmt:message key="application.label.satisfied.yes" /> 
   			<input type="radio" name="satisfied" value="no"> <fmt:message key="application.label.satisfied.no" /><br>			
 			<br>
-			<fmt:message key="application.label.left_testimonial" />: <input type="text" name="testimonial" value="${application.testimonial.text}">
+			<fmt:message key="application.label.left_testimonial" />: 
+			<br>
+				<textarea name="testimonial">		
+					text: ${application.testimonial.text}	
+				</textarea>
 			<br>
 			<fmt:message key="application.label.description" />: ${application.description}
 			<br>

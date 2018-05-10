@@ -38,7 +38,7 @@
 				<option value ="FINISHED"> <fmt:message key="application.label.status.FINISHED" /> </option>
 			</select>
 			<br>
-			<fmt:message key="application.label.description" />: <input type="text" name="description" value="${application.description}">
+			<fmt:message key="application.label.description" />: ${application.description}
 			<br>
 			<fmt:message key="application.label.comment" />: ${application.managerComment}
 			<br>		
@@ -48,7 +48,7 @@
 			<br>
 			<fmt:message key="application.label.workman" />: ${application.workman}
 			<br>
-			<fmt:message key="application.label.testimonial" />: <input type="text" name="testimonial" value="${application.testimonial}">
+			<fmt:message key="application.label.testimonial" />: ${application.testimonial}"
 			<br>
 			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>
