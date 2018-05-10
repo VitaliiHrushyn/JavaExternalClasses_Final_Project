@@ -33,9 +33,7 @@
 			<br>
 			<fmt:message key="application.label.left_testimonial" />: 
 			<br>
-				<textarea name="testimonial">		
-					text: ${application.testimonial.text}	
-				</textarea>
+				<textarea name="testimonial_text">${application.testimonial.text}</textarea>
 			<br>
 			<fmt:message key="application.label.description" />: ${application.description}
 			<br>

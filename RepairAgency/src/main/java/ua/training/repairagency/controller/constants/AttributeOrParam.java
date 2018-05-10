@@ -24,7 +24,7 @@ public interface AttributeOrParam {
 	String STATUS = "status";
 	String COMMENT = "comment";
 	String PRICE = "price";
-	String TESTIMONIAL = "testimonial";
+	String TESTIMONIAL_TEXT = "testimonial_text";
 	String CREATE_TIME = "create_time";
 	
 	String TESTIMONIAL_ID = "testimonial_id";

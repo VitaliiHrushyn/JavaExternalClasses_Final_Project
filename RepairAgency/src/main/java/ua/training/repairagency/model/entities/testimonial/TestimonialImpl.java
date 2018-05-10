@@ -21,4 +21,10 @@ public class TestimonialImpl extends AbstractEntity implements Testimonial {
 		return createTime;
 	}
 
+	@Override
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+		
+	}
+
 }

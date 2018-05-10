@@ -48,7 +48,7 @@
 			<br>
 			<fmt:message key="application.label.workman" />: ${application.workman}
 			<br>
-			<fmt:message key="application.label.testimonial" />: ${application.testimonial}"
+			<fmt:message key="application.label.testimonial" />: ${application.testimonial.createTime} | ${application.testimonial.text}
 			<br>
 			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>

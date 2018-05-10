@@ -46,7 +46,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 			statement.setInt(1, id);
 			ResultSet rs = statement.executeQuery();
 			if (rs.next()) {
-				application = extractApplication(rs, true);	
+				application = extractApplication(rs);	
 			}
 		} catch (SQLException e) {
 			//TODO handle exception
@@ -60,7 +60,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.APPLICATION_GET_ALL))) {
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {
-				applications.add(extractApplication(rs, eager));
+				applications.add(extractApplication(rs));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -110,7 +110,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 	}
 
 	
-	public Application extractApplication(ResultSet rs, boolean eager) throws SQLException {
+	public Application extractApplication(ResultSet rs) throws SQLException {
 		Application application = new ApplicationImpl();
 		application.setId(rs.getInt(columnBundle.getString(Column.APPLICATION_ID)));
 		application.setStatus(AppStatus.valueOf((rs.getString(columnBundle.getString(Column.APPLICATION_STATUS)))));
@@ -119,7 +119,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		application.setPrice(rs.getBigDecimal(columnBundle.getString(Column.APPLICATION_PRICE)));
 		application.setCustomer(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_CUSTOMER_ID))));
 		application.setWorkman(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_WORKMAN_ID))));
-//TODO		application.setTestimonial(ServiceFactory.getInstance().createTestimonialService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_TESTIMONIAL_ID))));
+		application.setTestimonial(ServiceFactory.getInstance().createTestimonialService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_TESTIMONIAL_ID))));
 		application.setCreateTime(rs.getDate(columnBundle.getString(Column.APPLICATION_CREATE_TIME)));
 		
 		return application;
@@ -134,7 +134,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 			}	
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {
-				applications.add(extractApplication(rs, false));	
+				applications.add(extractApplication(rs));	
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

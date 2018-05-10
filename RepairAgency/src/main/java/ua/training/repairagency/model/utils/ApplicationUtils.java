@@ -10,6 +10,7 @@ import ua.training.repairagency.model.dao.services.ServiceFactory;
 import ua.training.repairagency.model.entities.application.AppStatus;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.application.ApplicationImpl;
+import ua.training.repairagency.model.entities.testimonial.Testimonial;
 import ua.training.repairagency.model.entities.user.User;
 
 public class ApplicationUtils {
@@ -28,12 +29,22 @@ public class ApplicationUtils {
 		
 		ServiceFactory factory = ServiceFactory.getInstance();
 		
+		
 		String status = request.getParameter(STATUS);
 		String description = request.getParameter(DESCRIPTION);
 		String managerComment = request.getParameter(COMMENT);
 		String price = request.getParameter(PRICE);
 		String workmanId = request.getParameter(WORKMAN_ID); 
-		String testimonialId = request.getParameter(TESTIMONIAL_ID);		
+		String testimonialId = request.getParameter(TESTIMONIAL_ID);
+		String testimonialText = request.getParameter(TESTIMONIAL_TEXT);
+		
+		if (notEmpty(testimonialText)) {
+			Testimonial testimonial = factory
+						.createTestimonialService()
+						.insert(TestimonialUtils.createTestimonial(request));
+			
+			testimonialId = String.valueOf(testimonial.getId());
+		}
 		
 		if (notEmpty(status)) {
 			application.setStatus(AppStatus.valueOf(status));

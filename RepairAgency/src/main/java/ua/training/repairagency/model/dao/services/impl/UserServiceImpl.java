@@ -35,14 +35,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getById(int userId) {
-		User user = null;
 		try(UserDAO dao = daoFactory.createUserDAO()){
-			user = dao.getById(userId);
+			return dao.getById(userId);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}		
-		return user;
 	}
 
 	@Override

@@ -77,19 +77,18 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	
 
 	@Override	
-	public User getById(int id) {
-		User user = null;		
+	public User getById(int id) {	
 		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_GET_BY_ID))) {
 			statement.setInt(1, id);
 			ResultSet rs = statement.executeQuery();
 			if (rs.next()) {
-				user = extractUser(rs);	
+				return extractUser(rs);	
 			}
 		} catch (SQLException e) {
 			//TODO handle exception
 			throw new RuntimeException(e);
 		}		
-		return user;
+		return null;
 	}	
 
 	@Override
