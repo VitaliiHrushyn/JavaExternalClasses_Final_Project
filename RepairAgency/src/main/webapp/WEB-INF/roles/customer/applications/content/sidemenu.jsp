@@ -18,7 +18,9 @@
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/customer/applications/show"><fmt:message key="text.menu.show.all" /></a>
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/customer/applications/current"><fmt:message key="text.menu.show.current" /></a>     	 
+		<a href = "${pageContext.request.contextPath}/app/customer/applications/done"><fmt:message key="text.menu.show.done" /></a>     	 
+       	<br>
+       	<a href = "${pageContext.request.contextPath}/app/customer/applications/received"><fmt:message key="text.menu.show.received" /></a>     	 
        	<br>
        	<a href = "${pageContext.request.contextPath}/app/customer/applications/active"><fmt:message key="text.menu.show.activ" /></a>     	 
        	<br>

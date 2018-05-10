@@ -19,7 +19,7 @@
 			<br>
 	
 				<c:forEach var="application" items="${requestScope.applications}">
-					<form method ="post" action="${pageContext.request.contextPath}/app/customer/applications/one">
+					<form method ="post" action="${pageContext.request.contextPath}/app/customer/applications/approve">
 						<input type="hidden" name="id" value="${application.id}">
 						<p>
 							<fmt:message key="application.label.status.${application.status}" /> | ${application.description} | ${application.createTime}

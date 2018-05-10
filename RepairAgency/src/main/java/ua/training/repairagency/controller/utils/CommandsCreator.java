@@ -38,7 +38,9 @@ public class CommandsCreator {
 		commands.put(URL.CUSTOMER_APPLICATIONS_ALL_PATH, new CustomerAllApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_ONE_PATH, new CustomerOneApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_EDIT_PATH, new CustomerEditApplicationCommand());
-		commands.put(URL.CUSTOMER_APPLICATIONS_CURRENT_PATH, new CustomerCurrentApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_CURRENT_PATH, new CustomerDoneApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_RECEIVED_PATH, new CustomerReceivedApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_APPROVE_PATH, new CustomerApproveApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_ACTIVE_PATH, new CustomerActiveApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_NONACTIVE_PATH, new CustomerNonactiveApplicationCommand());
 		

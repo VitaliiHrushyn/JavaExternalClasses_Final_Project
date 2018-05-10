@@ -12,7 +12,7 @@ import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 
-public class CustomerCurrentApplicationCommand extends AbstractCommand {
+public class CustomerDoneApplicationCommand extends AbstractCommand {
 
 	@Override
 	public String execute(HttpServletRequest request) {
@@ -20,10 +20,10 @@ public class CustomerCurrentApplicationCommand extends AbstractCommand {
 		List<Application> applications = new ArrayList<>();
 		applications = serviceFactory
 				.createApplicationService()
-				.getAllByUserIdAndStatuses(userId, RECEIVED_APPLICATION, DONE_APPLICATION );
+				.getAllByUserIdAndStatuses(userId, DONE_APPLICATION );
 		
 		request.setAttribute(APPLICATIONS, applications);				
-		return URL.CUSTOMER_APPLICATION_ALL_PAGE; 
+		return URL.CUSTOMER_APPLICATION_SHOW_PAGE; 
 	}
 	
 }

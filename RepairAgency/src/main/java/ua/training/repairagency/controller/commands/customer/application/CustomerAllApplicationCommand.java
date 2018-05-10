@@ -23,7 +23,7 @@ public class CustomerAllApplicationCommand extends AbstractCommand {
 				.getAllByUserId( ((User)request.getSession().getAttribute(USER)).getId() );
 		
 		request.setAttribute(APPLICATIONS, applications);				
-		return URL.CUSTOMER_APPLICATION_ALL_PAGE; 
+		return URL.CUSTOMER_APPLICATION_SHOW_PAGE; 
 	}
 	
 }

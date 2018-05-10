@@ -24,6 +24,6 @@ public class CustomerNonactiveApplicationCommand extends AbstractCommand {
 				.getAllByUserIdAndStatuses(userId, REJECTED_APPLICATION, FINISHED_APPLICATION );
 		
 		request.setAttribute(APPLICATIONS, applications);				
-		return URL.CUSTOMER_APPLICATION_ALL_PAGE; 
+		return URL.CUSTOMER_APPLICATION_SHOW_PAGE; 
 	}
 }
