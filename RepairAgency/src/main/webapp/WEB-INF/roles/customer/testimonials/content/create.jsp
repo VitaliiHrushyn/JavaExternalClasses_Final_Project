@@ -13,20 +13,18 @@
 	<body>
 		<div>
 			<br>
-			<div>
-				<jsp:include page="sidemenu.jsp"></jsp:include>		
-			</div>
+			
 			
 	<br>
 	<br>
 	
-		<form method ="post" action="${pageContext.request.contextPath}/app/customer/applications/create">
-			
-			<p><fmt:message key="form.application.description" />:</p>
-		<textarea name="description"></textarea>	
+		<form method ="post" action="${pageContext.request.contextPath}/app/customer/testimonials/create">
+		
+			<p><fmt:message key="form.testimonial.text" />:</p>
+		<textarea name="text"></textarea>	
 			<br>
 			<input type="submit" value="<fmt:message key="text.button.submit" />">
-		</form>			
+		</form>		
 		</div>
 	</body>
 </html>

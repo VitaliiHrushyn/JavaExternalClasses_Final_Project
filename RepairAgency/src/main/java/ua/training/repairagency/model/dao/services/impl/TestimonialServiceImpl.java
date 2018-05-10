@@ -6,33 +6,27 @@ import ua.training.repairagency.model.dao.services.interfaces.TestimonialService
 import ua.training.repairagency.model.entities.testimonial.Testimonial;
 
 public class TestimonialServiceImpl implements TestimonialService {
-
+	
 	DAOFactory daoFactory = DAOFactory.getInstance();
 
 	@Override
-	public Testimonial getById(int testiminialId) {
+	public Testimonial getById(int id) {
 		try(TestimonialDAO dao = daoFactory.createTestimonialDAO()){
-			return dao.getById(testiminialId);
+			return dao.getById(id);
 		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}	
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return null;
 	}
 
 	@Override
 	public Testimonial insert(Testimonial testimonial) {
-		try(TestimonialDAO dao = daoFactory.createTestimonialDAO()) {		
+		try(TestimonialDAO dao = daoFactory.createTestimonialDAO()) {				
 			return dao.create(testimonial);				
 		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@Override
-	public boolean delete(int testimonialId) {
-		try(TestimonialDAO dao = daoFactory.createTestimonialDAO()) {		
-			return dao.delete(testimonialId);				
-		} catch (Exception e) {
-			throw new RuntimeException(e);
+			e.printStackTrace();
+			return null;
 		}
 	}
 

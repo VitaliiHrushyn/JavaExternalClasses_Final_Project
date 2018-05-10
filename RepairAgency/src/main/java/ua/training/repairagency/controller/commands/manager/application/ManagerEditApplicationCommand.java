@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.commands.customer.application;
+package ua.training.repairagency.controller.commands.manager.application;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
@@ -14,7 +14,7 @@ import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.utils.ApplicationUtils;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 
-public class CustomerEditApplicationCommand extends AbstractCommand {
+public class ManagerEditApplicationCommand extends AbstractCommand {
 	
 	@Override
 	public String execute(HttpServletRequest request) {
