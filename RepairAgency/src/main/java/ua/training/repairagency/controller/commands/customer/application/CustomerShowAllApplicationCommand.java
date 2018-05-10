@@ -12,18 +12,18 @@ import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 
-public class CustomerActiveApplicationCommand extends AbstractCommand {
+public class CustomerShowAllApplicationCommand extends AbstractCommand {
 
 	@Override
 	public String execute(HttpServletRequest request) {
-
-		int userId = ((User)request.getSession().getAttribute(USER)).getId();
+		
 		List<Application> applications = new ArrayList<>();
 		applications = serviceFactory
 				.createApplicationService()
-				.getAllByUserIdAndStatuses(userId, NEW_APPLICATION, APPROVED_APPLICATION, EXECUTING_APPLICATION );
+				.getAllByUserId( ((User)request.getSession().getAttribute(USER)).getId() );
 		
 		request.setAttribute(APPLICATIONS, applications);				
 		return URL.CUSTOMER_APPLICATION_SHOW_PAGE; 
 	}
+	
 }

@@ -58,7 +58,9 @@ public interface URL {
 	String CUSTOMER_APPLICATION_SHOW_PAGE = CUSTOMER_URL + "applications/show.jsp";
 	String CUSTOMER_APPLICATION_ONE_PAGE = CUSTOMER_URL + "applications/one.jsp";
 	String CUSTOMER_APPLICATION_RECEIVED_PAGE = CUSTOMER_URL + "applications/received.jsp";
+	String CUSTOMER_APPLICATION_DONE_PAGE = CUSTOMER_URL + "applications/done.jsp";
 	String CUSTOMER_APPLICATION_APPROVE_PAGE = CUSTOMER_URL + "applications/approve.jsp";
+	String CUSTOMER_APPLICATION_FINISH_PAGE = CUSTOMER_URL + "applications/finishapp.jsp";
 	
 	String CUSTOMER_MESSAGE_PAGE = CUSTOMER_URL + "messages/index.jsp";
 	
@@ -86,6 +88,8 @@ public interface URL {
 	String CUSTOMER_APPLICATIONS_NONACTIVE_PATH = CUSTOMER_APPLICATIONS_PATH + "/nonactive";
 	String CUSTOMER_APPLICATIONS_RECEIVED_PATH = CUSTOMER_APPLICATIONS_PATH + "/received";
 	String CUSTOMER_APPLICATIONS_APPROVE_PATH = CUSTOMER_APPLICATIONS_PATH + "/approve";
+	String CUSTOMER_APPLICATIONS_DONE_PATH = CUSTOMER_APPLICATIONS_PATH + "/done";
+	String CUSTOMER_APPLICATIONS_FINISH_PATH = CUSTOMER_APPLICATIONS_PATH + "/finishapp";
 	
 	String CUSTOMER = "customer";
 	
@@ -107,6 +111,10 @@ public interface URL {
 	 */
 	String FILTER_PATTERN = "/*";
 	String DISABLE_CACHE_FILTER_PATTERN = "/*";
+	
+	
+	
+	
 	
 	
 	

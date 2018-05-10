@@ -6,6 +6,7 @@ import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.math.BigDecimal;
 
+import ua.training.repairagency.model.dao.services.ServiceFactory;
 import ua.training.repairagency.model.entities.application.AppStatus;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.application.ApplicationImpl;
@@ -24,16 +25,40 @@ public class ApplicationUtils {
 	}
 
 	public static Application updateApplicationFeatures(Application application, HttpServletRequest request) {
-		application.setStatus(AppStatus.valueOf(request.getParameter(STATUS)));
-		application.setDescription(request.getParameter(DESCRIPTION));
-		application.setManagerComment(request.getParameter(COMMENT));
-		if (request.getParameter(PRICE) != null && !request.getParameter(PRICE).isEmpty()) {
-			application.setPrice(BigDecimal.valueOf(Long.valueOf(request.getParameter(PRICE))));
-		}
-//		application.setWorkman(request.getParameter(WORKMAN));
-//		application.setTestimonial(request.getParameter(TESTIMONIAL));
 		
+		ServiceFactory factory = ServiceFactory.getInstance();
+		
+		String status = request.getParameter(STATUS);
+		String description = request.getParameter(DESCRIPTION);
+		String managerComment = request.getParameter(COMMENT);
+		String price = request.getParameter(PRICE);
+		String workmanId = request.getParameter(WORKMAN_ID); 
+		String testimonialId = request.getParameter(TESTIMONIAL_ID);		
+		
+		if (notEmpty(status)) {
+			application.setStatus(AppStatus.valueOf(status));
+		}
+		if (notEmpty(description)) {
+			application.setDescription(description);
+		}
+		if (notEmpty(managerComment)) {
+			application.setManagerComment(managerComment);
+		}
+		if (notEmpty(price)) {
+			application.setPrice(BigDecimal.valueOf(Long.valueOf(price)));
+		}
+		if (notEmpty(workmanId)) {
+			application.setWorkman(factory.createUserService().getById(Integer.valueOf(workmanId)));
+		}
+		if (notEmpty(testimonialId)) {
+			application.setTestimonial(factory.createTestimonialService().getById(Integer.valueOf(testimonialId)));
+		}
+				
 		return application;
+	}
+
+	private static boolean notEmpty(String value) {
+		return value != null && !value.isEmpty();
 	}
 
 }

@@ -8,7 +8,7 @@ import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 
-public class CustomerOneApplicationCommand extends AbstractCommand {
+public class CustomerShowOneApplicationCommand extends AbstractCommand {
 	
 	@Override
 	public String execute(HttpServletRequest request) {

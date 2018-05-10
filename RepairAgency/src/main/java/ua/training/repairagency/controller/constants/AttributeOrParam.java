@@ -27,6 +27,10 @@ public interface AttributeOrParam {
 	String TESTIMONIAL = "testimonial";
 	String CREATE_TIME = "create_time";
 	
+	String TESTIMONIAL_ID = "testimonial_id";
+	String WORKMAN_ID = "workman_id";	
+
+	
 	String ERROR_MESSAGES = "error_messages";
 	String INFO_MESSAGES = "info_messages";
 	String APPLICATIONS = "applications";
