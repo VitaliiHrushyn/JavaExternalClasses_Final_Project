@@ -1,6 +1,5 @@
 package ua.training.repairagency.model.dao.services;
 
-import ua.training.repairagency.model.dao.services.impl.ServiceFactoryImpl;
 import ua.training.repairagency.model.dao.services.interfaces.ApplicationService;
 import ua.training.repairagency.model.dao.services.interfaces.HistoryRecordService;
 import ua.training.repairagency.model.dao.services.interfaces.TestimonialService;
@@ -24,7 +23,7 @@ public abstract class ServiceFactory {
 
 	public abstract UserService createUserService();
 	public abstract ApplicationService createApplicationService();
-	public abstract TestimonialService getTestimonialService();
+	public abstract TestimonialService createTestimonialService();
 	public abstract HistoryRecordService getHistoryRecordService();
 	
 }

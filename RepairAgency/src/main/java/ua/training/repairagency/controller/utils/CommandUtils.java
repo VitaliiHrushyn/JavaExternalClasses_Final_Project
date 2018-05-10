@@ -9,32 +9,15 @@ import java.util.ResourceBundle;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
+import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.constants.*;
-import ua.training.repairagency.model.entities.user.*;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 
 public class CommandUtils {
 	
-	public static String getUserPage(User user) {
-		if (user == null) {
-			return URL.LOGIN_PAGE;
-		} else {
-			return getPageFromRole(user.getRole());
-		}
-	}
-	
-	private static String getPageFromRole(UserRole role) {
-		if (role.equals(UserRole.CUSTOMER)) {
-			return URL.REDIRECT_CUSTOMER_PROFILE_COMMAND;
-		}
-		if (role.equals(UserRole.MANAGER)) {
-			return URL.REDIRECT_MANAGER_PROFILE_COMMAND;
-		}
-		if (role.equals(UserRole.WORKMAN)) {
-			return URL.REDIRECT_WORKMAN_PROFILE_COMMAND;
-		}
-		return URL.LOGIN_PAGE;
-	}
+	private static final Logger authLogger = Logger.getLogger(Command.class);
 	
 	public static String getFailMessageFromException(NotUniqueFieldValueException e) {
 		String exceptionErrorMessage = e.getMessage();
@@ -82,25 +65,26 @@ public class CommandUtils {
 	
 	public static boolean checkRegistrationCredentials(HttpServletRequest request, List<String> messages) {
 		
+		/*
+		 * when reload registration page - sends null in all parameters,
+		 * to avoid exception is enough to check first param by null
+		 * and return from method
+		 */
+		if (isRequesEmpty(request)) {
+			return false;
+		}
+		
 		ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, getLocale(request));
 		ResourceBundle messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, getLocale(request));
 	
-		String login = request.getParameter(REGISTRATION_LOGIN);
-		String password = (request.getParameter(REGISTRATION_PASSWORD));
+		String login = request.getParameter(LOGIN);
+		String password = (request.getParameter(PASSWORD));
 		String confirmpassword = request.getParameter(CONFIRM_PASSWORD);
 		String name = request.getParameter(NAME);
 		String surname = request.getParameter(SURNAME);
 		String email = request.getParameter(EMAIL);
 		String phone = request.getParameter(PHONE);
 		
-		/*
-		 * when reload registration page sends null to all parameters,
-		 * to avoid exception is enough to check first param by null
-		 * and return from method
-		 */
-		if (login == null) {
-			return false;
-		}
 		boolean check = true;
 				
 		if (!login.matches(regexBundle.getString(RegEx.LOGIN))) {
@@ -135,18 +119,26 @@ public class CommandUtils {
 		return check;
 	}
 
+	private static boolean isRequesEmpty(HttpServletRequest request) {
+		return request.getParameter(LOGIN) == null;
+	}
+
 	public static boolean checkLoginCredentials(HttpServletRequest request, List<String> messages) {
 
+		if (isRequesEmpty(request)) {
+			return false;
+		}
+		
 		ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, getLocale(request));
 		ResourceBundle messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, getLocale(request));
 		String login = request.getParameter(LOGIN);
 		String password = (request.getParameter(PASSWORD));
 				
-		if (login == null) {
-			return false;
-		} else if ( !login.matches(regexBundle.getString(RegEx.LOGIN)) ||
-				    !password.matches(regexBundle.getString(RegEx.PASSWORD)) ) {
+		if ( !login.matches(regexBundle.getString(RegEx.LOGIN)) ||
+			 !password.matches(regexBundle.getString(RegEx.PASSWORD)) ) {
 			messages.add(messageBundle.getString(Message.AUTH_FAIL));
+			authLogger.info("Login FAIL: login or password don't match RegEx: "
+					+ "login=" + login +", password=" + password + ";");
 			return false;
 		} else {
 			return true;

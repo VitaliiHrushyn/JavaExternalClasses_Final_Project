@@ -12,6 +12,6 @@ public class SessionListener implements HttpSessionListener {
 
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
-        AccessUtils.deleteUserFromLoggedUsers(httpSessionEvent.getSession());
+        AccessUtils.logoutUser(httpSessionEvent.getSession());
     }
 }

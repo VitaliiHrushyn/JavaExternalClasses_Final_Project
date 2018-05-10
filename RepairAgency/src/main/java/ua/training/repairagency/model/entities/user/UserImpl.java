@@ -82,8 +82,7 @@ public class UserImpl extends AbstractEntity implements User {
 	}
 	
 	public String toString() {
-		return "UserImpl [role=" + role + ", name=" + name + ", surname=" + surname + ", login=" + login + ", password=" + password + ", email="
-				+ email + ", phone=" + phone + ", applications=" + applications + "]";
+		return "User: id=" + id + ", role=" + role + ", login=" + login + " ";
 	}
 	
 	

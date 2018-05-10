@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.controller.utils.CommandUtils;
-import ua.training.repairagency.model.utils.ApplicationUtil;
+import ua.training.repairagency.model.utils.ApplicationUtils;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 
 public class CustomerCreateApplicationCommand extends AbstractCommand {
@@ -26,22 +26,22 @@ public class CustomerCreateApplicationCommand extends AbstractCommand {
 			try {
 				serviceFactory
 				.createApplicationService()
-				.insert(ApplicationUtil.createNewApp(request)); 
+				.insert(ApplicationUtils.createNewApp(request)); 
 				
 				infoMessages.add(messageBundle.getString(Message.APPLICATION_CREATE_SUCCESS));
-				path = URL.CUSTOMER_APPLICATION_INDEX_PAGE;
+				page = URL.CUSTOMER_APPLICATION_INDEX_PAGE;
 			} catch (Exception e) {
 				e.printStackTrace();
 				errorMessages.add(messageBundle.getString(Message.APPLICATION_CREATE_FAIL));
-				path = URL.CUSTOMER_APPLICATION_CREATE_PAGE;
+				page = URL.CUSTOMER_APPLICATION_CREATE_PAGE;
 			} 
 		} else {
-			path = URL.CUSTOMER_APPLICATION_CREATE_PAGE;
+			page = URL.CUSTOMER_APPLICATION_CREATE_PAGE;
 		}		
 		
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		request.setAttribute(INFO_MESSAGES, infoMessages);		
-		return path;
+		return page;
 	}
 
 	private boolean isRequestEmpty(HttpServletRequest request) {

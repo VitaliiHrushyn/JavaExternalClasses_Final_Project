@@ -2,7 +2,7 @@ package ua.training.repairagency.model.entities;
 
 public abstract class AbstractEntity implements Entity {
 	
-	private int id;
+	protected int id;
 
 	public int getId() {
 		return id;

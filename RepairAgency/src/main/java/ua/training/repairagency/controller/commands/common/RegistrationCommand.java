@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.controller.commands.AbstractCommand;
+import ua.training.repairagency.controller.utils.AccessUtils;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
@@ -29,17 +30,16 @@ public class RegistrationCommand extends AbstractCommand {
 						.createUserService()
 						.insert(UserUtils.createUser(request));	
 				
-				request.getSession().setAttribute(USER, user);
-				path = CommandUtils.getUserPage(user);				
+				page = AccessUtils.loginUserAndGetUsePage(request, user);		
 			} catch (NotUniqueFieldValueException e) {
 				errorMessages.add(messageBundle.getString(CommandUtils.getFailMessageFromException(e)));
-				path = URL.REGISTRATION_PAGE;
+				page = URL.REGISTRATION_PAGE;
 			} 			
 		} else {
-			path = URL.REGISTRATION_PAGE;
+			page = URL.REGISTRATION_PAGE;
 		}
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
-		return path;
+		return page;
 	}	
 	
 }

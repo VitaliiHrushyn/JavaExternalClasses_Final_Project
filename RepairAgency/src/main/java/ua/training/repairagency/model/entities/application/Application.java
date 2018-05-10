@@ -37,8 +37,8 @@ public interface Application extends Entity {
 	
 	void setTestimonial(Testimonial testimonial);
 	
-	Date getCreatTime();
+	Date getCreateTime();
 	
-	public void setCreatTime(Date createTime);	
+	public void setCreateTime(Date createTime);	
 
 }

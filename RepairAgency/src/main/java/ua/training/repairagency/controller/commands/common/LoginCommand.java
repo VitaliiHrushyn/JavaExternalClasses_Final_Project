@@ -25,17 +25,16 @@ public class LoginCommand extends AbstractCommand {
 		errorMessages = new ArrayList<>();
 						
 		if (CommandUtils.checkLoginCredentials(request, errorMessages)) {			
-			User user = getAndCheckUserIfExists(request, errorMessages);
-			path = CommandUtils.getUserPage(user);
-			request.getSession().setAttribute(USER, user);			
+			User user = fetchAndCheckUserIfExists(request, errorMessages);
+			page = AccessUtils.loginUserAndGetUsePage(request, user);
 		} else {
-			path = URL.LOGIN_PAGE;
+			page = URL.LOGIN_PAGE;
 		}
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
-		return path;
+		return page;
 	}
 
-	private User getAndCheckUserIfExists(HttpServletRequest request, List<String> errorMessages) {
+	private User fetchAndCheckUserIfExists(HttpServletRequest request, List<String> errorMessages) {
 		User user = serviceFactory
 				.createUserService()
 				.getByLogin((request.getParameter(LOGIN)));
@@ -44,16 +43,21 @@ public class LoginCommand extends AbstractCommand {
 			errorMessages.add(messageBundle.getString(Message.AUTH_FAIL));
 			return null;
 		} else {
-			AccessUtils.setUserAsLogged(request, user.getId());
 			return user;
 		}	
 	}
 
 	private boolean checkUserPassword(HttpServletRequest request, User user) {
 		if (user == null) {
+			authLogger.info("Login FAIL: DB has no such login=" + request.getParameter(LOGIN) + ";");
 			return false;
-		} 
-		return user.getPassword().equals(UserUtils.doCrypt(request.getParameter(PASSWORD)));
+		}
+		else if (user.getPassword().equals(UserUtils.doCrypt(request.getParameter(PASSWORD)))) {
+			return true;
+		} else {
+			authLogger.info("Login FAIL: wrong password=" + request.getParameter(PASSWORD) + " for " + user + ";");
+			return false;
+		}
 	}
 	
 }
