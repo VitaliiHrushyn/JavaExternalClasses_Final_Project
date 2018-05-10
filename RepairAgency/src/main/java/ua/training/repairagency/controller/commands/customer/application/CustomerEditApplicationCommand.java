@@ -41,7 +41,7 @@ public class CustomerEditApplicationCommand extends AbstractCommand {
 	}
 
 	private boolean isRequestEmpty(HttpServletRequest request) {
-		return request.getParameter(STATUS) == null;
+		return request.getParameter(ID) == null;
 	}
 	
 }
