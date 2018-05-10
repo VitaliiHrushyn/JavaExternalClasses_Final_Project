@@ -23,7 +23,7 @@ public abstract class ServiceFactory {
 
 	public abstract UserService createUserService();
 	public abstract ApplicationService createApplicationService();
-	public abstract TestimonialService getTestimonialService();
+	public abstract TestimonialService createTestimonialService();
 	public abstract HistoryRecordService getHistoryRecordService();
 	
 }

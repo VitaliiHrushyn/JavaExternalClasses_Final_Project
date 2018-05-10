@@ -8,6 +8,7 @@ import ua.training.repairagency.controller.commands.common.*;
 import ua.training.repairagency.controller.commands.customer.*;
 import ua.training.repairagency.controller.commands.customer.application.*;
 import ua.training.repairagency.controller.commands.customer.profile.*;
+import ua.training.repairagency.controller.commands.customer.testimonial.CustomerCreateTestimonialCommand;
 import ua.training.repairagency.controller.commands.manager.*;
 import ua.training.repairagency.controller.constants.URL;
 
@@ -43,6 +44,8 @@ public class CommandsCreator {
 		commands.put(URL.CUSTOMER_APPLICATIONS_APPROVE_PATH, new CustomerApproveApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_ACTIVE_PATH, new CustomerActiveApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_NONACTIVE_PATH, new CustomerNonactiveApplicationCommand());
+		
+		commands.put(URL.CUSTOMER_TESTIMONIALS_CREATE_PATH, new CustomerCreateTestimonialCommand());
 		
 		return commands;
 	}

@@ -103,4 +103,20 @@ public class TestimonialDAOImpl extends AbstractDAO<Testimonial> implements Test
 		return testimonial;
 	}
 
+//	@Override
+//	public Testimonial getByApplicationId(int applicationId) {
+//		try(PreparedStatement statement = connection
+//				.prepareStatement(queryBundle.getString(Query.TESTIMONIAL_GET_BY_APPLICATION_ID))) {
+//			statement.setInt(1, applicationId);
+//			ResultSet rs = statement.executeQuery();
+//			if (rs.next()) {
+//				return extractTestimonial(rs);	
+//			}
+//		} catch (SQLException e) {
+//			//TODO handle exception
+//			throw new RuntimeException(e);
+//		}	
+//		return null;
+//	}
+
 }

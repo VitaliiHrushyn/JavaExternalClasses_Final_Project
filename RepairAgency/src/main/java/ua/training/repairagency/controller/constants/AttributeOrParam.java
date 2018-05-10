@@ -26,6 +26,7 @@ public interface AttributeOrParam {
 	String PRICE = "price";
 	String TESTIMONIAL = "testimonial";
 	String CREATE_TIME = "create_time";
+	String TEXT = "text";
 	
 	String ERROR_MESSAGES = "error_messages";
 	String INFO_MESSAGES = "info_messages";

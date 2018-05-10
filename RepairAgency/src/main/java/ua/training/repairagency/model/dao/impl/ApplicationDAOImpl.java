@@ -10,6 +10,7 @@ import java.util.List;
 
 import ua.training.repairagency.model.constants.Column;
 import ua.training.repairagency.model.constants.Query;
+import ua.training.repairagency.model.dao.DAOFactory;
 import ua.training.repairagency.model.dao.interfaces.ApplicationDAO;
 import ua.training.repairagency.model.dao.services.ServiceFactory;
 import ua.training.repairagency.model.entities.application.AppStatus;
@@ -81,12 +82,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 			} else {
 				statement.setNull(6, java.sql.Types.INTEGER);
 			}
-			if (application.getTestimonial() != null) {
-				statement.setInt(7, application.getTestimonial().getId());
-			} else {
-				statement.setInt(7, java.sql.Types.INTEGER);
-			}
-			statement.setInt(8, application.getId());
+			statement.setInt(7, application.getId());
 			
 			if (statement.executeUpdate() > 0) {
 				return application;
@@ -119,7 +115,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		application.setPrice(rs.getBigDecimal(columnBundle.getString(Column.APPLICATION_PRICE)));
 		application.setCustomer(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_CUSTOMER_ID))));
 		application.setWorkman(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_WORKMAN_ID))));
-//TODO		application.setTestimonial(ServiceFactory.getInstance().createTestimonialService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_TESTIMONIAL_ID))));
+		application.setTestimonial(ServiceFactory.getInstance().createTestimonialService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_TESTIMONIAL_ID))));
 		application.setCreateTime(rs.getDate(columnBundle.getString(Column.APPLICATION_CREATE_TIME)));
 		
 		return application;

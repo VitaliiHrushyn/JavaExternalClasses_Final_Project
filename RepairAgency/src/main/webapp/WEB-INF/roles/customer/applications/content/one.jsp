@@ -54,7 +54,7 @@
 			<!-- <input type="submit" value="<fmt:message key="text.button.savechanges" />">
 		</form> -->
 		<br>
-		<form method ="post" action="${pageContext.request.contextPath}/app/customer/testimonials/edit">
+		<form method ="post" action="${pageContext.request.contextPath}/app/customer/testimonials/create">
 			<fmt:message key="application.label.testimonial" />: ${application.testimonial.createTime}  ${application.testimonial.text}
 			<br>
 			<input type="submit" value="<fmt:message key="text.button.edit" />">

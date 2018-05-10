@@ -87,8 +87,11 @@ public interface URL {
 	String CUSTOMER_APPLICATIONS_RECEIVED_PATH = CUSTOMER_APPLICATIONS + "/received";
 	String CUSTOMER_APPLICATIONS_APPROVE_PATH = CUSTOMER_APPLICATIONS + "/approve";
 	
-	String CUSTOMER_TESTIMONIALS_PATH = "customer/testimonials";
-	String CUSTOMER_TESTIMONIALS_EDIT_PATH = CUSTOMER_TESTIMONIALS_PATH + "/edit";
+	String CUSTOMER_TESTIMONIALS = "customer/testimonials";
+//	String CUSTOMER_TESTIMONIALS_EDIT_PATH = CUSTOMER_TESTIMONIALS_PATH + "/edit";
+	String CUSTOMER_TESTIMONIALS_CREATE_PATH = CUSTOMER_TESTIMONIALS + "/create";
+	
+	String CUSTOMER_TESTIMONIAL_CREATE_PAGE = CUSTOMER_PAGE_URL + "testimonials/create.jsp";
 	
 	String CUSTOMER = "customer";
 	
@@ -110,6 +113,8 @@ public interface URL {
 	 */
 	String FILTER_PATTERN = "/*";
 	String DISABLE_CACHE_FILTER_PATTERN = "/*";
+	
+	
 	
 	
 	

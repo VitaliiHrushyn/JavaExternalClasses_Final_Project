@@ -10,39 +10,41 @@ import javax.servlet.http.HttpServletRequest;
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.utils.CommandUtils;
-import ua.training.repairagency.model.entities.user.User;
-import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
-import ua.training.repairagency.model.utils.UserUtils;
+import ua.training.repairagency.model.utils.TestimonialUtils;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 
-public class CustomerEditTestimonialCommand extends AbstractCommand {	
+public class CustomerCreateTestimonialCommand extends AbstractCommand {	
 	
 	@Override
 	public String execute(HttpServletRequest request) {
 		
 		messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, CommandUtils.getLocale(request));
-		errorMessages = new ArrayList<>();
 		infoMessages = new ArrayList<>();
+		errorMessages = new ArrayList<>();
 		
-		if (request.getParameter(USER_ID) != null) {	
+		if (!isRequestEmpty(request)) {
 			try {
-				User user = serviceFactory
-						.createUserService()
-						.getById(Integer.valueOf(request.getParameter(USER_ID)));
+				serviceFactory
+				.createTestimonialService()
+				.insert(TestimonialUtils.createTestimonial(request)); 
 				
-				user = serviceFactory
-						.createUserService()
-						.update(UserUtils.updateUserFeatures(user, request));
-				
-				request.getSession().setAttribute(USER, user);
-				infoMessages.add(messageBundle.getString(Message.UPDATE_USER_SUCCESS));
-			} catch (NotUniqueFieldValueException e) {
-				errorMessages.add(messageBundle.getString(CommandUtils.getFailMessageFromException(e)));
-			}
-		}
+				infoMessages.add(messageBundle.getString(Message.TESTIMONIAL_CREATE_SUCCESS));
+				page = URL.CUSTOMER_APPLICATION_INDEX_PAGE;
+			} catch (Exception e) {
+				e.printStackTrace();
+				errorMessages.add(messageBundle.getString(Message.TESTIMONIAL_CREATE_FAIL));
+				page = URL.CUSTOMER_TESTIMONIAL_CREATE_PAGE;
+			} 
+		} else {
+			page = URL.CUSTOMER_TESTIMONIAL_CREATE_PAGE;
+		}		
+		
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
-		request.setAttribute(INFO_MESSAGES, infoMessages);
-		return URL.CUSTOMER_EDITPROFILE_PAGE;
-	
+		request.setAttribute(INFO_MESSAGES, infoMessages);		
+		return page;
+	}
+
+	private boolean isRequestEmpty(HttpServletRequest request) {
+		return request.getParameter(TEXT) == null;
 	}
 }

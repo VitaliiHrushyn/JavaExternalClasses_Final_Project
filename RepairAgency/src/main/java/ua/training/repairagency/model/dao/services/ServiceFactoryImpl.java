@@ -22,7 +22,7 @@ public class ServiceFactoryImpl extends ServiceFactory {
 	}
 
 	@Override
-	public TestimonialService getTestimonialService() {
+	public TestimonialService createTestimonialService() {
 		return new TestimonialServiceImpl();
 	}
 

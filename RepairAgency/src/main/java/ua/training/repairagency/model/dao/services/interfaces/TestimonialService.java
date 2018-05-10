@@ -4,8 +4,12 @@ import ua.training.repairagency.model.entities.testimonial.Testimonial;
 
 public interface TestimonialService {
 	
-	Testimonial getById(int testiminialId);
+	//Testimonial getById(int testiminialId);
 	
 	Testimonial insert(Testimonial testimonial);
+
+	Testimonial getById(int id);
+
+//	Testimonial getByApplicationId(int applicationId);
 
 }
