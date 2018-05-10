@@ -28,7 +28,11 @@ public interface Column {
 	String APPLICATION_WORKMAN_ID = "application.workman_id";
 	String APPLICATION_TESTIMONIAL_ID = "application.testimonial_id";
 	String APPLICATION_CREATE_TIME = "application.creat_time";
-	
+
+	String TESTIMONIAL_ID = "testimonials.testimonial_id";
+	String TESTIMONIAL_TEXT = "testimonials.text";
+	String TESTIMONIAL_CREATE_TIME = "testimonials.create_time";
+
 	
 	
 	

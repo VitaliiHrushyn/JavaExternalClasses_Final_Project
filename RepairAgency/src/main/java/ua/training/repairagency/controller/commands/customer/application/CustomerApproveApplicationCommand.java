@@ -22,7 +22,7 @@ public class CustomerApproveApplicationCommand extends AbstractCommand {
 			request.setAttribute(APPLICATION, application);	
 			page = URL.CUSTOMER_APPLICATION_APPROVE_PAGE;
 		} else {
-			page = URL.CUSTOMER_APPLICATION_ALL_COMMAND;
+			page = URL.CUSTOMER_APPLICATION_RECEIVED_COMMAND;
 		}
 		
 		return page;

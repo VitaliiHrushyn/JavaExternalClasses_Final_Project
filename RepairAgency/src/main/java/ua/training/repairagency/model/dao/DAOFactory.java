@@ -1,6 +1,5 @@
 package ua.training.repairagency.model.dao;
 
-import ua.training.repairagency.model.dao.impl.JDBCDAOFactory;
 import ua.training.repairagency.model.dao.interfaces.ApplicationDAO;
 import ua.training.repairagency.model.dao.interfaces.HistoryRecordDAO;
 import ua.training.repairagency.model.dao.interfaces.TestimonialDAO;

@@ -20,5 +20,9 @@ public class TestimonialImpl extends AbstractEntity implements Testimonial {
 	public Date getCreateTime() {
 		return createTime;
 	}
+	
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
 }

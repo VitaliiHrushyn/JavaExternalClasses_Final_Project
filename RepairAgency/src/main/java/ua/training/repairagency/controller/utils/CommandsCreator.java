@@ -33,7 +33,7 @@ public class CommandsCreator {
 //		commands.put(URL.CUSTOMER_PROFILE_CHANGEPASSWORD_PATH, new CustomerChangepasswordCommand());
 		commands.put(URL.CUSTOMER_MESSAGE_PATH, new CustomerMessageCommand());
 //		commands.put(URL.CUSTOMER_WORKMEN_PATH, new CustomerGetAllWorkmenCommand());
-		commands.put(URL.CUSTOMER_APPLICATIONS_PATH, new CustomerApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS, new CustomerApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_CREATE_PATH, new CustomerCreateApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_ALL_PATH, new CustomerAllApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_ONE_PATH, new CustomerOneApplicationCommand());
