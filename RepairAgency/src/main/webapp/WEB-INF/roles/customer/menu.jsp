@@ -16,7 +16,6 @@
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/customer/profile"><fmt:message key="text.menu.profile" /></a> 
 		<a href = "${pageContext.request.contextPath}/app/customer/applications"><fmt:message key="text.menu.applications" /></a>
-		<a href = "${pageContext.request.contextPath}/app/customer/message"><fmt:message key="text.menu.messages" /></a>   	 
        	<br>  
        	<br>
 	</div>

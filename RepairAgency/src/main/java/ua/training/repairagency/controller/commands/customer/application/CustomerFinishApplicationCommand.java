@@ -1,35 +1,18 @@
 package ua.training.repairagency.controller.commands.customer.application;
 
-import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
-
-import javax.servlet.http.HttpServletRequest;
-
 import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.model.entities.application.Application;
-import ua.training.repairagency.controller.commands.AbstractCommand;
+import ua.training.repairagency.controller.commands.abstracts.application.AbstractFinishApplicationCommand;
 
-public class CustomerFinishApplicationCommand extends AbstractCommand {
-	
+public class CustomerFinishApplicationCommand extends AbstractFinishApplicationCommand {
+
 	@Override
-	public String execute(HttpServletRequest request) {
-					
-		if (!isRequestEmpty(request)) {
-		
-			 Application application = serviceFactory
-					 					.createApplicationService()
-					 					.getById(Integer.valueOf(request.getParameter(ID)));
-			
-			request.setAttribute(APPLICATION, application);	
-			page = URL.CUSTOMER_APPLICATION_FINISH_PAGE;
-		} else {
-			page = URL.CUSTOMER_APPLICATION_ALL_COMMAND;
-		}
-		
-		return page;
+	protected String getApplicationFinishPage() {
+		return URL.CUSTOMER_APPLICATION_FINISH_PAGE;
 	}
 
-	private boolean isRequestEmpty(HttpServletRequest request) {
-		return request.getParameter(ID) == null;
+	@Override
+	protected String getApplicationAllCommand() {
+		return URL.CUSTOMER_APPLICATION_ALL_COMMAND;
 	}
 	
 }

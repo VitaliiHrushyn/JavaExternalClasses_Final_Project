@@ -31,16 +31,16 @@ public interface URL {
 	
 	
 	
-	/* manager */
-	String MANAGER_PROFILE = "/WEB-INF/roles/manager/index.jsp";
-	String REDIRECT_MANAGER_PROFILE_COMMAND = "redirect:/app/manager/profile";
-	String MANAGER_PROFILE_COMMAND = "/app/manager/profile";
-	/* manager */
-	String MANAGER_PAGE_PATH = "manager/profile";
-	String MANAGER_MESSAGE_PATH = "manager/message";
-	String MANAGER_WORKMEN_PATH = "manager/workmen";
-	String MANAGER_APPLICATIONS_PATH = "manager/applications";
-	String MANAGER = "manager";
+//	/* manager */
+//	String MANAGER_PROFILE = "/WEB-INF/roles/manager/index.jsp";
+//	String REDIRECT_MANAGER_PROFILE_COMMAND = "redirect:/app/manager/profile";
+//	String MANAGER_PROFILE_COMMAND = "/app/manager/profile";
+//	/* manager */
+//	String MANAGER_PAGE_PATH = "manager/profile";
+//	String MANAGER_MESSAGE_PATH = "manager/message";
+//	String MANAGER_WORKMEN_PATH = "manager/workmen";
+//	String MANAGER_APPLICATIONS_PATH = "manager/applications";
+//	String MANAGER = "manager";
 	
 	
 	
@@ -67,12 +67,10 @@ public interface URL {
 	String CUSTOMER_PROFILE_COMMAND = "/app/customer/profile";
 	String CUSTOMER_APPLICATION_ALL_COMMAND = "/app/customer/applications/show";
 	String CUSTOMER_APPLICATION_EDIT_COMMAND = "/app/customer/applications/edit";
-//	String CUSTOMER_APPLICATION_RECEIVED_COMMAND = "/app/customer/applications/received";
 	String REDIRECT_CUSTOMER_PROFILE_COMMAND = REDIRECT + CUSTOMER_PROFILE_COMMAND;
 	
 	/* commands path */
 	String CUSTOMER_PROFILE_PATH = "customer/profile";
-//	String CUSTOMER_LOGIN_PATH = "customer/login";
 	String CUSTOMER_ROFILE_EDIT_PATH = CUSTOMER_PROFILE_PATH + "/editprofile";
 	String CUSTOMER_PROFILE_CHANGEPASSWORD_PATH = CUSTOMER_PROFILE_PATH + "/changepassword";
 	
@@ -95,6 +93,54 @@ public interface URL {
 	
 	
 	/* 
+	 * manager 
+	 */
+	String MANAGER_URL = "/WEB-INF/roles/manager/";
+	
+	String MANAGER_PROFILE_PAGE = MANAGER_URL + "profile/profile.jsp";
+	String MANAGER_EDITPROFILE_PAGE = MANAGER_URL + "profile/editprofile.jsp";	
+	String MANAGER_CHANGEPASSWORD_PAGE = MANAGER_URL + "profile/changepassword.jsp";
+	
+	String MANAGER_APPLICATION_INDEX_PAGE = MANAGER_URL + "applications/index.jsp";
+	String MANAGER_APPLICATION_CREATE_PAGE = MANAGER_URL + "applications/create.jsp";
+	String MANAGER_APPLICATION_SHOW_PAGE = MANAGER_URL + "applications/show.jsp";
+	String MANAGER_APPLICATION_ONE_PAGE = MANAGER_URL + "applications/one.jsp";
+	String MANAGER_APPLICATION_RECEIVED_PAGE = MANAGER_URL + "applications/received.jsp";
+	String MANAGER_APPLICATION_DONE_PAGE = MANAGER_URL + "applications/done.jsp";
+	String MANAGER_APPLICATION_APPROVE_PAGE = MANAGER_URL + "applications/approve.jsp";
+	String MANAGER_APPLICATION_FINISH_PAGE = MANAGER_URL + "applications/finishapp.jsp";
+	
+	String MANAGER_MESSAGE_PAGE = MANAGER_URL + "messages/index.jsp";
+	
+	String MANAGER_PROFILE_COMMAND = "/app/customer/profile";
+	String MANAGER_APPLICATION_ALL_COMMAND = "/app/manager/applications/show";
+	String MANAGER_APPLICATION_EDIT_COMMAND = "/app/manager/applications/edit";
+	String REDIRECT_MANAGER_PROFILE_COMMAND = REDIRECT + MANAGER_PROFILE_COMMAND;
+	
+	/* commands path */
+	String MANAGER_PROFILE_PATH = "manager/profile";
+	String MANAGER_ROFILE_EDIT_PATH = MANAGER_PROFILE_PATH + "/editprofile";
+	String MANAGER_PROFILE_CHANGEPASSWORD_PATH = MANAGER_PROFILE_PATH + "/changepassword";
+	
+	String MANAGER_MESSAGE_PATH = "manager/message";
+	
+	String MANAGER_APPLICATIONS_PATH = "manager/applications";
+	String MANAGER_APPLICATIONS_CREATE_PATH = MANAGER_APPLICATIONS_PATH + "/create";
+	String MANAGER_APPLICATIONS_ALL_PATH = MANAGER_APPLICATIONS_PATH + "/show";
+	String MANAGER_APPLICATIONS_ONE_PATH = MANAGER_APPLICATIONS_PATH + "/one";
+	String MANAGER_APPLICATIONS_EDIT_PATH = MANAGER_APPLICATIONS_PATH + "/edit";
+	String MANAGER_APPLICATIONS_CURRENT_PATH = MANAGER_APPLICATIONS_PATH + "/done";
+	String MANAGER_APPLICATIONS_ACTIVE_PATH =	MANAGER_APPLICATIONS_PATH + "/active";
+	String MANAGER_APPLICATIONS_NONACTIVE_PATH = MANAGER_APPLICATIONS_PATH + "/nonactive";
+	String MANAGER_APPLICATIONS_RECEIVED_PATH = MANAGER_APPLICATIONS_PATH + "/received";
+	String MANAGER_APPLICATIONS_APPROVE_PATH = MANAGER_APPLICATIONS_PATH + "/approve";
+	String MANAGER_APPLICATIONS_DONE_PATH = MANAGER_APPLICATIONS_PATH + "/done";
+	String MANAGER_APPLICATIONS_FINISH_PATH = MANAGER_APPLICATIONS_PATH + "/finishapp";
+	
+	String MANAGER = "manager";
+
+	
+	/* 
 	 * workman 
 	 */
 	String WORKMAN_PAGE = "/WEB-INF/workman/profile.jsp";	
@@ -111,6 +157,7 @@ public interface URL {
 	 */
 	String FILTER_PATTERN = "/*";
 	String DISABLE_CACHE_FILTER_PATTERN = "/*";
+	
 	
 	
 	

@@ -1,16 +1,13 @@
 package ua.training.repairagency.controller.commands.customer.profile;
 
-import javax.servlet.http.HttpServletRequest;
-
 import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.controller.commands.Command;
+import ua.training.repairagency.controller.commands.abstracts.profile.AbstractProfilePageCommand;
 
-public class CustomerProfilePageCommand implements Command {
+public class CustomerProfilePageCommand extends AbstractProfilePageCommand {
 
 	@Override
-	public String execute(HttpServletRequest request) {
-		
+	protected String getProfilePage() {
 		return URL.CUSTOMER_PROFILE_PAGE;
 	}
-
+	
 }

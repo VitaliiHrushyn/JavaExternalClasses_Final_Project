@@ -1,20 +1,13 @@
 package ua.training.repairagency.controller.commands.customer.application;
 
-import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
-
-import javax.servlet.http.HttpServletRequest;
-
 import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.controller.commands.Command;
+import ua.training.repairagency.controller.commands.abstracts.application.AbstractApplicationCommand;
 
-public class CustomerApplicationCommand implements Command {
+public class CustomerApplicationCommand extends AbstractApplicationCommand {
 
 	@Override
-	public String execute(HttpServletRequest request) {
-		
-		request.setAttribute(COMMAND_RESULT, "customer app index page");
-				
+	protected String getApplicationIndexPage() {
 		return URL.CUSTOMER_APPLICATION_INDEX_PAGE;
-	}
+	}	
 
 }
