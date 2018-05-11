@@ -131,13 +131,49 @@ public interface URL {
 	/* 
 	 * workman 
 	 */
-	String WORKMAN_PAGE = "/WEB-INF/workman/profile.jsp";	
-	String REDIRECT_WORKMAN_PROFILE_COMMAND = "redirect:/app/workman/profile";
-	String WORKMAN_PROFILE_COMMAND = "/app/workman/profile";
-	/* workman */
-	//TODO
-	String WORKMAN = "workman";
+	String WORKMAN_URL = "/WEB-INF/roles/workman/";
 	
+	String WORKMAN_PROFILE_PAGE = WORKMAN_URL + "profile/profile.jsp";
+	String WORKMAN_EDITPROFILE_PAGE = WORKMAN_URL + "profile/editprofile.jsp";	
+	String WORKMAN_CHANGEPASSWORD_PAGE = WORKMAN_URL + "profile/changepassword.jsp";
+	
+	String WORKMAN_APPLICATION_INDEX_PAGE = WORKMAN_URL + "applications/index.jsp";
+	String WORKMAN_APPLICATION_CREATE_PAGE = WORKMAN_URL + "applications/create.jsp";
+	String WORKMAN_APPLICATION_SHOW_PAGE = WORKMAN_URL + "applications/show.jsp";
+	String WORKMAN_APPLICATION_ONE_PAGE = WORKMAN_URL + "applications/one.jsp";
+	String WORKMAN_APPLICATION_NEW_PAGE = WORKMAN_URL + "applications/new.jsp";
+	String WORKMAN_APPLICATION_DONE_PAGE = WORKMAN_URL + "applications/done.jsp";
+	String WORKMAN_APPLICATION_APPROVE_PAGE = WORKMAN_URL + "applications/approve.jsp";
+	String WORKMAN_APPLICATION_FINISH_PAGE = WORKMAN_URL + "applications/finishapp.jsp";
+	
+	String WORKMAN_MESSAGE_PAGE = WORKMAN_URL + "messages/index.jsp";
+	
+	String WORKMAN_PROFILE_COMMAND = "/app/workman/profile";
+	String WORKMAN_APPLICATION_ALL_COMMAND = "/app/workman/applications/show";
+	String WORKMAN_APPLICATION_EDIT_COMMAND = "/app/workman/applications/edit";
+	String REDIRECT_WORKMAN_PROFILE_COMMAND = REDIRECT + WORKMAN_PROFILE_COMMAND;
+	
+	/* commands path */
+	String WORKMAN_PROFILE_PATH = "workman/profile";
+	String WORKMAN_ROFILE_EDIT_PATH = WORKMAN_PROFILE_PATH + "/editprofile";
+	String WORKMAN_PROFILE_CHANGEPASSWORD_PATH = WORKMAN_PROFILE_PATH + "/changepassword";
+	
+	String WORKMAN_MESSAGE_PATH = "workman/message";
+	
+	String WORKMAN_APPLICATIONS_PATH = "workman/applications";
+	String WORKMAN_APPLICATIONS_CREATE_PATH = WORKMAN_APPLICATIONS_PATH + "/create";
+	String WORKMAN_APPLICATIONS_ALL_PATH = WORKMAN_APPLICATIONS_PATH + "/all";
+	String WORKMAN_APPLICATIONS_ONE_PATH = WORKMAN_APPLICATIONS_PATH + "/one";
+	String WORKMAN_APPLICATIONS_EDIT_PATH = WORKMAN_APPLICATIONS_PATH + "/edit";
+	String WORKMAN_APPLICATIONS_CURRENT_PATH = WORKMAN_APPLICATIONS_PATH + "/done";
+	String WORKMAN_APPLICATIONS_ACTIVE_PATH =	WORKMAN_APPLICATIONS_PATH + "/active";
+	String WORKMAN_APPLICATIONS_NONACTIVE_PATH = WORKMAN_APPLICATIONS_PATH + "/nonactive";
+	String WORKMAN_APPLICATIONS_NEW_PATH = WORKMAN_APPLICATIONS_PATH + "/new";
+	String WORKMAN_APPLICATIONS_APPROVE_PATH = WORKMAN_APPLICATIONS_PATH + "/approve";
+	String WORKMAN_APPLICATIONS_DONE_PATH = WORKMAN_APPLICATIONS_PATH + "/done";
+	String WORKMAN_APPLICATIONS_FINISH_PATH = WORKMAN_APPLICATIONS_PATH + "/finishapp";
+	
+	String WORKMAN = "workman";
 	
 	
 	/*
