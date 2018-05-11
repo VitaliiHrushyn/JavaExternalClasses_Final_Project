@@ -2,7 +2,7 @@ package ua.training.repairagency.controller.commands.manager.application;
 
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.controller.commands.abstracts.application.AbstractCreateApplicationCommand;
-
+@Deprecated
 public class ManagerCreateApplicationCommand extends AbstractCreateApplicationCommand {
 
 	@Override

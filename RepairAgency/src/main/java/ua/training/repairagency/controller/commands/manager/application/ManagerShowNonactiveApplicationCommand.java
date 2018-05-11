@@ -3,8 +3,7 @@ package ua.training.repairagency.controller.commands.manager.application;
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.model.entities.application.Application;
 
-import static ua.training.repairagency.controller.constants.AttributeOrParam.FINISHED_APPLICATION;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.REJECTED_APPLICATION;
+import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class ManagerShowNonactiveApplicationCommand extends AbstractShowListAppl
 	protected List<Application> getApplications(HttpServletRequest request) {
 		return serviceFactory
 				.createApplicationService()
-				.getAllByStatuses(REJECTED_APPLICATION, FINISHED_APPLICATION, null);
+				.getAllByStatuses(DONE_APPLICATION, REJECTED_APPLICATION, FINISHED_APPLICATION);
 	}
 
 	

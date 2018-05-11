@@ -10,7 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowListApplicationCommand;
-
+@Deprecated
 public class ManagerShowDoneApplicationCommand extends AbstractShowListApplicationCommand {
 
 	@Override

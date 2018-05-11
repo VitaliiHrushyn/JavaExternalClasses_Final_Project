@@ -28,10 +28,6 @@
 			
 			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
 			<br>
-			<fmt:message key="application.label.satisfied" />
-			<input type="radio" name="satisfied" value="yes"> <fmt:message key="application.label.satisfied.yes" /> 
-  			<input type="radio" name="satisfied" value="no"> <fmt:message key="application.label.satisfied.no" /><br>			
-			<br>
 			<fmt:message key="application.label.left_testimonial" />: 
 			<br>
 				<textarea name="testimonial_text">${application.testimonial.text}</textarea>

@@ -19,7 +19,7 @@ import ua.training.repairagency.controller.commands.manager.application.ManagerS
 import ua.training.repairagency.controller.commands.manager.application.ManagerShowDoneApplicationCommand;
 import ua.training.repairagency.controller.commands.manager.application.ManagerShowNonactiveApplicationCommand;
 import ua.training.repairagency.controller.commands.manager.application.ManagerShowOneApplicationCommand;
-import ua.training.repairagency.controller.commands.manager.application.ManagerShowReceivedApplicationCommand;
+import ua.training.repairagency.controller.commands.manager.application.ManagerShowNewApplicationCommand;
 import ua.training.repairagency.controller.commands.manager.profile.ManagerEditprofileCommand;
 import ua.training.repairagency.controller.commands.manager.profile.ManagerProfilePageCommand;
 import ua.training.repairagency.controller.constants.URL;
@@ -55,14 +55,14 @@ public class CommandsCreator {
 		commands.put(URL.MANAGER_PROFILE_PATH, new ManagerProfilePageCommand());
 		commands.put(URL.MANAGER_ROFILE_EDIT_PATH, new ManagerEditprofileCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_PATH, new ManagerApplicationCommand());
-		commands.put(URL.MANAGER_APPLICATIONS_CREATE_PATH, new ManagerCreateApplicationCommand());
+//		commands.put(URL.MANAGER_APPLICATIONS_CREATE_PATH, new ManagerCreateApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_ALL_PATH, new ManagerShowAllApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_ONE_PATH, new ManagerShowOneApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_DONE_PATH, new ManagerShowDoneApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_FINISH_PATH, new ManagerFinishApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_EDIT_PATH, new ManagerEditApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_CURRENT_PATH, new ManagerShowDoneApplicationCommand());
-		commands.put(URL.MANAGER_APPLICATIONS_RECEIVED_PATH, new ManagerShowReceivedApplicationCommand());
+		commands.put(URL.MANAGER_APPLICATIONS_NEW_PATH, new ManagerShowNewApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_APPROVE_PATH, new ManagerApproveApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_ACTIVE_PATH, new ManagerShowActiveApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_NONACTIVE_PATH, new ManagerShowNonactiveApplicationCommand());

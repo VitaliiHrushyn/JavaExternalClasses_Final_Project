@@ -28,22 +28,35 @@
 			<br>
 			<fmt:message key="application.label.status.change" />
 			<input type="radio" name="status" value="REJECTED"> <fmt:message key="application.label.status.REJECT" /> 
-  			<input type="radio" name="status" value="APPROVED"> <fmt:message key="application.label.status.APPROV" /><br>			
-			<br>
-			<fmt:message key="application.label.description" />: <input type="text" name="description" value="${application.description}">
-			<br>
-			<fmt:message key="application.label.comment" />: ${application.managerComment}
-			<br>		
-			<fmt:message key="application.label.price" />: ${application.price}
-			<br>
-			<fmt:message key="application.label.customer" />: ${application.customer}
-			<br>
-			<fmt:message key="application.label.workman" />: ${application.workman}
-			<br>
-			<fmt:message key="application.label.testimonial" />: <input type="text" name="testimonial" value="${application.testimonial}">
+  			<input type="radio" name="status" value="RECEIVED"> <fmt:message key="application.label.status.RECEIVE" /><br>			
 			<br>
 			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>
+			<fmt:message key="application.label.description" />: ${application.description}
+			<br>
+			<fmt:message key="application.label.comment" />: <input type="text" name="comment" value="${application.managerComment}">
+			<br>		
+			<fmt:message key="application.label.price" />: <input type="text" name="price" value="${application.price}">
+			<br>
+			<fmt:message key="application.label.customer" />: id: ${application.customer.id} - ${application.customer.name} ${application.customer.surname}
+			<br>
+			<fmt:message key="application.label.current_workman" />: ${application.workman}
+			<br>
+			<fmt:message key="application.label.change_workman" />:
+			<select name="workman" >
+				<option value="${application.workman}" selected>${workman.name} ${workman.surname}</option>			               			
+				
+					<c:forEach var="workman" items="${requestScope.workmen}">
+						
+						<option value ="${workman.id}"> <fmt:message key="${workman.name} ${workman.surname}" /> </option>
+						
+					</c:forEach>         	
+         	</select>
+			
+			<br>
+			<fmt:message key="application.label.testimonial" />: ${application.testimonial.text}
+			<br>
+			
 			<input type="submit" value="<fmt:message key="text.button.savechanges" />">
 		</form>	
 		<br>

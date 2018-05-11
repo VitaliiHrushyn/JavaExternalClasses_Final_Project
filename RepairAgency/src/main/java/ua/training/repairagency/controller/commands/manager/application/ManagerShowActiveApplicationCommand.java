@@ -5,7 +5,7 @@ import ua.training.repairagency.model.entities.application.Application;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.APPROVED_APPLICATION;
 import static ua.training.repairagency.controller.constants.AttributeOrParam.EXECUTING_APPLICATION;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.NEW_APPLICATION;
+import static ua.training.repairagency.controller.constants.AttributeOrParam.RECEIVED_APPLICATION;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class ManagerShowActiveApplicationCommand extends AbstractShowListApplica
 	protected List<Application> getApplications(HttpServletRequest request) {
 		return serviceFactory
 				.createApplicationService()
-				.getAllByStatuses(NEW_APPLICATION, APPROVED_APPLICATION, EXECUTING_APPLICATION );
+				.getAllByStatuses(EXECUTING_APPLICATION, APPROVED_APPLICATION, RECEIVED_APPLICATION);
 	}
 
 }
