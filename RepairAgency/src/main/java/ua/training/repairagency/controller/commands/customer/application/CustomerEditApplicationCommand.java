@@ -37,11 +37,11 @@ public class CustomerEditApplicationCommand extends AbstractCommand {
 		}		
 		
 		request.setAttribute(INFO_MESSAGES, infoMessages);
-		return URL.CUSTOMER_APPLICATION_ONE_PAGE;
+		return URL.CUSTOMER_APPLICATION_ALL_COMMAND;
 	}
 
 	private boolean isRequestEmpty(HttpServletRequest request) {
-		return request.getParameter(STATUS) == null;
+		return request.getParameter(ID) == null;
 	}
 	
 }

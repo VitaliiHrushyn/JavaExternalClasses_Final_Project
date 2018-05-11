@@ -8,7 +8,6 @@ import ua.training.repairagency.controller.commands.common.*;
 import ua.training.repairagency.controller.commands.customer.*;
 import ua.training.repairagency.controller.commands.customer.application.*;
 import ua.training.repairagency.controller.commands.customer.profile.*;
-import ua.training.repairagency.controller.commands.customer.testimonial.CustomerCreateTestimonialCommand;
 import ua.training.repairagency.controller.commands.manager.*;
 import ua.training.repairagency.controller.constants.URL;
 
@@ -34,18 +33,18 @@ public class CommandsCreator {
 //		commands.put(URL.CUSTOMER_PROFILE_CHANGEPASSWORD_PATH, new CustomerChangepasswordCommand());
 		commands.put(URL.CUSTOMER_MESSAGE_PATH, new CustomerMessageCommand());
 //		commands.put(URL.CUSTOMER_WORKMEN_PATH, new CustomerGetAllWorkmenCommand());
-		commands.put(URL.CUSTOMER_APPLICATIONS, new CustomerApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_PATH, new CustomerApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_CREATE_PATH, new CustomerCreateApplicationCommand());
-		commands.put(URL.CUSTOMER_APPLICATIONS_ALL_PATH, new CustomerAllApplicationCommand());
-		commands.put(URL.CUSTOMER_APPLICATIONS_ONE_PATH, new CustomerOneApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_ALL_PATH, new CustomerShowAllApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_ONE_PATH, new CustomerShowOneApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_DONE_PATH, new CustomerShowDoneApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_FINISH_PATH, new CustomerFinishApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_EDIT_PATH, new CustomerEditApplicationCommand());
-		commands.put(URL.CUSTOMER_APPLICATIONS_CURRENT_PATH, new CustomerDoneApplicationCommand());
-		commands.put(URL.CUSTOMER_APPLICATIONS_RECEIVED_PATH, new CustomerReceivedApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_CURRENT_PATH, new CustomerShowDoneApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_RECEIVED_PATH, new CustomerShowReceivedApplicationCommand());
 		commands.put(URL.CUSTOMER_APPLICATIONS_APPROVE_PATH, new CustomerApproveApplicationCommand());
-		commands.put(URL.CUSTOMER_APPLICATIONS_ACTIVE_PATH, new CustomerActiveApplicationCommand());
-		commands.put(URL.CUSTOMER_APPLICATIONS_NONACTIVE_PATH, new CustomerNonactiveApplicationCommand());
-		
-		commands.put(URL.CUSTOMER_TESTIMONIALS_CREATE_PATH, new CustomerCreateTestimonialCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_ACTIVE_PATH, new CustomerShowActiveApplicationCommand());
+		commands.put(URL.CUSTOMER_APPLICATIONS_NONACTIVE_PATH, new CustomerShowNonactiveApplicationCommand());
 		
 		return commands;
 	}

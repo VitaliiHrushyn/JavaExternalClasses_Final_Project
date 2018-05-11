@@ -13,7 +13,10 @@ import ua.training.repairagency.model.entities.user.UserRole;
 public class UserUtils {
 	
 	public static String doCrypt(String string) {
-		return DigestUtils.md5Hex(string.getBytes());
+		return DigestUtils
+				.md5Hex(
+						string
+						.getBytes());
 	}
 	
 	public static User createUser(HttpServletRequest request) {
@@ -21,8 +24,8 @@ public class UserUtils {
 		user.setRole(UserRole.valueOf(request.getParameter(ROLE)));
 		user.setName(request.getParameter(NAME));
 		user.setSurname(request.getParameter(SURNAME));
-		user.setLogin(request.getParameter(REGISTRATION_LOGIN));
-		user.setPassword(doCrypt(request.getParameter(REGISTRATION_PASSWORD)));
+		user.setLogin(request.getParameter(LOGIN));
+		user.setPassword(doCrypt(request.getParameter(PASSWORD)));
 		user.setEmail(request.getParameter(EMAIL));
 		user.setPhone(request.getParameter(PHONE));	
 		

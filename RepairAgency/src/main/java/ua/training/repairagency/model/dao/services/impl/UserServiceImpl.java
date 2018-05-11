@@ -13,13 +13,14 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User getByLogin(String login) {
+		User user = null;
 		try(UserDAO dao = daoFactory.createUserDAO()){
-			return dao.getByLogin(login);
+			user = dao.getByLogin(login);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		return null;
+		return user;
 	}
 
 	@Override
@@ -37,10 +38,8 @@ public class UserServiceImpl implements UserService {
 		try(UserDAO dao = daoFactory.createUserDAO()){
 			return dao.getById(userId);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}		
-		return null;
 	}
 
 	@Override
