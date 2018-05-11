@@ -8,17 +8,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>customer menu</title>
+<title>content</title>
 </head>
 <body>
 	<div>
-		MENU:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/manager/profile"><fmt:message key="text.menu.profile" /></a> 
-		<a href = "${pageContext.request.contextPath}/app/manager/applications"><fmt:message key="text.menu.applications" /></a>
-       	<br>  
-       	<br>
+		<div>
+			<jsp:include page="sidemenu.jsp"></jsp:include>
+		</div>
+		<br>		
+		<c:set var="user" value="${sessionScope.user}"/>
+		<fmt:message key="register.label.name" />: ${user.name}
+		<br>
+		<fmt:message key="register.label.surname" />: ${user.surname}
+		<br>
+		<fmt:message key="register.label.login" />: ${user.login}
+		<br>
+		<fmt:message key="register.label.role" />: ${user.role}
+		<br>		
+		<fmt:message key="register.label.email" />: ${user.email}
+		<br>
+		<fmt:message key="register.label.phone" />: ${user.phone}
+		<br>
 	</div>
-	
 </body>
 </html>

@@ -112,7 +112,7 @@ public interface URL {
 	
 	String MANAGER_MESSAGE_PAGE = MANAGER_URL + "messages/index.jsp";
 	
-	String MANAGER_PROFILE_COMMAND = "/app/customer/profile";
+	String MANAGER_PROFILE_COMMAND = "/app/manager/profile";
 	String MANAGER_APPLICATION_ALL_COMMAND = "/app/manager/applications/show";
 	String MANAGER_APPLICATION_EDIT_COMMAND = "/app/manager/applications/edit";
 	String REDIRECT_MANAGER_PROFILE_COMMAND = REDIRECT + MANAGER_PROFILE_COMMAND;

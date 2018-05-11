@@ -12,11 +12,9 @@
 </head>
 <body>
 	<div>
-		MENU:
+		SIDE MENU:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/manager/profile"><fmt:message key="text.menu.profile" /></a> 
-		<a href = "${pageContext.request.contextPath}/app/manager/applications"><fmt:message key="text.menu.applications" /></a>
-       	<br>  
+		<a href = "${pageContext.request.contextPath}/app/customer/message">Show all messages</a>     	 
        	<br>
 	</div>
 	

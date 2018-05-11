@@ -8,17 +8,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>customer menu</title>
+<title>content</title>
 </head>
 <body>
 	<div>
-		MENU:
+		content:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/manager/profile"><fmt:message key="text.menu.profile" /></a> 
-		<a href = "${pageContext.request.contextPath}/app/manager/applications"><fmt:message key="text.menu.applications" /></a>
-       	<br>  
-       	<br>
+		<div>
+			<jsp:include page="sidemenu.jsp"></jsp:include>		
+		</div>
+		<br>		
+		<c:set var="message" value="${requestScope.message}"/>
+		<fmt:message key="text.message" />: ${message}
+		<br>
+		<p>result: ${requestScope.command_result}</p>
 	</div>
-	
 </body>
 </html>
