@@ -66,7 +66,7 @@ public class TestimonialDAOImpl extends AbstractDAO<Testimonial> implements Test
 	}
 
 	@Override
-	public List<Testimonial> getAll(boolean eager) {
+	public List<Testimonial> getAll() {
 		throw new RuntimeException();
 	}
 

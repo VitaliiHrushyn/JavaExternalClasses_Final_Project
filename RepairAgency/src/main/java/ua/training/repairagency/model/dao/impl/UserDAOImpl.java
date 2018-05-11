@@ -124,7 +124,7 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	}
 	
 	@Override
-	public List<User> getAll(boolean eager) {
+	public List<User> getAll() {
 		List<User> users = new ArrayList<>();
 		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_GET_ALL))) {
 			ResultSet rs = statement.executeQuery();			

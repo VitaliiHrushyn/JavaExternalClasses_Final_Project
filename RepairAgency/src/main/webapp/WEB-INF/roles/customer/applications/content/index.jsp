@@ -15,10 +15,7 @@
 			<br>
 			<div>
 				<jsp:include page="sidemenu.jsp"></jsp:include>		
-			</div>
-			<br>
-				<p>result: ${requestScope.command_result}</p>
-			<br>		
+			</div>		
 		</div>
 	</body>
 </html>

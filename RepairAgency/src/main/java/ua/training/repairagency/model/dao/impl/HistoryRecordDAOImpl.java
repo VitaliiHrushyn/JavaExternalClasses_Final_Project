@@ -35,7 +35,7 @@ public class HistoryRecordDAOImpl extends AbstractDAO<HistoryRecord> implements 
 	}
 
 	@Override
-	public List<HistoryRecord> getAll(boolean eager) {
+	public List<HistoryRecord> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -55,7 +55,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		return application;
 	}
 	
-	public List<Application> getAll(boolean eager) {
+	public List<Application> getAll() {
 		List<Application> applications = new ArrayList<>();
 		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.APPLICATION_GET_ALL))) {
 			ResultSet rs = statement.executeQuery();			

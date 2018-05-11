@@ -8,23 +8,21 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.model.entities.application.Application;
-import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 
-public abstract class AbstractShowActiveApplicationCommand extends AbstractCommand {
+public abstract class AbstractShowListApplicationCommand extends AbstractCommand {
 
 	@Override
 	public String execute(HttpServletRequest request) {
 
-		int userId = ((User)request.getSession().getAttribute(USER)).getId();
-		List<Application> applications = new ArrayList<>();
-		applications = serviceFactory
-				.createApplicationService()
-				.getAllByUserIdAndStatuses(userId, NEW_APPLICATION, APPROVED_APPLICATION, EXECUTING_APPLICATION );
 		
+		List<Application> applications = new ArrayList<>();
+		applications = getApplications(request);
+					
 		request.setAttribute(APPLICATIONS, applications);				
-		return getApplicationShowPage(); 
+		return getApplicationPage(); 
 	}
 	
-	protected abstract String getApplicationShowPage();
+	protected abstract String getApplicationPage();
+	protected abstract List<Application> getApplications(HttpServletRequest request);
 }

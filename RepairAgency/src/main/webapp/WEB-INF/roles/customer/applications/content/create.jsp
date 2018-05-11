@@ -27,10 +27,7 @@
 			<!-- <input type="text" name="description">  -->
 			<br>
 			<input type="submit" value="<fmt:message key="text.button.submit" />">
-		</form>	
-			<br>
-				<p>result: ${requestScope.command_result}</p>
-			<br>		
+		</form>			
 		</div>
 	</body>
 </html>
