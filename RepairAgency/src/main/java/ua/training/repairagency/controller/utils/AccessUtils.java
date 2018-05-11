@@ -34,7 +34,7 @@ public class AccessUtils {
 		authLogger.info("Login success: " + request.getSession().getAttribute(USER) 
 				+ " to session " + request.getSession().getId() + ";");
 		if (previousSession != null) {
-			previousSession.setAttribute(USER, null);
+			previousSession.removeAttribute(USER);
 			authLogger.info("Double login protection - automatic logout of " 
 					+ request.getSession().getAttribute(USER) + " from session " + previousSession.getId() + ";");
 		}
@@ -48,7 +48,7 @@ public class AccessUtils {
 		Map<Integer, HttpSession> loggedUsers = (HashMap<Integer, HttpSession>) context.getAttribute(LOGGED_USERS);
 		loggedUsers.remove(user.getId());
 		context.setAttribute(LOGGED_USERS, loggedUsers);
-		session.setAttribute(USER, null);
+		session.removeAttribute(USER);
 		authLogger.info("Logout of " + user + ";");
 	}
 	

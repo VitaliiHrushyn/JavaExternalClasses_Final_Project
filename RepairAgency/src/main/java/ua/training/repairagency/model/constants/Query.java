@@ -34,6 +34,7 @@ public interface Query {
 	String TESTIMONIAL_INSERT = "testimonial.insert";
 	String TESTIMONIAL_UPDATE = "testimonial.update";
 //	String TESTIMONIAL_GET_BY_LOGIN = "testimonial.get.by.login";		
+	String TESTIMONIAL_GET_BY_APPLICATION_ID = "testimonial.get.by.app.id";
 	
 	
 	

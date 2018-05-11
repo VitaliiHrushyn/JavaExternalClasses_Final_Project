@@ -1,11 +1,13 @@
-package ua.training.repairagency.model.dao.impl;
+package ua.training.repairagency.model.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 
-import ua.training.repairagency.model.dao.ConnectionPoolHolder;
-import ua.training.repairagency.model.dao.DAOFactory;
+import ua.training.repairagency.model.dao.impl.ApplicationDAOImpl;
+import ua.training.repairagency.model.dao.impl.HistoryRecordDAOImpl;
+import ua.training.repairagency.model.dao.impl.TestimonialDAOImpl;
+import ua.training.repairagency.model.dao.impl.UserDAOImpl;
 import ua.training.repairagency.model.dao.interfaces.ApplicationDAO;
 import ua.training.repairagency.model.dao.interfaces.HistoryRecordDAO;
 import ua.training.repairagency.model.dao.interfaces.TestimonialDAO;

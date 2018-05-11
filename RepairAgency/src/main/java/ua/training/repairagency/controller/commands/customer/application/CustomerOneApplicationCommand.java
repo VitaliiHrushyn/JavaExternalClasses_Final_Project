@@ -8,7 +8,7 @@ import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.controller.commands.AbstractCommand;
 
-public class CustomerApproveApplicationCommand extends AbstractCommand {
+public class CustomerOneApplicationCommand extends AbstractCommand {
 	
 	@Override
 	public String execute(HttpServletRequest request) {
@@ -20,9 +20,9 @@ public class CustomerApproveApplicationCommand extends AbstractCommand {
 					 					.getById(Integer.valueOf(request.getParameter(ID)));
 			
 			request.setAttribute(APPLICATION, application);	
-			page = URL.CUSTOMER_APPLICATION_APPROVE_PAGE;
+			page = URL.CUSTOMER_APPLICATION_ONE_PAGE;
 		} else {
-			page = URL.CUSTOMER_APPLICATION_RECEIVED_COMMAND;
+			page = URL.CUSTOMER_APPLICATION_ALL_COMMAND;
 		}
 		
 		return page;

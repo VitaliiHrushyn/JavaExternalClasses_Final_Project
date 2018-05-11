@@ -23,7 +23,7 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	}
 
 	
-	public User extractUser(ResultSet rs) throws SQLException {
+	private User extractUser(ResultSet rs) throws SQLException {
 		User user = new UserImpl();
 		user.setId(rs.getInt(columnBundle.getString(Column.USER_ID)));
 		user.setRole(UserRole.valueOf(rs.getString(columnBundle.getString(Column.USER_ROLE))));
@@ -77,7 +77,7 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	
 
 	@Override	
-	public User getById(int id) {	
+	public User getById(int id) {
 		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_GET_BY_ID))) {
 			statement.setInt(1, id);
 			ResultSet rs = statement.executeQuery();
