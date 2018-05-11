@@ -12,12 +12,12 @@
 </head>
 <body>
 	<div>
-		MENU:
-		<br>
-		<a href = "${pageContext.request.contextPath}/app/workman/profile"><fmt:message key="text.menu.profile" /></a> 
-		<a href = "${pageContext.request.contextPath}/app/workman/applications"><fmt:message key="text.menu.applications" /></a>
-       	<br>  
-       	<br>
+		SIDE MENU:
+			<br>
+			<a href = "${pageContext.request.contextPath}/app/workman/profile"><fmt:message key="text.menu.home" /></a>
+			<br>
+			<a href = "${pageContext.request.contextPath}/app/workman/profile/editprofile"><fmt:message key="text.menu.editprofile" /></a>
+			<br>
 	</div>
 	
 </body>

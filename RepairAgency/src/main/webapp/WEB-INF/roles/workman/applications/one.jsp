@@ -13,9 +13,9 @@
     
     	<jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
         
-    	<jsp:include page="menu.jsp"></jsp:include>
+    	<jsp:include page="/WEB-INF/roles/workman/menu.jsp"></jsp:include>
     	
-    	<jsp:include page="content.jsp"></jsp:include>
+    	<jsp:include page="content/one.jsp"></jsp:include>
         
         <jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>
         

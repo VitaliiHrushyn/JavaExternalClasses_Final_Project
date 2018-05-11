@@ -22,6 +22,16 @@ import ua.training.repairagency.controller.commands.roles.manager.application.Ma
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowOneApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.profile.ManagerEditprofileCommand;
 import ua.training.repairagency.controller.commands.roles.manager.profile.ManagerProfilePageCommand;
+import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanApproveApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanEditApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanFinishApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanShowActiveApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanShowNewApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanShowNonactiveApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanShowOneApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.workman.profile.WorkmanEditprofileCommand;
+import ua.training.repairagency.controller.commands.roles.workman.profile.WorkmanProfilePageCommand;
 import ua.training.repairagency.controller.constants.URL;
 
 public class CommandsCreator {
@@ -55,7 +65,6 @@ public class CommandsCreator {
 		commands.put(URL.MANAGER_PROFILE_PATH, new ManagerProfilePageCommand());
 		commands.put(URL.MANAGER_ROFILE_EDIT_PATH, new ManagerEditprofileCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_PATH, new ManagerApplicationCommand());
-//		commands.put(URL.MANAGER_APPLICATIONS_CREATE_PATH, new ManagerCreateApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_ALL_PATH, new ManagerShowAllApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_ONE_PATH, new ManagerShowOneApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_DONE_PATH, new ManagerShowDoneApplicationCommand());
@@ -66,6 +75,17 @@ public class CommandsCreator {
 		commands.put(URL.MANAGER_APPLICATIONS_APPROVE_PATH, new ManagerApproveApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_ACTIVE_PATH, new ManagerShowActiveApplicationCommand());
 		commands.put(URL.MANAGER_APPLICATIONS_NONACTIVE_PATH, new ManagerShowNonactiveApplicationCommand());
+		
+		commands.put(URL.WORKMAN_PROFILE_PATH, new WorkmanProfilePageCommand());
+		commands.put(URL.WORKMAN_ROFILE_EDIT_PATH, new WorkmanEditprofileCommand());
+		commands.put(URL.WORKMAN_APPLICATIONS_PATH, new WorkmanApplicationCommand());
+		commands.put(URL.WORKMAN_APPLICATIONS_ONE_PATH, new WorkmanShowOneApplicationCommand());
+		commands.put(URL.WORKMAN_APPLICATIONS_FINISH_PATH, new WorkmanFinishApplicationCommand());
+		commands.put(URL.WORKMAN_APPLICATIONS_EDIT_PATH, new WorkmanEditApplicationCommand());
+		commands.put(URL.WORKMAN_APPLICATIONS_NEW_PATH, new WorkmanShowNewApplicationCommand());
+		commands.put(URL.WORKMAN_APPLICATIONS_APPROVE_PATH, new WorkmanApproveApplicationCommand());
+		commands.put(URL.WORKMAN_APPLICATIONS_ACTIVE_PATH, new WorkmanShowActiveApplicationCommand());
+		commands.put(URL.WORKMAN_APPLICATIONS_NONACTIVE_PATH, new WorkmanShowNonactiveApplicationCommand());
 		
 		return commands;
 	}
