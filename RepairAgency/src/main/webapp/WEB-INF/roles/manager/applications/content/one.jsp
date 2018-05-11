@@ -44,9 +44,9 @@
 			<br>		
 			<fmt:message key="application.label.price" />: ${application.price}
 			<br>
-			<fmt:message key="application.label.customer" />: ${application.customer}
+			<fmt:message key="application.label.customer" />: id ${application.customer.id} - ${application.customer.name} ${application.customer.surname}
 			<br>
-			<fmt:message key="application.label.workman" />: ${application.workman}
+			<fmt:message key="application.label.workman" />: ${application.workman.name} ${application.workman.surname}
 			<br>
 			<fmt:message key="application.label.testimonial" />: ${application.testimonial.createTime} | ${application.testimonial.text}
 			<br>

@@ -14,7 +14,7 @@
 	<div>
 		SIDE MENU:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/manager/applications/show"><fmt:message key="text.menu.show.all" /></a>
+		<a href = "${pageContext.request.contextPath}/app/manager/applications/all"><fmt:message key="text.menu.show.all" /></a>
 		<br>
        	<a href = "${pageContext.request.contextPath}/app/manager/applications/new"><fmt:message key="text.menu.show.new" /></a>     	 
        	<br>

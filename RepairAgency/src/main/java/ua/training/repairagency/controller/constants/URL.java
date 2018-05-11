@@ -30,19 +30,7 @@ public interface URL {
 	String ERROR_404 = "404";
 	
 	
-	
-//	/* manager */
-//	String MANAGER_PROFILE = "/WEB-INF/roles/manager/index.jsp";
-//	String REDIRECT_MANAGER_PROFILE_COMMAND = "redirect:/app/manager/profile";
-//	String MANAGER_PROFILE_COMMAND = "/app/manager/profile";
-//	/* manager */
-//	String MANAGER_PAGE_PATH = "manager/profile";
-//	String MANAGER_MESSAGE_PATH = "manager/message";
-//	String MANAGER_WORKMEN_PATH = "manager/workmen";
-//	String MANAGER_APPLICATIONS_PATH = "manager/applications";
-//	String MANAGER = "manager";
-	
-	
+
 	
 	/* 
 	 * customer 
@@ -78,7 +66,7 @@ public interface URL {
 	
 	String CUSTOMER_APPLICATIONS_PATH = "customer/applications";
 	String CUSTOMER_APPLICATIONS_CREATE_PATH = CUSTOMER_APPLICATIONS_PATH + "/create";
-	String CUSTOMER_APPLICATIONS_ALL_PATH = CUSTOMER_APPLICATIONS_PATH + "/show";
+	String CUSTOMER_APPLICATIONS_ALL_PATH = CUSTOMER_APPLICATIONS_PATH + "/all";
 	String CUSTOMER_APPLICATIONS_ONE_PATH = CUSTOMER_APPLICATIONS_PATH + "/one";
 	String CUSTOMER_APPLICATIONS_EDIT_PATH = CUSTOMER_APPLICATIONS_PATH + "/edit";
 	String CUSTOMER_APPLICATIONS_CURRENT_PATH = CUSTOMER_APPLICATIONS_PATH + "/done";
@@ -126,7 +114,7 @@ public interface URL {
 	
 	String MANAGER_APPLICATIONS_PATH = "manager/applications";
 	String MANAGER_APPLICATIONS_CREATE_PATH = MANAGER_APPLICATIONS_PATH + "/create";
-	String MANAGER_APPLICATIONS_ALL_PATH = MANAGER_APPLICATIONS_PATH + "/show";
+	String MANAGER_APPLICATIONS_ALL_PATH = MANAGER_APPLICATIONS_PATH + "/all";
 	String MANAGER_APPLICATIONS_ONE_PATH = MANAGER_APPLICATIONS_PATH + "/one";
 	String MANAGER_APPLICATIONS_EDIT_PATH = MANAGER_APPLICATIONS_PATH + "/edit";
 	String MANAGER_APPLICATIONS_CURRENT_PATH = MANAGER_APPLICATIONS_PATH + "/done";
