@@ -11,13 +11,13 @@
 <title>customer menu</title>
 </head>
 <body>
-	<div>
+	<div align="center">
 		SIDE MENU:
 		<br>
        	<a href = "${pageContext.request.contextPath}/app/workman/applications/new"><fmt:message key="text.menu.show.new" /></a>     	 
-       	<br>
+       	|
        	<a href = "${pageContext.request.contextPath}/app/workman/applications/active"><fmt:message key="text.menu.show.activ" /></a>     	 
-       	<br>
+       	|
        	<a href = "${pageContext.request.contextPath}/app/workman/applications/nonactive"><fmt:message key="text.menu.show.nonactive" /></a>     	 
        	<br>
 	</div>

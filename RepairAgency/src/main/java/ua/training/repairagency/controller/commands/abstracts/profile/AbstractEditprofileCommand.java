@@ -3,6 +3,7 @@ package ua.training.repairagency.controller.commands.abstracts.profile;
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +14,14 @@ import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 import ua.training.repairagency.model.utils.UserUtils;
 import ua.training.repairagency.controller.commands.AbstractCommand;
+import ua.training.repairagency.controller.commands.Command;
 
 public abstract class AbstractEditprofileCommand extends AbstractCommand {	
 	
+	public AbstractEditprofileCommand(String path, Map<String, Command> commands) {
+		super(path, commands);
+	}
+
 	@Override
 	public String execute(HttpServletRequest request) {
 		

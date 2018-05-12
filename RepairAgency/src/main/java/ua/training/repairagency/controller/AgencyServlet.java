@@ -26,7 +26,7 @@ public class AgencyServlet extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init() {
-		commands = CommandsCreator.create();		
+		commands = CommandsCreator.create(commands);		
 	}
 
 	/**

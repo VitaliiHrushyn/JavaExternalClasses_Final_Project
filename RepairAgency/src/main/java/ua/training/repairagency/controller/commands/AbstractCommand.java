@@ -1,6 +1,7 @@
 package ua.training.repairagency.controller.commands;
 
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,10 @@ public abstract class AbstractCommand implements Command {
 	protected List<String> infoMessages;
 	protected List<String> errorMessages;
 	protected String page;
+	
+	public AbstractCommand(String path, Map<String, Command> commands) {
+		commands.put(path, this);
+	}
 	
 	@Override
 	public abstract String execute(HttpServletRequest request);

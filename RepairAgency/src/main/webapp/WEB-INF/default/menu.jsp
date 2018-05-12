@@ -11,7 +11,7 @@
 		<title></title>
 	</head>
 	<body>
-		<div>
+		<div align="center">
 		MENU:
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/index"><fmt:message key="text.menu.home" /></a> | 

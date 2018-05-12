@@ -24,4 +24,6 @@ public interface ApplicationService {
 
 	List<Application> getAllByUserIdAndStatuses(String... values);
 
+	List<Application> getAllById(int id);
+
 }

@@ -6,12 +6,20 @@ import ua.training.repairagency.model.entities.application.Application;
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowListApplicationCommand;
 
 public class ManagerShowNonactiveApplicationCommand extends AbstractShowListApplicationCommand {
+
+	private static String path = URL.MANAGER_APPLICATIONS_NONACTIVE_PATH;
+
+	public ManagerShowNonactiveApplicationCommand(Map<String, Command> commands) {
+		super(path , commands);
+	}
 
 	@Override
 	protected String getApplicationPage() {

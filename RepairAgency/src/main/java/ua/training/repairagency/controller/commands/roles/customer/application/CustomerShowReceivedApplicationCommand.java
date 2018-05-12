@@ -8,12 +8,20 @@ import static ua.training.repairagency.controller.constants.AttributeOrParam.REC
 import static ua.training.repairagency.controller.constants.AttributeOrParam.USER;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowListApplicationCommand;
 
 public class CustomerShowReceivedApplicationCommand extends AbstractShowListApplicationCommand {
+
+	private static String path = URL.CUSTOMER_APPLICATIONS_RECEIVED_PATH;
+
+	public CustomerShowReceivedApplicationCommand(Map<String, Command> commands) {
+		super(path, commands);
+	}
 
 	@Override
 	protected String getApplicationPage() {

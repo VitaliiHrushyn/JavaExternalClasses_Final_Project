@@ -11,11 +11,12 @@
 <title>customer menu</title>
 </head>
 <body>
-	<div>
+	<div align="center">
 		MENU:
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/manager/profile"><fmt:message key="text.menu.profile" /></a> 
 		<a href = "${pageContext.request.contextPath}/app/manager/applications"><fmt:message key="text.menu.applications" /></a>
+		<a href = "${pageContext.request.contextPath}/app/manager/users"><fmt:message key="text.menu.users" /></a>
        	<br>  
        	<br>
 	</div>

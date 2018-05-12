@@ -9,12 +9,20 @@ import static ua.training.repairagency.controller.constants.AttributeOrParam.REJ
 import static ua.training.repairagency.controller.constants.AttributeOrParam.USER;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowListApplicationCommand;
 
 public class CustomerShowNonactiveApplicationCommand extends AbstractShowListApplicationCommand {
+
+	private static String path = URL.CUSTOMER_APPLICATIONS_NONACTIVE_PATH;
+
+	public CustomerShowNonactiveApplicationCommand(Map<String, Command> commands) {
+		super(path , commands);
+	}
 
 	@Override
 	protected String getApplicationPage() {

@@ -13,21 +13,19 @@
 	<body>
 		<div>
 			<br>
-			<div>
-				<jsp:include page="sidemenu.jsp"></jsp:include>		
+			<div>				
+					<jsp:include page="sidemenu.jsp"></jsp:include>	
 			</div>
 			<br>
-	
-				<c:forEach var="application" items="${requestScope.applications}">
+			<c:forEach var="application" items="${requestScope.applications}">
 					<form method ="post" action="${pageContext.request.contextPath}/app/customer/applications/one">
-						<input type="hidden" name="id" value="${application.id}">
 						<p>
-							<fmt:message key="application.label.status.${application.status}" /> | ${application.description} | ${application.createTime}
+							<input type="hidden" name="id" value="${application.id}">					
+							ID: ${application.id} | <fmt:message key="application.label.status.${application.status}" /> | ${application.description} | ${application.createTime}
 							<input type="submit" value="<fmt:message key="text.button.show" />">
 						</p>
 					</form>
-				</c:forEach>
-				
+				</c:forEach>	
 			<br>		
 		</div>
 	</body>

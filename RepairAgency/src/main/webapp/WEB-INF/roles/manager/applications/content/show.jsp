@@ -22,7 +22,7 @@
 					<form method ="post" action="${pageContext.request.contextPath}/app/manager/applications/one">
 						<input type="hidden" name="id" value="${application.id}">
 						<p>
-							<fmt:message key="application.label.status.${application.status}" /> | ${application.description} | ${application.createTime}
+							ID: ${application.id} | <fmt:message key="application.label.status.${application.status}" /> | ${application.description} | ${application.createTime}
 							<input type="submit" value="<fmt:message key="text.button.show" />">
 						</p>
 					</form>

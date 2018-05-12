@@ -10,12 +10,20 @@ import static ua.training.repairagency.controller.constants.AttributeOrParam.NEW
 import static ua.training.repairagency.controller.constants.AttributeOrParam.USER;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowListApplicationCommand;
 
 public class CustomerShowActiveApplicationCommand extends AbstractShowListApplicationCommand {
+
+	private static String path = URL.CUSTOMER_APPLICATIONS_ACTIVE_PATH;
+
+	public CustomerShowActiveApplicationCommand(Map<String, Command> commands) {
+		super(path , commands);
+	}
 
 	@Override
 	protected String getApplicationPage() {

@@ -11,9 +11,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>default content</title>
 </head>
-<body>	
-	<p><fmt:message key="text.index.head" /></p>
-	<p><fmt:message key="text.index.content" /></p>
-	
+<body>
+	<div align="center">
+		<p><fmt:message key="text.index.head" /></p>
+		<p><fmt:message key="text.index.content" /></p>
+	</div>		
 </body>
 </html>

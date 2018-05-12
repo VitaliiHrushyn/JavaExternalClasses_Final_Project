@@ -13,7 +13,7 @@
 </head>
 <body>
 	
-	<div>
+	<div align="center">
 		
         <br>       
         <b><fmt:message key="text.registration" /></b>

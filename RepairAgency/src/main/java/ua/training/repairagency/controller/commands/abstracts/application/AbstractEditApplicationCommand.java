@@ -3,6 +3,7 @@ package ua.training.repairagency.controller.commands.abstracts.application;
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,9 +13,14 @@ import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.utils.ApplicationUtils;
 import ua.training.repairagency.controller.commands.AbstractCommand;
+import ua.training.repairagency.controller.commands.Command;
 
 public abstract class AbstractEditApplicationCommand extends AbstractCommand {
 	
+	public AbstractEditApplicationCommand(String path, Map<String, Command> commands) {
+		super(path, commands);
+	}
+
 	@Override
 	public String execute(HttpServletRequest request) {
 		

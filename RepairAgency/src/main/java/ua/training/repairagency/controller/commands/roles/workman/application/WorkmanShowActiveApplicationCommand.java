@@ -8,12 +8,20 @@ import static ua.training.repairagency.controller.constants.AttributeOrParam.EXE
 import static ua.training.repairagency.controller.constants.AttributeOrParam.RECEIVED_APPLICATION;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowListApplicationCommand;
 
 public class WorkmanShowActiveApplicationCommand extends AbstractShowListApplicationCommand {
+
+	private static String path = URL.WORKMAN_APPLICATIONS_ACTIVE_PATH;
+
+	public WorkmanShowActiveApplicationCommand(Map<String, Command> commands) {
+		super(path , commands);
+	}
 
 	@Override
 	protected String getApplicationPage() {
