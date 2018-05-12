@@ -20,7 +20,7 @@
 	
 				<c:forEach var="user" items="${requestScope.users}">
 					<form method ="post" action="${pageContext.request.contextPath}/app/manager/users/edit">
-						<input type="hidden" name="id" value="${user.id}">
+						<input type="hidden" name="userid" value="${user.id}">
 						<p>
 							ID: ${user.id} | <fmt:message key="user.label.role.${user.role}" /> | ${user.name} ${user.surname} 
 							<input type="submit" value="<fmt:message key="text.button.show" />">

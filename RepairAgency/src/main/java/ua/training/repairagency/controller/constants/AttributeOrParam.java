@@ -3,8 +3,10 @@ package ua.training.repairagency.controller.constants;
 public interface AttributeOrParam {
 	
 	String USER = "user";
+	String EDITED_USER = "edited_user";
 	String USERS = "users";
 	String USER_ID = "userid";
+	String DELETING_USER_ID = "deleting_userid";
 	String CUSTOMER = "customer";
 	String MANAGER = "manager";
 	String WORKMAN = "workman";	

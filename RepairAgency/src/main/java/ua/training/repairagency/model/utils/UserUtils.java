@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserImpl;
 import ua.training.repairagency.model.entities.user.UserRole;
@@ -30,9 +31,15 @@ public class UserUtils {
 	}
 	
 	public static User updateUserFeatures(User user, HttpServletRequest request) {
+		if (CommandUtils.isRequestContains(request, ROLE)) {
+			user.setRole(UserRole.valueOf(request.getParameter(ROLE)));
+		}
 		user.setName(request.getParameter(NAME));
 		user.setSurname(request.getParameter(SURNAME));
 		user.setLogin(request.getParameter(LOGIN));
+		if (CommandUtils.isRequestContains(request, PASSWORD)) {
+			user.setPassword(doCrypt(request.getParameter(PASSWORD)));
+		}
 		user.setEmail(request.getParameter(EMAIL));
 		user.setPhone(request.getParameter(PHONE));	
 		

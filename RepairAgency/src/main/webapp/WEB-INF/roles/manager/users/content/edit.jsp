@@ -17,40 +17,41 @@
 				<jsp:include page="sidemenu.jsp"></jsp:include>		
 			</div>
 		<br>						
-		<c:set var="user" value="${requestScope.users}"/>
+		<c:set var="user" value="${requestScope.edited_user}"/>
 		<h3><fmt:message key="text.user.edit" /> id: ${user.id} </h3>
 		<br>
 
 		<form method="post" action="${pageContext.request.contextPath}/app/manager/users/edit">
-            <input type="hidden" name="id" value="${user.id}">
+            <input type="hidden" name="userid" value="${user.id}">
             
-            <input type="text" id="login" name="login" required value="${user.login}">
+            <fmt:message key="register.label.login" />: <input type="text" id="login" name="login" required value="${user.login}">
             <br>
-            <input type="password" id="password" name="password" required placeholder="<fmt:message key="register.label.password" />">
+            <input type="password" id="password" name="password" placeholder="<fmt:message key="register.label.password" />">
             <br>
-            <input type="password" id="confirmpassword" name="confirmpassword" required placeholder="<fmt:message key="register.label.confirmpassword" />">
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="<fmt:message key="register.label.confirmpassword" />">
             <br>
             <label for="role"><fmt:message key="register.label.role" />:</label>
-            <select name="role">			               
-				<option value ="MANAGER"> manager </option>
-				<option value ="CUSTOMER"> customer </option>
-				<option value ="WORKMAN"> workman </option>
+            <select name="role">
+            	<option value="${user.role}" selected><fmt:message key="user.label.role.${user.role}" /></option>			               
+				<option value ="MANAGER"> <fmt:message key="user.label.role.MANAGER" /> </option>
+				<option value ="CUSTOMER"> <fmt:message key="user.label.role.CUSTOMER" /> </option>
+				<option value ="WORKMAN"> <fmt:message key="user.label.role.WORKMAN" /> </option>
 			</select>
             <br>
-            <input type="text" id="name" name="name" required value="${user.name}">
+            <fmt:message key="register.label.name" />: <input type="text" id="name" name="name" required value="${user.name}">
             <br>
-            <input type="text" id="surname" name="surname" required value="${user.surname}" />">
+            <fmt:message key="register.label.surname" />: <input type="text" id="surname" name="surname" required value="${user.surname}" />
             <br>
-            <input type="email" id="email" name="email" required value="${user.email}">
+            <fmt:message key="register.label.email" />: <input type="email" id="email" name="email" required value="${user.email}">
             <br>
-            <input type="text" id="phone" name="phone" required value="${user.phone}">
+            <fmt:message key="register.label.phone" />: <input type="text" id="phone" name="phone" required value="${user.phone}">
             <br>            
-            <input type="submit" name="submit" value="<fmt:message key="text.button.submit"/>">
+            <input type="submit" name="submit" value="<fmt:message key="text.button.edit"/>">
         </form>
         <br>
         <form method="post" action="${pageContext.request.contextPath}/app/manager/users/delete">
-            <input type="hidden" name="id" value="${user.id}">
-			<input type="submit" name="submit" value="<fmt:message key="text.button.delete"/>">
+            <input type="hidden" name="deleting_userid" value="${user.id}">
+			<input type="submit" style="color:red" name="submit" value="<fmt:message key="text.button.delete"/>">
 		</form>
 		<br>
 	</div>

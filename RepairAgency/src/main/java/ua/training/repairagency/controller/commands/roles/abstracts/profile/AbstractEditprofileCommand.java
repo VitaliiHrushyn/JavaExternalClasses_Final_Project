@@ -29,7 +29,7 @@ public abstract class AbstractEditprofileCommand extends AbstractCommand {
 		errorMessages = new ArrayList<>();
 		infoMessages = new ArrayList<>();
 		
-		if (request.getParameter(USER_ID) != null) {	
+		if (CommandUtils.isRequestContains(request, USER_ID)) {	
 			try {
 				User user = serviceFactory
 						.createUserService()

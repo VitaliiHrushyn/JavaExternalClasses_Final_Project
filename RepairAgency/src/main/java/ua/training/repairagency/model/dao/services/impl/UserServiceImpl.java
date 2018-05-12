@@ -61,4 +61,15 @@ public class UserServiceImpl implements UserService {
 		}		
 	}
 
+	@Override
+	public User delete(int userId) {
+		User user = null;
+		try(UserDAO dao = daoFactory.createUserDAO()){
+			user = dao.getById(userId);
+			return dao.delete(user);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}	
+	}
+
 }

@@ -65,12 +65,7 @@ public class CommandUtils {
 	
 	public static boolean checkRegistrationCredentials(HttpServletRequest request, List<String> messages) {
 		
-		/*
-		 * when reload registration page - sends null in all parameters,
-		 * to avoid exception is enough to check first param by null
-		 * and return from method
-		 */
-		if (!isRequestContains(request, AttributeOrParam.LOGIN)) {
+		if (!isRequestContains(request, LOGIN)) {
 			return false;
 		}
 		
@@ -98,6 +93,55 @@ public class CommandUtils {
 		if (!confirmpassword.equals(password)) {
 			messages.add(messageBundle.getString(Message.CONFIRMPASSWORD_INVALID));
 			check = false;
+		}
+		if (!name.matches(regexBundle.getString(RegEx.NAME))) {
+			messages.add(messageBundle.getString(Message.NAME_INVALID));
+			check = false;
+		}
+		if (!surname.matches(regexBundle.getString(RegEx.SURNAME))) {
+			messages.add(messageBundle.getString(Message.SURNAME_INVALID));
+			check = false;
+		}
+		if (!email.matches(regexBundle.getString(RegEx.EMAIL))) {
+			messages.add(messageBundle.getString(Message.EMAIL_INVALID));
+			check = false;
+		}
+		if (!phone.matches(regexBundle.getString(RegEx.PHONE))){
+			messages.add(messageBundle.getString(Message.PHONE_INVALID));
+			check = false;
+		}
+
+		return check;
+	}
+	
+	public static boolean checkEditingUserCredentials(HttpServletRequest request, List<String> messages) {
+		
+		ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, getLocale(request));
+		ResourceBundle messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, getLocale(request));
+	
+		String login = request.getParameter(LOGIN);
+		String password = (request.getParameter(PASSWORD));
+		String confirmpassword = request.getParameter(CONFIRM_PASSWORD);
+		String name = request.getParameter(NAME);
+		String surname = request.getParameter(SURNAME);
+		String email = request.getParameter(EMAIL);
+		String phone = request.getParameter(PHONE);
+		
+		boolean check = true;
+				
+		if (!login.matches(regexBundle.getString(RegEx.LOGIN))) {
+			messages.add(messageBundle.getString(Message.LOGIN_INVALID));
+			check = false;
+		}
+		if (isRequestContains(request, PASSWORD)) {
+			if (!password.matches(regexBundle.getString(RegEx.PASSWORD))) {
+				messages.add(messageBundle.getString(Message.PASSWORD_INVALID));
+				check = false;
+			}
+			if (!confirmpassword.equals(password)) {
+				messages.add(messageBundle.getString(Message.CONFIRMPASSWORD_INVALID));
+				check = false;
+			}
 		}
 		if (!name.matches(regexBundle.getString(RegEx.NAME))) {
 			messages.add(messageBundle.getString(Message.NAME_INVALID));

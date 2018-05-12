@@ -18,4 +18,6 @@ public interface UserService {
 
 	List<User> getAllByRole(UserRole role);
 
+	User delete(int userId);
+
 }

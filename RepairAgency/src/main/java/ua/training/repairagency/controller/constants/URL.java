@@ -130,12 +130,15 @@ public interface URL {
 	//String MANAGER_URL = "/WEB-INF/roles/manager/";
 	
 	String MANAGER_CREATE_USER_PAGE = MANAGER_URL + "users/create.jsp";
+	String MANAGER_EDIT_USER_PAGE = MANAGER_URL + "users/edit.jsp";
 	String MANAGER_USERS_INDEX_PAGE = MANAGER_URL + "users/index.jsp";
 	String MANAGER_USERS_SHOW_PAGE = MANAGER_URL + "users/show.jsp";
 	
 	String MANAGER_USERS_PATH = "manager/users";
 	
 	String MANAGER_CREATE_USER_PATH = MANAGER_USERS_PATH + "/create";
+	String MANAGER_USER_EDIT_PATH = MANAGER_USERS_PATH + "/edit";
+	String MANAGER_USER_DELETE_PATH = MANAGER_USERS_PATH + "/delete";
 	String MANAGER_USERS_SHOW_PATH = MANAGER_USERS_PATH + "/show";
 	
 	String MANAGER = "manager";
@@ -194,6 +197,8 @@ public interface URL {
 	 */
 	String FILTER_PATTERN = "/*";
 	String DISABLE_CACHE_FILTER_PATTERN = "/*";
+	
+	
 	
 	
 	
