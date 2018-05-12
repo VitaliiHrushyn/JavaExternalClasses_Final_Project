@@ -31,7 +31,7 @@
 			<br>		
 			<fmt:message key="application.label.price" />: ${application.price}
 			<br>
-			<fmt:message key="application.label.workman" />: ${application.workman}
+			<fmt:message key="application.label.workman" />: ${application.workman.id} - ${application.workman.name} ${application.workman.surname}
 			<br>
 			<fmt:message key="application.label.testimonial" />: ${application.testimonial.createTime}  ${application.testimonial.text}
 			<br>

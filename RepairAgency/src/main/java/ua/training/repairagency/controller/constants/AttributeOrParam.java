@@ -36,6 +36,7 @@ public interface AttributeOrParam {
 	String INFO_MESSAGES = "info_messages";
 	String APPLICATIONS = "applications";
 	String APPLICATION = "application";
+	String WORKMEN = "workmen";
 	
 	String LOGIN_MESSAGES = "loginmessages";
 	String AUTH_MESSAGE = "authmessage";

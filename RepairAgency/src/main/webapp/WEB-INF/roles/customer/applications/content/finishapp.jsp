@@ -38,7 +38,7 @@
 			<br>		
 			<fmt:message key="application.label.price" />: ${application.price}
 			<br>
-			<fmt:message key="application.label.workman" />: ${application.workman}
+			<fmt:message key="application.label.workman" />: ${application.workman.id} - ${application.workman.name} ${application.workman.surname}
 			<br>
  			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>

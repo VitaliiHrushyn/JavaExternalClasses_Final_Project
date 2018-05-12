@@ -22,7 +22,7 @@ public class CustomerFinishApplicationCommand extends AbstractFinishApplicationC
 
 	@Override
 	protected String getApplicationAllCommand() {
-		return URL.CUSTOMER_APPLICATION_ALL_COMMAND;
+		return URL.CUSTOMER_APPLICATION_INDEX_COMMAND;
 	}
 	
 }

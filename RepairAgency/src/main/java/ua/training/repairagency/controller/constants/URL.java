@@ -53,7 +53,7 @@ public interface URL {
 	String CUSTOMER_MESSAGE_PAGE = CUSTOMER_URL + "messages/index.jsp";
 	
 	String CUSTOMER_PROFILE_COMMAND = "/app/customer/profile";
-	String CUSTOMER_APPLICATION_ALL_COMMAND = "/app/customer/applications/all";
+	String CUSTOMER_APPLICATION_INDEX_COMMAND = "/app/customer/applications";
 	String CUSTOMER_APPLICATION_EDIT_COMMAND = "/app/customer/applications/edit";
 	String REDIRECT_CUSTOMER_PROFILE_COMMAND = REDIRECT + CUSTOMER_PROFILE_COMMAND;
 	

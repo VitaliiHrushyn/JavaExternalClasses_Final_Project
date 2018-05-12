@@ -38,22 +38,35 @@
 				<option value ="FINISHED"> <fmt:message key="application.label.status.FINISHED" /> </option>
 			</select>
 			<br>
-			<fmt:message key="application.label.description" />: ${application.description}
+			<fmt:message key="application.label.description" /><br>
+			<textarea name="description">${application.description}</textarea>
 			<br>
-			<fmt:message key="application.label.comment" />: ${application.managerComment}
+			<fmt:message key="application.label.comment" /><br>
+			<textarea name="comment">${application.managerComment}</textarea>
 			<br>		
-			<fmt:message key="application.label.price" />: ${application.price}
+			<fmt:message key="application.label.price" />
+			<input type="number" name="price" value="${application.price}">
 			<br>
 			<fmt:message key="application.label.customer" />: id ${application.customer.id} - ${application.customer.name} ${application.customer.surname}
 			<br>
-			<fmt:message key="application.label.workman" />: ${application.workman.name} ${application.workman.surname}
+			<fmt:message key="application.label.workman" />:
+			<select name="workman_id" >
+				<option value="${application.workman.id}" selected>${application.workman.id} - ${application.workman.name} ${application.workman.surname}</option>			               			
+				
+					<c:forEach var="workman" items="${requestScope.workmen}">
+						
+						<option value ="${workman.id}">${workman.id} - ${workman.name} ${workman.surname} </option>
+						
+					</c:forEach>         	
+         	</select>			
 			<br>
-			<fmt:message key="application.label.testimonial" />: ${application.testimonial.createTime} | ${application.testimonial.text}
+			<fmt:message key="application.label.testimonial" />: ${application.testimonial.createTime}
+			<br>${application.testimonial.text}
 			<br>
 			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>
 			<input type="submit" value="<fmt:message key="text.button.savechanges" />">
-		</form>	
+		</form>
 		<br>
 	</div>
 	</body>

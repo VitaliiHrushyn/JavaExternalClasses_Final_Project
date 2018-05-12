@@ -36,11 +36,7 @@
 			<br>		
 			<fmt:message key="application.label.price" />: ${application.price}
 			<br>
-			<fmt:message key="application.label.customer" />: ${application.customer}
-			<br>
-			<fmt:message key="application.label.workman" />: ${application.workman}
-			<br>
-			<fmt:message key="application.label.testimonial" />: <input type="text" name="testimonial" value="${application.testimonial}">
+			<fmt:message key="application.label.workman" />: ${application.workman.id} - ${application.workman.name} ${application.workman.surname}
 			<br>
 			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>

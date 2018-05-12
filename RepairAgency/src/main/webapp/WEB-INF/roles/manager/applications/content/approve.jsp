@@ -40,15 +40,13 @@
 			<br>
 			<fmt:message key="application.label.customer" />: id: ${application.customer.id} - ${application.customer.name} ${application.customer.surname}
 			<br>
-			<fmt:message key="application.label.current_workman" />: ${application.workman}
-			<br>
-			<fmt:message key="application.label.change_workman" />:
-			<select name="workman" >
-				<option value="${application.workman}" selected>${workman.name} ${workman.surname}</option>			               			
+			<fmt:message key="application.label.workman" />:
+			<select name="workman_id" >
+				<option value="${application.workman.id}" selected>${application.workman.id} - ${application.workman.name} ${application.workman.surname}</option>			               			
 				
 					<c:forEach var="workman" items="${requestScope.workmen}">
 						
-						<option value ="${workman.id}"> <fmt:message key="${workman.name} ${workman.surname}" /> </option>
+						<option value ="${workman.id}"> ${workman.id} - ${workman.name} ${workman.surname}  </option>
 						
 					</c:forEach>         	
          	</select>

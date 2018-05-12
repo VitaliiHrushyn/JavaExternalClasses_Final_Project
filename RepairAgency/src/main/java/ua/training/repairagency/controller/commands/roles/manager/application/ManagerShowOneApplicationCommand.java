@@ -12,7 +12,7 @@ public class ManagerShowOneApplicationCommand extends AbstractShowOneApplication
 	private static String path = URL.MANAGER_APPLICATIONS_ONE_PATH;
 
 	public ManagerShowOneApplicationCommand(Map<String, Command> commands) {
-		super(path , commands);
+		super(path, commands);
 	}
 
 	@Override
