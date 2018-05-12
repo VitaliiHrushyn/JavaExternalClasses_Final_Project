@@ -11,15 +11,12 @@
 <title>customer menu</title>
 </head>
 <body>
-	<div>
-		MENU:
+	<div align="center">
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/logout">Logout</a> | 
-		<a href = "${pageContext.request.contextPath}/app/customer/message">Message</a> | 
-       	<a href = "${pageContext.request.contextPath}/app/customer/workmen">Workmen</a> | 
-       	<a href = "${pageContext.request.contextPath}/app/customer/applications">Applications</a> | 
-       	<a href = "${pageContext.request.contextPath}/app/customer/page">Home</a>
-       	<br>
+		<a href = "${pageContext.request.contextPath}/app/workman/profile"><fmt:message key="text.menu.profile" /></a> 
+		|
+		<a href = "${pageContext.request.contextPath}/app/workman/applications"><fmt:message key="text.menu.applications" /></a>
+       	<br>  
        	<br>
 	</div>
 	

@@ -4,6 +4,7 @@ import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.commands.AbstractCommand;
+import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.utils.AccessUtils;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
@@ -18,6 +20,12 @@ import ua.training.repairagency.model.utils.UserUtils;
 
 public class LoginCommand extends AbstractCommand {
 	
+	private static String path = URL.LOGIN;
+	
+	public LoginCommand(Map<String, Command> commands) {
+		super(path, commands);
+	}
+
 	@Override
 	public String execute(HttpServletRequest request) {
 		
@@ -26,7 +34,7 @@ public class LoginCommand extends AbstractCommand {
 						
 		if (CommandUtils.checkLoginCredentials(request, errorMessages)) {			
 			User user = fetchAndCheckUserIfExists(request, errorMessages);
-			page = AccessUtils.loginUserAndGetUsePage(request, user);
+			page = AccessUtils.loginUserAndGetUserPage(request, user);
 		} else {
 			page = URL.LOGIN_PAGE;
 		}
@@ -59,6 +67,6 @@ public class LoginCommand extends AbstractCommand {
 			return false;
 		}
 	}
-	
+
 }
  

@@ -7,7 +7,7 @@ import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 
 public class DAOutils {
 	
-	public static void checkIfNotUniqueFieldValueException(Exception e) 
+	public static void extractNotUniqueFieldValueException(Exception e) 
 												throws NotUniqueFieldValueException  {
 		
 		if (

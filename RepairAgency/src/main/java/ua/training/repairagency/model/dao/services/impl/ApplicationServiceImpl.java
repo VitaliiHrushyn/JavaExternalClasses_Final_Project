@@ -8,7 +8,6 @@ import ua.training.repairagency.model.constants.Resource;
 import ua.training.repairagency.model.dao.DAOFactory;
 import ua.training.repairagency.model.dao.interfaces.ApplicationDAO;
 import ua.training.repairagency.model.dao.services.interfaces.ApplicationService;
-import ua.training.repairagency.model.entities.application.AppStatus;
 import ua.training.repairagency.model.entities.application.Application;
 
 public class ApplicationServiceImpl implements ApplicationService {
@@ -18,7 +17,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 	
 	@Override
 	public List<Application> getAll() {
-		throw new RuntimeException();
+		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {		
+			return dao.getAll();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
@@ -32,8 +35,14 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public List<Application> getByStatus(AppStatus atatus) {
-		throw new RuntimeException();
+	public List<Application> getAllByStatuses(String... values) {
+		String query = queryBundle.getString(Query.APPLICATION_GET_BY_STATUS);
+	//	String[] values = getQueryValuesArray(3, statuses);
+		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {			
+			return dao.getAllByQuery(query, values);				
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
@@ -64,10 +73,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public List<Application> getAllByUserIdAndStatuses(int userId, String... statuses) {
+	public List<Application> getAllByCustomerIdAndStatuses(String... values) {
 		
-		String[] values = getQueryValuesArray(userId, statuses);
-		String query = queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID_AND_STATUS);
+	//	String[] values = getQueryValuesArray(4, statuses);
+		String query = queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID_AND_STATUSES);
 		
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {			
 			return dao.getAllByQuery(query, values);				
@@ -76,13 +85,35 @@ public class ApplicationServiceImpl implements ApplicationService {
 		}
 	}
 
-	private String[] getQueryValuesArray(int userId, String... statuses) {
-		String[] values = new String[4];
-		values[0] = String.valueOf(userId);
-		for (int i = 0; i < statuses.length; i++) {
-			values[i+1] = statuses[i];
+	@Override
+	public List<Application> getAllById(int id) {
+		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {		
+			return dao.getAllByQuery(
+					queryBundle.getString(Query.APPLICATION_GET_BY_ID), String.valueOf(id));				
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
-		return values;
 	}
+
+	@Override
+	public List<Application> getAllByWorkmanIdAndStatuses(String... values) {
+		String query = queryBundle.getString(Query.APPLICATION_GET_BY_WORKMAN_ID_AND_STATUSES);
+		
+		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {			
+			return dao.getAllByQuery(query, values);				
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	
+//	private String[] getQueryValuesArray(String... statuses) {
+//		String[] values = new String[quantity];
+//	//	values[0] = String.valueOf(userId);
+//		for (int i = 0; i < statuses.length; i++) {
+//			values[i+1] = statuses[i];
+//		}
+//		return values;
+//	}
 
 }

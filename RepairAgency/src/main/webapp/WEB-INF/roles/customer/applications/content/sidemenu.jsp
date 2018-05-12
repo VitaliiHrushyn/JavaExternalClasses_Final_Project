@@ -11,19 +11,16 @@
 <title>customer menu</title>
 </head>
 <body>
-	<div>
-		SIDE MENU:
+	<div align="center">
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/customer/applications/create"><fmt:message key="text.menu.create_new" /></a>
-		<br>
-		<a href = "${pageContext.request.contextPath}/app/customer/applications/show"><fmt:message key="text.menu.show.all" /></a>
-		<br>
-		<a href = "${pageContext.request.contextPath}/app/customer/applications/done"><fmt:message key="text.menu.show.done" /></a>     	 
-       	<br>
+		|			
        	<a href = "${pageContext.request.contextPath}/app/customer/applications/received"><fmt:message key="text.menu.show.received" /></a>     	 
-       	<br>
+        |	
+		<a href = "${pageContext.request.contextPath}/app/customer/applications/done"><fmt:message key="text.menu.show.done" /></a>     	 
+       	|		
        	<a href = "${pageContext.request.contextPath}/app/customer/applications/active"><fmt:message key="text.menu.show.activ" /></a>     	 
-       	<br>
+       	|
        	<a href = "${pageContext.request.contextPath}/app/customer/applications/nonactive"><fmt:message key="text.menu.show.nonactive" /></a>     	 
        	<br>
 	</div>

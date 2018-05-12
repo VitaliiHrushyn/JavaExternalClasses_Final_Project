@@ -11,11 +11,10 @@
 <title>customer menu</title>
 </head>
 <body>
-	<div>
-		SIDE MENU:
+	<div align="center">
 			<br>
 			<a href = "${pageContext.request.contextPath}/app/customer/profile"><fmt:message key="text.menu.home" /></a>
-			<br>
+			|
 			<a href = "${pageContext.request.contextPath}/app/customer/profile/editprofile"><fmt:message key="text.menu.editprofile" /></a>
 			<br>
 	</div>

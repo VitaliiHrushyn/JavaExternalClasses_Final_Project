@@ -13,7 +13,7 @@
 </head>
 <body>
 	
-	<div>
+	<div align="center">
 		
         <br>       
         <b><fmt:message key="text.registration" /></b>
@@ -27,13 +27,8 @@
             <input type="password" id="password" name="password" required placeholder="<fmt:message key="register.label.password" />">
             <br>
             <input type="password" id="confirmpassword" name="confirmpassword" required placeholder="<fmt:message key="register.label.confirmpassword" />">
-            <br>
-            <label for="role"><fmt:message key="register.label.role" />:</label>
-            <select name="role">			               
-				<option value ="MANAGER"> manager </option>
-				<option value ="CUSTOMER"> customer </option>
-				<option value ="WORKMAN"> workman </option>
-			</select>
+           
+            <input type="hidden" name="role" value ="CUSTOMER"/>			               
             <br>
             <input type="text" id="name" name="name" required placeholder="<fmt:message key="register.label.name" />">
             <br>

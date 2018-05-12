@@ -23,7 +23,7 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	}
 
 	
-	private User extractUser(ResultSet rs) throws SQLException {
+	public User extractUser(ResultSet rs) throws SQLException {
 		User user = new UserImpl();
 		user.setId(rs.getInt(columnBundle.getString(Column.USER_ID)));
 		user.setRole(UserRole.valueOf(rs.getString(columnBundle.getString(Column.USER_ROLE))));
@@ -39,18 +39,17 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 
 	@Override
 	public User getByLogin(String login) {
-		User user = null;		
 		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_GET_BY_LOGIN))) {
 			statement.setString(1, login);
 			ResultSet rs = statement.executeQuery();
 			if (rs.next()) {
-				user = extractUser(rs);	
+				return extractUser(rs);	
 			}
 		} catch (SQLException e) {
 			//TODO handle exception
 			throw new RuntimeException(e);
-		}		
-		return user;
+		}
+		return null;		
 	}
 
 
@@ -77,8 +76,9 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	
 
 	@Override	
-	public User getById(int id) {
-		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_GET_BY_ID))) {
+	public User getById(int id) {	
+		try(PreparedStatement statement = connection
+										.prepareStatement(queryBundle.getString(Query.USER_GET_BY_ID))) {
 			statement.setInt(1, id);
 			ResultSet rs = statement.executeQuery();
 			if (rs.next()) {
@@ -111,7 +111,8 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 
 	@Override
 	public User delete(User user) {
-		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_DELETE))) {
+		try(PreparedStatement statement = connection
+										.prepareStatement(queryBundle.getString(Query.USER_DELETE))) {
 			statement.setInt(1, user.getId());
 			if (statement.executeUpdate() > 0) {
 				return user;
@@ -124,9 +125,27 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	}
 	
 	@Override
-	public List<User> getAll(boolean eager) {
+	public List<User> getAll() {
 		List<User> users = new ArrayList<>();
-		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.USER_GET_ALL))) {
+		try(PreparedStatement statement = connection
+										.prepareStatement(queryBundle.getString(Query.USER_GET_ALL))) {
+			ResultSet rs = statement.executeQuery();			
+			while(rs.next()) {
+				users.add(extractUser(rs));	
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}				
+		return users;
+	}
+
+
+	@Override
+	public List<User> getAllByRole(UserRole role) {
+		List<User> users = new ArrayList<>();
+		try(PreparedStatement statement = connection
+										.prepareStatement(queryBundle.getString(Query.USER_GET_BY_ROLE))) {
+			statement.setString(1, role.toString());
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {
 				users.add(extractUser(rs));	

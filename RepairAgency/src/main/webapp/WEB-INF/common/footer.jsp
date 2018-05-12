@@ -11,11 +11,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<br><br>
-		footer:
 		<br>
-		<a href = "${pageContext.request.contextPath}/app/logout">To index page</a>
+		<br>
+	<div align="center" style="background-color:#7F97A8; color:white">
+		<br>
+		<br>
+		&copy; Java External Classes
+		<br>
+		<br>
 		<br>
 	</div>
 	

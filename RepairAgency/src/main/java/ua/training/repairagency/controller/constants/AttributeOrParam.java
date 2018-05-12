@@ -3,7 +3,10 @@ package ua.training.repairagency.controller.constants;
 public interface AttributeOrParam {
 	
 	String USER = "user";
+	String EDITED_USER = "edited_user";
+	String USERS = "users";
 	String USER_ID = "userid";
+	String DELETING_USER_ID = "deleting_userid";
 	String CUSTOMER = "customer";
 	String MANAGER = "manager";
 	String WORKMAN = "workman";	
@@ -24,14 +27,18 @@ public interface AttributeOrParam {
 	String STATUS = "status";
 	String COMMENT = "comment";
 	String PRICE = "price";
-	String TESTIMONIAL = "testimonial";
+	String TESTIMONIAL_TEXT = "testimonial_text";
 	String CREATE_TIME = "create_time";
-	String TEXT = "text";
+	
+	String TESTIMONIAL_ID = "testimonial_id";
+	String WORKMAN_ID = "workman_id";	
+
 	
 	String ERROR_MESSAGES = "error_messages";
 	String INFO_MESSAGES = "info_messages";
 	String APPLICATIONS = "applications";
 	String APPLICATION = "application";
+	String WORKMEN = "workmen";
 	
 	String LOGIN_MESSAGES = "loginmessages";
 	String AUTH_MESSAGE = "authmessage";

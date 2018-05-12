@@ -13,7 +13,7 @@
 </head>
 <body>
 	<br>
-	<div>
+	<div align="center">
 		<b><fmt:message key="text.login" /></b>
 		<br>
 		<br>

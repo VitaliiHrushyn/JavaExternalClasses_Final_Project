@@ -24,6 +24,7 @@
 			
 			<p><fmt:message key="form.application.description" />:</p>
 		<textarea name="description"></textarea>	
+			<!-- <input type="text" name="description">  -->
 			<br>
 			<input type="submit" value="<fmt:message key="text.button.submit" />">
 		</form>			

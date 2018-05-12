@@ -10,7 +10,6 @@ import java.util.List;
 
 import ua.training.repairagency.model.constants.Column;
 import ua.training.repairagency.model.constants.Query;
-import ua.training.repairagency.model.dao.DAOFactory;
 import ua.training.repairagency.model.dao.interfaces.ApplicationDAO;
 import ua.training.repairagency.model.dao.services.ServiceFactory;
 import ua.training.repairagency.model.entities.application.AppStatus;
@@ -47,7 +46,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 			statement.setInt(1, id);
 			ResultSet rs = statement.executeQuery();
 			if (rs.next()) {
-				application = extractApplication(rs, true);	
+				application = extractApplication(rs);	
 			}
 		} catch (SQLException e) {
 			//TODO handle exception
@@ -56,12 +55,12 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		return application;
 	}
 	
-	public List<Application> getAll(boolean eager) {
+	public List<Application> getAll() {
 		List<Application> applications = new ArrayList<>();
 		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.APPLICATION_GET_ALL))) {
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {
-				applications.add(extractApplication(rs, eager));
+				applications.add(extractApplication(rs));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -82,7 +81,12 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 			} else {
 				statement.setNull(6, java.sql.Types.INTEGER);
 			}
-			statement.setInt(7, application.getId());
+			if (application.getTestimonial() != null) {
+				statement.setInt(7, application.getTestimonial().getId());
+			} else {
+				statement.setInt(7, java.sql.Types.INTEGER);
+			}
+			statement.setInt(8, application.getId());
 			
 			if (statement.executeUpdate() > 0) {
 				return application;
@@ -106,7 +110,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 	}
 
 	
-	public Application extractApplication(ResultSet rs, boolean eager) throws SQLException {
+	public Application extractApplication(ResultSet rs) throws SQLException {
 		Application application = new ApplicationImpl();
 		application.setId(rs.getInt(columnBundle.getString(Column.APPLICATION_ID)));
 		application.setStatus(AppStatus.valueOf((rs.getString(columnBundle.getString(Column.APPLICATION_STATUS)))));
@@ -130,7 +134,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 			}	
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {
-				applications.add(extractApplication(rs, false));	
+				applications.add(extractApplication(rs));	
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

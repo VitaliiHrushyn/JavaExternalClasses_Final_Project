@@ -24,11 +24,13 @@ public interface Message {
 	String POINT = "message.comma";
 	
 	String UPDATE_USER_SUCCESS = "message.update.user.saccess";
+	String DELETE_USER_SUCCESS = "message.delete.user.saccess";
 	String APPLICATION_CREATE_SUCCESS = "message.create.application.success";
 	String APPLICATION_CREATE_FAIL = "message.create.application.fail";
 	String APPLICATION_UPDATE_SUCCESS = "message.update.application.success";
 
-	String TESTIMONIAL_CREATE_SUCCESS = "message.create.testimonial.success";
-	String TESTIMONIAL_CREATE_FAIL = "message.create.testimonial.fail";
+	String USER_CREAT_SUCCESS = "message.create.user.success";
+
+	
 	
 }
