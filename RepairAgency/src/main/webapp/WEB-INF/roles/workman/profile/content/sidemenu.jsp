@@ -12,7 +12,6 @@
 </head>
 <body>
 	<div align="center">
-		SIDE MENU:
 			<br>
 			<a href = "${pageContext.request.contextPath}/app/workman/profile"><fmt:message key="text.menu.home" /></a>
 			|

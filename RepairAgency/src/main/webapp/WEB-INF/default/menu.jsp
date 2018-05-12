@@ -12,7 +12,6 @@
 	</head>
 	<body>
 		<div align="center">
-		MENU:
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/index"><fmt:message key="text.menu.home" /></a> | 
 		<a href = "${pageContext.request.contextPath}/app/login"><fmt:message key="text.menu.login" /></a> |

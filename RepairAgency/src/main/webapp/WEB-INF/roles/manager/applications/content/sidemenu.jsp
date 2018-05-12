@@ -12,7 +12,6 @@
 </head>
 <body>
 	<div align="center">
-		SIDE MENU:
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/manager/applications/all"><fmt:message key="text.menu.show.all" /></a>
 		|

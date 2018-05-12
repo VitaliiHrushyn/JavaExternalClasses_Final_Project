@@ -12,7 +12,6 @@
 </head>
 <body>
 	<div align="center">
-		MENU:
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/customer/profile"><fmt:message key="text.menu.profile" /></a> 
 		|

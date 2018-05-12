@@ -12,7 +12,6 @@
 </head>
 <body>
 	<div align="center">
-		SIDE MENU:
 		<br>
 		<a href = "${pageContext.request.contextPath}/app/customer/applications/create"><fmt:message key="text.menu.create_new" /></a>
 		|			
