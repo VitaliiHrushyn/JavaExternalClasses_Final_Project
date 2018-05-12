@@ -20,23 +20,11 @@
 		<c:set var="application" value="${requestScope.application}"/>
 		<h3><fmt:message key="text.application.edit" /> id: ${application.id} </h3>
 		<br>
-		<form method ="post" action="${pageContext.request.contextPath}/app/workman/applications/edit">
 			
-			<input type="hidden" name="id" value="${application.id}">
+			
 			
 			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
-			<br>
-			<fmt:message key="application.label.status.change" />
-			<select name="status" >
-				<option value="${application.status}" selected><fmt:message key="application.label.status.${application.status}" /></option>			               
-				<option value ="NEW"> <fmt:message key="application.label.status.NEW" /> </option>
-				<option value ="RECEIVED"> <fmt:message key="application.label.status.RECEIVED" /> </option>
-				<option value ="REJECTED"> <fmt:message key="application.label.status.REJECTED" /> </option>
-				<option value ="APPROVED"> <fmt:message key="application.label.status.APPROVED" /> </option>
-				<option value ="EXECUTING"> <fmt:message key="application.label.status.EXECUTING" /> </option>
-				<option value ="DONE"> <fmt:message key="application.label.status.DONE" /> </option>
-				<option value ="FINISHED"> <fmt:message key="application.label.status.FINISHED" /> </option>
-			</select>
+			
 			<br>
 			<fmt:message key="application.label.description" />: ${application.description}
 			<br>
@@ -52,8 +40,6 @@
 			<br>
 			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>
-			<input type="submit" value="<fmt:message key="text.button.savechanges" />">
-		</form>	
 		<br>
 	</div>
 	</body>

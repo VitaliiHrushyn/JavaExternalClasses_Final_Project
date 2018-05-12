@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.commands.abstracts.application;
+package ua.training.repairagency.controller.commands.roles.abstracts.application;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
@@ -42,9 +42,9 @@ public abstract class AbstractEditApplicationCommand extends AbstractCommand {
 		}		
 		
 		request.setAttribute(INFO_MESSAGES, infoMessages);
-		return getApplicationAllCommand();
+		return getApplicationCommand();
 	}
 
-	protected abstract String getApplicationAllCommand();
+	protected abstract String getApplicationCommand();
 	
 }

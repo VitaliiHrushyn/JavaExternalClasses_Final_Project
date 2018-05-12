@@ -22,7 +22,7 @@ public class AccessUtils {
 	private static final Logger authLogger = Logger.getLogger(Command.class);
 	
 	@SuppressWarnings("unchecked")
-	public static void setUserAsLogged(HttpServletRequest request, int userId) {
+	private static void setUserAsLogged(HttpServletRequest request, User user) {
 		ServletContext context = request.getSession().getServletContext();
 		
 		Map<Integer, HttpSession> loggedUsers = 
@@ -30,10 +30,10 @@ public class AccessUtils {
 				? (HashMap<Integer, HttpSession>) context.getAttribute(LOGGED_USERS)
 				: new HashMap<Integer, HttpSession>();
 
-		HttpSession previousSession = loggedUsers.put(userId, request.getSession());
-		authLogger.info("Login success: " + request.getSession().getAttribute(USER) 
+		HttpSession previousSession = loggedUsers.put(user.getId(), request.getSession());
+		authLogger.info("Login success: " + user 
 				+ " to session " + request.getSession().getId() + ";");
-		if (previousSession != null) {
+		if (previousSession != null && !previousSession.isNew()) { //TODO check this conditions !!!
 			previousSession.setAttribute(USER, null);
 			authLogger.info("Double login protection - automatic logout of " 
 					+ request.getSession().getAttribute(USER) + " from session " + previousSession.getId() + ";");
@@ -52,12 +52,12 @@ public class AccessUtils {
 		authLogger.info("Logout of " + user + ";");
 	}
 	
-	public static String loginUserAndGetUsePage(HttpServletRequest request, User user) {
+	public static String loginUserAndGetUserPage(HttpServletRequest request, User user) {
 		if (user == null) {
 			return URL.LOGIN_PAGE;
 		} else {
 			request.getSession().setAttribute(USER, user);
-			setUserAsLogged(request, user.getId());
+			setUserAsLogged(request, user);
 			return getPageFromRole(user.getRole());
 		}		
 	}

@@ -5,7 +5,7 @@ import ua.training.repairagency.controller.constants.URL;
 import java.util.Map;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.application.AbstractApproveApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractApproveApplicationCommand;
 
 public class CustomerApproveApplicationCommand extends AbstractApproveApplicationCommand {
 
@@ -21,7 +21,7 @@ public class CustomerApproveApplicationCommand extends AbstractApproveApplicatio
 	}
 
 	@Override
-	protected String getApplicationAllCommand() {
+	protected String getApplicationCommand() {
 		return URL.CUSTOMER_APPLICATION_INDEX_COMMAND;
 	}
 		

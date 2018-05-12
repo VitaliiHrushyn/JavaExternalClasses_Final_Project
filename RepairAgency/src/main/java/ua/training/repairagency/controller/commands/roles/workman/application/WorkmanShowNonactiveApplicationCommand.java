@@ -2,6 +2,7 @@ package ua.training.repairagency.controller.commands.roles.workman.application;
 
 import ua.training.repairagency.controller.constants.URL;
 import ua.training.repairagency.model.entities.application.Application;
+import ua.training.repairagency.model.entities.user.User;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
@@ -11,7 +12,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowListApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractShowListApplicationCommand;
 
 public class WorkmanShowNonactiveApplicationCommand extends AbstractShowListApplicationCommand {
 
@@ -28,9 +29,10 @@ public class WorkmanShowNonactiveApplicationCommand extends AbstractShowListAppl
 
 	@Override
 	protected List<Application> getApplications(HttpServletRequest request) {
+		int workmanId = ((User)request.getSession().getAttribute(USER)).getId();
 		return serviceFactory
 				.createApplicationService()
-				.getAllByStatuses(DONE_APPLICATION, REJECTED_APPLICATION, FINISHED_APPLICATION);
+				.getAllByWorkmanIdAndStatuses(String.valueOf(workmanId), DONE_APPLICATION, FINISHED_APPLICATION, null);
 	}
 
 	

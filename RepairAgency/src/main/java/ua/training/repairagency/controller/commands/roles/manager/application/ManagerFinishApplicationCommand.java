@@ -5,7 +5,7 @@ import ua.training.repairagency.controller.constants.URL;
 import java.util.Map;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.application.AbstractFinishApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractFinishApplicationCommand;
 
 public class ManagerFinishApplicationCommand extends AbstractFinishApplicationCommand {
 
@@ -21,7 +21,7 @@ public class ManagerFinishApplicationCommand extends AbstractFinishApplicationCo
 	}
 
 	@Override
-	protected String getApplicationAllCommand() {
+	protected String getApplicationCommand() {
 		return URL.MANAGER_APPLICATION_ALL_COMMAND;
 	}
 	

@@ -15,7 +15,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowListApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractShowListApplicationCommand;
 
 public class CustomerShowActiveApplicationCommand extends AbstractShowListApplicationCommand {
 
@@ -36,7 +36,7 @@ public class CustomerShowActiveApplicationCommand extends AbstractShowListApplic
 		
 		return serviceFactory
 				.createApplicationService()
-				.getAllByUserIdAndStatuses(String.valueOf(userId), NEW_APPLICATION, APPROVED_APPLICATION, EXECUTING_APPLICATION );
+				.getAllByCustomerIdAndStatuses(String.valueOf(userId), NEW_APPLICATION, APPROVED_APPLICATION, EXECUTING_APPLICATION );
 	}
 
 }

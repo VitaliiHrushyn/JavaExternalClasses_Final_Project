@@ -102,6 +102,7 @@ public interface URL {
 	
 	String MANAGER_PROFILE_COMMAND = "/app/manager/profile";
 	String MANAGER_APPLICATION_ALL_COMMAND = "/app/manager/applications/all";
+	String MANAGER_APPLICATION_INDEX_COMMAND = "/app/manager/applications";
 	String MANAGER_APPLICATION_EDIT_COMMAND = "/app/manager/applications/edit";
 	String REDIRECT_MANAGER_PROFILE_COMMAND = REDIRECT + MANAGER_PROFILE_COMMAND;
 	
@@ -161,7 +162,7 @@ public interface URL {
 	String WORKMAN_MESSAGE_PAGE = WORKMAN_URL + "messages/index.jsp";
 	
 	String WORKMAN_PROFILE_COMMAND = "/app/workman/profile";
-	String WORKMAN_APPLICATION_ALL_COMMAND = "/app/workman/applications/show";
+	String WORKMAN_APPLICATION_INDEX_COMMAND = "/app/workman/applications";
 	String WORKMAN_APPLICATION_EDIT_COMMAND = "/app/workman/applications/edit";
 	String REDIRECT_WORKMAN_PROFILE_COMMAND = REDIRECT + WORKMAN_PROFILE_COMMAND;
 	
@@ -193,6 +194,7 @@ public interface URL {
 	 */
 	String FILTER_PATTERN = "/*";
 	String DISABLE_CACHE_FILTER_PATTERN = "/*";
+	
 	
 	
 	

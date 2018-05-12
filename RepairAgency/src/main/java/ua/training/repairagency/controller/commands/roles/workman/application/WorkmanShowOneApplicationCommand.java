@@ -5,14 +5,14 @@ import ua.training.repairagency.controller.constants.URL;
 import java.util.Map;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowOneApplicationCommand;
-
+import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractShowOneApplicationCommand;
+@Deprecated
 public class WorkmanShowOneApplicationCommand extends AbstractShowOneApplicationCommand {
 
 	private static String path = URL.WORKMAN_APPLICATIONS_ONE_PATH;
 
 	public WorkmanShowOneApplicationCommand(Map<String, Command> commands) {
-		super(path , commands);
+		super(path, commands);
 	}
 
 	@Override
@@ -21,8 +21,8 @@ public class WorkmanShowOneApplicationCommand extends AbstractShowOneApplication
 	}
 
 	@Override
-	protected String getApplicationAllCommand() {
-		return URL.MANAGER_APPLICATION_ALL_COMMAND;
+	protected String getApplicationCommand() {
+		return URL.WORKMAN_APPLICATION_INDEX_COMMAND;
 	}
 	
 }

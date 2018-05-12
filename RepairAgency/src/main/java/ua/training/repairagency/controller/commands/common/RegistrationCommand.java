@@ -38,7 +38,7 @@ public class RegistrationCommand extends AbstractCommand {
 						.createUserService()
 						.insert(UserUtils.createUser(request));	
 				
-				page = AccessUtils.loginUserAndGetUsePage(request, user);		
+				page = AccessUtils.loginUserAndGetUserPage(request, user);		
 			} catch (NotUniqueFieldValueException e) {
 				errorMessages.add(messageBundle.getString(CommandUtils.getFailMessageFromException(e)));
 				page = URL.REGISTRATION_PAGE;

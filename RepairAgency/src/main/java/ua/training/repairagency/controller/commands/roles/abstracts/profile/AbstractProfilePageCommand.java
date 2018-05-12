@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.commands.abstracts.profile;
+package ua.training.repairagency.controller.commands.roles.abstracts.profile;
 
 import java.util.Map;
 

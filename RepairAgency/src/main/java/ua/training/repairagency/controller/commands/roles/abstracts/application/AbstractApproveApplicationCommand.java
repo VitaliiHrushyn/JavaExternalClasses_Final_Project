@@ -1,4 +1,4 @@
-package ua.training.repairagency.controller.commands.abstracts.application;
+package ua.training.repairagency.controller.commands.roles.abstracts.application;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
@@ -37,14 +37,14 @@ public abstract class AbstractApproveApplicationCommand extends AbstractCommand 
 			request.setAttribute(APPLICATION, application);	
 			page = getApplicationApprovePage();
 		} else {
-			page = getApplicationAllCommand();
+			page = getApplicationCommand();
 		}
 		
 		return page;
 	}
 
 	protected abstract String getApplicationApprovePage();
-	protected abstract String getApplicationAllCommand();
+	protected abstract String getApplicationCommand();
 	
 	
 }

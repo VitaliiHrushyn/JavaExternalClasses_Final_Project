@@ -10,7 +10,7 @@
         <title>header</title>
     </head>
     <body>
-      <div align="center">  
+      <div align="center" style="background-color:#7F97A8; color:white">
         <form>
         	<fmt:message key="form.choose.language" />
 	            <select id="language" name="language" onchange="submit()">

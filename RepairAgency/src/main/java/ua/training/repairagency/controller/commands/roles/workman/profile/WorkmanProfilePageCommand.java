@@ -5,7 +5,7 @@ import ua.training.repairagency.controller.constants.URL;
 import java.util.Map;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.profile.AbstractProfilePageCommand;
+import ua.training.repairagency.controller.commands.roles.abstracts.profile.AbstractProfilePageCommand;
 
 public class WorkmanProfilePageCommand extends AbstractProfilePageCommand {
 

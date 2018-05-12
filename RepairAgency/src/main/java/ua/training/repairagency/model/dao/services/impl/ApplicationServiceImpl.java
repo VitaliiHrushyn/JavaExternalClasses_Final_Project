@@ -73,10 +73,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public List<Application> getAllByUserIdAndStatuses(String... values) {
+	public List<Application> getAllByCustomerIdAndStatuses(String... values) {
 		
 	//	String[] values = getQueryValuesArray(4, statuses);
-		String query = queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID_AND_STATUS);
+		String query = queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID_AND_STATUSES);
 		
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {			
 			return dao.getAllByQuery(query, values);				
@@ -90,6 +90,17 @@ public class ApplicationServiceImpl implements ApplicationService {
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {		
 			return dao.getAllByQuery(
 					queryBundle.getString(Query.APPLICATION_GET_BY_ID), String.valueOf(id));				
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public List<Application> getAllByWorkmanIdAndStatuses(String... values) {
+		String query = queryBundle.getString(Query.APPLICATION_GET_BY_WORKMAN_ID_AND_STATUSES);
+		
+		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {			
+			return dao.getAllByQuery(query, values);				
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

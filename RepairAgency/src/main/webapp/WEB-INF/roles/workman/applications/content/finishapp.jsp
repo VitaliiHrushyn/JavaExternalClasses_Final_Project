@@ -23,18 +23,8 @@
 		<form method ="post" action="${pageContext.request.contextPath}/app/workman/applications/edit">
 			
 			<input type="hidden" name="id" value="${application.id}">			
-			<input type="hidden" name="status" value="FINISHED">
-			<input type="hidden" name="testimonial_id" value="${application.testimonial.id}">
-			
+			<input type="hidden" name="status" value="DONE">			
 			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
-			<br>
-			<fmt:message key="application.label.satisfied" />
-			<input type="radio" name="satisfied" value="yes"> <fmt:message key="application.label.satisfied.yes" /> 
-  			<input type="radio" name="satisfied" value="no"> <fmt:message key="application.label.satisfied.no" /><br>			
-			<br>
-			<fmt:message key="application.label.left_testimonial" />: 
-			<br>
-				<textarea name="testimonial_text">${application.testimonial.text}</textarea>
 			<br>
 			<fmt:message key="application.label.description" />: ${application.description}
 			<br>
@@ -42,11 +32,11 @@
 			<br>		
 			<fmt:message key="application.label.price" />: ${application.price}
 			<br>
-			<fmt:message key="application.label.workman" />: ${application.workman}
+			<fmt:message key="application.label.workman" />: ${application.workman.login}
 			<br>
  			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>
-			<input type="submit" value="<fmt:message key="text.button.finishapp" />">
+			<input type="submit" value="<fmt:message key="text.button.done" />">
 		</form>	
 		<br>
 	</div>

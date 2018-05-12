@@ -22,8 +22,10 @@ public interface ApplicationService {
 
 	List<Application> getAllByStatuses(String... values);
 
-	List<Application> getAllByUserIdAndStatuses(String... values);
+	List<Application> getAllByCustomerIdAndStatuses(String... values);
 
 	List<Application> getAllById(int id);
+
+	List<Application> getAllByWorkmanIdAndStatuses(String... values);
 
 }

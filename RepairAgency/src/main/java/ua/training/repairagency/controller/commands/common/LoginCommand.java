@@ -34,7 +34,7 @@ public class LoginCommand extends AbstractCommand {
 						
 		if (CommandUtils.checkLoginCredentials(request, errorMessages)) {			
 			User user = fetchAndCheckUserIfExists(request, errorMessages);
-			page = AccessUtils.loginUserAndGetUsePage(request, user);
+			page = AccessUtils.loginUserAndGetUserPage(request, user);
 		} else {
 			page = URL.LOGIN_PAGE;
 		}

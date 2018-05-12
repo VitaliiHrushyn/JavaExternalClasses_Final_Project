@@ -5,7 +5,7 @@ import ua.training.repairagency.controller.constants.URL;
 import java.util.Map;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.application.AbstractEditApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractEditApplicationCommand;
 
 public class CustomerEditApplicationCommand extends AbstractEditApplicationCommand {
 
@@ -16,7 +16,7 @@ public class CustomerEditApplicationCommand extends AbstractEditApplicationComma
 	}
 
 	@Override
-	protected String getApplicationAllCommand() {
+	protected String getApplicationCommand() {
 		return URL.CUSTOMER_APPLICATION_INDEX_COMMAND;
 	}
 	

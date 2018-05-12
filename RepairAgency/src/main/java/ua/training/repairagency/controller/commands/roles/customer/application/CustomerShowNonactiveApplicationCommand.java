@@ -14,7 +14,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowListApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractShowListApplicationCommand;
 
 public class CustomerShowNonactiveApplicationCommand extends AbstractShowListApplicationCommand {
 
@@ -34,7 +34,7 @@ public class CustomerShowNonactiveApplicationCommand extends AbstractShowListApp
 		
 		return serviceFactory
 				.createApplicationService()
-				.getAllByUserIdAndStatuses(String.valueOf(userId), REJECTED_APPLICATION, FINISHED_APPLICATION, null);
+				.getAllByCustomerIdAndStatuses(String.valueOf(userId), REJECTED_APPLICATION, FINISHED_APPLICATION, null);
 	}
 	
 }

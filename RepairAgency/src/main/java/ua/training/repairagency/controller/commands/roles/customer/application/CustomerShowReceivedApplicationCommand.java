@@ -13,7 +13,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowListApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractShowListApplicationCommand;
 
 public class CustomerShowReceivedApplicationCommand extends AbstractShowListApplicationCommand {
 
@@ -33,7 +33,7 @@ public class CustomerShowReceivedApplicationCommand extends AbstractShowListAppl
 		int userId = ((User)request.getSession().getAttribute(USER)).getId();
 		return serviceFactory
 				.createApplicationService()
-				.getAllByUserIdAndStatuses(String.valueOf(userId), RECEIVED_APPLICATION, null, null);
+				.getAllByCustomerIdAndStatuses(String.valueOf(userId), RECEIVED_APPLICATION, null, null);
 	}
 	
 }

@@ -5,7 +5,7 @@ import ua.training.repairagency.controller.constants.URL;
 import java.util.Map;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.application.AbstractShowOneApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractShowOneApplicationCommand;
 
 public class ManagerShowOneApplicationCommand extends AbstractShowOneApplicationCommand {
 
@@ -21,7 +21,7 @@ public class ManagerShowOneApplicationCommand extends AbstractShowOneApplication
 	}
 
 	@Override
-	protected String getApplicationAllCommand() {
+	protected String getApplicationCommand() {
 		return URL.MANAGER_APPLICATION_ALL_COMMAND;
 	}
 	

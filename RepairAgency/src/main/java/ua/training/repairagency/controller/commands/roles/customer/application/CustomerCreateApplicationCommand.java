@@ -5,7 +5,7 @@ import ua.training.repairagency.controller.constants.URL;
 import java.util.Map;
 
 import ua.training.repairagency.controller.commands.Command;
-import ua.training.repairagency.controller.commands.abstracts.application.AbstractCreateApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractCreateApplicationCommand;
 
 public class CustomerCreateApplicationCommand extends AbstractCreateApplicationCommand {
 

@@ -28,7 +28,7 @@
 			<br>
 			<fmt:message key="application.label.status.change" />
 			<input type="radio" name="status" value="REJECTED"> <fmt:message key="application.label.status.REJECT" /> 
-  			<input type="radio" name="status" value="APPROVED"> <fmt:message key="application.label.status.APPROV" /><br>			
+  			<input type="radio" name="status" value="APPROVED" checked> <fmt:message key="application.label.status.APPROV" /><br>			
 			<br>
 			<fmt:message key="application.label.description" />: <input type="text" name="description" value="${application.description}">
 			<br>

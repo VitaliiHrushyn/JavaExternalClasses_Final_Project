@@ -47,7 +47,7 @@
 			<fmt:message key="application.label.price" />
 			<input type="number" name="price" value="${application.price}">
 			<br>
-			<fmt:message key="application.label.customer" />: id ${application.customer.id} - ${application.customer.name} ${application.customer.surname}
+			<fmt:message key="application.label.customer" />: id ${application.customer.id} - ${application.customer.login} : ${application.customer.name} ${application.customer.surname}
 			<br>
 			<fmt:message key="application.label.workman" />:
 			<select name="workman_id" >
