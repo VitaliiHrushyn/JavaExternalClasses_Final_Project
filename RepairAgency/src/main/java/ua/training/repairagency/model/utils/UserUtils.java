@@ -13,10 +13,7 @@ import ua.training.repairagency.model.entities.user.UserRole;
 public class UserUtils {
 	
 	public static String doCrypt(String string) {
-		return DigestUtils
-				.md5Hex(
-						string
-						.getBytes());
+		return DigestUtils.md5Hex(string.getBytes());
 	}
 	
 	public static User createUser(HttpServletRequest request) {

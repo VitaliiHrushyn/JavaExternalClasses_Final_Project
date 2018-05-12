@@ -17,8 +17,7 @@ public class UserServiceImpl implements UserService {
 		try(UserDAO dao = daoFactory.createUserDAO()){
 			user = dao.getByLogin(login);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}		
 		return user;
 	}
@@ -28,7 +27,7 @@ public class UserServiceImpl implements UserService {
 		try(UserDAO dao = daoFactory.createUserDAO()) {		
 			return dao.create(user);				
 		} catch (Exception e) {
-			DAOutils.checkIfNotUniqueFieldValueException(e);
+			DAOutils.extractNotUniqueFieldValueException(e);
 			return null;
 		}
 	}
@@ -47,8 +46,7 @@ public class UserServiceImpl implements UserService {
 		try(UserDAO dao = daoFactory.createUserDAO()){
 			user = dao.update(user);
 		} catch (Exception e) {
-			DAOutils.checkIfNotUniqueFieldValueException(e);
-			return null;
+			DAOutils.extractNotUniqueFieldValueException(e);
 		}		
 		return user;
 	}

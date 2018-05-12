@@ -70,7 +70,7 @@ public class CommandUtils {
 		 * to avoid exception is enough to check first param by null
 		 * and return from method
 		 */
-		if (isRequesEmpty(request)) {
+		if (!isRequestContains(request, AttributeOrParam.LOGIN)) {
 			return false;
 		}
 		
@@ -119,13 +119,13 @@ public class CommandUtils {
 		return check;
 	}
 
-	private static boolean isRequesEmpty(HttpServletRequest request) {
-		return request.getParameter(LOGIN) == null;
+	public static boolean isRequestContains(HttpServletRequest request, String param) {
+		return request.getParameter(param) != null;
 	}
 
 	public static boolean checkLoginCredentials(HttpServletRequest request, List<String> messages) {
 
-		if (isRequesEmpty(request)) {
+		if (!isRequestContains(request, AttributeOrParam.LOGIN)) {
 			return false;
 		}
 		

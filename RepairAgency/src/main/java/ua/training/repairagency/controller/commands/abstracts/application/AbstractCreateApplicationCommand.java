@@ -21,7 +21,7 @@ public abstract class AbstractCreateApplicationCommand extends AbstractCommand {
 		infoMessages = new ArrayList<>();
 		errorMessages = new ArrayList<>();
 		
-		if (!isRequestEmpty(request)) {
+		if (CommandUtils.isRequestContains(request, DESCRIPTION)) {
 			try {
 				serviceFactory
 				.createApplicationService()
@@ -43,10 +43,6 @@ public abstract class AbstractCreateApplicationCommand extends AbstractCommand {
 		return page;
 	}
 
-	private boolean isRequestEmpty(HttpServletRequest request) {
-		return request.getParameter(DESCRIPTION) == null;
-	}
-	
 	protected abstract String getApplicationIndexPage();
 	protected abstract String getApplicationCreatePage();
 	

@@ -6,13 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.controller.commands.AbstractCommand;
+import ua.training.repairagency.controller.utils.CommandUtils;
 
 public abstract class AbstractApproveApplicationCommand extends AbstractCommand {
 	
 	@Override
 	public String execute(HttpServletRequest request) {
 					
-		if (!isRequestEmpty(request)) {
+		if (CommandUtils.isRequestContains(request, ID)) {
 		
 			 Application application = serviceFactory
 					 					.createApplicationService()
@@ -27,10 +28,6 @@ public abstract class AbstractApproveApplicationCommand extends AbstractCommand 
 		return page;
 	}
 
-	private boolean isRequestEmpty(HttpServletRequest request) {
-		return request.getParameter(ID) == null;
-	}
-	
 	protected abstract String getApplicationApprovePage();
 	protected abstract String getApplicationAllCommand();
 	

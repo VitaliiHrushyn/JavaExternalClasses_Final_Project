@@ -21,7 +21,7 @@ public abstract class AbstractEditApplicationCommand extends AbstractCommand {
 		messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, CommandUtils.getLocale(request));
 		infoMessages = new ArrayList<String>();
 			
-		if (!isRequestEmpty(request)) {
+		if (CommandUtils.isRequestContains(request, ID)) {
 		
 			Application application = serviceFactory
 									.createApplicationService()
@@ -39,10 +39,6 @@ public abstract class AbstractEditApplicationCommand extends AbstractCommand {
 		return getApplicationAllCommand();
 	}
 
-	private boolean isRequestEmpty(HttpServletRequest request) {
-		return request.getParameter(ID) == null;
-	}
-	
 	protected abstract String getApplicationAllCommand();
 	
 }
