@@ -21,6 +21,9 @@ import ua.training.repairagency.controller.commands.roles.manager.application.Ma
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowOneApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.profile.ManagerEditprofileCommand;
 import ua.training.repairagency.controller.commands.roles.manager.profile.ManagerProfilePageCommand;
+import ua.training.repairagency.controller.commands.roles.manager.users.ManagerCreateUserCommand;
+import ua.training.repairagency.controller.commands.roles.manager.users.ManagerShowUsersCommand;
+import ua.training.repairagency.controller.commands.roles.manager.users.ManagerUsersCommand;
 import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanApproveApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanEditApplicationCommand;
@@ -73,6 +76,9 @@ public class CommandsCreator {
 		new ManagerShowActiveApplicationCommand(commands);
 		new ManagerShowNonactiveApplicationCommand(commands);
 		new ManagerSearchByIdApplicationCommand(commands);
+		new ManagerCreateUserCommand(commands);
+		new ManagerUsersCommand(commands);
+		new ManagerShowUsersCommand(commands);
 		
 		new WorkmanProfilePageCommand(commands);
 		new WorkmanEditprofileCommand(commands);

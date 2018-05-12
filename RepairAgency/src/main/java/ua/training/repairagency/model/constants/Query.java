@@ -9,6 +9,7 @@ public interface Query {
 	String USER_INSERT = "user.insert";
 	String USER_UPDATE = "user.update";
 	String USER_GET_BY_LOGIN = "user.get.by.login";
+	String USER_GET_BY_ROLE = "user.get.by.role";
 	
 	/* application queries */
 	String APPLICATION_GET_BY_ID = "application.get.by.id";
@@ -35,6 +36,7 @@ public interface Query {
 	String TESTIMONIAL_INSERT = "testimonial.insert";
 	String TESTIMONIAL_UPDATE = "testimonial.update";
 //	String TESTIMONIAL_GET_BY_LOGIN = "testimonial.get.by.login";		
+	
 	
 	
 	

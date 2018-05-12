@@ -1,6 +1,7 @@
 package ua.training.repairagency.controller.commands.roles.manager.application;
 
 import ua.training.repairagency.controller.constants.URL;
+import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.application.Application;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.ID;
@@ -15,7 +16,7 @@ import ua.training.repairagency.controller.commands.abstracts.application.Abstra
 
 public class ManagerSearchByIdApplicationCommand extends AbstractShowListApplicationCommand {
 	
-	private static String path = URL.MANAGER_APPLICATIONS_SEARCH_BY_ID;
+	private static String path = URL.MANAGER_APPLICATIONS_SEARCH_BY_ID_PATH;
 	
 	public ManagerSearchByIdApplicationCommand(Map<String, Command> commands) {
 		super(path, commands);
@@ -28,9 +29,12 @@ public class ManagerSearchByIdApplicationCommand extends AbstractShowListApplica
 
 	@Override
 	protected List<Application> getApplications(HttpServletRequest request) {
+		if (CommandUtils.isRequestContains(request, ID)) {
 		return serviceFactory
 				.createApplicationService()
 				.getAllById(Integer.valueOf(request.getParameter(ID)));
+		}
+		return null;
 	}
 	
 }

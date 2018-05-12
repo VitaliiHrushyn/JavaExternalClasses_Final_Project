@@ -62,7 +62,7 @@ public interface URL {
 	String CUSTOMER_ROFILE_EDIT_PATH = CUSTOMER_PROFILE_PATH + "/editprofile";
 	String CUSTOMER_PROFILE_CHANGEPASSWORD_PATH = CUSTOMER_PROFILE_PATH + "/changepassword";
 	
-	String CUSTOMER_MESSAGE_PATH = "customer/message";
+//	String CUSTOMER_MESSAGE_PATH = "customer/message";
 	
 	String CUSTOMER_APPLICATIONS_PATH = "customer/applications";
 	String CUSTOMER_APPLICATIONS_CREATE_PATH = CUSTOMER_APPLICATIONS_PATH + "/create";
@@ -110,7 +110,7 @@ public interface URL {
 	String MANAGER_ROFILE_EDIT_PATH = MANAGER_PROFILE_PATH + "/editprofile";
 	String MANAGER_PROFILE_CHANGEPASSWORD_PATH = MANAGER_PROFILE_PATH + "/changepassword";
 	
-	String MANAGER_MESSAGE_PATH = "manager/message";
+//	String MANAGER_MESSAGE_PATH = "manager/message";
 	
 	String MANAGER_APPLICATIONS_PATH = "manager/applications";
 	String MANAGER_APPLICATIONS_CREATE_PATH = MANAGER_APPLICATIONS_PATH + "/create";
@@ -124,7 +124,18 @@ public interface URL {
 	String MANAGER_APPLICATIONS_APPROVE_PATH = MANAGER_APPLICATIONS_PATH + "/approve";
 	String MANAGER_APPLICATIONS_DONE_PATH = MANAGER_APPLICATIONS_PATH + "/done";
 	String MANAGER_APPLICATIONS_FINISH_PATH = MANAGER_APPLICATIONS_PATH + "/finishapp";
-	String MANAGER_APPLICATIONS_SEARCH_BY_ID = MANAGER_APPLICATIONS_PATH + "/findbyid";
+	String MANAGER_APPLICATIONS_SEARCH_BY_ID_PATH = MANAGER_APPLICATIONS_PATH + "/findbyid";
+	
+	//String MANAGER_URL = "/WEB-INF/roles/manager/";
+	
+	String MANAGER_CREATE_USER_PAGE = MANAGER_URL + "users/create.jsp";
+	String MANAGER_USERS_INDEX_PAGE = MANAGER_URL + "users/index.jsp";
+	String MANAGER_USERS_SHOW_PAGE = MANAGER_URL + "users/show.jsp";
+	
+	String MANAGER_USERS_PATH = "manager/users";
+	
+	String MANAGER_CREATE_USER_PATH = MANAGER_USERS_PATH + "/create";
+	String MANAGER_USERS_SHOW_PATH = MANAGER_USERS_PATH + "/show";
 	
 	String MANAGER = "manager";
 
@@ -182,6 +193,11 @@ public interface URL {
 	 */
 	String FILTER_PATTERN = "/*";
 	String DISABLE_CACHE_FILTER_PATTERN = "/*";
+	
+	
+	
+	
+	
 	
 	
 	

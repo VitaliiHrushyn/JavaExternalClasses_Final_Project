@@ -120,7 +120,7 @@ public class CommandUtils {
 	}
 
 	public static boolean isRequestContains(HttpServletRequest request, String param) {
-		return request.getParameter(param) != null;
+		return request.getParameter(param) != null && !request.getParameter(param).isEmpty();
 	}
 
 	public static boolean checkLoginCredentials(HttpServletRequest request, List<String> messages) {
