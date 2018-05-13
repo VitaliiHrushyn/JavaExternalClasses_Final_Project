@@ -1,6 +1,6 @@
 package ua.training.repairagency.model.entities.testimonial;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import ua.training.repairagency.model.entities.Entity;
 
@@ -10,8 +10,8 @@ public interface Testimonial extends Entity {
 	
 	public void setText(String text);
 	
-	public Date getCreateTime();
+	public LocalDateTime getCreateTime();
 
-	public void setCreateTime(Date date);
+	public void setCreateTime(LocalDateTime dateTime);
 
 }
