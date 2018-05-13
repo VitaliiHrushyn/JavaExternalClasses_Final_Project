@@ -64,8 +64,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 	@Override
 	public Application update(Application application) {
-		try(ApplicationDAO dao = daoFactory.createApplicationDAO()){
-			return dao.update(application);
+		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {
+				return dao.update(application); 		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw new RuntimeException(e);

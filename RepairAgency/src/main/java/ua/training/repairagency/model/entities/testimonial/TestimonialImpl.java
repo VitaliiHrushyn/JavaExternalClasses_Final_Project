@@ -1,13 +1,13 @@
 package ua.training.repairagency.model.entities.testimonial;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import ua.training.repairagency.model.entities.AbstractEntity;
 
 public class TestimonialImpl extends AbstractEntity implements Testimonial {
 	
 	private String text;
-	private Date createTime;
+	private LocalDateTime createTime;
 	
 	public String getText() {
 		return text;
@@ -17,12 +17,12 @@ public class TestimonialImpl extends AbstractEntity implements Testimonial {
 		this.text = text;
 	}
 	
-	public Date getCreateTime() {
+	public LocalDateTime getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(LocalDateTime createTime) {
 		this.createTime = createTime;
 		
 	}

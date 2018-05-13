@@ -23,7 +23,7 @@ public abstract class AbstractShowOneApplicationCommand extends AbstractCommand 
 	@Override
 	public String execute(HttpServletRequest request) {
 					
-		if (CommandUtils.isRequestContains(request, ID)) {
+		if (CommandUtils.isRequestContainsParam(request, ID)) {
 		
 			 Application application = serviceFactory
 					 					.createApplicationService()

@@ -17,7 +17,7 @@ public class ManagerEditApplicationCommand extends AbstractEditApplicationComman
 
 	@Override
 	protected String getApplicationCommand() {
-		return URL.MANAGER_APPLICATION_INDEX_COMMAND;
+		return URL.MANAGER_APPLICATION_ONE_COMMAND; 
 	}
 	
 }

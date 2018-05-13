@@ -31,13 +31,13 @@ public class UserUtils {
 	}
 	
 	public static User updateUserFeatures(User user, HttpServletRequest request) {
-		if (CommandUtils.isRequestContains(request, ROLE)) {
+		if (CommandUtils.isRequestContainsParam(request, ROLE)) {
 			user.setRole(UserRole.valueOf(request.getParameter(ROLE)));
 		}
 		user.setName(request.getParameter(NAME));
 		user.setSurname(request.getParameter(SURNAME));
 		user.setLogin(request.getParameter(LOGIN));
-		if (CommandUtils.isRequestContains(request, PASSWORD)) {
+		if (CommandUtils.isRequestContainsParam(request, PASSWORD)) {
 			user.setPassword(doCrypt(request.getParameter(PASSWORD)));
 		}
 		user.setEmail(request.getParameter(EMAIL));

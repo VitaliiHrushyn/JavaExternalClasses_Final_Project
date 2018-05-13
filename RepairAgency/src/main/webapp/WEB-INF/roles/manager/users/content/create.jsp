@@ -25,12 +25,6 @@
          <br>
         <form method="post" action="${pageContext.request.contextPath}/app/manager/users/create">
             
-            <input type="text" id="login" name="login" required placeholder="<fmt:message key="register.label.login" />">
-            <br>
-            <input type="password" id="password" name="password" required placeholder="<fmt:message key="register.label.password" />">
-            <br>
-            <input type="password" id="confirmpassword" name="confirmpassword" required placeholder="<fmt:message key="register.label.confirmpassword" />">
-            <br>
             <label for="role"><fmt:message key="register.label.role" />:</label>
             <select name="role">			               
 				<option value ="MANAGER"> <fmt:message key="user.label.role.MANAGER" /> </option>
@@ -38,6 +32,12 @@
 				<option value ="WORKMAN"> <fmt:message key="user.label.role.WORKMAN" /> </option>
 			</select>
             <br>
+            <input type="text" id="login" name="login" required placeholder="<fmt:message key="register.label.login" />">
+            <br>
+            <input type="password" id="password" name="password" required placeholder="<fmt:message key="register.label.password" />">
+            <br>
+            <input type="password" id="confirmpassword" name="confirmpassword" required placeholder="<fmt:message key="register.label.confirmpassword" />">
+            <br>            
             <input type="text" id="name" name="name" required placeholder="<fmt:message key="register.label.name" />">
             <br>
             <input type="text" id="surname" name="surname" required placeholder="<fmt:message key="register.label.surname" />">

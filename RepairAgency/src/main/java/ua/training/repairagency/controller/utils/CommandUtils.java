@@ -65,7 +65,7 @@ public class CommandUtils {
 	
 	public static boolean checkRegistrationCredentials(HttpServletRequest request, List<String> messages) {
 		
-		if (!isRequestContains(request, LOGIN)) {
+		if (!isRequestContainsParam(request, LOGIN)) {
 			return false;
 		}
 		
@@ -133,7 +133,7 @@ public class CommandUtils {
 			messages.add(messageBundle.getString(Message.LOGIN_INVALID));
 			check = false;
 		}
-		if (isRequestContains(request, PASSWORD)) {
+		if (isRequestContainsParam(request, PASSWORD)) {
 			if (!password.matches(regexBundle.getString(RegEx.PASSWORD))) {
 				messages.add(messageBundle.getString(Message.PASSWORD_INVALID));
 				check = false;
@@ -163,13 +163,18 @@ public class CommandUtils {
 		return check;
 	}
 
-	public static boolean isRequestContains(HttpServletRequest request, String param) {
+	public static boolean isRequestContainsParam(HttpServletRequest request, String param) {
 		return request.getParameter(param) != null && !request.getParameter(param).isEmpty();
+	}
+	
+	public static boolean isRequestContainsParam(HttpServletRequest request, String param, String value) {
+		return request.getParameter(param) != null 
+				&& !request.getParameter(param).equals(value);
 	}
 
 	public static boolean checkLoginCredentials(HttpServletRequest request, List<String> messages) {
 
-		if (!isRequestContains(request, AttributeOrParam.LOGIN)) {
+		if (!isRequestContainsParam(request, AttributeOrParam.LOGIN)) {
 			return false;
 		}
 		

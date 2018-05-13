@@ -1,6 +1,8 @@
 package ua.training.repairagency.model.entities.application;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import ua.training.repairagency.model.entities.Entity;
@@ -37,8 +39,12 @@ public interface Application extends Entity {
 	
 	void setTestimonial(Testimonial testimonial);
 	
-	Date getCreateTime();
+	LocalDateTime getCreateTime();
 	
-	public void setCreateTime(Date createTime);	
+	public void setCreateTime(LocalDateTime createTime);	
+	
+	Timestamp getLastUpdateTime();
+	
+	void setLastUpdateTime(Timestamp timestamp);
 
 }

@@ -60,7 +60,7 @@ public class TestimonialDAOImpl extends AbstractDAO<Testimonial> implements Test
 		Testimonial testimonial = new TestimonialImpl();
 		testimonial.setId(rs.getInt(columnBundle.getString(Column.TESTIMONIAL_ID)));
 		testimonial.setText(rs.getString(columnBundle.getString(Column.TESTIMONIAL_TEXT)));
-		testimonial.setCreateTime(rs.getDate(columnBundle.getString(Column.TESTIMONIAL_CREATE_TIME)));		
+		testimonial.setCreateTime((rs.getTimestamp(columnBundle.getString(Column.TESTIMONIAL_CREATE_TIME))).toLocalDateTime());		
 		
 		return testimonial;
 	}

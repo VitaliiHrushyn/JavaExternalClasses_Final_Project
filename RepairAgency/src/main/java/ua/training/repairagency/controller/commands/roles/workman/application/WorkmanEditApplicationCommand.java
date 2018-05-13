@@ -19,5 +19,5 @@ public class WorkmanEditApplicationCommand extends AbstractEditApplicationComman
 	protected String getApplicationCommand() {
 		return URL.WORKMAN_APPLICATION_INDEX_COMMAND;
 	}
-	
+		
 }

@@ -1,5 +1,6 @@
 package ua.training.repairagency.model.utils;
 
+import static ua.training.repairagency.model.utils.DAOutils.paramNotEmpty;
 import javax.servlet.http.HttpServletRequest;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
@@ -12,6 +13,7 @@ import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.application.ApplicationImpl;
 import ua.training.repairagency.model.entities.testimonial.Testimonial;
 import ua.training.repairagency.model.entities.user.User;
+import ua.training.repairagency.model.exceptions.OutOfDateDataException;
 
 public class ApplicationUtils {
 
@@ -25,10 +27,17 @@ public class ApplicationUtils {
 		
 	}
 
-	public static Application updateApplicationFeatures(Application application, HttpServletRequest request) {
+	public static Application updateApplicationFeatures(Application application,
+			HttpServletRequest request) throws OutOfDateDataException {
+		
+		/*
+		 *  Prevention of insertion out of dated data
+		 */
+		if (!application.getLastUpdateTime().toString().equals(request.getParameter(LAST_UPDATE))) {
+			throw new OutOfDateDataException(application.toString());
+		}
 		
 		ServiceFactory factory = ServiceFactory.getInstance();
-		
 		
 		String status = request.getParameter(STATUS);
 		String description = request.getParameter(DESCRIPTION);
@@ -38,44 +47,34 @@ public class ApplicationUtils {
 		String testimonialId = request.getParameter(TESTIMONIAL_ID);
 		String testimonialText = request.getParameter(TESTIMONIAL_TEXT);
 		
-		if (notEmpty(testimonialText)) {
+		if (paramNotEmpty(testimonialText)) {
 			Testimonial testimonial = factory
 						.createTestimonialService()
 						.insert(TestimonialUtils.createTestimonial(request));
 			
-			if(notEmpty(testimonialId)) {
-				factory
-				.createTestimonialService()
-				.delete(Integer.valueOf(testimonialId));
-			}
-			
 			testimonialId = String.valueOf(testimonial.getId());
 		}
 		
-		if (notEmpty(status)) {
+		if (paramNotEmpty(status)) {
 			application.setStatus(AppStatus.valueOf(status));
 		}
-		if (notEmpty(description)) {
+		if (paramNotEmpty(description)) {
 			application.setDescription(description);
 		}
-		if (notEmpty(managerComment)) {
+		if (paramNotEmpty(managerComment)) {
 			application.setManagerComment(managerComment);
 		}
-		if (notEmpty(price)) {
-			application.setPrice(BigDecimal.valueOf(Long.valueOf(price)));
+		if (paramNotEmpty(price)) {
+			application.setPrice(new BigDecimal((price)));
 		}
-		if (notEmpty(workmanId)) {
+		if (paramNotEmpty(workmanId)) {
 			application.setWorkman(factory.createUserService().getById(Integer.valueOf(workmanId)));
 		}
-		if (notEmpty(testimonialId)) {
+		if (paramNotEmpty(testimonialId)) {
 			application.setTestimonial(factory.createTestimonialService().getById(Integer.valueOf(testimonialId)));
 		}
 				
 		return application;
-	}
-
-	private static boolean notEmpty(String value) {
-		return value != null && !value.isEmpty();
 	}
 
 }

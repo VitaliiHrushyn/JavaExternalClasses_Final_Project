@@ -18,7 +18,7 @@
 			</div>
 		<br>						
 		<c:set var="application" value="${requestScope.application}"/>
-		<h3><fmt:message key="text.application.edit" /> id: ${application.id} </h3>
+		<h3><fmt:message key="text.application.show" /> id: ${application.id} </h3>
 		<br>
 			
 			

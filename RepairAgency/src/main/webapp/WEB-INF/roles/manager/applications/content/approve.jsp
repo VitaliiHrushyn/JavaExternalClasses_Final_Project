@@ -20,23 +20,26 @@
 		<c:set var="application" value="${requestScope.application}"/>
 		<h3><fmt:message key="text.application.edit" /> id: ${application.id} </h3>
 		<br>
-		<form method ="post" action="${pageContext.request.contextPath}/app/manager/applications/edit">
+		<form method ="post" action="${pageContext.request.contextPath}/app/manager/applications/approve">
 			
 			<input type="hidden" name="id" value="${application.id}">
+			<input type="hidden" name="last_update" value="${application.lastUpdateTime}">
 			
 			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
 			<br>
 			<fmt:message key="application.label.status.change" />
 			<input type="radio" name="status" value="REJECTED"> <fmt:message key="application.label.status.REJECT" /> 
-  			<input type="radio" name="status" value="RECEIVED"> <fmt:message key="application.label.status.RECEIVE" /><br>			
+  			<input type="radio" name="status" value="RECEIVED" checked> <fmt:message key="application.label.status.RECEIVE" /><br>			
 			<br>
 			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>
 			<fmt:message key="application.label.description" />: ${application.description}
 			<br>
-			<fmt:message key="application.label.comment" />: <input type="text" name="comment" value="${application.managerComment}">
+			<fmt:message key="application.label.comment" />: <br>
+			<textarea name="comment">${application.managerComment}</textarea>
 			<br>		
-			<fmt:message key="application.label.price" />: <input type="number" name="price" value="${application.price}">
+			<fmt:message key="application.label.price" />: 
+			<input type="number" min="0.00" max="10000.00" step="0.01" name="price" value="${application.price}">
 			<br>
 			<fmt:message key="application.label.customer" />: id: ${application.customer.id} - ${application.customer.login} : ${application.customer.name} ${application.customer.surname}
 			<br>

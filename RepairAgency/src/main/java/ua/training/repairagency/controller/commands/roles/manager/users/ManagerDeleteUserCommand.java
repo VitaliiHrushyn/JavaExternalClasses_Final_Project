@@ -31,7 +31,7 @@ public class ManagerDeleteUserCommand extends AbstractCommand {
 		errorMessages = new ArrayList<>();
 		infoMessages = new ArrayList<>();
 		
-		if (CommandUtils.isRequestContains(request, DELETING_USER_ID)) {	
+		if (CommandUtils.isRequestContainsParam(request, DELETING_USER_ID)) {	
 					serviceFactory
 					.createUserService()
 					.delete(Integer.valueOf(request.getParameter(DELETING_USER_ID)));

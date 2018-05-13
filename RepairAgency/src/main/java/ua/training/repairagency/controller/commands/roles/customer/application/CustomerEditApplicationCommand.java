@@ -19,5 +19,5 @@ public class CustomerEditApplicationCommand extends AbstractEditApplicationComma
 	protected String getApplicationCommand() {
 		return URL.CUSTOMER_APPLICATION_INDEX_COMMAND;
 	}
-	
+		
 }
