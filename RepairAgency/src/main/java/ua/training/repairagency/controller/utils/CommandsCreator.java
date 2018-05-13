@@ -70,7 +70,7 @@ public class CommandsCreator {
 		new ManagerApplicationCommand(commands);
 		new ManagerShowAllApplicationCommand(commands);
 		new ManagerShowOneApplicationCommand(commands);
-		new ManagerShowDoneApplicationCommand(commands);
+//		new ManagerShowDoneApplicationCommand(commands);
 		new ManagerFinishApplicationCommand(commands);
 		new ManagerEditApplicationCommand(commands);
 		new ManagerApproveEditApplicationCommand(commands);

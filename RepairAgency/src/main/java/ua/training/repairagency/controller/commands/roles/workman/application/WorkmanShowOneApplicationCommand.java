@@ -6,7 +6,7 @@ import java.util.Map;
 
 import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractShowOneApplicationCommand;
-@Deprecated
+
 public class WorkmanShowOneApplicationCommand extends AbstractShowOneApplicationCommand {
 
 	private static String path = URL.WORKMAN_APPLICATIONS_ONE_PATH;

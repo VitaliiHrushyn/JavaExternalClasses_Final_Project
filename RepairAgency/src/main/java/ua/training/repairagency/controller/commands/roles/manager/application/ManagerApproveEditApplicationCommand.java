@@ -69,7 +69,6 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 	}
 	
 	private boolean checkEditingParameters(HttpServletRequest request, List<String> errorMessages) {
-		System.out.println(request.getParameter(STATUS));
 		String status = request.getParameter(STATUS);
 		boolean check = true;
 		
