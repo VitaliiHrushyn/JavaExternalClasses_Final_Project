@@ -9,6 +9,7 @@ import ua.training.repairagency.controller.commands.roles.customer.application.*
 import ua.training.repairagency.controller.commands.roles.customer.profile.*;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerApproveApplicationCommand;
+import ua.training.repairagency.controller.commands.roles.manager.application.ManagerApproveEditApplicationCommand;
 //import ua.training.repairagency.controller.commands.roles.manager.application.ManagerCreateApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerEditApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerFinishApplicationCommand;
@@ -72,9 +73,10 @@ public class CommandsCreator {
 		new ManagerShowDoneApplicationCommand(commands);
 		new ManagerFinishApplicationCommand(commands);
 		new ManagerEditApplicationCommand(commands);
+		new ManagerApproveEditApplicationCommand(commands);
 //		commands.put(URL.MANAGER_APPLICATIONS_CURRENT_PATH, new ManagerShowDoneApplicationCommand());
 		new ManagerShowNewApplicationCommand(commands);
-		new ManagerApproveApplicationCommand(commands);
+//		new ManagerApproveApplicationCommand(commands);
 		new ManagerShowActiveApplicationCommand(commands);
 		new ManagerShowNonactiveApplicationCommand(commands);
 		new ManagerSearchByIdApplicationCommand(commands);

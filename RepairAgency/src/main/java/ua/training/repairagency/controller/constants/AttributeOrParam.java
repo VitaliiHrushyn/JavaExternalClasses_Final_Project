@@ -7,6 +7,7 @@ public interface AttributeOrParam {
 	String USERS = "users";
 	String USER_ID = "userid";
 	String DELETING_USER_ID = "deleting_userid";
+	String APPROVING_APP_ID = "approving_app_id";
 	String CUSTOMER = "customer";
 	String MANAGER = "manager";
 	String WORKMAN = "workman";	

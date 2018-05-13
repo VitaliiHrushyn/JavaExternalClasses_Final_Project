@@ -3,7 +3,6 @@ package ua.training.repairagency.controller.commands.roles.abstracts.application
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -29,8 +28,7 @@ public abstract class AbstractEditApplicationCommand extends AbstractCommand {
 		infoMessages = new ArrayList<String>();
 		errorMessages = new ArrayList<>();
 			
-		if (CommandUtils.isRequestContainsParam(request, ID)
-				&& checkParameters(request, errorMessages)) {
+		if (CommandUtils.isRequestContainsParam(request, ID)) {
 		
 			Application application = serviceFactory
 									.createApplicationService()
@@ -50,7 +48,5 @@ public abstract class AbstractEditApplicationCommand extends AbstractCommand {
 	}
 
 	protected abstract String getApplicationCommand();
-	protected abstract boolean checkParameters(HttpServletRequest request, List<String> errorMessages);
-
 	
 }

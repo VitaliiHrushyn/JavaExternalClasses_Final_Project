@@ -20,7 +20,7 @@
 		<c:set var="application" value="${requestScope.application}"/>
 		<h3><fmt:message key="text.application.edit" /> id: ${application.id} </h3>
 		<br>
-		<form method ="post" action="${pageContext.request.contextPath}/app/manager/applications/edit">
+		<form method ="post" action="${pageContext.request.contextPath}/app/manager/applications/approve">
 			
 			<input type="hidden" name="id" value="${application.id}">
 			
