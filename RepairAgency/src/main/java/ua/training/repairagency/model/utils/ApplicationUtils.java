@@ -12,6 +12,7 @@ import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.application.ApplicationImpl;
 import ua.training.repairagency.model.entities.testimonial.Testimonial;
 import ua.training.repairagency.model.entities.user.User;
+import ua.training.repairagency.model.exceptions.OutOfDateDataException;
 
 public class ApplicationUtils {
 
@@ -25,7 +26,15 @@ public class ApplicationUtils {
 		
 	}
 
-	public static Application updateApplicationFeatures(Application application, HttpServletRequest request) {
+	public static Application updateApplicationFeatures(Application application,
+			HttpServletRequest request) throws OutOfDateDataException {
+		
+		/*
+		 *  Prevention of insertion out of dated data
+		 */
+		if (!application.getLastUpdateTime().toString().equals(request.getParameter(LAST_UPDATE))) {
+			throw new OutOfDateDataException(application.toString());
+		}
 		
 		ServiceFactory factory = ServiceFactory.getInstance();
 		

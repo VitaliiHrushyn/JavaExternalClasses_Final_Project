@@ -166,6 +166,11 @@ public class CommandUtils {
 	public static boolean isRequestContainsParam(HttpServletRequest request, String param) {
 		return request.getParameter(param) != null && !request.getParameter(param).isEmpty();
 	}
+	
+	public static boolean isRequestContainsParam(HttpServletRequest request, String param, String value) {
+		return request.getParameter(param) != null 
+				&& !request.getParameter(param).equals(value);
+	}
 
 	public static boolean checkLoginCredentials(HttpServletRequest request, List<String> messages) {
 

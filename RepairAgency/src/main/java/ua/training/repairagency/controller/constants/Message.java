@@ -28,11 +28,14 @@ public interface Message {
 	String APPLICATION_CREATE_SUCCESS = "message.create.application.success";
 	String APPLICATION_CREATE_FAIL = "message.create.application.fail";
 	String APPLICATION_UPDATE_SUCCESS = "message.update.application.success";
+	String APPLICATION_OUT_OF_DATE = "message.update.application.out_of_date";
 
 	String USER_CREAT_SUCCESS = "message.create.user.success";
 
 	String ERROR_EMPTY_COMMENT = "error.app.empty.comment";
 	String ERROR_EMPTY_PRICE_OR_WORKMAN = "error.app.empty.price.or.workman";
+
+	
 	
 
 
