@@ -30,9 +30,11 @@ public interface AttributeOrParam {
 	String PRICE = "price";
 	String TESTIMONIAL_TEXT = "testimonial_text";
 	String CREATE_TIME = "create_time";
+	String LAST_UPDATE = "last_update";
 	
 	String TESTIMONIAL_ID = "testimonial_id";
-	String WORKMAN_ID = "workman_id";	
+	String WORKMAN_ID = "workman_id";
+	
 
 	
 	String ERROR_MESSAGES = "error_messages";

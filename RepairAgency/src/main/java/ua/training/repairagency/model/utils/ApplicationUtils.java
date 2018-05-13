@@ -29,7 +29,6 @@ public class ApplicationUtils {
 		
 		ServiceFactory factory = ServiceFactory.getInstance();
 		
-		
 		String status = request.getParameter(STATUS);
 		String description = request.getParameter(DESCRIPTION);
 		String managerComment = request.getParameter(COMMENT);

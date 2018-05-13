@@ -24,6 +24,7 @@
 			
 			<input type="hidden" name="id" value="${application.id}">
 			<input type="hidden" name="status" value="EXECUTING">	
+			<input type="hidden" name="last_update" value="${application.lastUpdateTime}">
 			
 			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
 			<br>

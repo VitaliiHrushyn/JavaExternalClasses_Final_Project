@@ -1,6 +1,7 @@
 package ua.training.repairagency.model.entities.application;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import ua.training.repairagency.model.entities.AbstractEntity;
@@ -17,6 +18,7 @@ public class ApplicationImpl extends AbstractEntity implements Application {
 	private User workman;
 	private Testimonial testimonial;
 	private Date createTime;
+	private Timestamp lastUpdateTime;
 	
 	public AppStatus getStatus() {
 		return status;
@@ -81,6 +83,14 @@ public class ApplicationImpl extends AbstractEntity implements Application {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
+	
+	public Timestamp getLastUpdateTime() {
+		return lastUpdateTime;
+	}
+
+	public void setLastUpdateTime(Timestamp lastUpdateTime) {
+		this.lastUpdateTime = lastUpdateTime;		
+	}
 
 	@Override
 	public String toString() {
@@ -89,6 +99,4 @@ public class ApplicationImpl extends AbstractEntity implements Application {
 				+ ", testimonial=" + testimonial + ", creatTime=" + createTime + "]";
 	}
 	
-	
-
 }

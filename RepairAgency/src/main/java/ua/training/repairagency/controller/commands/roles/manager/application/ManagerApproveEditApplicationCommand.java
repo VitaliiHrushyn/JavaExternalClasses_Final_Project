@@ -7,6 +7,7 @@ import ua.training.repairagency.model.entities.application.AppStatus;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.entities.user.UserRole;
+import ua.training.repairagency.model.exceptions.OutOfDateException;
 import ua.training.repairagency.model.utils.ApplicationUtils;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.*;
@@ -50,6 +51,10 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 		
 		if (CommandUtils.isRequestContainsParam(request, STATUS)
 				&& checkEditingParameters(request, errorMessages)) {
+			
+			if (!application.getLastUpdateTime().toString().equals(request.getParameter(LAST_UPDATE))) {
+				throw new OutOfDateException(application.toString());
+			}
 			
 			application = serviceFactory
 						.createApplicationService()
