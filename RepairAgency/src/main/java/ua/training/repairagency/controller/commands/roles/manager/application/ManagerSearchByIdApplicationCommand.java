@@ -29,7 +29,7 @@ public class ManagerSearchByIdApplicationCommand extends AbstractShowListApplica
 
 	@Override
 	protected List<Application> getApplications(HttpServletRequest request) {
-		if (CommandUtils.isRequestContains(request, ID)) {
+		if (CommandUtils.isRequestContainsParam(request, ID)) {
 		return serviceFactory
 				.createApplicationService()
 				.getAllById(Integer.valueOf(request.getParameter(ID)));

@@ -31,6 +31,10 @@ public interface Message {
 
 	String USER_CREAT_SUCCESS = "message.create.user.success";
 
+	String ERROR_EMPTY_COMMENT = "error.app.empty.comment";
+	String ERROR_EMPTY_PRICE = "error.app.empty.price";
+	String ERROR_EMPTY_WORKMAN = "error.app.empty.workman";
+
 	
 	
 }

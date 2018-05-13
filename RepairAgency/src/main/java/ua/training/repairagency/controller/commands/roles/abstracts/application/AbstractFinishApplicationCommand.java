@@ -20,7 +20,7 @@ public abstract class AbstractFinishApplicationCommand extends AbstractCommand {
 	@Override
 	public String execute(HttpServletRequest request) {
 					
-		if (CommandUtils.isRequestContains(request, ID)) {
+		if (CommandUtils.isRequestContainsParam(request, ID)) {
 		
 			 Application application = serviceFactory
 					 					.createApplicationService()
