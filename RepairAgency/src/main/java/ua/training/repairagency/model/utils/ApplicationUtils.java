@@ -62,7 +62,7 @@ public class ApplicationUtils {
 			application.setManagerComment(managerComment);
 		}
 		if (notEmpty(price)) {
-			application.setPrice(BigDecimal.valueOf(Long.valueOf(price)));
+			application.setPrice(new BigDecimal((price)));
 		}
 		if (notEmpty(workmanId)) {
 			application.setWorkman(factory.createUserService().getById(Integer.valueOf(workmanId)));

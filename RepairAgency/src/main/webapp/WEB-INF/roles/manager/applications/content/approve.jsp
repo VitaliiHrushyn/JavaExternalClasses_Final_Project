@@ -34,9 +34,11 @@
 			<br>
 			<fmt:message key="application.label.description" />: ${application.description}
 			<br>
-			<fmt:message key="application.label.comment" />: <input type="text" name="comment" value="${application.managerComment}">
+			<fmt:message key="application.label.comment" />: <br>
+			<textarea name="comment">${application.managerComment}</textarea>
 			<br>		
-			<fmt:message key="application.label.price" />: <input type="number" name="price" value="${application.price}">
+			<fmt:message key="application.label.price" />: 
+			<input type="number" min="0.00" max="10000.00" step="0.01" name="price" value="${application.price}">
 			<br>
 			<fmt:message key="application.label.customer" />: id: ${application.customer.id} - ${application.customer.login} : ${application.customer.name} ${application.customer.surname}
 			<br>
