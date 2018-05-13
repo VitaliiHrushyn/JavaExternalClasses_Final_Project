@@ -120,7 +120,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		application.setCustomer(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_CUSTOMER_ID))));
 		application.setWorkman(ServiceFactory.getInstance().createUserService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_WORKMAN_ID))));
 		application.setTestimonial(ServiceFactory.getInstance().createTestimonialService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_TESTIMONIAL_ID))));
-		application.setCreateTime(rs.getDate(columnBundle.getString(Column.APPLICATION_CREATE_TIME)));
+		application.setCreateTime((rs.getTimestamp(columnBundle.getString(Column.APPLICATION_CREATE_TIME))).toLocalDateTime());
 		application.setLastUpdateTime(rs.getTimestamp(columnBundle.getString(Column.APPLICATION_LAST_UPDATE)));
 		
 		return application;
