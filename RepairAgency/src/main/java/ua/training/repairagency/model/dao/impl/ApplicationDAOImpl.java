@@ -142,5 +142,18 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		}				
 		return applications;
 	}
+
+	@Override
+	public int coutnRows() {
+		try(PreparedStatement statement = connection
+				.prepareStatement(queryBundle.getString(Query.APPLICATION_COUNT_ROWS))) {
+			ResultSet rs = statement.executeQuery();
+			rs.next() ;
+			return rs.getInt("total");			
+		} catch (SQLException e) {
+			//TODO handle exception
+			throw new RuntimeException(e);
+		}		
+	}	
 	
 }

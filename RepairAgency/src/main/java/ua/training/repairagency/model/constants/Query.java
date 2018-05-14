@@ -22,6 +22,7 @@ public interface Query {
 	String APPLICATION_GET_BY_CUSTOMER_ID_AND_STATUSES = "application.get.by.customer_id.and.statuses";
 	String APPLICATION_GET_BY_WORKMAN_ID_AND_STATUSES = "application.get.by.workman_id.and.statuses";
 	String APPLICATION_GET_BY_STATUS = "application.get.by.status";
+	String APPLICATION_COUNT_ROWS = "application.count.rows";
 	
 	/* history record queries */
 	String RECORD_GET_BY_ID = "record.get.by.id";
@@ -37,6 +38,7 @@ public interface Query {
 	String TESTIMONIAL_INSERT = "testimonial.insert";
 	String TESTIMONIAL_UPDATE = "testimonial.update";
 //	String TESTIMONIAL_GET_BY_LOGIN = "testimonial.get.by.login";		
+	
 	
 	
 	

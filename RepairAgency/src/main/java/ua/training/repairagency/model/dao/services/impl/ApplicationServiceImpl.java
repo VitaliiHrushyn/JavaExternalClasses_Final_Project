@@ -17,7 +17,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 	
 	@Override
 	public List<Application> getAll() {
-		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {		
+		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {
+			int totalRowsCount = dao.coutnRows();
+//			System.out.println("service rows: " + totalRowsCount);
 			return dao.getAll();
 		} catch (Exception e) {
 			throw new RuntimeException(e);

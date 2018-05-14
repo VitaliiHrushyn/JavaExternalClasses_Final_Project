@@ -8,4 +8,6 @@ public interface ApplicationDAO extends GenericDAO<Application> {
 	
 	List<Application> getAllByQuery(String query, String... values);
 
+	int coutnRows();
+
 }
