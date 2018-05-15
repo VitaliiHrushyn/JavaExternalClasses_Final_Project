@@ -30,7 +30,9 @@ public abstract class AbstractEditprofileCommand extends AbstractCommand {
 		errorMessages = new ArrayList<>();
 		infoMessages = new ArrayList<>();
 		
-		if (CommandUtils.isRequestContainsParam(request, NAME)) {	
+		if (isRequestParamsEmpty(request)) {
+			return getEditprofilePage();	
+		}
 			try {
 				User user = (User) request.getSession().getAttribute(USER);
 				
@@ -48,10 +50,14 @@ public abstract class AbstractEditprofileCommand extends AbstractCommand {
 			} catch (NotUniqueFieldValueException e) {
 				errorMessages.add(messageBundle.getString(CommandUtils.getFailMessageFromException(e)));
 			}
-		}
+		
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		request.setAttribute(INFO_MESSAGES, infoMessages);
 		return getEditprofilePage();	
+	}
+
+	private boolean isRequestParamsEmpty(HttpServletRequest request) {
+		return !CommandUtils.isRequestContainsParam(request, NAME);
 	}
 	
 	protected abstract String getEditprofilePage();
