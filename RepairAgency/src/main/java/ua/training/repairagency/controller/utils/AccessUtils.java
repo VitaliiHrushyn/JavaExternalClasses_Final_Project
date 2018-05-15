@@ -19,36 +19,47 @@ import ua.training.repairagency.model.entities.user.UserRole;
 
 public class AccessUtils {
 	
+	private static Map<String, HttpSession> loggedUsers;
+	
 	private static final Logger authLogger = Logger.getLogger(Command.class);
 	
 	@SuppressWarnings("unchecked")
 	private static void setUserAsLogged(HttpServletRequest request, User user) {
 		ServletContext context = request.getSession().getServletContext();
 		
-		Map<Integer, HttpSession> loggedUsers = 
+		/* 
+		 * Contains map with user login and session which this user is logged in
+		 */
+				loggedUsers = 
 				context.getAttribute(LOGGED_USERS) != null 
-				? (HashMap<Integer, HttpSession>) context.getAttribute(LOGGED_USERS)
-				: new HashMap<Integer, HttpSession>();
+				? (HashMap<String, HttpSession>) context.getAttribute(LOGGED_USERS)
+				: new HashMap<String, HttpSession>();
 
-		HttpSession previousSession = loggedUsers.put(user.getId(), request.getSession());
+		HttpSession previousSession = loggedUsers.put(user.getLogin(), request.getSession());
+		
 		authLogger.info("Login success: " + user 
 				+ " to session " + request.getSession().getId() + ";");
+		
 		if (previousSession != null && !previousSession.isNew()) { //TODO check this conditions !!!
 			previousSession.setAttribute(USER, null);
+			
 			authLogger.info("Double login protection - automatic logout of " 
 					+ request.getSession().getAttribute(USER) + " from session " + previousSession.getId() + ";");
 		}
+		
 		context.setAttribute(LOGGED_USERS, loggedUsers);		
 	}
 
 	@SuppressWarnings("unchecked")
 	public static void logoutUser(HttpSession session) {
+		
 		User user = ((User) session.getAttribute(USER));
 		ServletContext context = session.getServletContext();
-		Map<Integer, HttpSession> loggedUsers = (HashMap<Integer, HttpSession>) context.getAttribute(LOGGED_USERS);
-		loggedUsers.remove(user.getId());
+		loggedUsers = (HashMap<String, HttpSession>) context.getAttribute(LOGGED_USERS);
+		loggedUsers.remove(user.getLogin());
 		context.setAttribute(LOGGED_USERS, loggedUsers);
 		session.setAttribute(USER, null);
+		
 		authLogger.info("Logout of " + user + ";");
 	}
 	
