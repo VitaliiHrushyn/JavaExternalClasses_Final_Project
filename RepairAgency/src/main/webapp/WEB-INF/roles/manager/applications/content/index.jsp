@@ -14,7 +14,7 @@
 		<div>
 			<br>
 			<div>
-				<jsp:include page="sidemenu.jsp"></jsp:include>		
+				<jsp:include page="/WEB-INF/roles/${sessionScope.user.role.toString().toLowerCase()}/applications/sidemenu.jsp"></jsp:include>		
 			</div>		
 		</div>
 	</body>
