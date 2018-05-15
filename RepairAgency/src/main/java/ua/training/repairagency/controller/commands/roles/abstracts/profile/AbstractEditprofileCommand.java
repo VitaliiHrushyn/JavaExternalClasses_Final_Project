@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.constants.Message;
+import ua.training.repairagency.controller.utils.AccessUtils;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.user.User;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
@@ -35,10 +36,15 @@ public abstract class AbstractEditprofileCommand extends AbstractCommand {
 						.createUserService()
 						.getById(Integer.valueOf(request.getParameter(USER_ID)));
 				
+				String oldLogin = user.getLogin();
+				
 				user = serviceFactory
 						.createUserService()
 						.update(UserUtils.updateUserFeatures(user, request));
 				
+				String newLogin = user.getLogin();
+				
+				AccessUtils.changeLoginOfLoggedUser(request, oldLogin, newLogin);
 				request.getSession().setAttribute(USER, user);
 				infoMessages.add(messageBundle.getString(Message.UPDATE_USER_SUCCESS));
 			} catch (NotUniqueFieldValueException e) {
