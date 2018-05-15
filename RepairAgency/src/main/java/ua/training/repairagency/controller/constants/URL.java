@@ -36,19 +36,19 @@ public interface URL {
 	 * customer 
 	 */
 	String CUSTOMER_URL = "/WEB-INF/roles/customer/";
+	// /RepairAgency/src/main/webapp/WEB-INF/common/applications/one_app.jsp
 	
 	String CUSTOMER_PROFILE_PAGE = COMMON_URL + "profile/profile.jsp";
 	String CUSTOMER_EDITPROFILE_PAGE = COMMON_URL + "profile/editprofile.jsp";	
-//	String CUSTOMER_CHANGEPASSWORD_PAGE = CUSTOMER_URL + "profile/changepassword.jsp";
+	String CUSTOMER_APPLICATION_SHOW_PAGE = COMMON_URL + "applications/show_to_one.jsp";
+	String CUSTOMER_APPLICATION_ONE_PAGE = COMMON_URL + "applications/one_app.jsp";
+	String CUSTOMER_APPLICATION_RECEIVED_PAGE = COMMON_URL + "applications/show_to_approve.jsp";
+	String CUSTOMER_APPLICATION_DONE_PAGE = COMMON_URL + "applications/show_to_finish.jsp";
 	
-	String CUSTOMER_APPLICATION_INDEX_PAGE = CUSTOMER_URL + "applications/index.jsp";
-	String CUSTOMER_APPLICATION_CREATE_PAGE = CUSTOMER_URL + "applications/create.jsp";
-	String CUSTOMER_APPLICATION_SHOW_PAGE = CUSTOMER_URL + "applications/show.jsp";
-	String CUSTOMER_APPLICATION_ONE_PAGE = CUSTOMER_URL + "applications/one.jsp";
-	String CUSTOMER_APPLICATION_RECEIVED_PAGE = CUSTOMER_URL + "applications/received.jsp";
-	String CUSTOMER_APPLICATION_DONE_PAGE = CUSTOMER_URL + "applications/done.jsp";
-	String CUSTOMER_APPLICATION_APPROVE_PAGE = CUSTOMER_URL + "applications/approve.jsp";
-	String CUSTOMER_APPLICATION_FINISH_PAGE = CUSTOMER_URL + "applications/finishapp.jsp";
+	String CUSTOMER_APPLICATION_INDEX_PAGE = CUSTOMER_URL + "applications/customer_index_app.jsp";
+	String CUSTOMER_APPLICATION_CREATE_PAGE = CUSTOMER_URL + "applications/customer_create_app.jsp";
+	String CUSTOMER_APPLICATION_APPROVE_PAGE = CUSTOMER_URL + "applications/customer_approve_app.jsp";
+	String CUSTOMER_APPLICATION_FINISH_PAGE = CUSTOMER_URL + "applications/customer_finish_app.jsp";
 	
 	String CUSTOMER_MESSAGE_PAGE = CUSTOMER_URL + "messages/index.jsp";
 	
