@@ -25,7 +25,7 @@ public class CustomerShowReceivedApplicationCommand extends AbstractShowListAppl
 
 	@Override
 	protected String getApplicationPage() {
-		return URL.CUSTOMER_APPLICATION_RECEIVED_PAGE; 
+		return URL.COMMON_APPLICATION_RECEIVED_PAGE; 
 	}
 
 	@Override

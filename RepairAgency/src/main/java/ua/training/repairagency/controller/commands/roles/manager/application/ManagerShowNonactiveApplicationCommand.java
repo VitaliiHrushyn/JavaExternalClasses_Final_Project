@@ -23,7 +23,7 @@ public class ManagerShowNonactiveApplicationCommand extends AbstractShowListAppl
 
 	@Override
 	protected String getApplicationPage() {
-		return URL.MANAGER_APPLICATION_SHOW_PAGE; 
+		return URL.COMMON_APPLICATION_SHOW_PAGE; 
 	}
 
 	@Override

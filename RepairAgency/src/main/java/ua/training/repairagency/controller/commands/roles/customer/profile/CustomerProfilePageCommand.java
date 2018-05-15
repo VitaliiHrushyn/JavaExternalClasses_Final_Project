@@ -17,7 +17,7 @@ public class CustomerProfilePageCommand extends AbstractProfilePageCommand {
 
 	@Override
 	protected String getProfilePage() {
-		return URL.CUSTOMER_PROFILE_PAGE;
+		return URL.COMMON_PROFILE_PAGE;
 	}
 	
 }

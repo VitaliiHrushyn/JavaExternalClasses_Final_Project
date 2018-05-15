@@ -15,7 +15,7 @@
         
     	<jsp:include page="/WEB-INF/roles/manager/menu.jsp"></jsp:include>
     	
-    	<jsp:include page="content/new.jsp"></jsp:include>
+    	<jsp:include page="content/index.jsp"></jsp:include>
         
         <jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>
         

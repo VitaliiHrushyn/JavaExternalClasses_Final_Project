@@ -41,5 +41,8 @@
          	</span>  
         </div>
         <br>
+        <div>
+				<jsp:include page="/WEB-INF/roles/${sessionScope.user.role.toString().toLowerCase()}/applications/sidemenu.jsp"></jsp:include>		
+			</div>
     </body>
 </html>

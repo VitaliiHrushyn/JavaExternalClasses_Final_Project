@@ -17,7 +17,7 @@ public class ManagerEditprofileCommand extends AbstractEditprofileCommand {
 
 	@Override
 	protected String getEditprofilePage() {
-		return URL.MANAGER_EDITPROFILE_PAGE;
+		return URL.COMMON_EDITPROFILE_PAGE;
 	}		
 	
 }

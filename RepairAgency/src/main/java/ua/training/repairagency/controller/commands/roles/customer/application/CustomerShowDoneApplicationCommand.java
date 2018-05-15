@@ -25,7 +25,7 @@ public class CustomerShowDoneApplicationCommand extends AbstractShowListApplicat
 
 	@Override
 	protected String getApplicationPage() {
-		return URL.CUSTOMER_APPLICATION_DONE_PAGE; 
+		return URL.COMMON_APPLICATION_DONE_PAGE; 
 	}
 
 	@Override
