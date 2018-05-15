@@ -1,9 +1,5 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="locale/messages"/>
+<%@ include file="/WEB-INF/components/imports.jsp"%>
+
 <!DOCTYPE html>
 <html lang="${language}">
     <head>
@@ -15,7 +11,26 @@
         
     	<jsp:include page="/WEB-INF/roles/${sessionScope.user.role.toString().toLowerCase()}/menu.jsp"></jsp:include>
     	    	
-    	<jsp:include page="content/profile.jsp"></jsp:include>
+    	<div>
+		<br>
+		<div>
+			<jsp:include page="sidemenu/sidemenu.jsp"></jsp:include>
+		</div>
+		<br>		
+		<c:set var="user" value="${sessionScope.user}"/>
+		<fmt:message key="register.label.name" />: ${user.name}
+		<br>
+		<fmt:message key="register.label.surname" />: ${user.surname}
+		<br>
+		<fmt:message key="register.label.login" />: ${user.login}
+		<br>
+		<fmt:message key="register.label.role" />: ${user.role}
+		<br>		
+		<fmt:message key="register.label.email" />: ${user.email}
+		<br>
+		<fmt:message key="register.label.phone" />: ${user.phone}
+		<br>
+	</div>
         
         <jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>
         
