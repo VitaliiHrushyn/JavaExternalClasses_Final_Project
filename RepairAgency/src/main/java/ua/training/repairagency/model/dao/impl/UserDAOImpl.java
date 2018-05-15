@@ -26,7 +26,7 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	public User extractUser(ResultSet rs) throws SQLException {
 		User user = new UserImpl();
 		user.setId(rs.getInt(columnBundle.getString(Column.USER_ID)));
-		user.setRole(UserRole.valueOf((rs.getString(columnBundle.getString(Column.USER_ROLE))).toUpperCase()));
+		user.setRole(UserRole.valueOf(rs.getString(columnBundle.getString(Column.USER_ROLE))));
 		user.setName(rs.getString(columnBundle.getString(Column.USER_NAME)));
 		user.setSurname(rs.getString(columnBundle.getString(Column.USER_SURNAME)));
 		user.setLogin(rs.getString(columnBundle.getString(Column.USER_LOGIN)));
@@ -57,7 +57,7 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	public User create(User user) throws SQLException { 
 		try(PreparedStatement statement = 
 				connection.prepareStatement(queryBundle.getString(Query.USER_INSERT), Statement.RETURN_GENERATED_KEYS)) {
-			statement.setString(1, user.getRole().toString().toLowerCase());
+			statement.setString(1, user.getRole().toString());
 			statement.setString(2, user.getName());
 			statement.setString(3, user.getSurname());
 			statement.setString(4, user.getLogin());
