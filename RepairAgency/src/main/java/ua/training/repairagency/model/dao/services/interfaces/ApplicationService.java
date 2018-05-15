@@ -3,6 +3,7 @@ package ua.training.repairagency.model.dao.services.interfaces;
 import java.util.List;
 
 import ua.training.repairagency.model.entities.application.Application;
+import ua.training.repairagency.model.exceptions.OutOfDateDataException;
 
 public interface ApplicationService {
 		
@@ -18,7 +19,7 @@ public interface ApplicationService {
 
 	Application getById(int id);
 
-	Application update(Application application);
+	Application update(Application application) throws OutOfDateDataException;
 
 	List<Application> getAllByStatuses(String... values);
 

@@ -23,21 +23,19 @@ public abstract class AbstractApproveApplicationCommand extends AbstractCommand 
 		
 		errorMessages = new  ArrayList<String>();
 		
-		if (CommandUtils.isRequestContainsParam(request, ID)) {
-		
-			 Application application = serviceFactory
-					 					.createApplicationService()
-					 					.getById(Integer.valueOf(request.getParameter(ID)));
-			 
-			setSpecifiedAtribute(request); 
-			request.setAttribute(APPLICATION, application);	
-			page = getApplicationApprovePage();
-		} else {
-			page = getApplicationCommand();
+		if (!CommandUtils.isRequestContainsParam(request, ID)) {
+			return getApplicationCommand();
 		}
 		
+		Application application = serviceFactory
+					 			.createApplicationService()
+					 			.getById(Integer.valueOf(request.getParameter(ID)));
+			 
+		setSpecifiedAtribute(request); 
+		
+		request.setAttribute(APPLICATION, application);		
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
-		return page;
+		return getApplicationApprovePage();
 	}
 
 	protected abstract String getApplicationApprovePage();

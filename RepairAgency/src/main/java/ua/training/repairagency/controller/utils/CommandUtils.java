@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 
 import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.constants.*;
+import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.exceptions.NotUniqueFieldValueException;
 
 public class CommandUtils {
@@ -192,6 +193,12 @@ public class CommandUtils {
 		} else {
 			return true;
 		}		
+	}
+	
+	public static Application getApplicationFromRequest(HttpServletRequest request) {
+		Application application = (Application) request.getSession().getAttribute(APPLICATION);
+		request.getSession().removeAttribute(APPLICATION);
+		return application;
 	}
 
 }

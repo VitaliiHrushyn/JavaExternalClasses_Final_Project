@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import ua.training.repairagency.model.dao.services.ServiceFactory;
 import ua.training.repairagency.model.entities.application.AppStatus;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.application.ApplicationImpl;
+import ua.training.repairagency.model.exceptions.OutOfDateDataException;
 
 public class ApplicationDAOImpl extends AbstractDAO<Application> implements ApplicationDAO {
 
@@ -69,8 +71,11 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 	}
 	
 	@Override
-	public Application update(Application application) throws SQLException {
-		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.APPLICATION_UPDATE))) {
+	public Application update(Application application) throws OutOfDateDataException {
+			
+		try(PreparedStatement statement = connection
+				.prepareStatement(queryBundle.getString(Query.APPLICATION_UPDATE))) {
+						
 			statement.setString(1, application.getStatus().toString());
 			statement.setString(2, application.getDescription());
 			statement.setString(3, application.getManagerComment());
@@ -88,11 +93,23 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 			}
 			statement.setInt(8, application.getId());
 			
-			if (statement.executeUpdate() > 0) {
-				return application;
-			}
+			connection.setAutoCommit(false);
+			
+			Timestamp previouseUpdate = getById(application.getId()).getLastUpdateTime();
+			
+			if (previouseUpdate.equals(application.getLastUpdateTime())) {			
+				statement.executeUpdate();
+				connection.commit();
+				connection.setAutoCommit(true); // TODO check
+			} else {
+				connection.setAutoCommit(true); // TODO check
+				throw new OutOfDateDataException();
+			}			
+			
+		} catch (SQLException e) {
+				throw new RuntimeException(e);
 		}
-		return null;
+		return application;
 	}	
 
 	@Override

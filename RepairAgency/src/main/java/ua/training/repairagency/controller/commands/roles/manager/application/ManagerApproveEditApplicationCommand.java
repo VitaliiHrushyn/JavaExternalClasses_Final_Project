@@ -37,26 +37,26 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 		infoMessages = new ArrayList<String>();
 		errorMessages = new ArrayList<>();
 		
-		if (!CommandUtils.isRequestContainsParam(request, ID)) {
-			return URL.MANAGER_APPLICATION_NEW_COMMAND;
-		}	
-		
-		 Application application = serviceFactory
-							.createApplicationService()									
-							.getById(Integer.valueOf(request.getParameter(ID)));
+		Application application = CommandUtils.getApplicationFromRequest(request);
+		 
+		 if (application == null) {
+				return URL.MANAGER_APPLICATION_NEW_COMMAND;
+			}			
 		 
 		 List<User> workmen = serviceFactory
 	 				.createUserService()
 	 				.getAllByRole(UserRole.WORKMAN);
 		
-		if (CommandUtils.isRequestContainsParam(request, STATUS)
-				&& checkEditingParameters(request, errorMessages)) {
+		if (//CommandUtils.isRequestContainsParam(request, STATUS)
+				//&& 
+				checkEditingParameters(request, errorMessages)) {
 			
 			try {
-				checkDataActuality(application);
+		//		checkDataActuality(application);
 				application = serviceFactory
 							.createApplicationService()
 							.update(ApplicationUtils.updateApplicationFeatures(application, request));
+				
 				infoMessages.add(messageBundle.getString(Message.APPLICATION_UPDATE_SUCCESS));
 				
 			} catch (OutOfDateDataException e) {

@@ -22,8 +22,7 @@
 		<br>
 		<form method ="post" action="${pageContext.request.contextPath}/app/manager/applications/edit">
 			
-			<input type="hidden" name="id" value="${application.id}">
-			<input type="hidden" name="last_update" value="${application.lastUpdateTime}">
+			<c:set var="application" value="${application}" scope="session"/>
 			
 			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>

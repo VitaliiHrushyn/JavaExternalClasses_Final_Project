@@ -28,22 +28,22 @@ public abstract class AbstractCreateApplicationCommand extends AbstractCommand {
 		errorMessages = new ArrayList<>();
 		
 		if (CommandUtils.isRequestContainsParam(request, DESCRIPTION)) {
-			try {
-				serviceFactory
-				.createApplicationService()
-				.insert(ApplicationUtils.createNewApp(request)); 
-				
-				infoMessages.add(messageBundle.getString(Message.APPLICATION_CREATE_SUCCESS));
-				page = getApplicationIndexPage();
-			} catch (Exception e) {
-				e.printStackTrace();
-				errorMessages.add(messageBundle.getString(Message.APPLICATION_CREATE_FAIL));
-				page = getApplicationCreatePage();
-			} 
-		} else {
-			page = getApplicationCreatePage();
-		}		
+			return getApplicationCreatePage();
+		}
 		
+		try {
+			serviceFactory
+			.createApplicationService()
+			.insert(ApplicationUtils.createNewApp(request)); 
+				
+			infoMessages.add(messageBundle.getString(Message.APPLICATION_CREATE_SUCCESS));
+			page = getApplicationIndexPage();
+		} catch (Exception e) {
+			e.printStackTrace();
+			errorMessages.add(messageBundle.getString(Message.APPLICATION_CREATE_FAIL));
+			page = getApplicationCreatePage();
+		} 
+				
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		request.setAttribute(INFO_MESSAGES, infoMessages);		
 		return page;

@@ -33,11 +33,12 @@ public abstract class AbstractEditprofileCommand extends AbstractCommand {
 		if (isRequestParamsEmpty(request)) {
 			return getEditprofilePage();	
 		}
-			try {
+		
+		try {
 				User user = (User) request.getSession().getAttribute(USER);
-				
+					
 				String oldLogin = user.getLogin();
-				
+					
 				user = serviceFactory
 						.createUserService()
 						.update(UserUtils.updateUserFeatures(user, request));

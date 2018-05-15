@@ -9,6 +9,7 @@ import ua.training.repairagency.model.dao.DAOFactory;
 import ua.training.repairagency.model.dao.interfaces.ApplicationDAO;
 import ua.training.repairagency.model.dao.services.interfaces.ApplicationService;
 import ua.training.repairagency.model.entities.application.Application;
+import ua.training.repairagency.model.exceptions.OutOfDateDataException;
 
 public class ApplicationServiceImpl implements ApplicationService {
 	
@@ -65,12 +66,15 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public Application update(Application application) {
+	public Application update(Application application) throws OutOfDateDataException {
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {
 				return dao.update(application); 		
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			throw new RuntimeException(e);
+			if (e.getClass().equals(OutOfDateDataException.class)) {
+				throw new OutOfDateDataException(e);
+			} else {
+				throw new RuntimeException(e);
+			}
 		}		
 	}
 

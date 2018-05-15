@@ -22,8 +22,7 @@
 		<br>
 		<form method ="post" action="${pageContext.request.contextPath}/app/manager/applications/approve">
 			
-			<input type="hidden" name="id" value="${application.id}">
-			<input type="hidden" name="last_update" value="${application.lastUpdateTime}">
+			<c:set var="application" value="${application}" scope="session"/>
 			
 			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
 			<br>
