@@ -29,7 +29,7 @@ public interface URL {
 	String REGISTRATION = "registration";
 	String ERROR_404 = "404";
 	
-	
+	String COMMON_URL = "/WEB-INF/common/";
 
 	
 	/* 
@@ -37,9 +37,9 @@ public interface URL {
 	 */
 	String CUSTOMER_URL = "/WEB-INF/roles/customer/";
 	
-	String CUSTOMER_PROFILE_PAGE = CUSTOMER_URL + "profile/profile.jsp";
-	String CUSTOMER_EDITPROFILE_PAGE = CUSTOMER_URL + "profile/editprofile.jsp";	
-	String CUSTOMER_CHANGEPASSWORD_PAGE = CUSTOMER_URL + "profile/changepassword.jsp";
+	String CUSTOMER_PROFILE_PAGE = COMMON_URL + "profile/profile.jsp";
+	String CUSTOMER_EDITPROFILE_PAGE = COMMON_URL + "profile/editprofile.jsp";	
+//	String CUSTOMER_CHANGEPASSWORD_PAGE = CUSTOMER_URL + "profile/changepassword.jsp";
 	
 	String CUSTOMER_APPLICATION_INDEX_PAGE = CUSTOMER_URL + "applications/index.jsp";
 	String CUSTOMER_APPLICATION_CREATE_PAGE = CUSTOMER_URL + "applications/create.jsp";
@@ -85,9 +85,9 @@ public interface URL {
 	 */
 	String MANAGER_URL = "/WEB-INF/roles/manager/";
 	
-	String MANAGER_PROFILE_PAGE = MANAGER_URL + "profile/profile.jsp";
-	String MANAGER_EDITPROFILE_PAGE = MANAGER_URL + "profile/editprofile.jsp";	
-	String MANAGER_CHANGEPASSWORD_PAGE = MANAGER_URL + "profile/changepassword.jsp";
+	String MANAGER_PROFILE_PAGE = COMMON_URL + "profile/profile.jsp";
+	String MANAGER_EDITPROFILE_PAGE = COMMON_URL + "profile/editprofile.jsp";	
+//	String MANAGER_CHANGEPASSWORD_PAGE = MANAGER_URL + "profile/changepassword.jsp";
 	
 	String MANAGER_APPLICATION_INDEX_PAGE = MANAGER_URL + "applications/index.jsp";
 	String MANAGER_APPLICATION_CREATE_PAGE = MANAGER_URL + "applications/create.jsp";
@@ -153,9 +153,9 @@ public interface URL {
 	 */
 	String WORKMAN_URL = "/WEB-INF/roles/workman/";
 	
-	String WORKMAN_PROFILE_PAGE = WORKMAN_URL + "profile/profile.jsp";
-	String WORKMAN_EDITPROFILE_PAGE = WORKMAN_URL + "profile/editprofile.jsp";	
-	String WORKMAN_CHANGEPASSWORD_PAGE = WORKMAN_URL + "profile/changepassword.jsp";
+	String WORKMAN_PROFILE_PAGE = COMMON_URL + "profile/profile.jsp";
+	String WORKMAN_EDITPROFILE_PAGE = COMMON_URL + "profile/editprofile.jsp";	
+//	String WORKMAN_CHANGEPASSWORD_PAGE = WORKMAN_URL + "profile/changepassword.jsp";
 	
 	String WORKMAN_APPLICATION_INDEX_PAGE = WORKMAN_URL + "applications/index.jsp";
 	String WORKMAN_APPLICATION_CREATE_PAGE = WORKMAN_URL + "applications/create.jsp";

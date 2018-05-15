@@ -20,7 +20,7 @@
 		<c:set var="user" value="${sessionScope.user}"/>
 		<h3><fmt:message key="text.editprofile.user" />: ${user.name} </h3>
 		<br>
-		<form method ="post" action="${pageContext.request.contextPath}/app/${user.role.toLowerCase()}/profile/editprofile">
+		<form method ="post" action="${pageContext.request.contextPath}/app/${user.role.toString().toLowerCase()}/profile/editprofile">
 			
 			
 			
