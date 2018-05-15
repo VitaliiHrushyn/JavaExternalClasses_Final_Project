@@ -42,7 +42,7 @@ public interface URL {
 	String COMMON_EDITPROFILE_PAGE = COMMON_URL + "profile/editprofile.jsp";	
 	String COMMON_APPLICATION_SHOW_PAGE = COMMON_URL + "applications/show_to_one.jsp";
 	String COMMON_APPLICATION_ONE_PAGE = COMMON_URL + "applications/one_app.jsp";
-	String COMMON_APPLICATION_RECEIVED_PAGE = COMMON_URL + "applications/show_to_approve.jsp";
+	String COMMON_APPLICATION_NEED_TO_APPROVE_PAGE = COMMON_URL + "applications/show_to_approve.jsp";
 	String COMMON_APPLICATION_DONE_PAGE = COMMON_URL + "applications/show_to_finish.jsp";
 	
 	String CUSTOMER_APPLICATION_INDEX_PAGE = CUSTOMER_URL + "applications/customer_index_app.jsp";

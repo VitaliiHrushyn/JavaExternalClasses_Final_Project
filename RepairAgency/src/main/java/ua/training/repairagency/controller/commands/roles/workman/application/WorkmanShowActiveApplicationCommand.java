@@ -25,7 +25,7 @@ public class WorkmanShowActiveApplicationCommand extends AbstractShowListApplica
 
 	@Override
 	protected String getApplicationPage() {
-		return URL.WORKMAN_APPLICATION_DONE_PAGE; 
+		return URL.COMMON_APPLICATION_DONE_PAGE; 
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class WorkmanShowOneApplicationCommand extends AbstractShowOneApplication
 
 	@Override
 	protected String getApplicationOnePage() {
-		return URL.WORKMAN_APPLICATION_ONE_PAGE;
+		return URL.COMMON_APPLICATION_ONE_PAGE;
 	}
 
 	@Override
