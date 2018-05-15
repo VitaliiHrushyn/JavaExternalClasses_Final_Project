@@ -30,11 +30,9 @@ public abstract class AbstractEditprofileCommand extends AbstractCommand {
 		errorMessages = new ArrayList<>();
 		infoMessages = new ArrayList<>();
 		
-		if (CommandUtils.isRequestContainsParam(request, USER_ID)) {	
+		if (CommandUtils.isRequestContainsParam(request, NAME)) {	
 			try {
-				User user = serviceFactory
-						.createUserService()
-						.getById(Integer.valueOf(request.getParameter(USER_ID)));
+				User user = (User) request.getSession().getAttribute(USER);
 				
 				String oldLogin = user.getLogin();
 				

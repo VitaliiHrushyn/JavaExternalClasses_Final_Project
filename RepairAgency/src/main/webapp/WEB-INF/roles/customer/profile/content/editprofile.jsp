@@ -20,9 +20,9 @@
 		<c:set var="user" value="${sessionScope.user}"/>
 		<h3><fmt:message key="text.editprofile.user" />: ${user.name} </h3>
 		<br>
-		<form method ="post" action="${pageContext.request.contextPath}/app/customer/profile/editprofile">
+		<form method ="post" action="${pageContext.request.contextPath}/app/${user.role.toLowerCase()}/profile/editprofile">
 			
-			<input type="hidden" name="userid" value="${user.id}">
+			
 			
 			<fmt:message key="register.label.name" />: <input type="text" name="name" value="${user.name}">
 			<br>

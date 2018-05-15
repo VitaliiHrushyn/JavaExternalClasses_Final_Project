@@ -13,9 +13,9 @@
 <body>
 	<div align="center">
 			<br>
-			<a href = "${pageContext.request.contextPath}/app/customer/profile"><fmt:message key="text.menu.home" /></a>
+			<a href = "${pageContext.request.contextPath}/app/${sessionScope.user.role}/profile"><fmt:message key="text.menu.home" /></a>
 			|
-			<a href = "${pageContext.request.contextPath}/app/customer/profile/editprofile"><fmt:message key="text.menu.editprofile" /></a>
+			<a href = "${pageContext.request.contextPath}/app/${sessionScope.user.role.toString().toLowerCase()}/profile/editprofile"><fmt:message key="text.menu.editprofile" /></a>
 			<br>
 	</div>
 	
