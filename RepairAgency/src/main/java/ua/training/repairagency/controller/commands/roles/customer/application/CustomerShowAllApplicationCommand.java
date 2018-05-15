@@ -24,7 +24,7 @@ public class CustomerShowAllApplicationCommand extends AbstractShowListApplicati
 
 	@Override
 	protected String getApplicationPage() {
-		return URL.COMMON_APPLICATION_SHOW_PAGE; 
+		return URL.CUSTOMER_APPLICATION_SHOW_PAGE; 
 	}
 
 	@Override

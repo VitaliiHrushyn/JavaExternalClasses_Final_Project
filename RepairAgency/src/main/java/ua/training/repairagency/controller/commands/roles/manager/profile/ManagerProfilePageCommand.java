@@ -17,7 +17,7 @@ public class ManagerProfilePageCommand extends AbstractProfilePageCommand {
 
 	@Override
 	protected String getProfilePage() {
-		return URL.COMMON_PROFILE_PAGE;
+		return URL.MANAGER_PROFILE_PAGE;
 	}
 	
 }

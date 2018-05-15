@@ -17,7 +17,7 @@ public class CustomerShowOneApplicationCommand extends AbstractShowOneApplicatio
 
 	@Override
 	protected String getApplicationOnePage() {
-		return URL.COMMON_APPLICATION_ONE_PAGE;
+		return URL.CUSTOMER_APPLICATION_ONE_PAGE;
 	}
 
 	@Override

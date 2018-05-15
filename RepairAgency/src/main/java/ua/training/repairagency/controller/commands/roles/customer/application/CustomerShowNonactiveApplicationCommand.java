@@ -26,7 +26,7 @@ public class CustomerShowNonactiveApplicationCommand extends AbstractShowListApp
 
 	@Override
 	protected String getApplicationPage() {
-		return URL.COMMON_APPLICATION_SHOW_PAGE; 
+		return URL.CUSTOMER_APPLICATION_SHOW_PAGE; 
 	}
 
 	protected List<Application> getApplications(HttpServletRequest request) {

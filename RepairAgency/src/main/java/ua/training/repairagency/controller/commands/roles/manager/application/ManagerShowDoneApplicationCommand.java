@@ -23,7 +23,7 @@ public class ManagerShowDoneApplicationCommand extends AbstractShowListApplicati
 
 	@Override
 	protected String getApplicationPage() {
-		return URL.COMMON_APPLICATION_DONE_PAGE; 
+		return URL.MANAGER_APPLICATION_DONE_PAGE; 
 	}
 
 	@Override

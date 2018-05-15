@@ -23,7 +23,7 @@ public class ManagerShowNewApplicationCommand extends AbstractShowListApplicatio
 
 	@Override
 	protected String getApplicationPage() {
-		return URL.COMMON_APPLICATION_RECEIVED_PAGE; 
+		return URL.MANAGER_APPLICATION_NEW_PAGE; 
 	}
 
 	@Override

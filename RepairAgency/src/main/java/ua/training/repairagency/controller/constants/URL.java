@@ -38,12 +38,12 @@ public interface URL {
 	String CUSTOMER_URL = "/WEB-INF/roles/customer/";
 	// /RepairAgency/src/main/webapp/WEB-INF/common/applications/one_app.jsp
 	
-	String COMMON_PROFILE_PAGE = COMMON_URL + "profile/profile.jsp";
-	String COMMON_EDITPROFILE_PAGE = COMMON_URL + "profile/editprofile.jsp";	
-	String COMMON_APPLICATION_SHOW_PAGE = COMMON_URL + "applications/show_to_one.jsp";
-	String COMMON_APPLICATION_ONE_PAGE = COMMON_URL + "applications/one_app.jsp";
-	String COMMON_APPLICATION_RECEIVED_PAGE = COMMON_URL + "applications/show_to_approve.jsp";
-	String COMMON_APPLICATION_DONE_PAGE = COMMON_URL + "applications/show_to_finish.jsp";
+	String CUSTOMER_PROFILE_PAGE = COMMON_URL + "profile/profile.jsp";
+	String CUSTOMER_EDITPROFILE_PAGE = COMMON_URL + "profile/editprofile.jsp";	
+	String CUSTOMER_APPLICATION_SHOW_PAGE = COMMON_URL + "applications/show_to_one.jsp";
+	String CUSTOMER_APPLICATION_ONE_PAGE = COMMON_URL + "applications/one_app.jsp";
+	String CUSTOMER_APPLICATION_RECEIVED_PAGE = COMMON_URL + "applications/show_to_approve.jsp";
+	String CUSTOMER_APPLICATION_DONE_PAGE = COMMON_URL + "applications/show_to_finish.jsp";
 	
 	String CUSTOMER_APPLICATION_INDEX_PAGE = CUSTOMER_URL + "applications/customer_index_app.jsp";
 	String CUSTOMER_APPLICATION_CREATE_PAGE = CUSTOMER_URL + "applications/customer_create_app.jsp";
@@ -85,15 +85,16 @@ public interface URL {
 	 */
 	String MANAGER_URL = "/WEB-INF/roles/manager/";
 	
-//	String CCOMMON_PROFILE_PAGE = COMMON_URL + "profile/profile.jsp";
-//	String CCOMMON_EDITPROFILE_PAGE = COMMON_URL + "profile/editprofile.jsp";	
-//	String CCOMMON_APPLICATION_SHOW_PAGE = MANAGER_URL + "applications/show.jsp";
-	String MANAGER_APPLICATION_ONE_PAGE = MANAGER_URL + "applications/one.jsp";
-//	String CCOMMON_APPLICATION_RECEIVED_PAGE = MANAGER_URL + "applications/new.jsp";
-//	String CCOMMON_APPLICATION_DONE_PAGE = MANAGER_URL + "applications/done.jsp";
-
+	String MANAGER_PROFILE_PAGE = COMMON_URL + "profile/profile.jsp";
+	String MANAGER_EDITPROFILE_PAGE = COMMON_URL + "profile/editprofile.jsp";	
+//	String MANAGER_CHANGEPASSWORD_PAGE = MANAGER_URL + "profile/changepassword.jsp";
 	
 	String MANAGER_APPLICATION_INDEX_PAGE = MANAGER_URL + "applications/index.jsp";
+	String MANAGER_APPLICATION_CREATE_PAGE = MANAGER_URL + "applications/create.jsp";
+	String MANAGER_APPLICATION_SHOW_PAGE = MANAGER_URL + "applications/show.jsp";
+	String MANAGER_APPLICATION_ONE_PAGE = MANAGER_URL + "applications/one.jsp";
+	String MANAGER_APPLICATION_NEW_PAGE = MANAGER_URL + "applications/new.jsp";
+	String MANAGER_APPLICATION_DONE_PAGE = MANAGER_URL + "applications/done.jsp";
 	String MANAGER_APPLICATION_APPROVE_PAGE = MANAGER_URL + "applications/approve.jsp";
 	String MANAGER_APPLICATION_FINISH_PAGE = MANAGER_URL + "applications/finishapp.jsp";
 	
