@@ -27,7 +27,7 @@ public abstract class AbstractCreateApplicationCommand extends AbstractCommand {
 		infoMessages = new ArrayList<>();
 		errorMessages = new ArrayList<>();
 		
-		if (CommandUtils.isRequestContainsParam(request, DESCRIPTION)) {
+		if (!CommandUtils.isRequestContainsParam(request, DESCRIPTION)) {
 			return getApplicationCreatePage();
 		}
 		
