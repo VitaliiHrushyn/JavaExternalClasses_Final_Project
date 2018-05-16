@@ -37,4 +37,9 @@ public class ManagerSearchByIdApplicationCommand extends AbstractShowListApplica
 		return null;
 	}
 	
+	@Override
+	protected String getPath() {
+		return path;
+	}
+	
 }

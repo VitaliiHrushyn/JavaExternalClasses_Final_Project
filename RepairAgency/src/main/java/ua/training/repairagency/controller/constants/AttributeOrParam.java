@@ -59,5 +59,6 @@ public interface AttributeOrParam {
 	String FINISHED_APPLICATION = "FINISHED";
 	String PAGE_NUMBER = "page_number";
 	String NUMBER_OF_PAGES = "number_of_pages";
+	String PAGINATION_LINK = "pagination_link";
 	
 }

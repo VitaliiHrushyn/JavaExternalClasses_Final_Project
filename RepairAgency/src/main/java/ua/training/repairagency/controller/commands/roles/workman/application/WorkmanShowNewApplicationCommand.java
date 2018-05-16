@@ -36,4 +36,9 @@ public class WorkmanShowNewApplicationCommand extends AbstractShowListApplicatio
 				.getAllByWorkmanIdAndStatuses(String.valueOf(workmanId), APPROVED_APPLICATION, null, null);
 	}
 	
+	@Override
+	protected String getPath() {
+		return path;
+	}
+	
 }

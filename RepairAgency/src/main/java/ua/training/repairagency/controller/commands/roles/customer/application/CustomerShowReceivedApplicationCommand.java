@@ -36,4 +36,9 @@ public class CustomerShowReceivedApplicationCommand extends AbstractShowListAppl
 				.getAllByCustomerIdAndStatuses(String.valueOf(userId), RECEIVED_APPLICATION, null, null);
 	}
 	
+	@Override
+	protected String getPath() {
+		return path;
+	}
+	
 }

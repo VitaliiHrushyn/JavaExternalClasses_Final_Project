@@ -37,4 +37,9 @@ public class CustomerShowNonactiveApplicationCommand extends AbstractShowListApp
 				.getAllByCustomerIdAndStatuses(String.valueOf(userId), REJECTED_APPLICATION, FINISHED_APPLICATION, null);
 	}
 	
+	@Override
+	protected String getPath() {
+		return path;
+	}
+	
 }

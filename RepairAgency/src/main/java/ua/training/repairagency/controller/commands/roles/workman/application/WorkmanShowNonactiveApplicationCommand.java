@@ -35,5 +35,8 @@ public class WorkmanShowNonactiveApplicationCommand extends AbstractShowListAppl
 				.getAllByWorkmanIdAndStatuses(String.valueOf(workmanId), DONE_APPLICATION, FINISHED_APPLICATION, null);
 	}
 
-	
+	@Override
+	protected String getPath() {
+		return path;
+	}
 }

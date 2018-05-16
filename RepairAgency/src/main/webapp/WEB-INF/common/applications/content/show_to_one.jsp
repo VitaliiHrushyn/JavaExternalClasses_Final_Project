@@ -33,7 +33,7 @@
 				<c:set var="page" value="1" />
 				<c:set var="numberOfPages" value="${requestScope.number_of_pages}" />
 				<c:forEach begin="1" end="${numberOfPages}" >		
-					<a href = "${pageContext.request.contextPath}/app/${user.role.toString().toLowerCase()}/applications/all?page_number=${page}">${page}</a>
+					<a href = "${requestScope.pagination_link}${page}">${page}</a>
 					<c:set var="page" value="${page + 1 }"/>
 				</c:forEach>
 			</div>			

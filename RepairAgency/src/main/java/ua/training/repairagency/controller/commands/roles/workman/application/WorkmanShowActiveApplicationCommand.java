@@ -35,5 +35,10 @@ public class WorkmanShowActiveApplicationCommand extends AbstractShowListApplica
 				.createApplicationService()
 				.getAllByWorkmanIdAndStatuses(String.valueOf(workerId), EXECUTING_APPLICATION, null, null);
 	}
+	
+	@Override
+	protected String getPath() {
+		return path;
+	}
 
 }

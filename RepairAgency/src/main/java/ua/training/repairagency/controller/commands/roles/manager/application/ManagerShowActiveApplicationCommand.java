@@ -34,5 +34,10 @@ public class ManagerShowActiveApplicationCommand extends AbstractShowListApplica
 				.createApplicationService()
 				.getAllByStatuses(EXECUTING_APPLICATION, APPROVED_APPLICATION, RECEIVED_APPLICATION);
 	}
+	
+	@Override
+	protected String getPath() {
+		return path;
+	}
 
 }

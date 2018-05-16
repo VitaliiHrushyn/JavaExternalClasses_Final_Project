@@ -33,4 +33,9 @@ public class ManagerShowNewApplicationCommand extends AbstractShowListApplicatio
 				.getAllByStatuses(NEW_APPLICATION, null, null);
 	}
 	
+	@Override
+	protected String getPath() {
+		return path;
+	}
+	
 }

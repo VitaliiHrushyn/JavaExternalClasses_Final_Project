@@ -35,4 +35,9 @@ public class CustomerShowAllApplicationCommand extends AbstractShowListApplicati
 	
 	}
 	
+	@Override
+	protected String getPath() {
+		return path;
+	}
+	
 }

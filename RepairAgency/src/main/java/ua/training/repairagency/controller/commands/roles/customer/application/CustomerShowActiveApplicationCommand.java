@@ -38,5 +38,10 @@ public class CustomerShowActiveApplicationCommand extends AbstractShowListApplic
 				.createApplicationService()
 				.getAllByCustomerIdAndStatuses(String.valueOf(userId), NEW_APPLICATION, APPROVED_APPLICATION, EXECUTING_APPLICATION );
 	}
+	
+	@Override
+	protected String getPath() {
+		return path;
+	}
 
 }

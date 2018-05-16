@@ -32,6 +32,10 @@ public class ManagerShowNonactiveApplicationCommand extends AbstractShowListAppl
 				.createApplicationService()
 				.getAllByStatuses(DONE_APPLICATION, REJECTED_APPLICATION, FINISHED_APPLICATION);
 	}
-
 	
+	@Override
+	protected String getPath() {
+		return path;
+	}
+
 }

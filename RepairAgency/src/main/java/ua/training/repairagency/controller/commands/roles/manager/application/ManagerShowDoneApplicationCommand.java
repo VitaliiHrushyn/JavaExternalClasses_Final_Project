@@ -33,4 +33,9 @@ public class ManagerShowDoneApplicationCommand extends AbstractShowListApplicati
 				.getAllByStatuses(DONE_APPLICATION, null, null);
 	}
 	
+	@Override
+	protected String getPath() {
+		return path;
+	}
+	
 }

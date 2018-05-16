@@ -3,6 +3,7 @@ package ua.training.repairagency.controller.commands.roles.manager.application;
 import java.util.List;
 import java.util.Map;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.constants.URL;
@@ -32,6 +33,11 @@ public class ManagerShowAllApplicationCommand extends AbstractShowListApplicatio
 				.createApplicationService()
 				.getAll(pageNumber);
 	
+	}
+
+	@Override
+	protected String getPath() {
+		return path;
 	}
 	
 }
