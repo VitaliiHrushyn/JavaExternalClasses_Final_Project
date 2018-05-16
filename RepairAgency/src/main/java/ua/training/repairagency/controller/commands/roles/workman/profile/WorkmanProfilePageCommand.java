@@ -17,7 +17,7 @@ public class WorkmanProfilePageCommand extends AbstractProfilePageCommand {
 
 	@Override
 	protected String getProfilePage() {
-		return URL.WORKMAN_PROFILE_PAGE;
+		return URL.COMMON_PROFILE_PAGE;
 	}
 	
 }

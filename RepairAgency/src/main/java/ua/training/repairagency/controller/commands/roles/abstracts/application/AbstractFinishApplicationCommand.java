@@ -19,20 +19,17 @@ public abstract class AbstractFinishApplicationCommand extends AbstractCommand {
 
 	@Override
 	public String execute(HttpServletRequest request) {
-					
-		if (CommandUtils.isRequestContainsParam(request, ID)) {
+							
+		if (!CommandUtils.isRequestContainsParam(request, ID)) {
+			return getApplicationCommand();
+		}
 		
 			 Application application = serviceFactory
 					 					.createApplicationService()
 					 					.getById(Integer.valueOf(request.getParameter(ID)));
 			
 			request.setAttribute(APPLICATION, application);	
-			page = getApplicationFinishPage();
-		} else {
-			page = getApplicationCommand();
-		}
-		
-		return page;
+			return getApplicationFinishPage();
 	}
 
 	protected abstract String getApplicationFinishPage();

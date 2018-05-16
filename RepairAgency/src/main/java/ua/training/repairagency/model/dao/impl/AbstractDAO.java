@@ -28,6 +28,6 @@ public abstract class AbstractDAO<T extends Entity> implements GenericDAO<T> {
 			throw new RuntimeException(e);
 			//e.printStackTrace();
 		}		
-	}	
+	}
 
 }

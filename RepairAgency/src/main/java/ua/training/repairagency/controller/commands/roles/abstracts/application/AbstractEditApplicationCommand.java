@@ -29,27 +29,26 @@ public abstract class AbstractEditApplicationCommand extends AbstractCommand {
 		infoMessages = new ArrayList<String>();
 		errorMessages = new ArrayList<>();
 			
-		if (CommandUtils.isRequestContainsParam(request, ID)) {
-		
-			Application application = serviceFactory
-									.createApplicationService()
-									.getById(Integer.valueOf(request.getParameter(ID)));
-		
-			try {
-				application = serviceFactory
-						.createApplicationService()
-						.update(ApplicationUtils.updateApplicationFeatures(application, request));
-				infoMessages.add(messageBundle.getString(Message.APPLICATION_UPDATE_SUCCESS));
+		Application application = CommandUtils.getApplicationFromRequest(request);
+
+		if (application == null) {
+			return getApplicationCommand();
+		}
 				
-			} catch (OutOfDateDataException e) {
-//TODO add logging
-				e.printStackTrace();
-				errorMessages.add(messageBundle.getString(Message.APPLICATION_OUT_OF_DATE));
-			}			
+		try {
+			application = serviceFactory
+					.createApplicationService()
+					.update(ApplicationUtils.updateApplicationFeatures(application, request));
 			
-			request.setAttribute(APPLICATION, application);	
-		}		
-		
+			infoMessages.add(messageBundle.getString(Message.APPLICATION_UPDATE_SUCCESS));
+				
+		} catch (OutOfDateDataException e) {
+//TODO add logging
+			e.printStackTrace();
+			errorMessages.add(messageBundle.getString(Message.APPLICATION_OUT_OF_DATE));
+		}			
+			
+		request.setAttribute(APPLICATION, application);			
 		request.setAttribute(INFO_MESSAGES, infoMessages);
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		return getApplicationCommand();

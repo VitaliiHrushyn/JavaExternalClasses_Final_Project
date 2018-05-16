@@ -3,7 +3,6 @@ package ua.training.repairagency.model.entities.application;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import ua.training.repairagency.model.entities.AbstractEntity;
 import ua.training.repairagency.model.entities.testimonial.Testimonial;

@@ -17,7 +17,7 @@ public class CustomerEditprofileCommand extends AbstractEditprofileCommand {
 
 	@Override
 	protected String getEditprofilePage() {
-		return URL.CUSTOMER_EDITPROFILE_PAGE;
+		return URL.COMMON_EDITPROFILE_PAGE;
 	}		
 	
 }

@@ -14,7 +14,7 @@
 		<div>
 			<br>
 			<div>
-				<jsp:include page="sidemenu.jsp"></jsp:include>		
+				<jsp:include page="/WEB-INF/roles/${sessionScope.user.role.toString().toLowerCase()}/applications/sidemenu.jsp"></jsp:include>		
 			</div>
 		<br>						
 		<c:set var="application" value="${requestScope.application}"/>
@@ -22,11 +22,12 @@
 		<br>
 		<form method ="post" action="${pageContext.request.contextPath}/app/manager/applications/edit">
 			
-			<input type="hidden" name="id" value="${application.id}">
-			<input type="hidden" name="last_update" value="${application.lastUpdateTime}">
+			<c:set var="application" value="${application}" scope="session"/>
 			
-			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
+			<fmt:message key="application.label.create_time" />: ${application.createTime}
 			<br>
+			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
+			<br>			
 			<fmt:message key="application.label.status.change" />
 			<select name="status" >
 				<option value="${application.status}" selected><fmt:message key="application.label.status.${application.status}" /></option>			               
@@ -64,8 +65,7 @@
 			<fmt:message key="application.label.testimonial" />: ${application.testimonial.createTime}
 			<br>${application.testimonial.text}
 			<br>
-			<fmt:message key="application.label.create_time" />: ${application.createTime}
-			<br>
+			
 			<input type="submit" value="<fmt:message key="text.button.savechanges" />">
 		</form>
 		<br>

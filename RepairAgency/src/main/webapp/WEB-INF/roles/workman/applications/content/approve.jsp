@@ -14,7 +14,7 @@
 		<div>
 			<br>
 			<div>
-				<jsp:include page="sidemenu.jsp"></jsp:include>		
+				<jsp:include page="/WEB-INF/roles/${sessionScope.user.role.toString().toLowerCase()}/applications/sidemenu.jsp"></jsp:include>		
 			</div>
 		<br>						
 		<c:set var="application" value="${requestScope.application}"/>
@@ -22,9 +22,9 @@
 		<br>
 		<form method ="post" action="${pageContext.request.contextPath}/app/workman/applications/edit">
 			
-			<input type="hidden" name="id" value="${application.id}">
+			<c:set var="application" value="${application}" scope="session"/>
+			
 			<input type="hidden" name="status" value="EXECUTING">	
-			<input type="hidden" name="last_update" value="${application.lastUpdateTime}">
 			
 			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
 			<br>

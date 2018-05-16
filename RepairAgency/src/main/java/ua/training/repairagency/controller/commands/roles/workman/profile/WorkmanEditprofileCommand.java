@@ -17,7 +17,7 @@ public class WorkmanEditprofileCommand extends AbstractEditprofileCommand {
 
 	@Override
 	protected String getEditprofilePage() {
-		return URL.WORKMAN_EDITPROFILE_PAGE;
+		return URL.COMMON_EDITPROFILE_PAGE;
 	}		
 	
 }

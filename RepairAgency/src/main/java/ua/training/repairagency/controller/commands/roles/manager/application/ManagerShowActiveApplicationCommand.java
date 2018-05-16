@@ -1,6 +1,7 @@
 package ua.training.repairagency.controller.commands.roles.manager.application;
 
 import ua.training.repairagency.controller.constants.URL;
+import ua.training.repairagency.model.constants.Query;
 import ua.training.repairagency.model.entities.application.Application;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.APPROVED_APPLICATION;
@@ -25,14 +26,31 @@ public class ManagerShowActiveApplicationCommand extends AbstractShowListApplica
 
 	@Override
 	protected String getApplicationPage() {
-		return URL.MANAGER_APPLICATION_SHOW_PAGE; 
+		return URL.COMMON_APPLICATION_SHOW_PAGE; 
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		return serviceFactory
 				.createApplicationService()
-				.getAllByStatuses(EXECUTING_APPLICATION, APPROVED_APPLICATION, RECEIVED_APPLICATION);
+				.getAllByStatuses(   pageNumber
+								   , EXECUTING_APPLICATION
+								   , APPROVED_APPLICATION
+								   , RECEIVED_APPLICATION);
+	}
+	
+	@Override
+	protected String getPath() {
+		return path;
+	}
+	
+	@Override
+	protected int getNumberOfPages() {
+		return serviceFactory.createApplicationService()
+							.getNumberOfPagesByQuery(     Query.APPLICATION_COUNT_BY_STATUS
+														, EXECUTING_APPLICATION
+														, APPROVED_APPLICATION
+														, RECEIVED_APPLICATION);
 	}
 
 }

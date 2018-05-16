@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import ua.training.repairagency.model.dao.ConnectionPoolHolder;
 import ua.training.repairagency.model.dao.DAOFactory;
 import ua.training.repairagency.model.dao.interfaces.ApplicationDAO;
-import ua.training.repairagency.model.dao.interfaces.HistoryRecordDAO;
 import ua.training.repairagency.model.dao.interfaces.TestimonialDAO;
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
 
@@ -31,15 +30,11 @@ public class JDBCDAOFactory extends DAOFactory {
 
 	@Override
 	public ApplicationDAO createApplicationDAO() {
-		return new ApplicationDAOImpl(getConnection());
+		return new ApplicationDAOimpl(getConnection());
 	}
 	@Override
 	public TestimonialDAO createTestimonialDAO() {
 		return new TestimonialDAOImpl(getConnection());
-	}
-	@Override
-	public HistoryRecordDAO createHistoryRecordDAO() {
-		return new HistoryRecordDAOImpl(getConnection());
 	}
 
 }

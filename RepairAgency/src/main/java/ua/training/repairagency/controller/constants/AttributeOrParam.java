@@ -57,5 +57,8 @@ public interface AttributeOrParam {
 	String EXECUTING_APPLICATION = "EXECUTING";
 	String REJECTED_APPLICATION = "REJECTED";
 	String FINISHED_APPLICATION = "FINISHED";
+	String PAGE_NUMBER = "page_number";
+	String NUMBER_OF_PAGES = "number_of_pages";
+	String PAGINATION_LINK = "pagination_link";
 	
 }
