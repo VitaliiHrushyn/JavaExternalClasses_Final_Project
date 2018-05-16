@@ -1,6 +1,7 @@
 package ua.training.repairagency.controller.commands.roles.customer.application;
 
 import ua.training.repairagency.controller.constants.URL;
+import ua.training.repairagency.model.constants.Query;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.user.User;
 
@@ -20,6 +21,7 @@ import ua.training.repairagency.controller.commands.roles.abstracts.application.
 public class CustomerShowActiveApplicationCommand extends AbstractShowListApplicationCommand {
 
 	private static String path = URL.CUSTOMER_APPLICATIONS_ACTIVE_PATH;
+	private int customerId;
 
 	public CustomerShowActiveApplicationCommand(Map<String, Command> commands) {
 		super(path , commands);
@@ -32,12 +34,12 @@ public class CustomerShowActiveApplicationCommand extends AbstractShowListApplic
 
 	@Override
 	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
-		int userId = ((User)request.getSession().getAttribute(USER)).getId();
+		customerId = ((User)request.getSession().getAttribute(USER)).getId();
 		
 		return serviceFactory
 				.createApplicationService()
 				.getAllByCustomerIdAndStatuses(   pageNumber
-												, String.valueOf(userId)
+												, String.valueOf(customerId)
 												, NEW_APPLICATION
 												, APPROVED_APPLICATION
 												, EXECUTING_APPLICATION );
@@ -46,6 +48,16 @@ public class CustomerShowActiveApplicationCommand extends AbstractShowListApplic
 	@Override
 	protected String getPath() {
 		return path;
+	}
+
+	@Override
+	protected int getNumberOfPages() {
+		return serviceFactory.createApplicationService()
+							.getNumberOfPagesByQuery(     Query.APPLICATION_COUNT_BY_CUSTOMER_ID_AND_STATUSES
+														, String.valueOf(customerId)
+														, NEW_APPLICATION
+														, APPROVED_APPLICATION
+														, EXECUTING_APPLICATION);
 	}
 
 }

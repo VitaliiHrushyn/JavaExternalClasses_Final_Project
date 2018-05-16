@@ -6,6 +6,7 @@ import ua.training.repairagency.model.entities.application.Application;
 
 import static ua.training.repairagency.controller.constants.AttributeOrParam.ID;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,17 +30,23 @@ public class ManagerSearchByIdApplicationCommand extends AbstractShowListApplica
 
 	@Override
 	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
+		List<Application> applications = new ArrayList<>();
 		if (CommandUtils.isRequestContainsParam(request, ID)) {
-		return serviceFactory
-				.createApplicationService()
-				.getAllById(Integer.valueOf(request.getParameter(ID)));
+				applications.add(serviceFactory
+							.createApplicationService()
+							.getById(Integer.valueOf(request.getParameter(ID))));
 		}
-		return null;
+		return applications;
 	}
 	
 	@Override
 	protected String getPath() {
 		return path;
+	}
+
+	@Override
+	protected int getNumberOfPages() {
+		return 1;
 	}
 	
 }

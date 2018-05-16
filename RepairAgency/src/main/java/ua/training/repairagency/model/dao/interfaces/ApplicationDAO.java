@@ -6,8 +6,8 @@ import ua.training.repairagency.model.entities.application.Application;
 
 public interface ApplicationDAO extends GenericDAO<Application> {
 	
-	List<Application> getAllByQuery(String query, String... values);
+	List<Application> getAllByQueryWithLimitAndOffset(String query, String... values);
 
-	int coutnRows(String query);
+	int coutnRowsByQuery(String query, String... values);
 
 }

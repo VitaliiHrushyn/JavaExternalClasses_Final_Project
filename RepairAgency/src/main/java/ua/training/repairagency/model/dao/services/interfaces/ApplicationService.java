@@ -11,10 +11,6 @@ public interface ApplicationService {
 	
 	List<Application> getAllByUserId(int pageNumber, int userId);
 	
-	//List<Application> getByStatus(AppStatus atatus);
-	
-//	List<Application> getAllByUserIdAndStatuses(int userId, String... statuses);
-	
 	Application insert(Application application) throws Exception;
 
 	Application getById(int id);
@@ -25,11 +21,9 @@ public interface ApplicationService {
 
 	List<Application> getAllByCustomerIdAndStatuses(int pageNumber, String... values);
 
-	List<Application> getAllById(int id);
-
 	List<Application> getAllByWorkmanIdAndStatuses(int pageNumber, String... values);
 
-	int getNumberOfPages(String query);
+	int getNumberOfPagesByQuery(String query, String... values);
 
 
 }

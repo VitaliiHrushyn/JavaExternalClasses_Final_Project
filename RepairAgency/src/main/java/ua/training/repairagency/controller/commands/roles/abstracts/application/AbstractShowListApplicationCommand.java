@@ -29,9 +29,7 @@ public abstract class AbstractShowListApplicationCommand extends AbstractCommand
 					
 		request.setAttribute(PAGINATION_LINK, getPaginationLink(request));
 		request.setAttribute(APPLICATIONS, applications);
-		request.setAttribute(NUMBER_OF_PAGES, serviceFactory
-											.createApplicationService()
-											.getNumberOfPages(getNumberOfPagesQuery()));
+		request.setAttribute(NUMBER_OF_PAGES, getNumberOfPages());
 		
 		return getApplicationPage(); 
 	}
@@ -43,5 +41,5 @@ public abstract class AbstractShowListApplicationCommand extends AbstractCommand
 	protected abstract String getPath();
 	protected abstract String getApplicationPage();
 	protected abstract List<Application> getApplications(HttpServletRequest request, int pageNumber);
-	protected abstract String getNumberOfPagesQuery();
+	protected abstract int getNumberOfPages();
 }

@@ -9,13 +9,11 @@ import ua.training.repairagency.controller.commands.roles.customer.application.*
 import ua.training.repairagency.controller.commands.roles.customer.profile.*;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerApproveEditApplicationCommand;
-//import ua.training.repairagency.controller.commands.roles.manager.application.ManagerCreateApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerEditApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerFinishApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerSearchByIdApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowActiveApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowAllApplicationCommand;
-import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowDoneApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowNewApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowNonactiveApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowOneApplicationCommand;
@@ -36,7 +34,6 @@ import ua.training.repairagency.controller.commands.roles.workman.application.Wo
 import ua.training.repairagency.controller.commands.roles.workman.application.WorkmanShowOneApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.workman.profile.WorkmanEditprofileCommand;
 import ua.training.repairagency.controller.commands.roles.workman.profile.WorkmanProfilePageCommand;
-import ua.training.repairagency.controller.constants.URL;
 
 public class CommandsCreator {
 	
@@ -53,7 +50,7 @@ public class CommandsCreator {
 		new CustomerEditprofileCommand(commands);
 		new CustomerApplicationCommand(commands);
 		new CustomerCreateApplicationCommand(commands);
-		new CustomerShowAllApplicationCommand(commands);
+//		new CustomerShowAllApplicationCommand(commands);
 		new CustomerShowOneApplicationCommand(commands);
 		new CustomerShowDoneApplicationCommand(commands);
 		new CustomerFinishApplicationCommand(commands);
@@ -69,13 +66,10 @@ public class CommandsCreator {
 		new ManagerApplicationCommand(commands);
 		new ManagerShowAllApplicationCommand(commands);
 		new ManagerShowOneApplicationCommand(commands);
-//		new ManagerShowDoneApplicationCommand(commands);
 		new ManagerFinishApplicationCommand(commands);
 		new ManagerEditApplicationCommand(commands);
 		new ManagerApproveEditApplicationCommand(commands);
-//		commands.put(URL.MANAGER_APPLICATIONS_CURRENT_PATH, new ManagerShowDoneApplicationCommand());
 		new ManagerShowNewApplicationCommand(commands);
-//		new ManagerApproveApplicationCommand(commands);
 		new ManagerShowActiveApplicationCommand(commands);
 		new ManagerShowNonactiveApplicationCommand(commands);
 		new ManagerSearchByIdApplicationCommand(commands);
