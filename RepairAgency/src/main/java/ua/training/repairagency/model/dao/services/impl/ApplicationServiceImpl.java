@@ -16,12 +16,25 @@ public class ApplicationServiceImpl implements ApplicationService {
 	DAOFactory daoFactory = DAOFactory.getInstance();
 	ResourceBundle queryBundle = ResourceBundle.getBundle(Resource.DB_QUERIES);
 	
-	@Override
-	public List<Application> getAll() {
+	public int getNumberOfPages() {
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {
 			int totalRowsCount = dao.coutnRows();
 //			System.out.println("service rows: " + totalRowsCount);
-			return dao.getAll();
+			return (int) Math.ceil(totalRowsCount / (double) Query.ROWS_PER_PAGE);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	@Override
+	public List<Application> getAll(int pageNumber) {
+		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {
+			int totalRowsCount = dao.coutnRows();
+			int limit = Query.ROWS_PER_PAGE;
+			int offset = limit * (pageNumber - 1);
+			System.out.println("number of rows: " + totalRowsCount);
+			System.out.println("number of pages: " + getNumberOfPages());
+			return dao.getAll(limit, offset);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

@@ -125,7 +125,7 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	}
 	
 	@Override
-	public List<User> getAll() {
+	public List<User> getAll(int limit, int offset) { //TODO implement pagination
 		List<User> users = new ArrayList<>();
 		try(PreparedStatement statement = connection
 										.prepareStatement(queryBundle.getString(Query.USER_GET_ALL))) {

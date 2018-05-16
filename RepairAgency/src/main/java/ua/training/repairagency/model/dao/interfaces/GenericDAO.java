@@ -13,7 +13,7 @@ public interface GenericDAO<T> extends AutoCloseable {
 	
 	T getById(int id);
 	
-	List<T> getAll();
+	List<T> getAll(int limit, int offset);
 	
 	T delete(T entity);
 

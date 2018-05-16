@@ -28,7 +28,7 @@ public class ManagerShowAllApplicationCommand extends AbstractShowListApplicatio
 	protected List<Application> getApplications(HttpServletRequest request) {
 		return serviceFactory
 				.createApplicationService()
-				.getAll();
+				.getAll(1);
 	}
 	
 }

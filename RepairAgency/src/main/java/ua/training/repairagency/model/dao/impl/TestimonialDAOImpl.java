@@ -66,7 +66,7 @@ public class TestimonialDAOImpl extends AbstractDAO<Testimonial> implements Test
 	}
 
 	@Override
-	public List<Testimonial> getAll() {
+	public List<Testimonial> getAll(int limit, int offset) {
 		throw new RuntimeException();
 	}
 

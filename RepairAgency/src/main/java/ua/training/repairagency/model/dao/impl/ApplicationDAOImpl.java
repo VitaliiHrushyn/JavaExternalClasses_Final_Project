@@ -57,9 +57,11 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		return application;
 	}
 	
-	public List<Application> getAll() {
+	public List<Application> getAll(int limit, int offset) {
 		List<Application> applications = new ArrayList<>();
 		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.APPLICATION_GET_ALL))) {
+			statement.setInt(1, limit);
+			statement.setInt(2, offset);
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {
 				applications.add(extractApplication(rs));

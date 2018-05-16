@@ -7,7 +7,7 @@ import ua.training.repairagency.model.exceptions.OutOfDateDataException;
 
 public interface ApplicationService {
 		
-	List<Application> getAll();
+	List<Application> getAll(int pageNumber);
 	
 	List<Application> getAllByUserId(int userId);
 	
@@ -28,5 +28,6 @@ public interface ApplicationService {
 	List<Application> getAllById(int id);
 
 	List<Application> getAllByWorkmanIdAndStatuses(String... values);
+
 
 }

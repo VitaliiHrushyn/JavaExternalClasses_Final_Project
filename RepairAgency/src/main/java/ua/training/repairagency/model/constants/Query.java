@@ -38,6 +38,7 @@ public interface Query {
 	String TESTIMONIAL_INSERT = "testimonial.insert";
 	String TESTIMONIAL_UPDATE = "testimonial.update";
 //	String TESTIMONIAL_GET_BY_LOGIN = "testimonial.get.by.login";		
+	int ROWS_PER_PAGE = 5;
 	
 	
 	
