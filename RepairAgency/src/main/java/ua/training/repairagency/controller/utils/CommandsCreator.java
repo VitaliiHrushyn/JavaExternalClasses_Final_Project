@@ -15,7 +15,6 @@ import ua.training.repairagency.controller.commands.roles.manager.application.Ma
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerSearchByIdApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowActiveApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowAllApplicationCommand;
-import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowDoneApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowNewApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowNonactiveApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerShowOneApplicationCommand;
@@ -53,7 +52,7 @@ public class CommandsCreator {
 		new CustomerEditprofileCommand(commands);
 		new CustomerApplicationCommand(commands);
 		new CustomerCreateApplicationCommand(commands);
-		new CustomerShowAllApplicationCommand(commands);
+//		new CustomerShowAllApplicationCommand(commands);
 		new CustomerShowOneApplicationCommand(commands);
 		new CustomerShowDoneApplicationCommand(commands);
 		new CustomerFinishApplicationCommand(commands);
@@ -69,13 +68,10 @@ public class CommandsCreator {
 		new ManagerApplicationCommand(commands);
 		new ManagerShowAllApplicationCommand(commands);
 		new ManagerShowOneApplicationCommand(commands);
-//		new ManagerShowDoneApplicationCommand(commands);
 		new ManagerFinishApplicationCommand(commands);
 		new ManagerEditApplicationCommand(commands);
 		new ManagerApproveEditApplicationCommand(commands);
-//		commands.put(URL.MANAGER_APPLICATIONS_CURRENT_PATH, new ManagerShowDoneApplicationCommand());
 		new ManagerShowNewApplicationCommand(commands);
-//		new ManagerApproveApplicationCommand(commands);
 		new ManagerShowActiveApplicationCommand(commands);
 		new ManagerShowNonactiveApplicationCommand(commands);
 		new ManagerSearchByIdApplicationCommand(commands);
