@@ -25,7 +25,10 @@ public abstract class AbstractShowListApplicationCommand extends AbstractCommand
 		List<Application> applications = new ArrayList<>();
 		applications = getApplications(request);
 					
-		request.setAttribute(APPLICATIONS, applications);				
+		request.setAttribute(APPLICATIONS, applications);
+		request.setAttribute(NUMBER_OF_PAGES, serviceFactory
+											.createApplicationService()
+											.getNumberOfPages());
 		return getApplicationPage(); 
 	}
 	

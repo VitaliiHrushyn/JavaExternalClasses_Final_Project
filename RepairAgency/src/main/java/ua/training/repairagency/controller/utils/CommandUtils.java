@@ -200,5 +200,14 @@ public class CommandUtils {
 		request.getSession().removeAttribute(APPLICATION);
 		return application;
 	}
+	
+	public static int getNumberOfPagesFromRequest(HttpServletRequest request) {
+		if (CommandUtils.isRequestContainsParam(request, PAGE_NUMBER)
+				&& request.getParameter(PAGE_NUMBER).matches(RegEx.PAGE_NUMBER)) {
+			return Integer.valueOf(request.getParameter(PAGE_NUMBER));
+		} else{
+			return 1;			
+		}
+	}
 
 }

@@ -17,7 +17,8 @@
 					<jsp:include page="/WEB-INF/roles/${sessionScope.user.role.toString().toLowerCase()}/applications/sidemenu.jsp"></jsp:include>	
 			</div>
 			<br>
-			<c:forEach var="application" items="${requestScope.applications}">
+			<div>
+				<c:forEach var="application" items="${requestScope.applications}">
 					<form method ="post" action="${pageContext.request.contextPath}/app/${user.role.toString().toLowerCase()}/applications/one">
 						<p>
 							<input type="hidden" name="id" value="${application.id}">					
@@ -25,8 +26,17 @@
 							<input type="submit" value="<fmt:message key="text.button.show" />">
 						</p>
 					</form>
-				</c:forEach>	
-			<br>		
+				</c:forEach>
+			</div>	
+			<br>
+			<div>Pages: 
+				<c:set var="page" value="1" />
+				<c:set var="numberOfPages" value="${requestScope.number_of_pages}" />
+				<c:forEach begin="1" end="${numberOfPages}" >		
+					<a href = "${pageContext.request.contextPath}/app/${user.role.toString().toLowerCase()}/applications/all?page_number=${page}">${page}</a>
+					<c:set var="page" value="${page + 1 }"/>
+				</c:forEach>
+			</div>			
 		</div>
 	</body>
 </html>

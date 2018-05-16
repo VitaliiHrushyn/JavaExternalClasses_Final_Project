@@ -29,5 +29,7 @@ public interface ApplicationService {
 
 	List<Application> getAllByWorkmanIdAndStatuses(String... values);
 
+	int getNumberOfPages();
+
 
 }
