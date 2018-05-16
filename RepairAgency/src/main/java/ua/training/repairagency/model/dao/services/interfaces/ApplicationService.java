@@ -25,7 +25,7 @@ public interface ApplicationService {
 
 	List<Application> getAllByCustomerIdAndStatuses(int pageNumber, String... values);
 
-	List<Application> getAllById(int id);
+//	List<Application> getAllById(int id);
 
 	List<Application> getAllByWorkmanIdAndStatuses(int pageNumber, String... values);
 

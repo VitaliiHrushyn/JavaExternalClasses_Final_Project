@@ -103,15 +103,15 @@ public class ApplicationServiceImpl implements ApplicationService {
 		}
 	}
 
-	@Override
-	public List<Application> getAllById(int id) {
-		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {		
-			return dao.getAllByQuery(
-					queryBundle.getString(Query.APPLICATION_GET_BY_ID), String.valueOf(id));				
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
+//	@Override
+//	public List<Application> getAllById(int id) {
+//		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {		
+//			return dao.getAllByQuery(
+//					queryBundle.getString(Query.APPLICATION_GET_BY_ID), String.valueOf(id));				
+//		} catch (Exception e) {
+//			throw new RuntimeException(e);
+//		}
+//	}
 
 	@Override
 	public List<Application> getAllByWorkmanIdAndStatuses(int pageNumber, String... statuses) {
