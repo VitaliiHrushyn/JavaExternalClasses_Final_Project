@@ -149,14 +149,7 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 	public List<Application> getAllByQuery(String query, String... values) {
 		List <Application> applications = new ArrayList<>();
 		try(PreparedStatement statement = connection.prepareStatement(query)) {
-			for (int i = 0; i < values.length - 2; i++) {
-				statement.setString(i+1, values[i]);
-			}
-			for (int i = values.length - 2; i < values.length; i++) {
-				statement.setInt(i+1, Integer.valueOf(values[i]));
-			}
-			System.out.println("statement :" + statement.toString());
-			System.out.println("params :" + values.toString());
+			fillStatement(statement, values);
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {
 				applications.add(extractApplication(rs));	
@@ -167,10 +160,19 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		return applications;
 	}
 
+	public void fillStatement(PreparedStatement statement, String... values) throws SQLException {
+		for (int i = 0; i < values.length - 2; i++) {
+			statement.setString(i+1, values[i]);
+		}
+		for (int i = values.length - 2; i < values.length; i++) {
+			statement.setInt(i+1, Integer.valueOf(values[i]));
+		}
+	}
+
 	@Override
-	public int coutnRows() {
+	public int coutnRows(String query) {
 		try(PreparedStatement statement = connection
-				.prepareStatement(queryBundle.getString(Query.APPLICATION_COUNT_ROWS))) {
+										.prepareStatement(queryBundle.getString(query))) {
 			ResultSet rs = statement.executeQuery();
 			rs.next() ;
 			return rs.getInt("total");			

@@ -17,9 +17,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 	ResourceBundle queryBundle = ResourceBundle.getBundle(Resource.DB_QUERIES);
 	
 	@Override
-	public int getNumberOfPages() {
+	public int getNumberOfPages(String query) {
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {
-			int totalRowsCount = dao.coutnRows();
+			int totalRowsCount = dao.coutnRows(query);
 			return (int) Math.ceil(totalRowsCount / (double) Query.ROWS_PER_PAGE);
 		} catch (Exception e) {
 			throw new RuntimeException(e);

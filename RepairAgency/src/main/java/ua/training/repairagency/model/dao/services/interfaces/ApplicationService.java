@@ -29,7 +29,7 @@ public interface ApplicationService {
 
 	List<Application> getAllByWorkmanIdAndStatuses(int pageNumber, String... values);
 
-	int getNumberOfPages();
+	int getNumberOfPages(String query);
 
 
 }
