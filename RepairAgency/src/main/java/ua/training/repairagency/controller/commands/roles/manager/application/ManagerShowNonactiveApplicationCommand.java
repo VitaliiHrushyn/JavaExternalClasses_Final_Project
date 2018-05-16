@@ -27,10 +27,13 @@ public class ManagerShowNonactiveApplicationCommand extends AbstractShowListAppl
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		return serviceFactory
 				.createApplicationService()
-				.getAllByStatuses(DONE_APPLICATION, REJECTED_APPLICATION, FINISHED_APPLICATION);
+				.getAllByStatuses(    pageNumber
+									, DONE_APPLICATION
+									, REJECTED_APPLICATION
+									, FINISHED_APPLICATION);
 	}
 	
 	@Override

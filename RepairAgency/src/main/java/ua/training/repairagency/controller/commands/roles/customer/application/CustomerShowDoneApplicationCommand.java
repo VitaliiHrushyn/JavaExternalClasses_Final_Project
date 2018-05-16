@@ -29,12 +29,16 @@ public class CustomerShowDoneApplicationCommand extends AbstractShowListApplicat
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		int userId = ((User)request.getSession().getAttribute(USER)).getId();
 		
 		return serviceFactory
 		.createApplicationService()
-		.getAllByCustomerIdAndStatuses(String.valueOf(userId), DONE_APPLICATION, null, null);
+		.getAllByCustomerIdAndStatuses(   pageNumber
+										, String.valueOf(userId)
+										, DONE_APPLICATION
+										, null
+										, null);
 	}
 	
 	@Override

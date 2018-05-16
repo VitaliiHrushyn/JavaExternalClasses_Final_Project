@@ -9,7 +9,7 @@ public interface ApplicationService {
 		
 	List<Application> getAll(int pageNumber);
 	
-	List<Application> getAllByUserId(int userId);
+	List<Application> getAllByUserId(int pageNumber, int userId);
 	
 	//List<Application> getByStatus(AppStatus atatus);
 	
@@ -21,13 +21,13 @@ public interface ApplicationService {
 
 	Application update(Application application) throws OutOfDateDataException;
 
-	List<Application> getAllByStatuses(String... values);
+	List<Application> getAllByStatuses(int pageNumber, String... values);
 
-	List<Application> getAllByCustomerIdAndStatuses(String... values);
+	List<Application> getAllByCustomerIdAndStatuses(int pageNumber, String... values);
 
 	List<Application> getAllById(int id);
 
-	List<Application> getAllByWorkmanIdAndStatuses(String... values);
+	List<Application> getAllByWorkmanIdAndStatuses(int pageNumber, String... values);
 
 	int getNumberOfPages();
 

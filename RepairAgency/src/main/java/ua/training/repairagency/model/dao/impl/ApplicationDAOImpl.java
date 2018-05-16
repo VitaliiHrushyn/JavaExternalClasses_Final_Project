@@ -149,9 +149,14 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 	public List<Application> getAllByQuery(String query, String... values) {
 		List <Application> applications = new ArrayList<>();
 		try(PreparedStatement statement = connection.prepareStatement(query)) {
-			for (int i = 0; i < values.length; i++) {
+			for (int i = 0; i < values.length - 2; i++) {
 				statement.setString(i+1, values[i]);
-			}	
+			}
+			for (int i = values.length - 2; i < values.length; i++) {
+				statement.setInt(i+1, Integer.valueOf(values[i]));
+			}
+			System.out.println("statement :" + statement.toString());
+			System.out.println("params :" + values.toString());
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {
 				applications.add(extractApplication(rs));	

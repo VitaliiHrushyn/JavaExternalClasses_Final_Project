@@ -26,9 +26,16 @@
 							<input type="submit" value="<fmt:message key="text.button.show" />">
 						</p>
 					</form>
+				</c:forEach>				
+			<br>
+			<div>Pages: 
+				<c:set var="page" value="1" />
+				<c:set var="numberOfPages" value="${requestScope.number_of_pages}" />
+				<c:forEach begin="1" end="${numberOfPages}" >		
+					<a href = "${requestScope.pagination_link}${page}">${page}</a>
+					<c:set var="page" value="${page + 1 }"/>
 				</c:forEach>
-				
-			<br>		
+			</div>			
 		</div>
 	</body>
 </html>

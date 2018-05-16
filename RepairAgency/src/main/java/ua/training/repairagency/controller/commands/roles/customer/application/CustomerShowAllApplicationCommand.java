@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractShowListApplicationCommand;
-
+@Deprecated
 public class CustomerShowAllApplicationCommand extends AbstractShowListApplicationCommand {
 
 	private static String path = URL.CUSTOMER_APPLICATIONS_ALL_PATH;
@@ -28,10 +28,10 @@ public class CustomerShowAllApplicationCommand extends AbstractShowListApplicati
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		return serviceFactory
 				.createApplicationService()
-				.getAllByUserId( ((User)request.getSession().getAttribute(USER)).getId() );
+				.getAllByUserId(pageNumber, ((User)request.getSession().getAttribute(USER)).getId() );
 	
 	}
 	

@@ -201,7 +201,7 @@ public class CommandUtils {
 		return application;
 	}
 	
-	public static int getNumberOfPagesFromRequest(HttpServletRequest request) {
+	public static int getPageNumberFromRequest(HttpServletRequest request) {
 		if (CommandUtils.isRequestContainsParam(request, PAGE_NUMBER)
 				&& request.getParameter(PAGE_NUMBER).matches(RegEx.PAGE_NUMBER)) {
 			return Integer.valueOf(request.getParameter(PAGE_NUMBER));

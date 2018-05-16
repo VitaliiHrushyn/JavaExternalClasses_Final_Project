@@ -20,7 +20,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 	public int getNumberOfPages() {
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {
 			int totalRowsCount = dao.coutnRows();
-//			System.out.println("service rows: " + totalRowsCount);
 			return (int) Math.ceil(totalRowsCount / (double) Query.ROWS_PER_PAGE);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -30,7 +29,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Override
 	public List<Application> getAll(int pageNumber) {
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {
-//			int totalRowsCount = dao.coutnRows();
 			int limit = Query.ROWS_PER_PAGE;
 			int offset = limit * (pageNumber - 1);
 			return dao.getAll(limit, offset);
@@ -40,17 +38,20 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public List<Application> getAllByUserId(int userId) {
+	public List<Application> getAllByUserId(int pageNumber, int userId) {
+		String[] values = getQueryValuesArray(pageNumber, String.valueOf(userId));
+//		String[] values = {String.valueOf(userId), String.valueOf(limit), String.valueOf(offset)};
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {		
 			return dao.getAllByQuery(
-					queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID), String.valueOf(userId));				
+					queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID), values);				
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 	@Override
-	public List<Application> getAllByStatuses(String... values) {
+	public List<Application> getAllByStatuses(int pageNumber, String... statuses) {
+		String[] values = getQueryValuesArray(pageNumber, statuses);
 		String query = queryBundle.getString(Query.APPLICATION_GET_BY_STATUS);
 	//	String[] values = getQueryValuesArray(3, statuses);
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {			
@@ -91,9 +92,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public List<Application> getAllByCustomerIdAndStatuses(String... values) {
-		
-	//	String[] values = getQueryValuesArray(4, statuses);
+	public List<Application> getAllByCustomerIdAndStatuses(int pageNumber, String... statuses) {
+		String[] values = getQueryValuesArray(pageNumber, statuses);
 		String query = queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID_AND_STATUSES);
 		
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {			
@@ -114,9 +114,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public List<Application> getAllByWorkmanIdAndStatuses(String... values) {
-		String query = queryBundle.getString(Query.APPLICATION_GET_BY_WORKMAN_ID_AND_STATUSES);
-		
+	public List<Application> getAllByWorkmanIdAndStatuses(int pageNumber, String... statuses) {
+		String query = queryBundle.getString(Query.APPLICATION_GET_BY_WORKMAN_ID_AND_STATUSES);		
+		String[] values = getQueryValuesArray(pageNumber, statuses);
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {			
 			return dao.getAllByQuery(query, values);				
 		} catch (Exception e) {
@@ -125,13 +125,16 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	
-//	private String[] getQueryValuesArray(String... statuses) {
-//		String[] values = new String[quantity];
-//	//	values[0] = String.valueOf(userId);
-//		for (int i = 0; i < statuses.length; i++) {
-//			values[i+1] = statuses[i];
-//		}
-//		return values;
-//	}
+	private String[] getQueryValuesArray(int pageNumber, String... statuses) {
+		String[] values = new String[statuses.length + 2];
+		for (int i = 0; i < statuses.length; i++) {
+			values[i] = statuses[i];
+		}
+		int limit = Query.ROWS_PER_PAGE;
+		int offset = limit * (pageNumber - 1);
+		values[values.length-2] = String.valueOf(limit);
+		values[values.length-1] = String.valueOf(offset);
+		return values;
+	}
 
 }

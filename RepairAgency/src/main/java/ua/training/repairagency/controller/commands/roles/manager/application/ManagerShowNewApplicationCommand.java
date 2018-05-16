@@ -27,10 +27,13 @@ public class ManagerShowNewApplicationCommand extends AbstractShowListApplicatio
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		return serviceFactory
 				.createApplicationService()
-				.getAllByStatuses(NEW_APPLICATION, null, null);
+				.getAllByStatuses(    pageNumber
+									, NEW_APPLICATION
+									, null
+									, null);
 	}
 	
 	@Override

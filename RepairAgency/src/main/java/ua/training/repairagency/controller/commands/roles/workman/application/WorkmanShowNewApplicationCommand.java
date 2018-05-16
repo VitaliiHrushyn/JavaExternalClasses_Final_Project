@@ -29,11 +29,15 @@ public class WorkmanShowNewApplicationCommand extends AbstractShowListApplicatio
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		int workmanId = ((User)request.getSession().getAttribute(USER)).getId();
 		return serviceFactory
 				.createApplicationService()
-				.getAllByWorkmanIdAndStatuses(String.valueOf(workmanId), APPROVED_APPLICATION, null, null);
+				.getAllByWorkmanIdAndStatuses(    pageNumber
+												, String.valueOf(workmanId)
+												, APPROVED_APPLICATION
+												, null
+												, null);
 	}
 	
 	@Override

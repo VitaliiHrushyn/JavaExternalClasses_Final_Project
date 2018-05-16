@@ -29,12 +29,16 @@ public class CustomerShowNonactiveApplicationCommand extends AbstractShowListApp
 		return URL.COMMON_APPLICATION_SHOW_PAGE; 
 	}
 
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		int userId = ((User)request.getSession().getAttribute(USER)).getId();
 		
 		return serviceFactory
 				.createApplicationService()
-				.getAllByCustomerIdAndStatuses(String.valueOf(userId), REJECTED_APPLICATION, FINISHED_APPLICATION, null);
+				.getAllByCustomerIdAndStatuses(   pageNumber
+												, String.valueOf(userId)
+												, REJECTED_APPLICATION
+												, FINISHED_APPLICATION
+												, null);
 	}
 	
 	@Override

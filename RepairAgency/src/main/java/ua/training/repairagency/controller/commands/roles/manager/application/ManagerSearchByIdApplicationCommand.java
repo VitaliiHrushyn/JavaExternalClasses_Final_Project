@@ -28,7 +28,7 @@ public class ManagerSearchByIdApplicationCommand extends AbstractShowListApplica
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		if (CommandUtils.isRequestContainsParam(request, ID)) {
 		return serviceFactory
 				.createApplicationService()

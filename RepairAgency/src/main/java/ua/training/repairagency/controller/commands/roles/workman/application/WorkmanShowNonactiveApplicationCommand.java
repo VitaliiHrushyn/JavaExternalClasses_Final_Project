@@ -28,11 +28,15 @@ public class WorkmanShowNonactiveApplicationCommand extends AbstractShowListAppl
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		int workmanId = ((User)request.getSession().getAttribute(USER)).getId();
 		return serviceFactory
 				.createApplicationService()
-				.getAllByWorkmanIdAndStatuses(String.valueOf(workmanId), DONE_APPLICATION, FINISHED_APPLICATION, null);
+				.getAllByWorkmanIdAndStatuses(    pageNumber
+												, String.valueOf(workmanId)
+												, DONE_APPLICATION
+												, FINISHED_APPLICATION
+												, null);
 	}
 
 	@Override

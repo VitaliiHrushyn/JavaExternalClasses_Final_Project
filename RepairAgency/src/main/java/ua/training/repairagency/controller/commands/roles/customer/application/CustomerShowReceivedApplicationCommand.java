@@ -29,11 +29,15 @@ public class CustomerShowReceivedApplicationCommand extends AbstractShowListAppl
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		int userId = ((User)request.getSession().getAttribute(USER)).getId();
 		return serviceFactory
 				.createApplicationService()
-				.getAllByCustomerIdAndStatuses(String.valueOf(userId), RECEIVED_APPLICATION, null, null);
+				.getAllByCustomerIdAndStatuses(   pageNumber
+												, String.valueOf(userId)
+												, RECEIVED_APPLICATION
+												, null
+												, null);
 	}
 	
 	@Override

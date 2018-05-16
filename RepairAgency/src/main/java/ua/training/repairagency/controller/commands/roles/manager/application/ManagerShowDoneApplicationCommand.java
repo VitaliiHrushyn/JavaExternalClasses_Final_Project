@@ -27,10 +27,13 @@ public class ManagerShowDoneApplicationCommand extends AbstractShowListApplicati
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
 		return serviceFactory
 				.createApplicationService()
-				.getAllByStatuses(DONE_APPLICATION, null, null);
+				.getAllByStatuses(	  pageNumber
+									, DONE_APPLICATION
+									, null
+									, null);
 	}
 	
 	@Override

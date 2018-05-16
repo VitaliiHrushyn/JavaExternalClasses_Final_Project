@@ -28,6 +28,7 @@ public interface URL {
 	String INDEX = "index";
 	String REGISTRATION = "registration";
 	String ERROR_404 = "404";
+	String PAGE_NUMBER = "?page_number=";
 	
 	String COMMON_URL = "/WEB-INF/common/";
 	String COMMON_PROFILE_PAGE = COMMON_URL + "profile/profile.jsp";
@@ -166,5 +167,6 @@ public interface URL {
 	 */
 	String FILTER_PATTERN = "/*";
 	String DISABLE_CACHE_FILTER_PATTERN = "/*";
+	
 		
 }

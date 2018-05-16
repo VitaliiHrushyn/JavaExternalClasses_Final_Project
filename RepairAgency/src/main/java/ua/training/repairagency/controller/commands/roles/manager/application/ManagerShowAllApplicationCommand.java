@@ -3,11 +3,9 @@ package ua.training.repairagency.controller.commands.roles.manager.application;
 import java.util.List;
 import java.util.Map;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
 import ua.training.repairagency.controller.constants.URL;
-import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.controller.commands.Command;
 import ua.training.repairagency.controller.commands.roles.abstracts.application.AbstractShowListApplicationCommand;
@@ -26,8 +24,7 @@ public class ManagerShowAllApplicationCommand extends AbstractShowListApplicatio
 	}
 
 	@Override
-	protected List<Application> getApplications(HttpServletRequest request) {
-		int pageNumber = CommandUtils.getNumberOfPagesFromRequest(request);
+	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {		
 		
 		return serviceFactory
 				.createApplicationService()
