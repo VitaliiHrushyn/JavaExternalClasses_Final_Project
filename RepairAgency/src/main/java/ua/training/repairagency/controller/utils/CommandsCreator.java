@@ -8,7 +8,6 @@ import ua.training.repairagency.controller.commands.common.*;
 import ua.training.repairagency.controller.commands.roles.customer.application.*;
 import ua.training.repairagency.controller.commands.roles.customer.profile.*;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerApplicationCommand;
-import ua.training.repairagency.controller.commands.roles.manager.application.ManagerApproveApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerApproveEditApplicationCommand;
 //import ua.training.repairagency.controller.commands.roles.manager.application.ManagerCreateApplicationCommand;
 import ua.training.repairagency.controller.commands.roles.manager.application.ManagerEditApplicationCommand;

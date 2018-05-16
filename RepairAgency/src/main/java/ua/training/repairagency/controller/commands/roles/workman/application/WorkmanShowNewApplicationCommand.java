@@ -25,7 +25,7 @@ public class WorkmanShowNewApplicationCommand extends AbstractShowListApplicatio
 
 	@Override
 	protected String getApplicationPage() {
-		return URL.COMMON_APPLICATION_NEED_TO_APPROVE_PAGE; 
+		return URL.COMMON_APPLICATION_SHOW_TO_APPROVE_PAGE; 
 	}
 
 	@Override

@@ -37,6 +37,21 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 		infoMessages = new ArrayList<String>();
 		errorMessages = new ArrayList<>();
 		
+		if (CommandUtils.isRequestContainsParam(request, ID)) {
+			
+			 Application application = serviceFactory
+					 					.createApplicationService()
+					 					.getById(Integer.valueOf(request.getParameter(ID)));
+			 
+			 List<User> workmen = serviceFactory
+					 				.createUserService()
+					 				.getAllByRole(UserRole.WORKMAN);
+			
+			request.setAttribute(APPLICATION, application);
+			request.setAttribute(WORKMEN, workmen);
+			return URL.MANAGER_APPLICATION_APPROVE_PAGE;
+		}
+		
 		Application application = CommandUtils.getApplicationFromRequest(request);
 		 
 		 if (application == null) {
