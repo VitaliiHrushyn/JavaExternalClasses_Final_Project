@@ -1,6 +1,7 @@
 package ua.training.repairagency.controller.commands.roles.workman.application;
 
 import ua.training.repairagency.controller.constants.URL;
+import ua.training.repairagency.model.constants.Query;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.user.User;
 
@@ -17,6 +18,7 @@ import ua.training.repairagency.controller.commands.roles.abstracts.application.
 public class WorkmanShowNonactiveApplicationCommand extends AbstractShowListApplicationCommand {
 
 	private static String path = URL.WORKMAN_APPLICATIONS_NONACTIVE_PATH;
+	private int workmanId;
 
 	public WorkmanShowNonactiveApplicationCommand(Map<String, Command> commands) {
 		super(path , commands);
@@ -29,7 +31,7 @@ public class WorkmanShowNonactiveApplicationCommand extends AbstractShowListAppl
 
 	@Override
 	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
-		int workmanId = ((User)request.getSession().getAttribute(USER)).getId();
+		workmanId = ((User)request.getSession().getAttribute(USER)).getId();
 		return serviceFactory
 				.createApplicationService()
 				.getAllByWorkmanIdAndStatuses(    pageNumber
@@ -42,5 +44,15 @@ public class WorkmanShowNonactiveApplicationCommand extends AbstractShowListAppl
 	@Override
 	protected String getPath() {
 		return path;
+	}
+	
+	@Override
+	protected int getNumberOfPages() {
+		return serviceFactory.createApplicationService()
+							.getNumberOfPagesByQuery(     Query.APPLICATION_COUNT_BY_WORKMAN_ID_AND_STATUSES
+														, String.valueOf(workmanId)
+														, DONE_APPLICATION
+														, FINISHED_APPLICATION
+														, null);
 	}
 }

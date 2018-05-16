@@ -1,9 +1,11 @@
 package ua.training.repairagency.controller.commands.roles.workman.application;
 
 import ua.training.repairagency.controller.constants.URL;
+import ua.training.repairagency.model.constants.Query;
 import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.user.User;
 
+import static ua.training.repairagency.controller.constants.AttributeOrParam.DONE_APPLICATION;
 import static ua.training.repairagency.controller.constants.AttributeOrParam.EXECUTING_APPLICATION;
 import static ua.training.repairagency.controller.constants.AttributeOrParam.USER;
 
@@ -18,6 +20,7 @@ import ua.training.repairagency.controller.commands.roles.abstracts.application.
 public class WorkmanShowActiveApplicationCommand extends AbstractShowListApplicationCommand {
 
 	private static String path = URL.WORKMAN_APPLICATIONS_ACTIVE_PATH;
+	private int workmanId;
 
 	public WorkmanShowActiveApplicationCommand(Map<String, Command> commands) {
 		super(path, commands);
@@ -30,11 +33,11 @@ public class WorkmanShowActiveApplicationCommand extends AbstractShowListApplica
 
 	@Override
 	protected List<Application> getApplications(HttpServletRequest request, int pageNumber) {
-		int workerId = ((User)request.getSession().getAttribute(USER)).getId();
+		workmanId = ((User)request.getSession().getAttribute(USER)).getId();
 		return serviceFactory
 				.createApplicationService()
 				.getAllByWorkmanIdAndStatuses(    pageNumber
-												, String.valueOf(workerId)
+												, String.valueOf(workmanId)
 												, EXECUTING_APPLICATION
 												, null
 												, null);
@@ -43,6 +46,16 @@ public class WorkmanShowActiveApplicationCommand extends AbstractShowListApplica
 	@Override
 	protected String getPath() {
 		return path;
+	}
+	
+	@Override
+	protected int getNumberOfPages() {
+		return serviceFactory.createApplicationService()
+							.getNumberOfPagesByQuery(     Query.APPLICATION_COUNT_BY_WORKMAN_ID_AND_STATUSES
+														, String.valueOf(workmanId)
+														, EXECUTING_APPLICATION
+														, null
+														, null);
 	}
 
 }

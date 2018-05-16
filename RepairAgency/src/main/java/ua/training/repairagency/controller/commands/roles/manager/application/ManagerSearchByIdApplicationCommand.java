@@ -43,5 +43,10 @@ public class ManagerSearchByIdApplicationCommand extends AbstractShowListApplica
 	protected String getPath() {
 		return path;
 	}
+
+	@Override
+	protected int getNumberOfPages() {
+		return 1;
+	}
 	
 }

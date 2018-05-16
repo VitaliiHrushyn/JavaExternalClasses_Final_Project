@@ -18,9 +18,9 @@ import ua.training.repairagency.model.entities.application.Application;
 import ua.training.repairagency.model.entities.application.ApplicationImpl;
 import ua.training.repairagency.model.exceptions.OutOfDateDataException;
 
-public class ApplicationDAOImpl extends AbstractDAO<Application> implements ApplicationDAO {
+public class ApplicationDAOimpl extends AbstractDAO<Application> implements ApplicationDAO {
 
-	public ApplicationDAOImpl(Connection connection) {
+	public ApplicationDAOimpl(Connection connection) {
 		super(connection);
 	}
 	
@@ -146,17 +146,10 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 	}
 	
 	@Override	
-	public List<Application> getAllByQuery(String query, String... values) {
+	public List<Application> getAllByQueryWithLimitAndOffset(String query, String... values) {
 		List <Application> applications = new ArrayList<>();
 		try(PreparedStatement statement = connection.prepareStatement(query)) {
-			for (int i = 0; i < values.length - 2; i++) {
-				statement.setString(i+1, values[i]);
-			}
-			for (int i = values.length - 2; i < values.length; i++) {
-				statement.setInt(i+1, Integer.valueOf(values[i]));
-			}
-			System.out.println("statement :" + statement.toString());
-			System.out.println("params :" + values.toString());
+			fillStatementWithLimitAndOffset(statement, values);
 			ResultSet rs = statement.executeQuery();			
 			while(rs.next()) {
 				applications.add(extractApplication(rs));	
@@ -167,10 +160,20 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 		return applications;
 	}
 
+	private void fillStatementWithLimitAndOffset(PreparedStatement statement, String... values) throws SQLException {
+		for (int i = 0; i < values.length - 2; i++) {
+			statement.setString(i+1, values[i]);
+		}
+		for (int i = values.length - 2; i < values.length; i++) {
+			statement.setInt(i+1, Integer.valueOf(values[i]));
+		}
+	}
+
 	@Override
-	public int coutnRows() {
+	public int coutnRowsByQuery(String query, String... values) {
 		try(PreparedStatement statement = connection
-				.prepareStatement(queryBundle.getString(Query.APPLICATION_COUNT_ROWS))) {
+											.prepareStatement(queryBundle.getString(query))) {
+			fillCoutRowsStatement(statement, values);
 			ResultSet rs = statement.executeQuery();
 			rs.next() ;
 			return rs.getInt("total");			
@@ -178,6 +181,12 @@ public class ApplicationDAOImpl extends AbstractDAO<Application> implements Appl
 			//TODO handle exception
 			throw new RuntimeException(e);
 		}		
+	}
+
+	private void fillCoutRowsStatement(PreparedStatement statement, String[] values) throws SQLException {
+		for (int i = 0; i < values.length; i++) {
+			statement.setString(i+1, values[i]);
+		}
 	}	
 	
 }

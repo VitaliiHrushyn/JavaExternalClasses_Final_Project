@@ -30,7 +30,7 @@ public class JDBCDAOFactory extends DAOFactory {
 
 	@Override
 	public ApplicationDAO createApplicationDAO() {
-		return new ApplicationDAOImpl(getConnection());
+		return new ApplicationDAOimpl(getConnection());
 	}
 	@Override
 	public TestimonialDAO createTestimonialDAO() {
