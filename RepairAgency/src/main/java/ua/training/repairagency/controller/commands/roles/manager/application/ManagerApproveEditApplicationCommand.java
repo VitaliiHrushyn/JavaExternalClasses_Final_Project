@@ -37,15 +37,19 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 		infoMessages = new ArrayList<String>();
 		errorMessages = new ArrayList<>();
 		
+		List<User> workmen = serviceFactory
+ 				.createUserService()
+ 				.getAllByRole(UserRole.WORKMAN);
+		
 		if (CommandUtils.isRequestContainsParam(request, ID)) {
-			
+
 			 Application application = serviceFactory
 					 					.createApplicationService()
 					 					.getById(Integer.valueOf(request.getParameter(ID)));
 			 
-			 List<User> workmen = serviceFactory
-					 				.createUserService()
-					 				.getAllByRole(UserRole.WORKMAN);
+//			 List<User> workmen = serviceFactory
+//					 				.createUserService()
+//					 				.getAllByRole(UserRole.WORKMAN);
 			
 			request.setAttribute(APPLICATION, application);
 			request.setAttribute(WORKMEN, workmen);
@@ -56,18 +60,14 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 		 
 		 if (application == null) {
 				return URL.MANAGER_APPLICATION_NEW_COMMAND;
-			}			
-		 
-		 List<User> workmen = serviceFactory
-	 				.createUserService()
-	 				.getAllByRole(UserRole.WORKMAN);
+			}			 
 		
 		if (//CommandUtils.isRequestContainsParam(request, STATUS)
-				//&& 
+			//	&& 
 				checkEditingParameters(request, errorMessages)) {
 			
 			try {
-		//		checkDataActuality(application);
+				checkDataActuality(application);
 				application = serviceFactory
 							.createApplicationService()
 							.update(ApplicationUtils.updateApplicationFeatures(application, request));
