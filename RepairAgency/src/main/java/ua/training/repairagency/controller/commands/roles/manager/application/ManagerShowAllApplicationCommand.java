@@ -1,9 +1,5 @@
 package ua.training.repairagency.controller.commands.roles.manager.application;
 
-import static ua.training.repairagency.controller.constants.AttributeOrParam.APPROVED_APPLICATION;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.EXECUTING_APPLICATION;
-import static ua.training.repairagency.controller.constants.AttributeOrParam.RECEIVED_APPLICATION;
-
 import java.util.List;
 import java.util.Map;
 
