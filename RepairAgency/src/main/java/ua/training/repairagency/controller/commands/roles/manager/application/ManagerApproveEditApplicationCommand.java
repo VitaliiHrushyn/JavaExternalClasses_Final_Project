@@ -46,10 +46,6 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 			 Application application = serviceFactory
 					 					.createApplicationService()
 					 					.getById(Integer.valueOf(request.getParameter(ID)));
-			 
-//			 List<User> workmen = serviceFactory
-//					 				.createUserService()
-//					 				.getAllByRole(UserRole.WORKMAN);
 			
 			request.setAttribute(APPLICATION, application);
 			request.setAttribute(WORKMEN, workmen);
@@ -57,17 +53,10 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 		}
 		
 		Application application = CommandUtils.getApplicationFromRequest(request);
-		 
-		 if (application == null) {
-				return URL.MANAGER_APPLICATION_NEW_COMMAND;
-			}			 
-		
-		if (//CommandUtils.isRequestContainsParam(request, STATUS)
-			//	&& 
-				checkEditingParameters(request, errorMessages)) {
+
+		if (checkEditingParameters(request, errorMessages)) {
 			
 			try {
-				checkDataActuality(application);
 				application = serviceFactory
 							.createApplicationService()
 							.update(ApplicationUtils.updateApplicationFeatures(application, request));
@@ -93,12 +82,6 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 			
 	}
 	
-	private void checkDataActuality(Application application) throws OutOfDateDataException {
-		if (!application.getStatus().toString().equals(NEW_APPLICATION)) {
-			throw new OutOfDateDataException();
-		}		
-	}
-
 	private boolean checkEditingParameters(HttpServletRequest request, List<String> errorMessages) {
 		String status = request.getParameter(STATUS);
 		boolean check = true;

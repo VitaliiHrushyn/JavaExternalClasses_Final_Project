@@ -3,7 +3,6 @@ package ua.training.repairagency.model.entities.application;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import ua.training.repairagency.model.entities.Entity;
 import ua.training.repairagency.model.entities.testimonial.Testimonial;
@@ -46,5 +45,9 @@ public interface Application extends Entity {
 	Timestamp getLastUpdateTime();
 	
 	void setLastUpdateTime(Timestamp timestamp);
+	
+	public int getVersionId();
+
+	public void setVersionId(int versionId);
 
 }

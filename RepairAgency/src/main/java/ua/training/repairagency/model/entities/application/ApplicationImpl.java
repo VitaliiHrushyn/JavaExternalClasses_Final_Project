@@ -19,6 +19,7 @@ public class ApplicationImpl extends AbstractEntity implements Application {
 	private Testimonial testimonial;
 	private LocalDateTime createTime;
 	private Timestamp lastUpdateTime;
+	private int versionId;
 	
 	public AppStatus getStatus() {
 		return status;
@@ -90,6 +91,14 @@ public class ApplicationImpl extends AbstractEntity implements Application {
 
 	public void setLastUpdateTime(Timestamp lastUpdateTime) {
 		this.lastUpdateTime = lastUpdateTime;		
+	}
+
+	public int getVersionId() {
+		return versionId;
+	}
+
+	public void setVersionId(int versionId) {
+		this.versionId = versionId;
 	}
 
 	@Override
