@@ -73,28 +73,19 @@ public class ApplicationDAOimpl extends AbstractDAO<Application> implements Appl
 	
 	@Override
 	public Application update(Application application) throws OutOfDateDataException {
-		try(PreparedStatement updateStatement = connection
-										.prepareStatement(queryBundle.getString(Query.APPLICATION_UPDATE));
+		try(PreparedStatement statement = connection
+										.prepareStatement(queryBundle.getString(Query.APPLICATION_UPDATE))) {
 						
-			PreparedStatement versionStatement = connection
-					.prepareStatement(
-							"SELECT version_id FROM applications WHERE application_id = ?;")							
-
-			) {
-				
-			fillUpdateStatement(application, updateStatement);
-			versionStatement.setInt(1, application.getId());
+			fillUpdateStatement(application, statement);
 			
 			connection.setAutoCommit(false);
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			
-			ResultSet versionRs = versionStatement.executeQuery();
-			versionRs.next();
-			int previouseVersionId = versionRs.getInt(1);
-			
-			updateStatement.executeUpdate();
+			int previouseVersionId = getById(application.getId()).getVersionId();
+			statement.executeUpdate();
+			int currentVersionId = application.getVersionId();
 
-			if (previouseVersionId == application.getVersionId()) {				
+			if (previouseVersionId == currentVersionId) {				
 				connection.commit();
 				connection.setAutoCommit(true);
 			} else {
