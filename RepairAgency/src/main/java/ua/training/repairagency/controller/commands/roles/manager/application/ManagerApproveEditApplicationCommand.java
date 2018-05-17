@@ -53,10 +53,11 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 		}
 		
 		Application application = CommandUtils.getApplicationFromRequest(request);
-
+		
 		if (checkEditingParameters(request, errorMessages)) {
 			
-			try {
+			try {	
+				checkDataActuality(application);
 				application = serviceFactory
 							.createApplicationService()
 							.update(ApplicationUtils.updateApplicationFeatures(application, request));
@@ -100,6 +101,11 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 		}
 		
 		return check;
-	}			
+	}	
 	
+		private void checkDataActuality(Application application) throws OutOfDateDataException {
+			if (!application.getStatus().toString().equals(NEW_APPLICATION)) {
+			throw new OutOfDateDataException();
+		}		
+	}
 }
