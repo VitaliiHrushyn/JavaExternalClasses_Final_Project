@@ -13,7 +13,7 @@
     
     	<jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
         
-    	<jsp:include page="/WEB-INF/roles/customer/menu.jsp"></jsp:include>
+    	<jsp:include page="/WEB-INF/roles/${sessionScope.user.role.toString().toLowerCase()}/menu.jsp"></jsp:include>
     	
     	<jsp:include page="content/one_app.jsp"></jsp:include>
         

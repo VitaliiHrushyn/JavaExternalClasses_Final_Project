@@ -13,6 +13,7 @@
 <body>
 	<div align="center">
 		<br>
+		<br>
 		<a href = "${pageContext.request.contextPath}/app/manager/users/create"><fmt:message key="text.menu.users.create" /></a>     	 
        	|
 		<a href = "${pageContext.request.contextPath}/app/manager/users/show?role=customer"><fmt:message key="text.menu.users.customers" /></a>
