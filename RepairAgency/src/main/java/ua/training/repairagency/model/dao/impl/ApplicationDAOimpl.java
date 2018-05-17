@@ -79,10 +79,13 @@ public class ApplicationDAOimpl extends AbstractDAO<Application> implements Appl
 			fillUpdateStatement(application, statement);
 			
 			connection.setAutoCommit(false);
+			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+			
 			int previouseVersionId = getById(application.getId()).getVersionId();
 			statement.executeUpdate();
+			int currentVersionId = getById(application.getId()).getVersionId();
 			
-			if (previouseVersionId == application.getVersionId()) {					
+			if (previouseVersionId == currentVersionId) {				
 				connection.commit();
 				connection.setAutoCommit(true);
 			} else {
