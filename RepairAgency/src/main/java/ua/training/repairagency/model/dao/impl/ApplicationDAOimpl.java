@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,44 +73,49 @@ public class ApplicationDAOimpl extends AbstractDAO<Application> implements Appl
 	
 	@Override
 	public Application update(Application application) throws OutOfDateDataException {
-			
 		try(PreparedStatement statement = connection
-				.prepareStatement(queryBundle.getString(Query.APPLICATION_UPDATE))) {
+										.prepareStatement(queryBundle.getString(Query.APPLICATION_UPDATE))) {
 						
-			statement.setString(1, application.getStatus().toString());
-			statement.setString(2, application.getDescription());
-			statement.setString(3, application.getManagerComment());
-			statement.setBigDecimal(4, application.getPrice());
-			statement.setInt(5, application.getCustomer().getId());
-			if (application.getWorkman() != null) {
-				statement.setInt(6, application.getWorkman().getId());
-			} else {
-				statement.setNull(6, java.sql.Types.INTEGER);
-			}
-			if (application.getTestimonial() != null) {
-				statement.setInt(7, application.getTestimonial().getId());
-			} else {
-				statement.setInt(7, java.sql.Types.INTEGER);
-			}
-			statement.setInt(8, application.getId());
+			fillUpdateStatement(application, statement);
 			
 			connection.setAutoCommit(false);
+			int previouseVersionId = getById(application.getId()).getVersionId();
+			statement.executeUpdate();
 			
-			Timestamp previouseUpdate = getById(application.getId()).getLastUpdateTime();
-			
-			if (previouseUpdate.equals(application.getLastUpdateTime())) {			
-				statement.executeUpdate();
+			if (previouseVersionId == application.getVersionId()) {					
 				connection.commit();
-				connection.setAutoCommit(true); // TODO check
+				connection.setAutoCommit(true);
 			} else {
-				connection.setAutoCommit(true); // TODO check
+				connection.rollback();
+				connection.setAutoCommit(true);
 				throw new OutOfDateDataException();
 			}			
 			
-		} catch (SQLException e) {
-				throw new RuntimeException(e);
+		} catch (SQLException e) {			
+			throw new RuntimeException(e);
 		}
 		return application;
+	}
+
+	private void fillUpdateStatement(Application application, PreparedStatement statement)
+																			throws SQLException {
+		statement.setString(1, application.getStatus().toString());
+		statement.setString(2, application.getDescription());
+		statement.setString(3, application.getManagerComment());
+		statement.setBigDecimal(4, application.getPrice());
+		statement.setInt(5, application.getCustomer().getId());
+		if (application.getWorkman() != null) {
+			statement.setInt(6, application.getWorkman().getId());
+		} else {
+			statement.setNull(6, java.sql.Types.INTEGER);
+		}
+		if (application.getTestimonial() != null) {
+			statement.setInt(7, application.getTestimonial().getId());
+		} else {
+			statement.setInt(7, java.sql.Types.INTEGER);
+		}
+		statement.setInt(8, application.getId());
+		
 	}	
 
 	@Override
@@ -141,6 +145,7 @@ public class ApplicationDAOimpl extends AbstractDAO<Application> implements Appl
 		application.setTestimonial(ServiceFactory.getInstance().createTestimonialService().getById(rs.getInt(columnBundle.getString(Column.APPLICATION_TESTIMONIAL_ID))));
 		application.setCreateTime((rs.getTimestamp(columnBundle.getString(Column.APPLICATION_CREATE_TIME))).toLocalDateTime());
 		application.setLastUpdateTime(rs.getTimestamp(columnBundle.getString(Column.APPLICATION_LAST_UPDATE)));
+		application.setVersionId(rs.getInt(columnBundle.getString(Column.APPLICATION_VERSION_ID)));
 		
 		return application;
 	}

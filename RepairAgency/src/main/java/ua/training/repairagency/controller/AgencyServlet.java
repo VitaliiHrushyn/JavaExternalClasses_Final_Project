@@ -26,7 +26,7 @@ public class AgencyServlet extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init() {
-		commands = CommandsCreator.create(commands);		
+		commands = CommandsCreator.create(commands);
 	}
 
 	/**
@@ -34,6 +34,7 @@ public class AgencyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 													throws ServletException, IOException {
+		
 		try {
 			processRequest(request, response);
 		} catch (ServletException | IOException e) {
