@@ -36,7 +36,8 @@
 					<a href = "${requestScope.pagination_link}${page}">${page}</a>
 					<c:set var="page" value="${page + 1 }"/>
 				</c:forEach>
-			</div>			
+			</div>
+				custom tag: <customtag:appview />			
 		</div>
 	</body>
 </html>
