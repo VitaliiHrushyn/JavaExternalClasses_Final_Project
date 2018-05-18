@@ -26,7 +26,7 @@
 			<input type="radio" name="status" value="REJECTED"> <fmt:message key="application.label.status.REJECT" /> 
   			<input type="radio" name="status" value="RECEIVED" checked> <fmt:message key="application.label.status.RECEIVE" /><br>			
 			<br>
-			<fmt:message key="application.label.create_time" />: ${application.createTime}
+			<fmt:message key="application.label.create_time" />: <customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" />
 			<br>
 			<fmt:message key="application.label.description" />: ${application.description}
 			<br>

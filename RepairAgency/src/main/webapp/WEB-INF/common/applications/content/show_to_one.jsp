@@ -14,15 +14,32 @@
 			</div>
 			<br>
 			<div>
-				<c:forEach var="application" items="${requestScope.applications}">
-					<form method ="post" action="${pageContext.request.contextPath}/app/${user.role.toString().toLowerCase()}/applications/one">
-						<p>
-							<input type="hidden" name="id" value="${application.id}">					
-							ID: ${application.id} | <fmt:message key="application.label.status.${application.status}" /> | ${application.description} | ${application.createTime}
-							<input type="submit" value="<fmt:message key="text.button.show" />">
-						</p>
-					</form>
-				</c:forEach>
+				<table>
+		 			<thead>
+						<tr>
+							<th>ID</th>
+							<th><fmt:message key="application.label.status" /></th>
+							<th><fmt:message key="application.label.description" /></th>
+							<th><fmt:message key="application.label.create_time" /></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="application" items="${requestScope.applications}">								
+									<tr>
+										<td>${application.id}</td>
+										<td width="100" align="center"><fmt:message key="application.label.status.${application.status}" /></td>
+										<td width="400">${application.description}</td>
+										<td width="200" align="center"><customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" /></td>
+										<td>
+											<form method ="post" action="${pageContext.request.contextPath}/app/${user.role.toString().toLowerCase()}/applications/one">
+												<input type="hidden" name="id" value="${application.id}">
+												<input type="submit" value="<fmt:message key="text.button.show" />"> 
+											</form>
+										</td>
+									</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 			</div>	
 			<br>
 			<div><fmt:message key="text.pages" />:  
@@ -32,8 +49,7 @@
 					<a href = "${requestScope.pagination_link}${page}">${page}</a>
 					<c:set var="page" value="${page + 1 }"/>
 				</c:forEach>
-			</div>
-				custom tag: <customtag:appview />			
+			</div>		
 		</div>
 	</body>
 </html>

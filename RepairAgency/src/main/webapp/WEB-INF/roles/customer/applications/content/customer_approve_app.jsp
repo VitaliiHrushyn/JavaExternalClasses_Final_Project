@@ -34,7 +34,7 @@
 			<br>
 			<fmt:message key="application.label.workman" />: ${application.workman.id} - ${application.workman.name} ${application.workman.surname}
 			<br>
-			<fmt:message key="application.label.create_time" />: ${application.createTime}
+			<fmt:message key="application.label.create_time" />: <customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" />
 			<br>
 			<input type="submit" value="<fmt:message key="text.button.savechanges" />">
 		</form>	

@@ -24,7 +24,7 @@
 			
 			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
 			<br>
-			<fmt:message key="application.label.create_time" />: ${application.createTime}
+			<fmt:message key="application.label.create_time" />: <customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" />
 			<br>
 			<fmt:message key="application.label.description" />: ${application.description}
 			<br>
