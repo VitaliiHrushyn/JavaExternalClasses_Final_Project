@@ -28,7 +28,7 @@
 					</form>
 				</c:forEach>				
 			<br>
-			<div>Pages: 
+			<div><fmt:message key="text.pages" />: 
 				<c:set var="page" value="1" />
 				<c:set var="numberOfPages" value="${requestScope.number_of_pages}" />
 				<c:forEach begin="1" end="${numberOfPages}" >		
