@@ -16,7 +16,7 @@
 			<div>
 				<table>
 		 			<thead>
-						<tr>
+						<tr bgcolor="lightgray">
 							<th>ID</th>
 							<th><fmt:message key="application.label.status" /></th>
 							<th><fmt:message key="application.label.description" /></th>

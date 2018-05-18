@@ -16,7 +16,8 @@
        	<a href = "${pageContext.request.contextPath}/app/manager/applications/nonactive"><fmt:message key="text.menu.show.nonactive" /></a>     	 
        	|
        	<a href = "${pageContext.request.contextPath}/app/manager/applications/all"><fmt:message key="text.menu.show.all" /></a>
-		|
+		<br>
+		<br>
        	<form method="post" action="${pageContext.request.contextPath}/app/manager/applications/findbyid">
        	<fmt:message key="text.menu.find_by_id" />
        	<input type="number" name="id">

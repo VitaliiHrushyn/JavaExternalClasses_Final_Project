@@ -16,7 +16,7 @@
 	
 				<table>
 		 			<thead>
-						<tr>
+						<tr bgcolor="lightgray">
 							<th>ID</th>
 							<th><fmt:message key="application.label.status" /></th>
 							<th><fmt:message key="application.label.description" /></th>
@@ -25,7 +25,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="application" items="${requestScope.applications}">								
-									<tr>
+									<tr >
 										<td>${application.id}</td>
 										<td width="100" align="center"><fmt:message key="application.label.status.${application.status}" /></td>
 										<td width="400">${application.description}</td>
@@ -37,8 +37,8 @@
 											</form>
 										</td>
 									</tr>
-							</c:forEach>
-						</tbody>
+							</c:forEach>							
+						</tbody>						
 					</table>				
 			<br>
 			<div><fmt:message key="text.pages" />: 
