@@ -83,9 +83,8 @@ public class ApplicationDAOimpl extends AbstractDAO<Application> implements Appl
 			
 			int previouseVersionId = getById(application.getId()).getVersionId();
 			statement.executeUpdate();
-			int currentVersionId = getById(application.getId()).getVersionId();
-			
-			if (previouseVersionId == currentVersionId) {				
+
+			if (previouseVersionId == application.getVersionId()) {				
 				connection.commit();
 				connection.setAutoCommit(true);
 			} else {

@@ -12,8 +12,7 @@
 </head>
 <body>
 	<div align="center">
-		<br>
-		
+		<br>		
        	<a href = "${pageContext.request.contextPath}/app/manager/applications/new"><fmt:message key="text.menu.show.new" /></a>     	 
        	|
        	<a href = "${pageContext.request.contextPath}/app/manager/applications/active"><fmt:message key="text.menu.show.activ" /></a>     	 

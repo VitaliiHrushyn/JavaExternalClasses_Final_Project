@@ -46,17 +46,28 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 			 Application application = serviceFactory
 					 					.createApplicationService()
 					 					.getById(Integer.valueOf(request.getParameter(ID)));
-			
+			 try {
+				checkDataActuality(application);
+			} catch (OutOfDateDataException e) {
+				//TODO add logging
+				e.printStackTrace();
+				errorMessages.add(messageBundle.getString(Message.APPLICATION_OUT_OF_DATE));
+				
+				request.setAttribute(INFO_MESSAGES, infoMessages);
+				request.setAttribute(ERROR_MESSAGES, errorMessages);
+				return URL.MANAGER_APPLICATION_NEW_COMMAND;
+			}
 			request.setAttribute(APPLICATION, application);
 			request.setAttribute(WORKMEN, workmen);
 			return URL.MANAGER_APPLICATION_APPROVE_PAGE;
 		}
 		
 		Application application = CommandUtils.getApplicationFromRequest(request);
-
+		
 		if (checkEditingParameters(request, errorMessages)) {
 			
-			try {
+			try {	
+//				checkDataActuality(application);
 				application = serviceFactory
 							.createApplicationService()
 							.update(ApplicationUtils.updateApplicationFeatures(application, request));
@@ -100,6 +111,11 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 		}
 		
 		return check;
-	}			
+	}	
 	
+		private void checkDataActuality(Application application) throws OutOfDateDataException {
+			if (!application.getStatus().toString().equals(NEW_APPLICATION)) {
+			throw new OutOfDateDataException();
+		}		
+	}
 }
