@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_3_1.xsd">
+	<tlib-version>1.1.2</tlib-version>
+	<short-name>customtag</short-name>
+	<uri>/WEB-INF/customtag</uri>
+	
+	<tag>
+		<name>datetimeview</name>
+		<tag-class>ua.training.repairagency.controller.customtag.DateTimeViewTag</tag-class>
+		<body-content>empty</body-content>
+		<info>displays date and time in localized format</info>
+		<attribute>
+            <name>localDateTime</name>
+            <required>true</required>
+            <description>Provide a localDateTime which is displayed</description>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>language</name>
+            <required>true</required>
+            <description>Provide a request</description>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+	</tag>
+</taglib>
