@@ -82,16 +82,22 @@ public class ApplicationDAOimpl extends AbstractDAO<Application> implements Appl
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			
 			int previouseVersionId = getById(application.getId()).getVersionId();
-			statement.executeUpdate();
-
-			if (previouseVersionId == application.getVersionId()) {				
-				connection.commit();
-				connection.setAutoCommit(true);
+			if (previouseVersionId == application.getVersionId()) {	
+				
+				statement.executeUpdate();
+				int currentVersionId = getById(application.getId()).getVersionId();
+				
+				if (currentVersionId == previouseVersionId + 1) {
+					connection.commit();
+					connection.setAutoCommit(true);
+				} else {
+					connection.rollback();
+					connection.setAutoCommit(true);
+					throw new OutOfDateDataException();
+				}
 			} else {
-				connection.rollback();
-				connection.setAutoCommit(true);
 				throw new OutOfDateDataException();
-			}			
+			}
 			
 		} catch (SQLException e) {			
 			throw new RuntimeException(e);
@@ -105,7 +111,11 @@ public class ApplicationDAOimpl extends AbstractDAO<Application> implements Appl
 		statement.setString(2, application.getDescription());
 		statement.setString(3, application.getManagerComment());
 		statement.setBigDecimal(4, application.getPrice());
-		statement.setInt(5, application.getCustomer().getId());
+		if (application.getCustomer() != null) {
+			statement.setInt(5, application.getCustomer().getId());
+		} else {
+			statement.setNull(5, java.sql.Types.INTEGER);
+		}
 		if (application.getWorkman() != null) {
 			statement.setInt(6, application.getWorkman().getId());
 		} else {
