@@ -18,18 +18,34 @@
 		</div>
 		<br>		
 		<c:set var="user" value="${sessionScope.user}"/>
-		<fmt:message key="register.label.name" />: ${user.name}
-		<br>
-		<fmt:message key="register.label.surname" />: ${user.surname}
-		<br>
-		<fmt:message key="register.label.login" />: ${user.login}
-		<br>
-		<fmt:message key="register.label.role" />: ${user.role}
-		<br>		
-		<fmt:message key="register.label.email" />: ${user.email}
-		<br>
-		<fmt:message key="register.label.phone" />: ${user.phone}
-		<br>
+		 		
+		<table style="width:60%">
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.name" />:</th>
+			    <td>${user.name}</td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.surname" />:</th>
+			    <td>${user.surname}</td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.login" />:</th>
+			    <td>${user.login}</td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.role" />:</th>
+			    <td>${user.role}</td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.email" />:</th>
+			    <td>${user.email}</td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.phone" />:</th>
+			    <td>${user.phone}</td>
+			  </tr>
+			</table>
+		
 	</div>
         
         <jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>
