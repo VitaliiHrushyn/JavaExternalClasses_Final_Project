@@ -21,18 +21,33 @@
 			<h3><fmt:message key="text.editprofile.user" />: ${user.name} </h3>
 			<br>
 			<form method ="post" action="${pageContext.request.contextPath}/app/${user.role.toString().toLowerCase()}/profile/editprofile">
-						
-				<fmt:message key="register.label.name" />: <input type="text" name="name" value="${user.name}">
-				<br>
-				<fmt:message key="register.label.surname" />: <input type="text" name="surname" value="${user.surname}">
-				<br>
-				<fmt:message key="register.label.login" />: <input type="text" name="login" value="${user.login}">
-				<br>		
-				<fmt:message key="register.label.email" />: <input type="text" name="email" value="${user.email}">
-				<br>
-				<fmt:message key="register.label.phone" />: <input type="text" name="phone" value="${user.phone}">
-				<br>
-				<input type="submit" value="<fmt:message key="text.button.savechanges" />">
+				
+				<table style="width:60%">
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.name" />:</th>
+			    <td><input type="text" name="name" value="${user.name}"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.surname" />:</th>
+			    <td><input type="text" name="surname" value="${user.surname}"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.login" />:</th>
+			    <td><input type="text" name="login" value="${user.login}"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.email" />:</th>
+			    <td><input type="text" name="email" value="${user.email}"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.phone" />:</th>
+			    <td><input type="text" name="phone" value="${user.phone}"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"></th>
+			    <td><input type="submit" value="<fmt:message key="text.button.savechanges" />"></td>
+			  </tr>
+			</table>
 				
 			</form>	
 			<br>
