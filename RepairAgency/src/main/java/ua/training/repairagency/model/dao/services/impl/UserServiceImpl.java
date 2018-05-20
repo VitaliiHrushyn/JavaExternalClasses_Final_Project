@@ -2,6 +2,7 @@ package ua.training.repairagency.model.dao.services.impl;
 
 import java.util.List;
 
+import ua.training.repairagency.model.constants.Query;
 import ua.training.repairagency.model.dao.DAOFactory;
 import ua.training.repairagency.model.dao.interfaces.UserDAO;
 import ua.training.repairagency.model.dao.services.interfaces.UserService;
@@ -60,6 +61,15 @@ public class UserServiceImpl implements UserService {
 			throw new RuntimeException(e);
 		}		
 	}
+	
+	@Override
+	public List<User> getAllByRoleAndPageNumber(UserRole role, int pageNumber) {
+		try(UserDAO dao = daoFactory.createUserDAO()){
+			return dao.getAllByRoleWithLimitAndOffset(role, pageNumber);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}		
+	}
 
 	@Override
 	public User delete(int userId) {
@@ -70,6 +80,16 @@ public class UserServiceImpl implements UserService {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}	
+	}
+
+	@Override
+	public int getNumberOfPagesByRole(UserRole role) {
+		try(UserDAO dao = daoFactory.createUserDAO()) {
+			int totalRowsCount = dao.coutnRowsByRole(role);
+			return (int) Math.ceil(totalRowsCount / (double) Query.ROWS_PER_PAGE);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }
