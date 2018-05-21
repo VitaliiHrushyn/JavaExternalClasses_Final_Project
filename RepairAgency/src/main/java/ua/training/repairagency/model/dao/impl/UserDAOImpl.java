@@ -162,7 +162,7 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 		int offset = limit * (pageNumber - 1);
 		List<User> users = new ArrayList<>();
 		try(PreparedStatement statement = connection
-										.prepareStatement(queryBundle.getString(Query.USER_GET_BY_ROLE))) {
+										.prepareStatement(queryBundle.getString(Query.USER_GET_BY_ROLE_LIMIT))) {
 			statement.setString(1, role.toString());
 			statement.setInt(2, limit);
 			statement.setInt(3, offset);

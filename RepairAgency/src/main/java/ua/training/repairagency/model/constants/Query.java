@@ -10,6 +10,7 @@ public interface Query {
 	String USER_UPDATE = "user.update";
 	String USER_GET_BY_LOGIN = "user.get.by.login";
 	String USER_GET_BY_ROLE = "user.get.by.role";
+	String USER_GET_BY_ROLE_LIMIT = "user.get.by.role.limit";
 	String USER_COUNT_BY_ROLE = "user.count.by.role";
 	
 	/* application queries */
@@ -38,6 +39,7 @@ public interface Query {
 	String TESTIMONIAL_UPDATE = "testimonial.update";
 //	String TESTIMONIAL_GET_BY_LOGIN = "testimonial.get.by.login";		
 	int ROWS_PER_PAGE = 5;
+	
 	
 	
 	

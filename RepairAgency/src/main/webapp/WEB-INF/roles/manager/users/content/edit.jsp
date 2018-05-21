@@ -26,11 +26,11 @@
 			    <td><input type="text" id="login" name="login" required value="${user.login}"></td>
 			  </tr>
 			  <tr>
-			    <th align="right"><fmt:message key="register.label.password" />">:</th>
+			    <th align="right"><fmt:message key="register.label.password" />:</th>
 			    <td><input type="password" id="password" name="password" placeholder="<fmt:message key="register.label.password" />"></td>
 			  </tr>
 			  <tr>
-			    <th align="right"><fmt:message key="register.label.confirmpassword" />">:</th>
+			    <th align="right"><fmt:message key="register.label.confirmpassword" />:</th>
 			    <td><input type="password" id="confirmpassword" name="confirmpassword" placeholder="<fmt:message key="register.label.confirmpassword" />"></td>
 			  </tr>
 			  <tr>
