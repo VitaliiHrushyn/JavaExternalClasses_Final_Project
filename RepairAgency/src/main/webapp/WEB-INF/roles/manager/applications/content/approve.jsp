@@ -20,55 +20,40 @@
 			
 			<c:set var="application" value="${application}" scope="session"/>
 			
-			<table style="width:60%">
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.status" />:</th>
-			    <td><fmt:message key="application.label.status.${application.status}" /></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.status.change" /></th>
-			    <td>
-			    	<input type="radio" name="status" value="REJECTED"> <fmt:message key="application.label.status.REJECT" /> 
-  					<input type="radio" name="status" value="RECEIVED" checked> <fmt:message key="application.label.status.RECEIVE" /><br>			
-			    </td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.create_time" />:</th>
-			    <td><customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" /></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.description" />:</th>
-			    <td width="300">${application.description}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.comment" />:</th>
-			    <td><textarea name="comment">${application.managerComment}</textarea></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.price" />:</th>
-			    <td><input type="number" min="0.00" max="10000.00" step="0.01" name="price" value="${application.price}"></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.customer" />:</th>
-			    <td>id: ${application.customer.id} - ${application.customer.login} : ${application.customer.name} ${application.customer.surname}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.workman" />:</th>
-			    <td>
-			    	<select name="workman_id" >
-						<option value="${application.workman.id}" selected>${application.workman.id} - ${application.workman.name} ${application.workman.surname}</option>			               			
-						<c:forEach var="workman" items="${requestScope.workmen}">						
-							<option value ="${workman.id}"> ${workman.id} - ${workman.name} ${workman.surname}  </option>						
-						</c:forEach>         	
-         			</select>
-			    </td>
-			  </tr>
-			  <tr>
-			    <th align="right"></th>
-			    <td><input type="submit" value="<fmt:message key="text.button.savechanges" />"></td>
-			  </tr>
-			</table>			
+			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
+			<br>
+			<fmt:message key="application.label.status.change" />
+			<input type="radio" name="status" value="REJECTED"> <fmt:message key="application.label.status.REJECT" /> 
+  			<input type="radio" name="status" value="RECEIVED" checked> <fmt:message key="application.label.status.RECEIVE" /><br>			
+			<br>
+			<fmt:message key="application.label.create_time" />: <customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" />
+			<br>
+			<fmt:message key="application.label.description" />: ${application.description}
+			<br>
+			<fmt:message key="application.label.comment" />: <br>
+			<textarea name="comment">${application.managerComment}</textarea>
+			<br>		
+			<fmt:message key="application.label.price" />: 
+			<input type="number" min="0.00" max="10000.00" step="0.01" name="price" value="${application.price}">
+			<br>
+			<fmt:message key="application.label.customer" />: id: ${application.customer.id} - ${application.customer.login} : ${application.customer.name} ${application.customer.surname}
+			<br>
+			<fmt:message key="application.label.workman" />:
+			<select name="workman_id" >
+				<option value="${application.workman.id}" selected>${application.workman.id} - ${application.workman.name} ${application.workman.surname}</option>			               			
+				
+					<c:forEach var="workman" items="${requestScope.workmen}">
+						
+						<option value ="${workman.id}"> ${workman.id} - ${workman.name} ${workman.surname}  </option>
+						
+					</c:forEach>         	
+         	</select>
 			
+			<br>
+			<fmt:message key="application.label.testimonial" />: ${application.testimonial.text}
+			<br>
+			
+			<input type="submit" value="<fmt:message key="text.button.savechanges" />">
 		</form>	
 		<br>
 	</div>

@@ -22,37 +22,23 @@
 			
 			<input type="hidden" name="status" value="EXECUTING">	
 			
-			<table style="width:60%">
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.status" />:</th>
-			    <td><fmt:message key="application.label.status.${application.status}" /></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.create_time" />:</th>
-			    <td><customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" /></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.description" />:</th>
-			    <td width="300">${application.description}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.comment" />:</th>
-			    <td>${application.managerComment}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.price" />:</th>
-			    <td>${application.price}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.customer" />:</th>
-			    <td>id: ${application.customer.id} - ${application.customer.name} ${application.customer.surname}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"></th>
-			    <td><input type="submit" value="<fmt:message key="text.button.executing" />"></td>
-			  </tr>
-			</table>
+			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
+			<br>
+			<fmt:message key="application.label.create_time" />: <customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" />
+			<br>
+			<fmt:message key="application.label.description" />: ${application.description}
+			<br>
+			<fmt:message key="application.label.comment" />: ${application.managerComment}
+			<br>		
+			<fmt:message key="application.label.price" />: ${application.price}
+			<br>
+			<fmt:message key="application.label.customer" />: id: ${application.customer.id} - ${application.customer.name} ${application.customer.surname}
+			<br>
+			<fmt:message key="application.label.current_workman" />: ${application.workman.id}
+			<br>
+	
 			
+			<input type="submit" value="<fmt:message key="text.button.executing" />">
 		</form>	
 		<br>
 	</div>

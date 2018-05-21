@@ -19,72 +19,50 @@
 		<form method ="post" action="${pageContext.request.contextPath}/app/manager/applications/edit">
 			
 			<c:set var="application" value="${application}" scope="session"/>
-						
-			<table style="width:60%">
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.create_time" />:</th>
-			    <td><customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" /></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.status" />:</th>
-			    <td><fmt:message key="application.label.status.${application.status}" /></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.status.change" /></th>
-			    <td>
-			    	<select name="status" >
-						<option value="${application.status}" selected><fmt:message key="application.label.status.${application.status}" /></option>			               
-						<option value ="NEW"> <fmt:message key="application.label.status.NEW" /> </option>
-						<option value ="RECEIVED"> <fmt:message key="application.label.status.RECEIVED" /> </option>
-						<option value ="REJECTED"> <fmt:message key="application.label.status.REJECTED" /> </option>
-						<option value ="APPROVED"> <fmt:message key="application.label.status.APPROVED" /> </option>
-						<option value ="EXECUTING"> <fmt:message key="application.label.status.EXECUTING" /> </option>
-						<option value ="DONE"> <fmt:message key="application.label.status.DONE" /> </option>
-						<option value ="FINISHED"> <fmt:message key="application.label.status.FINISHED" /> </option>
-					</select>
-			    </td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.description" />:</th>
-			    <td width="300">${application.description}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.comment" />:</th>
-			    <td><textarea name="comment">${application.managerComment}</textarea></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.price" />:</th>
-			    <td><input type="number" min="0.00" max="10000.00" step="0.01" name="price" value="${application.price}"></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.customer" />:</th>
-			    <td>id: ${application.customer.id} - ${application.customer.login} : ${application.customer.name} ${application.customer.surname}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.workman" />:</th>
-			    <td>
-			    	<select name="workman_id" >
-						<option value="${application.workman.id}" selected>${application.workman.id} - ${application.workman.name} ${application.workman.surname}</option>			               			
-						<c:forEach var="workman" items="${requestScope.workmen}">						
-							<option value ="${workman.id}"> ${workman.id} - ${workman.name} ${workman.surname}  </option>						
-						</c:forEach>         	
-         			</select>
-			    </td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.testimonial" />:</th>
-			    <td>
-			    	<customtag:datetimeview localDateTime="${application.testimonial.createTime}" language="${sessionScope.language}" />
-			    	<br>
-			    	${application.testimonial.text}
-			    </td>
-			  </tr>
-			  <tr>
-			    <th align="right"></th>
-			    <td><input type="submit" value="<fmt:message key="text.button.savechanges" />"></td>
-			  </tr>
-			</table>			
 			
+			<fmt:message key="application.label.create_time" />: <customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" />
+			<br>
+			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
+			<br>			
+			<fmt:message key="application.label.status.change" />
+			<select name="status" >
+				<option value="${application.status}" selected><fmt:message key="application.label.status.${application.status}" /></option>			               
+				<option value ="NEW"> <fmt:message key="application.label.status.NEW" /> </option>
+				<option value ="RECEIVED"> <fmt:message key="application.label.status.RECEIVED" /> </option>
+				<option value ="REJECTED"> <fmt:message key="application.label.status.REJECTED" /> </option>
+				<option value ="APPROVED"> <fmt:message key="application.label.status.APPROVED" /> </option>
+				<option value ="EXECUTING"> <fmt:message key="application.label.status.EXECUTING" /> </option>
+				<option value ="DONE"> <fmt:message key="application.label.status.DONE" /> </option>
+				<option value ="FINISHED"> <fmt:message key="application.label.status.FINISHED" /> </option>
+			</select>
+			<br>
+			<fmt:message key="application.label.description" /><br>
+			<textarea name="description">${application.description}</textarea>
+			<br>
+			<fmt:message key="application.label.comment" /><br>
+			<textarea name="comment">${application.managerComment}</textarea>
+			<br>		
+			<fmt:message key="application.label.price" />
+			<input type="number" min="0.00" max="10000.00" step="0.01" name="price" value="${application.price}">
+			<br>
+			<fmt:message key="application.label.customer" />: id ${application.customer.id} - ${application.customer.login} : ${application.customer.name} ${application.customer.surname}
+			<br>
+			<fmt:message key="application.label.workman" />:
+			<select name="workman_id" >
+				<option value="${application.workman.id}" selected>${application.workman.id} - ${application.workman.name} ${application.workman.surname}</option>			               			
+				
+					<c:forEach var="workman" items="${requestScope.workmen}">
+						
+						<option value ="${workman.id}">${workman.id} - ${workman.name} ${workman.surname} </option>
+						
+					</c:forEach>         	
+         	</select>			
+			<br>
+			<fmt:message key="application.label.testimonial" />: ${application.testimonial.createTime}
+			<br>${application.testimonial.text}
+			<br>
+			
+			<input type="submit" value="<fmt:message key="text.button.savechanges" />">
 		</form>
 		<br>
 	</div>

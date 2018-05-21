@@ -19,44 +19,24 @@
 		<form method ="post" action="${pageContext.request.contextPath}/app/customer/applications/edit">
 			
 			<c:set var="application" value="${application}" scope="session"/>
-					
-			<table style="width:60%">
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.create_time" />:</th>
-			    <td><customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" /></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.status" />:</th>
-			    <td><fmt:message key="application.label.status.${application.status}" /></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.status.change" />:</th>
-			    <td><input type="radio" name="status" value="REJECTED"> <fmt:message key="application.label.status.REJECT" /> 
-  					<input type="radio" name="status" value="APPROVED" checked> <fmt:message key="application.label.status.APPROV" /><br>			
-				</td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.description" />:</th>
-			    <td><textarea name="description">${application.description}"></textarea></td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.comment" />:</th>
-			    <td>${application.managerComment}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.price" />:</th>
-			    <td>${application.price}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"><fmt:message key="application.label.workman" />:</th>
-			    <td>${application.workman.id} - ${application.workman.name} ${application.workman.surname}</td>
-			  </tr>
-			  <tr>
-			    <th align="right"></th>
-			    <td><input type="submit" value="<fmt:message key="text.button.savechanges" />"></td>
-			  </tr>
-			</table>		
 			
+			<fmt:message key="application.label.status" />: <fmt:message key="application.label.status.${application.status}" />
+			<br>
+			<fmt:message key="application.label.status.change" />
+			<input type="radio" name="status" value="REJECTED"> <fmt:message key="application.label.status.REJECT" /> 
+  			<input type="radio" name="status" value="APPROVED" checked> <fmt:message key="application.label.status.APPROV" /><br>			
+			<br>
+			<fmt:message key="application.label.description" />: <input type="text" name="description" value="${application.description}">
+			<br>
+			<fmt:message key="application.label.comment" />: ${application.managerComment}
+			<br>		
+			<fmt:message key="application.label.price" />: ${application.price}
+			<br>
+			<fmt:message key="application.label.workman" />: ${application.workman.id} - ${application.workman.name} ${application.workman.surname}
+			<br>
+			<fmt:message key="application.label.create_time" />: <customtag:datetimeview localDateTime="${application.createTime}" language="${sessionScope.language}" />
+			<br>
+			<input type="submit" value="<fmt:message key="text.button.savechanges" />">
 		</form>	
 		<br>
 	</div>
