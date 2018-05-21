@@ -28,6 +28,8 @@ public class ManagerShowUsersCommand extends AbstractCommand {
 	@Override
 	public String execute(HttpServletRequest request) {
 		
+		if (CommandUtils.isRequestContainsParam(request, ROLE)) {
+			
 		UserRole role = UserRole.valueOf(request.getParameter(ROLE).toUpperCase());
 		int pageNumber = CommandUtils.extractPageNumberFromRequest(request);
 				
@@ -38,6 +40,10 @@ public class ManagerShowUsersCommand extends AbstractCommand {
 		request.setAttribute(USERS, users);
 		request.setAttribute(NUMBER_OF_PAGES, getNumberOfPages(role));
 		return URL.MANAGER_USERS_SHOW_PAGE; 
+		
+		} else {
+			return URL.MANAGER_USERS_INDEX_PAGE;
+		}
 	}
 
 	private Object getNumberOfPages(UserRole role) {
