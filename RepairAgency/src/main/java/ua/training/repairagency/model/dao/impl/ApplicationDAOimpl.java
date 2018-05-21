@@ -132,8 +132,7 @@ public class ApplicationDAOimpl extends AbstractDAO<Application> implements Appl
 
 	@Override
 	public Application delete(Application application) {
-		try(PreparedStatement statement = connection
-										.prepareStatement(queryBundle.getString(Query.APPLICATION_DELETE))) {
+		try(PreparedStatement statement = connection.prepareStatement(queryBundle.getString(Query.APPLICATION_DELETE))) {
 			statement.setInt(1, application.getId());
 			if (statement.executeUpdate() > 0) {
 				return application;

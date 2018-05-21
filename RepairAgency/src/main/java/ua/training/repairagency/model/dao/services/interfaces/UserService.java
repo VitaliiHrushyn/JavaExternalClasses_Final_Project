@@ -16,12 +16,8 @@ public interface UserService {
 
 	User update(User user) throws NotUniqueFieldValueException;
 
-	List<User> getAllByRoleAndPageNumber(UserRole role, int pageNumber);
-	
 	List<User> getAllByRole(UserRole role);
 
 	User delete(int userId);
-
-	int getNumberOfPagesByRole(UserRole role);
 
 }
