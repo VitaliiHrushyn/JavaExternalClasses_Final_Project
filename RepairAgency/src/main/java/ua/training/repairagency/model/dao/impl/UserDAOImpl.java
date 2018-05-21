@@ -155,6 +155,41 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 		}				
 		return users;
 	}
+	
+	@Override
+	public List<User> getAllByRoleWithLimitAndOffset(UserRole role, int pageNumber) {
+		int limit = Query.ROWS_PER_PAGE;
+		int offset = limit * (pageNumber - 1);
+		List<User> users = new ArrayList<>();
+		try(PreparedStatement statement = connection
+										.prepareStatement(queryBundle.getString(Query.USER_GET_BY_ROLE))) {
+			statement.setString(1, role.toString());
+			statement.setInt(2, limit);
+			statement.setInt(3, offset);
+			ResultSet rs = statement.executeQuery();			
+			while(rs.next()) {
+				users.add(extractUser(rs));	
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}				
+		return users;
+	}
+
+
+	@Override
+	public int coutnRowsByRole(UserRole role) {
+		try(PreparedStatement statement = connection
+											.prepareStatement(queryBundle.getString(Query.USER_COUNT_BY_ROLE))) {
+			statement.setString(1, role.toString());
+			ResultSet rs = statement.executeQuery();
+			rs.next() ;
+			return rs.getInt("total");			
+		} catch (SQLException e) {
+			//TODO handle exception
+			throw new RuntimeException(e);
+		}	
+	}
 
 
 }
