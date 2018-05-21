@@ -23,7 +23,8 @@
             <br>
             <input type="password" id="confirmpassword" name="confirmpassword" required placeholder="<fmt:message key="register.label.confirmpassword" />">
            
-            <input type="hidden" name="role" value ="CUSTOMER"/>			               
+            <input type="hidden" name="role" value ="CUSTOMER"/>
+            			               
             <br>
             <input type="text" id="name" name="name" required placeholder="<fmt:message key="register.label.name" />">
             <br>
@@ -32,6 +33,7 @@
             <input type="email" id="email" name="email" required placeholder="<fmt:message key="register.label.email" />">
             <br>
             <input type="text" id="phone" name="phone" required placeholder="<fmt:message key="register.label.phone" />">
+            <br>
             <br>
             <fmt:message key="text.button.submit" var="buttonValue" />
             <input type="submit" name="submit" value="${buttonValue}">

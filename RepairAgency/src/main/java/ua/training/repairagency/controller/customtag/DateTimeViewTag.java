@@ -29,10 +29,18 @@ public class DateTimeViewTag extends TagSupport {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy - HH:mm:ss", new Locale(this.language));				
 		
 		try {
-            pageContext.getOut().print( localDateTime.format(formatter) );
+            pageContext.getOut().print( showTime(formatter) );
         } catch(IOException ioException) {
             throw new JspException("Error: " + ioException.getMessage());
         }       
         return SKIP_BODY;
     }
+
+	private String showTime(DateTimeFormatter formatter) {
+		if (localDateTime != null) {
+			return localDateTime.format(formatter);
+		} else {
+			return "";
+		}
+	}
 }
