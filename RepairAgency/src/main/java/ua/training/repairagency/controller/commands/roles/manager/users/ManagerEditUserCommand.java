@@ -39,11 +39,16 @@ public class ManagerEditUserCommand extends AbstractCommand {
 		infoMessages = new ArrayList<>();
 		User user = null;
 		
-		if (CommandUtils.isRequestContainsParam(request, USER_ID)) {	
+		if (CommandUtils.isRequestContainsParam(request, USER_ID)) {
 			user = serviceFactory
 					.createUserService()
 					.getById(Integer.valueOf(request.getParameter(USER_ID)));
+		} 
+				
+		if (user == null) {
+			return URL.MANAGER_USERS_INDEX_PAGE;
 		}
+		
 		if (CommandUtils.isRequestContainsParam(request, NAME)
 				&& CommandUtils.checkEditingUserCredentials(request, errorMessages)) {
 			try {				

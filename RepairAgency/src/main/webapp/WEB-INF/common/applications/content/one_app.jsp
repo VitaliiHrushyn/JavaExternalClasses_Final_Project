@@ -39,6 +39,10 @@
 			    <td>${application.price}</td>
 			  </tr>
 			  <tr>
+			    <th align="right"><fmt:message key="application.label.customer" />:</th>
+			    <td>${application.customer.id} - ${application.customer.name} ${application.customer.surname}</td>
+			  </tr>
+			  <tr>
 			    <th align="right"><fmt:message key="application.label.workman" />:</th>
 			    <td>${application.workman.id} - ${application.workman.name} ${application.workman.surname}</td>
 			  </tr>

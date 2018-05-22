@@ -19,12 +19,15 @@ import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 import ua.training.repairagency.controller.commands.AbstractCommand;
 import ua.training.repairagency.controller.commands.Command;
 
 public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 
 	private static String path = URL.MANAGER_APPLICATIONS_APPROVE_PATH;
+	Logger logger = Logger.getLogger(ManagerApproveEditApplicationCommand.class);
 
 	public ManagerApproveEditApplicationCommand(Map<String, Command> commands) {
 		super(path, commands);
@@ -49,7 +52,7 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 			 try {
 				checkDataActuality(application);
 			} catch (OutOfDateDataException e) {
-				//TODO add logging
+				logger.error(Message.APPLICATION_OUT_OF_DATE + e.toString() + Message.SEMICOLON);
 				e.printStackTrace();
 				errorMessages.add(messageBundle.getString(Message.APPLICATION_OUT_OF_DATE));
 				

@@ -19,30 +19,53 @@
 
 		<form method="post" action="${pageContext.request.contextPath}/app/manager/users/edit">
             <input type="hidden" name="userid" value="${user.id}">
-            
-            <fmt:message key="register.label.login" />: <input type="text" id="login" name="login" required value="${user.login}">
-            <br>
-            <input type="password" id="password" name="password" placeholder="<fmt:message key="register.label.password" />">
-            <br>
-            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="<fmt:message key="register.label.confirmpassword" />">
-            <br>
-            <label for="role"><fmt:message key="register.label.role" />:</label>
-            <select name="role">
-            	<option value="${user.role}" selected><fmt:message key="user.label.role.${user.role}" /></option>			               
-				<option value ="MANAGER"> <fmt:message key="user.label.role.MANAGER" /> </option>
-				<option value ="CUSTOMER"> <fmt:message key="user.label.role.CUSTOMER" /> </option>
-				<option value ="WORKMAN"> <fmt:message key="user.label.role.WORKMAN" /> </option>
-			</select>
-            <br>
-            <fmt:message key="register.label.name" />: <input type="text" id="name" name="name" required value="${user.name}">
-            <br>
-            <fmt:message key="register.label.surname" />: <input type="text" id="surname" name="surname" required value="${user.surname}" />
-            <br>
-            <fmt:message key="register.label.email" />: <input type="email" id="email" name="email" required value="${user.email}">
-            <br>
-            <fmt:message key="register.label.phone" />: <input type="text" id="phone" name="phone" required value="${user.phone}">
-            <br>            
-            <input type="submit" name="submit" value="<fmt:message key="text.button.edit"/>">
+                  
+       		<table style="width:60%">
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.login" />:</th>
+			    <td><input type="text" id="login" name="login" required value="${user.login}"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.password" />:</th>
+			    <td><input type="password" id="password" name="password" placeholder="<fmt:message key="register.label.password" />"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.confirmpassword" />:</th>
+			    <td><input type="password" id="confirmpassword" name="confirmpassword" placeholder="<fmt:message key="register.label.confirmpassword" />"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.role" />:</th>
+			    <td>
+			    	<select name="role">
+		            	<option value="${user.role}" selected><fmt:message key="user.label.role.${user.role}" /></option>			               
+						<option value ="MANAGER"> <fmt:message key="user.label.role.MANAGER" /> </option>
+						<option value ="CUSTOMER"> <fmt:message key="user.label.role.CUSTOMER" /> </option>
+						<option value ="WORKMAN"> <fmt:message key="user.label.role.WORKMAN" /> </option>
+					</select>
+				</td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.name" />:</th>
+			    <td><input type="text" id="name" name="name" required value="${user.name}"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.surname" />:</th>
+			    <td><input type="text" id="surname" name="surname" required value="${user.surname}" /></td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.email" />:</th>
+			    <td><input type="email" id="email" name="email" required value="${user.email}"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"><fmt:message key="register.label.phone" />:</th>
+			    <td><input type="text" id="phone" name="phone" required value="${user.phone}"></td>
+			  </tr>
+			  <tr>
+			    <th align="right"></th>
+			    <td><input type="submit" name="submit" value="<fmt:message key="text.button.edit"/>"></td>
+			  </tr>
+			</table>       
+       
         </form>
         <br>
         <form method="post" action="${pageContext.request.contextPath}/app/manager/users/delete">

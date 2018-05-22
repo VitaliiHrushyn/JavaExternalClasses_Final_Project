@@ -35,6 +35,8 @@ public interface Message {
 	String ERROR_EMPTY_COMMENT = "error.app.empty.comment";
 	String ERROR_EMPTY_PRICE_OR_WORKMAN = "error.app.empty.price.or.workman";
 
+	String SEMICOLON = ";";
+
 	
 	
 

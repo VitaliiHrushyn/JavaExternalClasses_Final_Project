@@ -37,11 +37,16 @@ public class ManagerDeleteUserCommand extends AbstractCommand {
 					.delete(Integer.valueOf(request.getParameter(DELETING_USER_ID)));
 			
 			infoMessages.add(messageBundle.getString(Message.DELETE_USER_SUCCESS));
+			
+			request.setAttribute(ERROR_MESSAGES, errorMessages);
+			request.setAttribute(INFO_MESSAGES, infoMessages);
+			return URL.MANAGER_USERS_INDEX_PAGE;	
+			
+		} else {
+			return URL.MANAGER_USERS_INDEX_PAGE;
 		}
 		
-		request.setAttribute(ERROR_MESSAGES, errorMessages);
-		request.setAttribute(INFO_MESSAGES, infoMessages);
-		return URL.MANAGER_USERS_SHOW_PAGE;
+		
 	}	
 	
 }
