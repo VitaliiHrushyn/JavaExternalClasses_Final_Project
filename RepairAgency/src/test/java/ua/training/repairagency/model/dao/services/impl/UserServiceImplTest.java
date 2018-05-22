@@ -2,26 +2,40 @@ package ua.training.repairagency.model.dao.services.impl;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
-public class UserServiceImplTest {
+import ua.training.repairagency.model.dao.services.ServiceFactory;
+import ua.training.repairagency.model.dao.services.interfaces.UserService;
 
-	@Test
-	public void testGetByLogin() {
-		fail("Not yet implemented");
+public class UserServiceImplTest {
+	
+	private UserService service;
+	
+	@Before
+	public void setService() {
+		service = ServiceFactory.getInstance().createUserService();
 	}
 
 	@Test
+	public void testGetByLogin() {
+		String login = "admin";		
+		assertNotNull(service.getByLogin(login));
+	}
+
+	@Ignore
 	public void testInsert() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetById() {
-		fail("Not yet implemented");
+		int id = 79;		
+		assertNotNull(service.getById(id));
 	}
 
-	@Test
+	@Ignore
 	public void testUpdate() {
 		fail("Not yet implemented");
 	}
