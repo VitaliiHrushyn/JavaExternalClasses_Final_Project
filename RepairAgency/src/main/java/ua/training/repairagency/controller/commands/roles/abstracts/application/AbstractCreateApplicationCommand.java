@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.utils.ApplicationUtils;
@@ -15,6 +17,8 @@ import ua.training.repairagency.controller.commands.AbstractCommand;
 import ua.training.repairagency.controller.commands.Command;
 
 public abstract class AbstractCreateApplicationCommand extends AbstractCommand {
+	
+	Logger logger = Logger.getLogger(AbstractCreateApplicationCommand.class);
 
 	public AbstractCreateApplicationCommand(String path, Map<String, Command> commands) {
 		super(path, commands);
@@ -39,9 +43,9 @@ public abstract class AbstractCreateApplicationCommand extends AbstractCommand {
 			infoMessages.add(messageBundle.getString(Message.APPLICATION_CREATE_SUCCESS));
 			page = getApplicationIndexPage();
 		} catch (Exception e) {
-			e.printStackTrace();
 			errorMessages.add(messageBundle.getString(Message.APPLICATION_CREATE_FAIL));
 			page = getApplicationCreatePage();
+			logger.error(Message.APPLICATION_CREATE_FAIL + e.toString() + Message.SEMICOLON);
 		} 
 				
 		request.setAttribute(ERROR_MESSAGES, errorMessages);

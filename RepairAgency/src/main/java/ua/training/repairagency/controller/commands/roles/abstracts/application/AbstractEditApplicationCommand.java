@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 import ua.training.repairagency.controller.constants.Message;
 import ua.training.repairagency.controller.utils.CommandUtils;
 import ua.training.repairagency.model.entities.application.Application;
@@ -17,6 +19,8 @@ import ua.training.repairagency.controller.commands.AbstractCommand;
 import ua.training.repairagency.controller.commands.Command;
 
 public abstract class AbstractEditApplicationCommand extends AbstractCommand {
+	
+	Logger logger = Logger.getLogger(AbstractEditApplicationCommand.class);
 	
 	public AbstractEditApplicationCommand(String path, Map<String, Command> commands) {
 		super(path, commands);
@@ -43,7 +47,7 @@ public abstract class AbstractEditApplicationCommand extends AbstractCommand {
 			infoMessages.add(messageBundle.getString(Message.APPLICATION_UPDATE_SUCCESS));
 				
 		} catch (OutOfDateDataException e) {
-//TODO add logging
+			logger.error(Message.APPLICATION_OUT_OF_DATE + e.toString() + Message.SEMICOLON);
 			e.printStackTrace();
 			errorMessages.add(messageBundle.getString(Message.APPLICATION_OUT_OF_DATE));
 		}			
