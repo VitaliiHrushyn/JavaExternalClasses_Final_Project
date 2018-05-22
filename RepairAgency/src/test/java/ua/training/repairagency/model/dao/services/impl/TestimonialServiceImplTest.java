@@ -12,15 +12,15 @@ import ua.training.repairagency.model.entities.testimonial.Testimonial;
 public class TestimonialServiceImplTest {
 
 	private TestimonialService service;
+	private int testiminialId = 8;
 	
 	@Before
-	public void setUp() {
-		service = ServiceFactory.getInstance().createTestimonialService();
+	public void setFactory() {
+		this.service = ServiceFactory.getInstance().createTestimonialService();
 	}
 	
 	@Test
 	public void testGetById() {
-		int testiminialId = 8;
 		Testimonial testimonial = service.getById(testiminialId);
 		assertNotNull(testimonial);
 	}
