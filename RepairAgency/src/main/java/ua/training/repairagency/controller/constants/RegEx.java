@@ -10,5 +10,6 @@ public interface RegEx {
 	String EMAIL = "regex.email";
 	String PHONE = "regex.phone";
 	String PAGE_NUMBER = "^[1-9]{1,1}[0-9]*$";
+	String APP_TEXT = "regex.application.text";
 	
 }
