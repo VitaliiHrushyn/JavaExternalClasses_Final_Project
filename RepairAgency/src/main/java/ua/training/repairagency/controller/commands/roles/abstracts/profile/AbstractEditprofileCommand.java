@@ -34,24 +34,25 @@ public abstract class AbstractEditprofileCommand extends AbstractCommand {
 			return getEditprofilePage();	
 		}
 		
-		try {
-				User user = (User) request.getSession().getAttribute(USER);
+		if (CommandUtils.checkEditingUserCredentials(request, errorMessages)) {
+			try {
+					User user = (User) request.getSession().getAttribute(USER);
+						
+					String oldLogin = user.getLogin();
+						
+					user = serviceFactory
+							.createUserService()
+							.update(UserUtils.updateUserFeatures(user, request));
 					
-				String oldLogin = user.getLogin();
+					String newLogin = user.getLogin();
 					
-				user = serviceFactory
-						.createUserService()
-						.update(UserUtils.updateUserFeatures(user, request));
-				
-				String newLogin = user.getLogin();
-				
-				AccessUtils.changeLoginOfLoggedUser(request, oldLogin, newLogin);
-				request.getSession().setAttribute(USER, user);
-				infoMessages.add(messageBundle.getString(Message.UPDATE_USER_SUCCESS));
-			} catch (NotUniqueFieldValueException e) {
-				errorMessages.add(messageBundle.getString(CommandUtils.getFailMessageFromException(e)));
-			}
-		
+					AccessUtils.changeLoginOfLoggedUser(request, oldLogin, newLogin);
+					request.getSession().setAttribute(USER, user);
+					infoMessages.add(messageBundle.getString(Message.UPDATE_USER_SUCCESS));
+				} catch (NotUniqueFieldValueException e) {
+					errorMessages.add(messageBundle.getString(CommandUtils.getFailMessageFromException(e)));
+				}
+		}
 		request.setAttribute(ERROR_MESSAGES, errorMessages);
 		request.setAttribute(INFO_MESSAGES, infoMessages);
 		return getEditprofilePage();	
