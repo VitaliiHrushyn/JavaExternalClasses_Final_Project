@@ -67,7 +67,7 @@ public class ManagerApproveEditApplicationCommand extends AbstractCommand {
 		
 		Application application = CommandUtils.getApplicationFromRequest(request);
 		
-		if (checkEditingParameters(request, errorMessages)) {
+		if (application != null && checkEditingParameters(request, errorMessages)) {
 			
 			try {	
 //				checkDataActuality(application);
