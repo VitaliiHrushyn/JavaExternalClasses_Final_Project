@@ -18,91 +18,71 @@ USE `repair_agency` ;
 -- Table `repair_agency`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `repair_agency`.`users` (
-  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL AUTO_INCREMENT,
   `role` ENUM('CUSTOMER', 'MANAGER', 'WORKMAN') NOT NULL,
   `name` VARCHAR(45) NOT NULL,
+  `surname` VARCHAR(45) NOT NULL,
   `login` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(32) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `phone` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `login_UNIQUE` (`login` ASC),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC),
-  UNIQUE INDEX `phone_UNIQUE` (`phone` ASC))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `repair_agency`.`testimonials`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `repair_agency`.`testimonials` (
-  `testimonial_id` INT NOT NULL AUTO_INCREMENT,
-  `text` VARCHAR(245) NULL,
-  `create_time` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`testimonial_id`))
-ENGINE = InnoDB;
+  UNIQUE INDEX `phone_UNIQUE` (`phone` ASC),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC))
+ENGINE = InnoDB
+AUTO_INCREMENT = 90
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table `repair_agency`.`applications`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `repair_agency`.`applications` (
-  `application_id` INT NOT NULL AUTO_INCREMENT,
+  `application_id` INT(11) NOT NULL AUTO_INCREMENT,
   `status` ENUM('NEW', 'RECEIVED', 'REJECTED', 'APPROVED', 'EXECUTING', 'DONE', 'FINISHED') NOT NULL,
   `description` VARCHAR(245) NOT NULL,
-  `manager_comment` VARCHAR(245) NULL,
-  `price` BIGINT NULL,
-  `customer_id` INT NOT NULL,
-  `workman_id` INT NULL,
-  `testimonial_id` INT NULL,
-  `create_time` TIMESTAMP NOT NULL,
+  `manager_comment` VARCHAR(245) NULL DEFAULT NULL,
+  `price` DECIMAL(10,2) NULL DEFAULT NULL,
+  `customer_id` INT(11) NULL DEFAULT NULL,
+  `workman_id` INT(11) NULL DEFAULT NULL,
+  `testimonial_id` INT(11) NULL DEFAULT NULL,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_update` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `version_id` INT(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`application_id`),
   UNIQUE INDEX `applicationid_UNIQUE` (`application_id` ASC),
   INDEX `fkcustomer_idx` (`customer_id` ASC),
   INDEX `fkworkman_idx` (`workman_id` ASC),
+  INDEX `fktesim_idx` (`testimonial_id` ASC),
+  INDEX `fktestimonial_idx` (`testimonial_id` ASC),
   INDEX `fktes_idx` (`testimonial_id` ASC),
   CONSTRAINT `fkcustomer`
     FOREIGN KEY (`customer_id`)
     REFERENCES `repair_agency`.`users` (`user_id`)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT `fkworkman`
     FOREIGN KEY (`workman_id`)
     REFERENCES `repair_agency`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fktes`
-    FOREIGN KEY (`testimonial_id`)
-    REFERENCES `repair_agency`.`testimonials` (`testimonial_id`)
     ON DELETE SET NULL
     ON UPDATE CASCADE)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 98
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `repair_agency`.`changes_history`
+-- Table `repair_agency`.`testimonials`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `repair_agency`.`changes_history` (
-  `record_id` INT NOT NULL AUTO_INCREMENT,
-  `text` VARCHAR(145) NULL,
-  `user_id` INT NOT NULL,
-  `application_id` INT NOT NULL,
-  `create_time` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`record_id`),
-  UNIQUE INDEX `record_id_UNIQUE` (`record_id` ASC),
-  INDEX `fkuser_idx` (`user_id` ASC),
-  INDEX `fkapp_idx` (`application_id` ASC),
-  CONSTRAINT `fkuser`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `repair_agency`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fkapp`
-    FOREIGN KEY (`application_id`)
-    REFERENCES `repair_agency`.`applications` (`application_id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `repair_agency`.`testimonials` (
+  `testimonial_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `text` VARCHAR(245) NULL DEFAULT NULL,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`testimonial_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 44
+DEFAULT CHARACTER SET = utf8;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
