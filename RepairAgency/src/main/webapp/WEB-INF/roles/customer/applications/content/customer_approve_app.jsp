@@ -37,7 +37,7 @@
 			  </tr>
 			  <tr>
 			    <th align="right"><fmt:message key="application.label.description" />:</th>
-			    <td><textarea name="description">${application.description}"></textarea></td>
+			    <td><textarea name="description">${application.description}</textarea></td>
 			  </tr>
 			  <tr>
 			    <th align="right"><fmt:message key="application.label.comment" />:</th>
