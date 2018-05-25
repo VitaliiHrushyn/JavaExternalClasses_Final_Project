@@ -37,6 +37,8 @@ public interface Message {
 
 	String SEMICOLON = ";";
 
+	String APP_TEXT_INVALID = "application.text.invalid";
+
 	
 	
 

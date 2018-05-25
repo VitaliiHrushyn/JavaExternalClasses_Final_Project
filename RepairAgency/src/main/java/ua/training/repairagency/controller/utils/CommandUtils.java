@@ -211,4 +211,22 @@ public class CommandUtils {
 		}
 	}
 
+	public static boolean checkCreateApplication(HttpServletRequest request, List<String> errorMessages) {
+		ResourceBundle regexBundle = ResourceBundle.getBundle(RegEx.BUNDLE_NAME, getLocale(request));
+		ResourceBundle messageBundle = ResourceBundle.getBundle(Message.BUNDLE_NAME, getLocale(request));
+		
+		boolean check = false;
+		
+		if (CommandUtils.isRequestContainsParam(request, DESCRIPTION)) {
+			check = true;
+		}
+		if (CommandUtils.isRequestContainsParam(request, DESCRIPTION)
+				&& !request.getParameter(DESCRIPTION).matches(regexBundle.getString(RegEx.APP_TEXT))) {
+			
+			errorMessages.add(messageBundle.getString(Message.APP_TEXT_INVALID));
+			check = false;
+		}
+		return check;
+	}
+
 }

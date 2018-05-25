@@ -42,8 +42,8 @@ public class AccessUtils {
 		authLogger.info("Login success: " + user 
 				+ " to session " + request.getSession().getId() + ";");
 		
-		if (previousSession != null && !previousSession.isNew()) { //TODO check this conditions !!!
-			previousSession.setAttribute(USER, null);
+		if (previousSession != null) { //TODO check this conditions !!!
+			previousSession.invalidate();     //setAttribute(USER, null);
 			
 			authLogger.info("Double login protection - automatic logout of " 
 					+ request.getSession().getAttribute(USER) + " from session " + previousSession.getId() + ";");
