@@ -14,8 +14,7 @@
 </head>
     <body>
         <h2>
-           Error Page<br/>
-            <i>Error <%= exception %></i> 
+           Error Page
         </h2>
         <p>Unexpected error has occurred</p>
     	<br>
