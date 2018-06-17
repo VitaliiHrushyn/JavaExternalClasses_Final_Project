@@ -40,7 +40,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Override
 	public List<Application> getAllByUserId(int pageNumber, int userId) {
 		String[] values = getQueryValuesArray(pageNumber, String.valueOf(userId));
-//		String[] values = {String.valueOf(userId), String.valueOf(limit), String.valueOf(offset)};
 		try(ApplicationDAO dao = daoFactory.createApplicationDAO()) {		
 			return dao.getAllByQueryWithLimitAndOffset(
 					queryBundle.getString(Query.APPLICATION_GET_BY_CUSTOMER_ID), values);				
